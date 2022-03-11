@@ -1,4 +1,4 @@
-package api.go.entidades;
+package connect.go.models;
 
 public class Usuario {
     private int idUsuario;
