@@ -1,17 +1,22 @@
-package api.go.controller;
+package connect.go.controllers;
 
-import api.go.entidades.Usuario;
-import org.springframework.web.bind.annotation.*;
+import connect.go.models.Usuario;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 /// define o caminho http://localhost:8080/usuario
-@RequestMapping("/usuario")
-public class UsuariosController {
+@RequestMapping("/usuarios")
+public class UsuarioController {
     private List<Usuario> usuarios = new ArrayList<>();
-
 
     /// Cadastrando usuario
     /// define o caminho post http://localhost:8080/usuario
@@ -75,5 +80,4 @@ public class UsuariosController {
         }
         return "Usuario não encontrado";
     }
-
 }
