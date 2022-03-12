@@ -58,7 +58,7 @@ public class UsuarioController {
     public String loginUsers(@PathVariable String loginUsuario, @PathVariable String senhaUsuario) {
         for (Usuario usuario : usuarios) {
             if (usuario.getLoginUsuario().equals(loginUsuario)
-                    && usuario.getSenhaUsuario().equals(senhaUsuario)) {
+                    && usuario.pegarSenhaUsuario().equals(senhaUsuario)) {
                 usuario.setAutenticado(true);
                 return "Logado";
             }

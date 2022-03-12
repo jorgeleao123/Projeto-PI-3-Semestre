@@ -51,7 +51,8 @@ public class Usuario {
         this.loginUsuario = loginUsuario;
     }
 
-    public String getSenhaUsuario() {
+    // escondendo a senha
+     public String pegarSenhaUsuario() {
         return senhaUsuario;
     }
 
