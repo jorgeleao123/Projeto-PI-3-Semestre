@@ -10,9 +10,11 @@ public class Usuario {
     private int isAdmin;
     private int isMotorista;
     private String sexoUsuario;
-//    private Endereco endereco;
+    private String emailUsuario;
+    private Endereco endereco;
 
-    public Usuario(int idUsuario, String nomeUsuario, String loginUsuario, String senhaUsuario, String sexoUsuario) {
+    public Usuario(int idUsuario, String nomeUsuario, String loginUsuario, String senhaUsuario, String sexoUsuario,
+                   String emailUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.loginUsuario = loginUsuario;
@@ -20,6 +22,10 @@ public class Usuario {
         this.isAdmin = 0;
         this.isMotorista = 0;
         this.sexoUsuario = sexoUsuario;
+        this.emailUsuario = emailUsuario;
+    }
+
+    public Usuario() {
     }
 
     public String getSexoUsuario() {
@@ -79,11 +85,23 @@ public class Usuario {
         this.isMotorista = isMotorista;
     }
 
-//    public Endereco getEndereco() {
-//        return endereco;
-//    }
-//
-//    public void setEndereco(Endereco endereco) {
-//        this.endereco = endereco;
-//    }
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getSenhaUsuario() {
+        return senhaUsuario;
+    }
+
+    public String getEmailUsuario() {
+        return emailUsuario;
+    }
+
+    public void setEmailUsuario(String emailUsuario) {
+        this.emailUsuario = emailUsuario;
+    }
 }

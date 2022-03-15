@@ -2,7 +2,6 @@ package connect.go.controllers;
 
 import connect.go.models.Usuario;
 import connect.go.usecases.UsuarioCrud;
-import netscape.javascript.JSObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,6 @@ public class Usuario2Controller {
 
     @PostMapping
     public ResponseEntity<Object> createUsuario(@RequestBody Usuario usuario) {
-        System.out.println(usuario);
         usuarioCrud.create(usuario);
         return ResponseEntity.status(201).body(usuario);
     }
