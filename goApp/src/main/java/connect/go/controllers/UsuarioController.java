@@ -1,5 +1,6 @@
 package connect.go.controllers;
 
+import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.Usuario;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,25 +60,24 @@ public class UsuarioController {
         for (Usuario usuario : usuarios) {
             if (usuario.getLoginUsuario().equals(loginUsuario)
                     && usuario.pegarSenhaUsuario().equals(senhaUsuario)) {
-                usuario.setAutenticado(true);
                 return "Logado";
             }
         }
-        return "Dados Incorretos";
+        throw new UserNotFoundException();
     }
 
     /// fazendo logoff
     /// define o caminho  post http://localhost:8080/usuario/autenticar
-    @DeleteMapping("/autenticar/{loginUsuario}")
-    public String logoffUsuario(@PathVariable String loginUsuario) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getLoginUsuario().equals(loginUsuario)) {
-                if (usuario.getAutenticado()) {
-                    usuario.setAutenticado(false);
-                }
-                return "Usuario não esta logado";
-            }
-        }
-        return "Usuario não encontrado";
-    }
+//    @DeleteMapping("/autenticar/{loginUsuario}")
+//    public String logoffUsuario(@PathVariable String loginUsuario) {
+//        for (Usuario usuario : usuarios) {
+//            if (usuario.getLoginUsuario().equals(loginUsuario)) {
+//                if (usuario.getAutenticado()) {
+//                    usuario.setAutenticado(false);
+//                }
+//                return "Usuario não esta logado";
+//            }
+//        }
+//        return "Usuario não encontrado";
+//    }
 }

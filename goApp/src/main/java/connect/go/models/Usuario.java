@@ -1,30 +1,33 @@
 package connect.go.models;
 
+
+
 public class Usuario {
     private int idUsuario;
     private String nomeUsuario;
     private String loginUsuario;
     private String senhaUsuario;
-    private Boolean isAdmin;
-    private Boolean isMotorista;
-    private Boolean isAutenticado;
+    private int isAdmin;
+    private int isMotorista;
+    private String sexoUsuario;
+//    private Endereco endereco;
 
-    public Usuario(int idUsuario, String nomeUsuario, String loginUsuario, String senhaUsuario, Boolean isAdmin, Boolean isMotorista) {
+    public Usuario(int idUsuario, String nomeUsuario, String loginUsuario, String senhaUsuario, String sexoUsuario) {
         this.idUsuario = idUsuario;
         this.nomeUsuario = nomeUsuario;
         this.loginUsuario = loginUsuario;
         this.senhaUsuario = senhaUsuario;
-        this.isAdmin = isAdmin;
-        this.isMotorista = isMotorista;
-        this.isAutenticado = false;
+        this.isAdmin = 0;
+        this.isMotorista = 0;
+        this.sexoUsuario = sexoUsuario;
     }
 
-    public Boolean getAutenticado() {
-        return isAutenticado;
+    public String getSexoUsuario() {
+        return sexoUsuario;
     }
 
-    public void setAutenticado(Boolean autenticado) {
-        isAutenticado = autenticado;
+    public void setSexoUsuario(String sexoUsuario) {
+        this.sexoUsuario = sexoUsuario;
     }
 
     public int getIdUsuario() {
@@ -60,19 +63,27 @@ public class Usuario {
         this.senhaUsuario = senhaUsuario;
     }
 
-    public Boolean getAdmin() {
+    public int getIsAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
+    public void setIsAdmin(int isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    public Boolean getMotorista() {
+    public int getIsMotorista() {
         return isMotorista;
     }
 
-    public void setMotorista(Boolean motorista) {
-        isMotorista = motorista;
+    public void setIsMotorista(int isMotorista) {
+        this.isMotorista = isMotorista;
     }
+
+//    public Endereco getEndereco() {
+//        return endereco;
+//    }
+//
+//    public void setEndereco(Endereco endereco) {
+//        this.endereco = endereco;
+//    }
 }
