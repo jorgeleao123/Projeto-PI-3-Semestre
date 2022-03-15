@@ -21,6 +21,11 @@
     --size-links: 10px
 	--sidebar-width: 250px;
    }
+
+  html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 10px;
+ }
   
   body {
     margin: 0px;
