@@ -1,0 +1,77 @@
+.progress-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.progress-header{
+    display: flex;
+    flex-direction: row;    
+}
+.header_title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.title {
+    color: #b0b2b0;
+}
+
+.circle_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle{
+    width: 20px;
+    height: 20px;
+    border: 2px solid #b0b2b0;
+    border-radius: 50%;
+}
+
+.right-line , .left-line , .left-line-hidden , .right-line-hidden{
+    width: 50px;
+    height: 0px;
+    border: 2px solid #b0b2b0;
+}
+.left-line-hidden , .right-line-hidden{
+ 
+    border: 2px solid transparent;
+}
+
+.active .circle_container .circle , .active-line  {
+    border: 2px solid #54bdd0 !important;
+}
+.active .title {
+    color: #54bdd0 ;
+}
+
+.progress-content{
+    display: flex;
+}
+
+.hide{
+    display: none;
+/*    visibility: hidden;*/
+}
+
+.btn{
+  border:none;
+  padding: 5px;
+  border-radius:6px;
+}
+
+.btn-previous{
+  color: #fff;
+  border:1px solid #dedede;
+}
+
+.btn-next{
+  background-color: #54bdd0;
+  color:#fff;
+  border: 1px solid #54bdd0;
+}
