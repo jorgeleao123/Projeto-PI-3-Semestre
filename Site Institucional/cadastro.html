@@ -380,6 +380,7 @@ document.getElementById('cep')
       .then(data => {
         console.log('Success:', data);
         alert("Usuario cadastrado com sucesso")
+        window.location.href = "./login.html";
       })
       .catch((error) => {
         alert("Erro ao realizar login")
