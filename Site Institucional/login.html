@@ -67,7 +67,7 @@
                         <div class="ipt-form">
                             <label for="Senha">Senha</label>
                             <div>
-                            <input type="password"" id="senha" placeholder="Insira sua senha">
+                            <input type="password" id="senha" placeholder="Insira sua senha">
                             <img id="olho" src="./img/icons/eye.png"/>
                         </div>
                         <div class="pass-ask">
@@ -78,7 +78,8 @@
                             <span>Lembrar de mim</span>
                         </div>
                         </div>
-                        <input type="submit" class="button-login button" value="Entrar">
+                        <input type="submit" class="button-login button" value="Entrar"
+                        onclick="logar()">
                   </form>
                 </div>
               </section>
@@ -107,5 +108,33 @@ olho.mouseup(function() {
 $( "#olho" ).mouseout(function() { 
   $("#senha").attr("type", "password");
 });
+
+function logar() {
+    // const data = {
+    //   loginUsuario: document.getElementById('login').value,
+    //   senhaUsuario: document.getElementById('senha').value
+    // };
+
+    fetch(`http://localhost:8080/usuarios2/login/${document.getElementById('email').value}/${document.getElementById('senha').value}`, {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify(data),
+    })
+      .then(Response => {
+        console.log('Success:', Response);
+        if(Response.status == 200){
+          alert("Usuario logado com sucesso")
+        } else{
+          alert("Login e/ou senha inválidos")
+        }
+        
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+
+  }
 </script>
 </html>
