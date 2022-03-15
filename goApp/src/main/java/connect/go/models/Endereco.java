@@ -1,23 +1,36 @@
 package connect.go.models;
 
 public class Endereco {
-    private int cep;
+    private int idEndereco;
+    private String cep;
     private String estado;
     private String cidade;
     private String bairro;
 
-    public Endereco(int cep, String estado, String cidade, String bairro) {
+    public Endereco(int idEndereco, String cep, String estado, String cidade, String bairro) {
+        this.idEndereco = idEndereco;
         this.cep = cep;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
     }
 
-    public int getCep() {
+    public Endereco() {
+    }
+
+    public int getIdEndereco() {
+        return idEndereco;
+    }
+
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
+    }
+
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
