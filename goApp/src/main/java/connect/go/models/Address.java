@@ -14,18 +14,18 @@ import javax.persistence.Id;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Endereco {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_endereco")
+    @Column(name = "id_address")
     private Integer id;
 
     private String cep;
 
-    private String estado;
+    private String state;
 
-    private String cidade;
+    private String city;
 
-    private String bairro;
+    private String district;
 }
