@@ -1,107 +1,44 @@
 package connect.go.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Data
+@AllArgsConstructor
+@Entity
+@NoArgsConstructor
 public class Usuario {
-    private int idUsuario;
-    private String nomeUsuario;
-    private String loginUsuario;
-    private String senhaUsuario;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private Integer id;
+
+    private String nome;
+
+    private String login;
+
+    private String senha;
+
     private int isAdmin;
+
     private int isMotorista;
-    private String sexoUsuario;
-    private String emailUsuario;
-    private Endereco endereco;
 
-    public Usuario(int idUsuario, String nomeUsuario, String loginUsuario, String senhaUsuario, String sexoUsuario,
-                   String emailUsuario) {
-        this.idUsuario = idUsuario;
-        this.nomeUsuario = nomeUsuario;
-        this.loginUsuario = loginUsuario;
-        this.senhaUsuario = senhaUsuario;
-        this.isAdmin = 0;
-        this.isMotorista = 0;
-        this.sexoUsuario = sexoUsuario;
-        this.emailUsuario = emailUsuario;
+    private String sexo;
+
+    private String email;
+
+    public Usuario(String nome, String login, String senha) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
     }
 
-    public Usuario() {
-    }
-
-    public String getSexoUsuario() {
-        return sexoUsuario;
-    }
-
-    public void setSexoUsuario(String sexoUsuario) {
-        this.sexoUsuario = sexoUsuario;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNomeUsuario() {
-        return nomeUsuario;
-    }
-
-    public void setNomeUsuario(String nomeUsuario) {
-        this.nomeUsuario = nomeUsuario;
-    }
-
-    public String getLoginUsuario() {
-        return loginUsuario;
-    }
-
-    public void setLoginUsuario(String loginUsuario) {
-        this.loginUsuario = loginUsuario;
-    }
-
-    // escondendo a senha
-     public String pegarSenhaUsuario() {
-        return senhaUsuario;
-    }
-
-    public void setSenhaUsuario(String senhaUsuario) {
-        this.senhaUsuario = senhaUsuario;
-    }
-
-    public int getIsAdmin() {
-        return isAdmin;
-    }
-
-    public void setIsAdmin(int isAdmin) {
-        this.isAdmin = isAdmin;
-    }
-
-    public int getIsMotorista() {
-        return isMotorista;
-    }
-
-    public void setIsMotorista(int isMotorista) {
-        this.isMotorista = isMotorista;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getSenhaUsuario() {
-        return senhaUsuario;
-    }
-
-    public String getEmailUsuario() {
-        return emailUsuario;
-    }
-
-    public void setEmailUsuario(String emailUsuario) {
-        this.emailUsuario = emailUsuario;
-    }
 }

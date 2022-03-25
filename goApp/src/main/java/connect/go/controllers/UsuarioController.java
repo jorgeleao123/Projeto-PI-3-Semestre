@@ -1,11 +1,23 @@
 package connect.go.controllers;
 
+import connect.go.exceptions.BadRequestException;
 import connect.go.exceptions.UserNotFoundException;
+import connect.go.models.Endereco;
+import connect.go.models.EnderecoFavoritoId;
 import connect.go.models.Usuario;
+import connect.go.models.UsuarioCadastro;
+import connect.go.models.UsuarioResponse;
+import connect.go.usecases.EnderecoFavoritoService;
+import connect.go.usecases.EnderecoService;
+import connect.go.usecases.UsuarioService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,71 +25,78 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 @RestController
-/// define o caminho http://localhost:8080/usuario
 @RequestMapping("/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
-    private List<Usuario> usuarios = new ArrayList<>();
 
-    /// Cadastrando usuario
-    /// define o caminho post http://localhost:8080/usuario
+    private final UsuarioService usuarioService;
+
+    private final EnderecoService enderecoService;
+
+    private final EnderecoFavoritoService enderecoFavoritoService;
+
     @PostMapping
-    public String postUsuario(@RequestBody Usuario usuarionovo) {
-        for (Usuario usuario : usuarios) {
-            if (usuario.getLoginUsuario().equals(usuarionovo.getLoginUsuario())) {
-                return "Usuario já existe";
-            }
-
-        }
-        usuarios.add(usuarionovo);
-        return "Usuario Cadastrado";
+    public ResponseEntity<Object> createUsuario(@RequestBody UsuarioCadastro usuarioCadastro) {
+        log.info("usuario {}", usuarioCadastro.getUsuario().getNome());
+        log.info("Endereco {}", usuarioCadastro.getEndereco().getCep());
+        Usuario usuario = usuarioService.cadastrar(usuarioCadastro.getUsuario());
+        Endereco enderecoCadastro = usuarioCadastro.getEndereco();
+        Endereco endereco = enderecoService.cadastrar(enderecoCadastro);
+        EnderecoFavoritoId enderecoFavoritoId = new EnderecoFavoritoId();
+        enderecoFavoritoId.setEnderecoId(endereco.getId());
+        enderecoFavoritoId.setUsuarioId(usuario.getId());
+        enderecoFavoritoService.cadastrar(enderecoFavoritoId);
+        return ResponseEntity.status(201).body(this.convertUsuarioToUsuarioResponde(usuario));
     }
 
-    /// retornando todos usuario
-    /// define o caminho http://localhost:8080/usuario
+    @PostMapping("/login/{login}/{senha}")
+    public ResponseEntity<Object> loginUsuario(@PathVariable String login, @PathVariable String senha) {
+        List<Usuario> usuarios = usuarioService.login(login, senha);
+        if (usuarios.size() != 1) {
+            throw new BadRequestException();
+        }
+        return ResponseEntity.status(200).body(this.convertUsuarioToUsuarioResponde(usuarios.get(0)));
+    }
+
     @GetMapping
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    /// Pesquisando usuario
-    /// define o caminho get http://localhost:8080/usuario/{id}
-    @GetMapping("/{id}")
-    public List<Usuario> getUsers(@PathVariable int id) {
-        /// criando uma "sublista"
-        List<Usuario> listarItens = new ArrayList<>();
-        for (Usuario usuario : usuarios)
-            if (usuario.getIdUsuario() == id) {
-                listarItens.add(usuario);
-            }
-        return listarItens;
-    }
-
-    /// fazendo login
-    /// define o caminho  post http://localhost:8080/usuario/autenticar
-    @PostMapping("/autenticar/{loginUsuario}/{senhaUsuario}")
-    public String loginUsers(@PathVariable String loginUsuario, @PathVariable String senhaUsuario) {
+    public ResponseEntity<Object> getUsuarios() {
+        List<Usuario> usuarios = usuarioService.findAll();
+        List<UsuarioResponse> responseUsuarios = new ArrayList<>();
         for (Usuario usuario : usuarios) {
-            if (usuario.getLoginUsuario().equals(loginUsuario)
-                    && usuario.pegarSenhaUsuario().equals(senhaUsuario)) {
-                return "Logado";
-            }
+            responseUsuarios.add(convertUsuarioToUsuarioResponde(usuario));
         }
-        throw new UserNotFoundException();
+        return ResponseEntity.status(200).body(responseUsuarios);
     }
 
-    /// fazendo logoff
-    /// define o caminho  post http://localhost:8080/usuario/autenticar
-//    @DeleteMapping("/autenticar/{loginUsuario}")
-//    public String logoffUsuario(@PathVariable String loginUsuario) {
-//        for (Usuario usuario : usuarios) {
-//            if (usuario.getLoginUsuario().equals(loginUsuario)) {
-//                if (usuario.getAutenticado()) {
-//                    usuario.setAutenticado(false);
-//                }
-//                return "Usuario não esta logado";
-//            }
-//        }
-//        return "Usuario não encontrado";
-//    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getUsuarioById(@PathVariable int id) {
+        Usuario usuario = usuarioService.getById(id);
+        return ResponseEntity.status(200).body(convertUsuarioToUsuarioResponde(usuario));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateUsuarioById(@PathVariable int id, @RequestBody Usuario usuario) {
+        usuarioService.updateById(id, usuario);
+        return ResponseEntity.status(200).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteUsuarioById(@PathVariable Integer id) {
+        try {
+            usuarioService.deleteById(id);
+            return ResponseEntity.status(200).build();
+        } catch (Exception e) {
+            throw new UserNotFoundException();
+        }
+    }
+
+    private UsuarioResponse convertUsuarioToUsuarioResponde(Usuario usuario) {
+        UsuarioResponse usuarioResponse = new UsuarioResponse(
+                usuario.getId(),usuario.getNome(),usuario.getLogin(),usuario.getIsAdmin(),usuario.getIsMotorista(),
+                usuario.getSexo(),usuario.getEmail()
+        );
+        return usuarioResponse;
+    }
 }
