@@ -1,6 +1,9 @@
+import Menu from './Menu.js'
+
 function App() {
   return (
     <div className="App">
+      <Menu />
       <header className="App-header">
         <h2>Exemplo</h2>
         <p>
