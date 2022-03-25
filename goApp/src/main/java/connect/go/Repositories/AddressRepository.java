@@ -1,14 +1,14 @@
 package connect.go.Repositories;
 
-import connect.go.models.Endereco;
+import connect.go.models.Address;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface EnderecoRepository extends JpaRepository<Endereco, Integer> {
+public interface AddressRepository extends JpaRepository<Address, Integer> {
 
     boolean existsByCep(String cep);
 
-    List<Endereco> findAllByCep(String cep);
+    List<Address> findAllByCep(String cep);
 
 }
