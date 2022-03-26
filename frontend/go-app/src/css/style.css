@@ -1,0 +1,19 @@
+:root {
+    --color-pink: #FF006E;
+    --color-red: #FD2B3B;
+    --color-violet: #C11CAD;
+    --color-blue1:#8CB9FF;
+    --color-blue: #5697FF;
+    --color-orange: #FB5607;
+    --color-font-btn: #FFFFFF;
+    --color-font-title: #252525;
+    --color-font-links: #969595;
+    --color-font-button: #000000;
+    --color-font-subtitle: #797979;
+    --color-font-descrit:#636363;
+    --background-input:#F6F6F6;
+    --background-footer: #292929;
+    --color-font-footer: #DEDBDB;
+    --size-links: 10px
+	--sidebar-width: 250px;
+}
