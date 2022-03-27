@@ -1,25 +1,61 @@
 
 import '../css/style.css';
 import logo from '../img/LogoGO.svg';
-import homeImage from '../img/home.svg';
-import userImage from '../img/user.svg';
-import newsImage from '../img/news.svg';
-import notificationImage from '../img/notification.svg';
-function SearchBar(){
-    return(
-        <input type="text"></input>
+
+function SearchBar() {
+    return (
+        <div class="searchBar">
+            <input type="text" id="input-menu" placeholder="Search"></input>
+            <button class="button-input-menu">
+                <i class="fa fa-search"></i>
+            </button>
+        </div>
     );
 }
 
-function Menu(){
+function Options() {
+    return (
+        <div class="icons">
+            <a href="">
+                <i class="fa fa-house" />
+            </a>
+            <hr />
+            <a href="">
+                <i class="fa fa-user" />
+            </a>
+            <hr />
+            <a href="">
+                <i class="fa fa-newspaper" />  
+            </a>
+            <hr />
+            <a href="">
+                <i class="fa fa-bell" />  
+            </a>
+        </div>
+    );
+}
+
+function UserIcon(){
     return(
+        <div>
+            <select id="user-button">
+                <option>Exemplo</option>
+                <option>Exemplo</option>
+                <option>Exemplo</option>
+            </select>
+        </div>
+    );
+}
+
+function Menu() {
+    return (
         <div class="class-menu">
-            <img src={logo}></img>
-            <SearchBar />
-            <img src={homeImage}></img>
-            <img src={userImage}></img>
-            <img src={newsImage}></img>
-            <img src={notificationImage}></img>
+            <nav class="container-nav">
+                <img src={logo}></img>
+                <SearchBar />
+                <Options />
+                <UserIcon />
+            </nav>
         </div>
     );
 }

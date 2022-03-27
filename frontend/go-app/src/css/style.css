@@ -16,4 +16,50 @@
     --color-font-footer: #DEDBDB;
     --size-links: 10px
 	--sidebar-width: 250px;
+    --input-menu-height: 28px;
+}
+
+.class-menu{
+    max-width: 80%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#input-menu{
+    width: 450px;
+    height: var(--input-menu-height);
+    padding: 0 0 0 10px;
+}
+
+.button-input-menu{
+    height: var(--input-menu-height);
+    border: none;
+    background-color: var(--background-input);
+    border-radius: 0 0 2px 2px;
+}
+
+.container-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons{
+    display: flex;
+    align-items: center;
+}
+
+.icons a{
+    margin: 0 10px 0 10px;
+}
+
+.icons hr{
+    height: var(--input-menu-height);
+    border: 0.5px solid rgb(185, 185, 185);
+}
+
+#input-menu{
+    border: none;
+    background-color: var(--background-input);
+    border-radius: var(--default-border-radius);
 }
