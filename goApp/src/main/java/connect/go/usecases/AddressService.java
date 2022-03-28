@@ -5,6 +5,8 @@ import connect.go.models.Address;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class AddressService {
@@ -20,4 +22,8 @@ public class AddressService {
     private boolean isAddressExists(Address address) {
         return addressRepository.existsByCep(address.getCep());
     }
+
+    public List<Address> getFavoriteAddressByUserId(Integer id) {
+        return addressRepository.getFavoriteAddressByUserId(id);
+    };
 }
