@@ -38,11 +38,7 @@ function Options() {
 function UserIcon(){
     return(
         <div>
-            <select id="user-button">
-                <option>Exemplo</option>
-                <option>Exemplo</option>
-                <option>Exemplo</option>
-            </select>
+            <i class="fa fa-circle-user" />
         </div>
     );
 }
