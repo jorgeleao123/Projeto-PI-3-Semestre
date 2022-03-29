@@ -1,193 +1,279 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connect</title>
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="img/icons/icon-orange.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600&family=Roboto:wght@400;500;700;900&display=swap"
-    rel="stylesheet">
-  <script src="https://kit.fontawesome.com/c0e92b5cf1.js" crossorigin></script>
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-</head>
+        <link rel="shortcut icon" href="assets/img/nn.svg" type="image/png">
+        <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <title>Connect</title>
+    </head>
+    <body>
+        <header class="header" id="header">
+            <nav class="nav container">
+                <a href="#home" class="nav__logo ">
+                    <img src="./assets/img/nn.svg" alt="">
+                </a>
 
-<body>
-  <div class="nav">
-    <input type="checkbox" id="nav-check">
-    <div class="nav-header">
-      <img src="./img/icons/icon-orange.svg" alt="">
-    </div>
-    <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-    </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item" style="display: none;">
+                            <a href="#home" class="nav__link a">Home</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#about" class="nav__link">Sobre nós</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#discover" class="nav__link">Serviços</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#place" class="nav__link">Contato</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#place" class="nav__link btn__link">GO</a>
+                        </li>
+                    </ul>
 
-    <div class="nav-links margin-nav">
-      <a href="#sobre" target="_blank">Sobre nós</a>
-      <a href="#servico" target="_blank">Serviço</a>
-      <a href="#contato" >Contato</a>
-      <a class="btns-resp" href="./login.html" target="_blank">Go</a>
-    </div>
+                    <i class="ri-close-line nav__close" id="nav-close"></i>
+                </div>
 
-    <div class="btns-nav">
-      <a class="button btn-pink" href="./login.html">GO</a>
-    </div>
-</div>
-  <div class="margin-top"></div>
-  <main>
-   <div class="container-pages">
-    <div id="home" class="home padding-container">
-      <div>
-      <div class="box-blue"></div>
-      <div class="box-purple"></div>
-      <div class="conteudo-home">
-        <h1>Promovendo novos jeitos de viver conectado</h1>
-        <p>A connect surgiu em 2022 em meio ao cenário de renovação do pós-pandemia, desejando trazer inovações na área
-          da técnologia com o objetivo tornar o codidiano dos nossos usuários mais seguro.</p>
-        <button class="button btn-blue">Saiba mais</button>
-      </div>
-      <div class="box-orange"></div>
-      <div class="box-pink"></div>
-    </div>
-    </div>
-   </div>
-   <div class="container-pages" style="background-color: aqua;">
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class="ri-function-line"></i>
+                </div>
+            </nav>
+        </header>
 
-  </div>
-  <div class="container-pages">
-    <div id="servicos" class="servicos padding-container">
-      <section class="container-serv row">
-        <div class="item">
-          <div class="infos-app line">
-            <img class="logo-go" src="./img/icons/logo-go.png" alt="">
-            <h4>Aplicação Web e Mobile destinada a usuários de aplicativos de mobilidade urbana.</p>
-          </div>
-          <div class="infos-app">
-            <div class="box-infos-app">
-              <img src="./img/icons/icons8-selecionado 1.svg" alt="">
-            </div>
-            <div>
-              <h3>Publicação de denuncias</h3>
-              <h4>Denuncie situações inadequadas causadas em corridas por aplicativo.</h4>
-            </div>
-          </div>
-  
-          <div class="infos-app">
-            <div class="box-infos-app">
-              <img src="./img/icons/icons8-selecionado 1.svg" alt="">
-            </div>
-            <div>
-              <h3>Consulta por filtro</h3>
-              <h4>Antes de iniciar uma corrida, busque o nome e placa do motorista e veja se ele possui alguma denuncia
-                no app.</h4>
-            </div>
-          </div>
-  
-          <div class="infos-app">
-            <div class="box-infos-app">
-              <img src="./img/icons/icons8-selecionado 1.svg" alt="">
-            </div>
-            <div>
-              <h3>Tópicos de denúncia</h3>
-              <h4>Classifique sua denuncia de acordo com os tópicos (ex: assédio, rascismo, homofobia).</h4>
-            </div>
-          </div>
-        </div>
-        <div class="item img-servicos">
-          <img class="go" src="./img/pics/Frame 1.svg" alt="">
-        </div>
-      </section>
-    </div>
-  </div>
+        <main class="main">
+            <!--==================== HOME ====================-->
+            <section class="home" id="home">
+                
+                <div class="home__container container grid">
+                    <div class="box-blue"></div>
+                    <div class="box-orange"></div>
+                    <div class="box-pink"></div>
+                    <div class="box-purple"></div>
+                    <div class="home__data">
+                        <h1 class="home__data-title">Promovendo novos jeitos de viver <b>conectado</b></h1>
+                        <span class="home__data-subtitle">A connect surgiu em 2022 em meio ao cenário de renovação do pós-pandemia, desejando trazer inovações na área da técnologia com o objetivo tornar o codidiano dos nossos usuários mais seguro.</span>
+                        
+                        <div class="home__data-button">
+                        <a href="#about" class="button">Saiba mais</a>
+                    </div>
+                    </div>
 
-  <div class="container">
-    <div id="#contato" class="">
-      <section class="container-serv row-cont">
-        <div class="item item-cont">
-          <div class="content-contato-img">
-            <div class="backgroud-img">
-              <div class="fundo">
-              <img src="./img/pics/surface-L600CuXQ1hs-unsplash-removebg-preview 1.svg" alt="">
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="item teste">
-          <form action="">
-            <div>
-            <h2>Fale conosco</h2>
-            <h4>Deixe seu feedback, dúvida ou sugestão para a nossa empresa.</h4>
-            <div class="input-icon">
-              <div class="box-icon-contato">
-                <img src="./img/icons/email.png" alt="">
-              </div>
-              <input type="text" placeholder="Email">
-            </div>
-            <div class="input-icon">
-              <div class="box-icon-contato">
-                <img src="./img/icons/assunto.png" alt="">
-              </div>
-              <input type="text" placeholder="Assunto">
-            </div>
-            <div class="input-icon-msg">
-              <div class="box-icon-contato">
-                <img src="./img/icons/message.png" alt="">
-              </div>
-              <textarea name="" id="" placeholder="Mensagem"></textarea>
-            </div>
-            <button class="button btn-pink btn-contact">Enviar</button>
-          </div>
-          </form>
-        </div>
-      </section>
-    </div>
-  </div>
-  </main>
-   <!-- Site footer -->
-   <footer class="site-footer">
-    <div class="flex-footer">
-      <div class="col-md-8 col-sm-6 col-xs-12">
-        <img class="img-footer" src="./img/icons/logo-connect.svg" alt="">
-      </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
-        <ul class="social-icons">
-          <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-          <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-          <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
-          <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
-        </ul>
-      </div>
-    </div>
-  <hr>
-      <div class="flex-footer">
-        <div class="footer-infos">
-          <h3>Conheça a Go</h3>
-          <h4>www.go.com.br</h4>
-        </div>
+                    <div class="home__social">
+                        <a href="https://www.facebook.com/" target="_blank" class="home__social-link">
+                            <i class="ri-facebook-box-fill"></i>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" class="home__social-link">
+                            <i class="ri-instagram-fill"></i>
+                        </a>
+                        <a href="https://twitter.com/" target="_blank" class="home__social-link">
+                            <i class="ri-twitter-fill"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
 
-        <div class="footer-infos">
-              <h3>Estamos aqui</h3>
-              <h4>Rua Haddock Lobo, 595 - <br>
-              Cerqueira César, São Paulo - <br>
-              SP, 01414-001
-            </div>
-        <div class="footer-infos">
-              <h3>Fale com a gente</h3>
-              <h4> (11) 3589-4043</h4>
-        </div>
-      </div>
-</footer>
-</body>
+            <!--==================== SOBRE ====================-->
+            <section class="about section home__container" id="about">
+                <div class="about__container container grid">
+                    <div class="about__data">
+                        <button class="about__link btn__blue" onclick="missao()">Missão</button>
+                        <button class="about__link btn__orange" onclick="visao()">Visão</button>
+                        <button class="about__link btn__purple" onclick="valores()">Valores</button>
 
+
+                        <h2 id="titleAbout" class="section__title about__title">Segurança no dia-a-dia</h2>
+                        <p id="txtAbout" class="about__description">Pretendemos atuar no cotidiano dos brasileiros de forma que eles tenham mais segurança no meio digital.</p>
+                    </div>
+
+                    <div class="about__img">
+                        <div id="imgAbout" class="about__img-overlay">
+                            <img  src="assets/img/missao.png" alt="" class="about__img-one">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!--==================== SERVIÇOS ====================-->
+            <section class="discover section" id="discover">
+                <div class="about__container container grid">
+                    <div class="about__data">
+                        <div class="flex">
+                        <img class="img-serv" src="./assets/img/Logo GO.png" alt="">
+                        <span class="initial desc-app home__data-subtitle">Aplicação Web E Mobile Destinada A Usuários De Aplicativos De Mobilidade Urbana.</span>
+                    </div>
+                        <hr>
+                        <div class="flex">
+                            <div class="box-check">
+                                <img src="./assets/img/icons8-selecionado 1.svg" alt="">
+                            </div>
+                            <div>
+                            <span class="initial desc-app home__data-subtitle"><b>Publicação de denuncias</b></span>
+                        <p class="text-about initial about__description">Denuncie situações inadequadas causadas em corridas por aplicativo.</p>
+                    </div>
+                    </div>
+
+                    <div class="flex">
+                        <div class="box-check">
+                            <img src="./assets/img/icons8-selecionado 1.svg" alt="">
+                        </div>
+                        <div>
+                        <span class="initial desc-app home__data-subtitle"><b>Consulta por filtro</b></span>
+                    <p class="text-about initial about__description">Antes de iniciar uma corrida, busque o nome e placa do motorista e veja se ele possui alguma denuncia no app.</p>
+                </div>
+                </div>
+
+                <div class="flex">
+                    <div class="box-check">
+                        <img src="./assets/img/icons8-selecionado 1.svg" alt="">
+                    </div>
+                    <div>
+                    <span class="initial desc-app home__data-subtitle"><b>Tópicos de denúncia</b></span>
+                <p class="text-about initial about__description">Classifique sua denuncia de acordo com os tópicos (ex: assédio, rascismo, homofobia).</p>
+            </div>
+            </div>
+                    </div>
+
+                    <div class="about__img">
+
+                        <div class="about__img-overlay">
+                            <img src="assets/img/servicos.png" alt="" class="about__img-two">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!--==================== CONTATO ====================-->
+            <section class="place section" id="place">
+                <div class="about__container container grid">
+                    <div class="about__img contact__img">
+                        <img class="img-contact" src="./assets/img/contato.png" alt="">
+                    </div>
+
+                    <div class="about__data">
+                        <h2 class="section__title about__title">Fale conosco</h2>
+                        <p class="about__description">Deixe seu feedback, dúvida ou sugestão para a nossa empresa.</p>
+                        <form action="">
+                            <div class="inputs__form">
+                                <label for="Email">Email</label> <br>
+                                <input type="email" name="" id="" placeholder="Digite seu email">
+                            </div>
+                            <div class="inputs__form">
+                                <label for="Assunto">Assunto</label> <br>
+                                <input type="text" name="" id="" placeholder="Digite o assunto">
+                            </div>
+                            <div class="inputs__form">
+                                <label for="Mensagem">Mensagem</label> <br>
+                                <textarea name="" id="" cols="10" rows="4" placeholder="Digite sua mensagem"></textarea>
+                            </div>
+
+                            <button class="button btn-ctt">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__content grid">
+                    <div style="justify-items: initial;" class="footer__data">
+                        <img class="logo__footer" src="./assets/img/connect.png" alt="">
+                        <div>
+                            <a href="https://www.facebook.com/" target="_blank" class="footer__social">
+                                <i class="ri-facebook-box-fill"></i>
+                            </a>
+                            <a href="https://twitter.com/" target="_blank" class="footer__social">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="https://www.instagram.com/" target="_blank" class="footer__social">
+                                <i class="ri-instagram-fill"></i>
+                            </a>
+                            <a href="https://www.youtube.com/" target="_blank" class="footer__social">
+                                <i class="ri-youtube-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+    
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Conheça a GO</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">www.go.com.br</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__data">
+                        <h3 class="footer__subtitle">Estamos aqui</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Rua Haddock Lobo, 595 -
+                                    Cerqueira César, São Paulo -
+                                    SP, 01414-001</a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                    <div class="footer__data infos__ctt">
+                        <h3 class="footer__subtitle">Fale com a gente</h3>
+                        <ul>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">(11) 3589-4043</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2022 Connect. Todos os direitos reservados.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Termos</a>
+                        <a href="#" class="footer__terms-link">Politica de privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            function missao(){
+                titleAbout.innerHTML = 'Segurança no dia-a-dia';
+                txtAbout.innerHTML = 'Pretendemos atuar no cotidiano dos brasileiros de forma que eles tenham mais segurança no meio digital.';
+                imgAbout.innerHTML = ' <img src="assets/img/missao.png" alt="" class="about__img-one">';
+            }
+
+            function visao(){
+                titleAbout.innerHTML = 'Novos jeitos de se conectar';
+                txtAbout.innerHTML = 'Surgimos com o intuito de inovar nas formas que lidamos e usamos as técnologias.';
+                imgAbout.innerHTML = ' <img src="assets/img/visao.png" alt="" class="about__img-one">';
+            }
+
+            function valores(){
+                titleAbout.innerHTML = 'Compromisso com você';
+                txtAbout.innerHTML = 'Antes de pensar no usuário, pensamos nas pessoas e na responsabilidade em atuar em suas escolhas.';
+                imgAbout.innerHTML = ' <img src="assets/img/valores.png" alt="" class="about__img-one">';
+            }
+        </script>
+
+         <!--========== SCROLL UP ==========-->
+        <a href="#" class="scrollup" id="scroll-up">
+            <i class="ri-arrow-up-line scrollup__icon"></i>
+        </a>
+
+        <!--=============== SCROLL REVEAL===============-->
+        <script src="assets/js/scrollreveal.min.js"></script>
+        
+        <!--=============== SWIPER JS ===============-->
+        <script src="assets/js/swiper-bundle.min.js"></script>
+
+        <!--=============== MAIN JS ===============-->
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
+
