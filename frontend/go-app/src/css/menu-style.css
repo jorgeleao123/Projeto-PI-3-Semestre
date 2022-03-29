@@ -16,7 +16,7 @@
     --color-font-footer: #DEDBDB;
     --size-links: 10px
 	--sidebar-width: 250px;
-    --input-menu-height: 22px;
+    --input-menu-height: 37px;
 }
 
 .menu{
@@ -27,12 +27,12 @@
 
 /* ------- INPUT ----------*/
 #input-menu{
-    width: 450px;
+    width: 435px;
     height: var(--input-menu-height);
     padding: 0 0 0 10px;
     border: none;
     background-color: var(--background-input);
-    border-radius: var(--default-border-radius);
+    border-radius: 3px;
 }
 
 .button-input-menu{
