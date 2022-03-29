@@ -1,0 +1,10 @@
+.App{
+    max-width: 80%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.content{
+    display: flex;
+    margin-top: 50px;
+}

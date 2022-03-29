@@ -1,0 +1,28 @@
+.user-data{
+    width: 250px;
+    height: 150px;
+    background-color: rgb(230, 230, 230);
+}
+
+.user-information{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+}
+
+.user-image{
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+
+.user-information h3{
+    margin: 0;
+}
+
+.user-information h6{
+    margin: 0;
+}
