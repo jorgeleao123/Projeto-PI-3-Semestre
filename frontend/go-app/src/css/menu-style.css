@@ -58,8 +58,16 @@
     border: 0.5px solid rgb(185, 185, 185);
 }
 
+.icons i{
+    color: var(--color-font-subtitle);
+}
+
 #input-menu{
     border: none;
     background-color: var(--background-input);
     border-radius: var(--default-border-radius);
+}
+
+.user-icon i{
+    margin-right: 6px;
 }
