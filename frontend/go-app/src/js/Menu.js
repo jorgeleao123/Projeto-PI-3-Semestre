@@ -1,5 +1,5 @@
 
-import '../css/style.css';
+import '../css/menu-style.css';
 import logo from '../img/LogoGO.svg';
 
 function SearchBar() {
@@ -37,8 +37,9 @@ function Options() {
 
 function UserIcon(){
     return(
-        <div>
-            <i class="fa fa-circle-user" />
+        <div class="user-icon">
+            <i class="fa fa-circle-user fa-xl" />
+            <i class="fa fa-angle-down" />
         </div>
     );
 }
