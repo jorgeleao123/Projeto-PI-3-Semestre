@@ -1,28 +1,48 @@
-.user-data{
-    width: 250px;
-    height: 150px;
+.user-data-card{
+    width: 245px;
+    /* height: 145px; */
     background-color: rgb(230, 230, 230);
+    border-radius: 5px;
+    padding: 10px 26px;
 }
 
+/*--------- TOP PART DO USER CARD ----------*/
 .user-information{
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px 0 10px 0;
+    justify-content: start;
 }
 
 .user-image{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-color: green;
     border-radius: 50px;
     margin-right: 10px;
 }
 
 .user-information h3{
+    font-weight: 500;
     margin: 0;
 }
 
 .user-information h6{
+    font-weight: 300;
     margin: 0;
+}
+
+hr{
+   margin: 10px 0; 
+}
+
+/*--------- BOTTOM PART DO USER CARD ----------*/
+.publication{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.search{
+    display: flex;
+    justify-content: space-between;
 }
