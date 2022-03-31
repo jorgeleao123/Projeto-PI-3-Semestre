@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/Logo GO.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>GO | Login</title>
+</head>
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo ">
+                <img src="./assets/img/Logo GO.png" alt="">
+            </a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item" style="display: none;">
+                        <a href="#home" class="nav__link a">Home</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#about" class="nav__link">Sobre nós</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#discover" class="nav__link">Serviços</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#place" class="nav__link">Contato</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./cadastro.html" class="button__cad nav__link btn__link">Cadastro</a>
+                    </li>
+                </ul>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="place section" id="place">
+            <div class="about__container container grid">
+                <div class="about__img contact__img">
+                    <img class="img-contact" src="./assets/img/login.png" alt="">
+                </div>
+
+                <div class="about__data">
+                    <h2 class="section__title about__title">Faça Login</h2>
+                    <p class="about__description">Acesse a nossa plataforma e tenha acesso a denuncias e noticias sobre aplicativos de transporte
+                        urbano.</p>
+                    <form action="">
+                        <div class="inputs__form">
+                            <label for="Email">Email</label> <br>
+                            <input type="email" name="" id="" placeholder="Insira seu email">
+                        </div>
+                        <div class="inputs__form">
+                            <label for="Assunto">Senha</label> <br>
+                            <input type="password" name="" id="password" placeholder="Insira sua senha">
+                            <img class="icon__pass" src="./assets/img/eye.png" onclick="viewPassword()" alt="">
+                        </div>
+                        <span class="link__pass">Esqueceu sua senha?</span>
+                        <span class="rem__check">
+                            <input type="checkbox">
+                            <p>Lembrar de mim</p>
+                        </span>
+                        <button class="button__log button btn-ctt">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+                <!--==================== FOOTER ====================-->
+                <footer class="footer section">
+                    <div class="footer__container container grid">
+                        <div class="footer__rights">
+                            <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
+                            <div class="footer__terms">
+                                <a href="#" class="footer__terms-link">Termos</a>
+                                <a href="#" class="footer__terms-link">Politica de privacidade</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+    </main>
+
+    <script>
+        function viewPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+
+             <!--========== SCROLL UP ==========-->
+             <a href="#" class="scrollup" id="scroll-up">
+                <i class="ri-arrow-up-line scrollup__icon"></i>
+            </a>
+    
+            <!--=============== SCROLL REVEAL===============-->
+            <script src="assets/js/scrollreveal.min.js"></script>
+            
+            <!--=============== SWIPER JS ===============-->
+            <script src="assets/js/swiper-bundle.min.js"></script>
+    
+            <!--=============== MAIN JS ===============-->
+            <script src="assets/js/main.js"></script>
+</body>
+</html>
