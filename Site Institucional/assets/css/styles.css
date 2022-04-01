@@ -987,9 +987,6 @@ input {
   .about__img {
     justify-content: center;
   }
-.contact__img{
-  display: none;
-}
   .desc-app{
     text-align: center;
   }
@@ -1011,7 +1008,11 @@ input {
   text-align: end;
 }
 
-
+@media screen and (max-width:767px) {
+  .contact__img{
+    display: none;
+  }
+}
 
 .box-check{
   margin-top: 12px;
@@ -1073,6 +1074,7 @@ input{
   background-color: #f6f6f6;
   padding: 0.8rem;
   width: 100%;
+  border-radius: 3px;
 }
 
 form{
@@ -1105,3 +1107,60 @@ textarea {
   width: 150px;
   margin-bottom: 20px;
 }
+
+.button__cad{
+  border-radius: 3px;
+  background-color: #61BAB5;
+  border: solid 2px #61BAB5 !important;
+  transition: .3s;
+}
+
+.button__cad:hover{
+  background-color: #ffffff;
+  color: #61BAB5!important;
+}
+
+.icon__pass{
+  width: 24px;
+  position: relative;
+  left: 86%;
+  top: -34px;
+  cursor: pointer;
+}
+
+.button__log{
+  border-radius: 3px;
+  background-color: #24729E;
+  border: solid 2px #24729E!important;
+  transition: .3s;
+}
+
+.button__log:hover{
+  background-color: #ffffff;
+  color: #24729E!important;
+}
+
+.link__pass{
+  position: relative;
+  font-size: 13px;
+  cursor: pointer;
+  color: #a8a6a6;
+  top: -20px;
+}
+
+.rem__check{
+ float: right;
+display: flex;
+gap: 5px;
+}
+
+.rem__check input{
+  width: 20px;
+ 
+ }
+
+ .rem__check p{
+  font-size: 15px;
+  color: #575757;
+ 
+ }
