@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Mukta:wght@200;300;400;500;600&display=swap');
+
+:root {
+    --header-height: 3rem;
+  
+    --hue-color: 190;
+  
+    --first-color: #24729E;
+    --carbon-color: #242424;
+    --first-color-second: #61BAB5;
+    --links-color: #a7a4a4;
+    --color-blue: #6EB7ED;
+    --color-blue-second: #D7E2FE;
+    --color-orange: #FB5607;
+    --color-blue-power: #1B1D36;
+    --title-color: #393939;
+    --text-color: #5A5A5A;
+    --input-color: #f7f7f7;
+    --border-color: #e7e7e7;
+    --body-color: white;
+    --menu-color: #FFF;
+    --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
+    --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
+  
+  
+    --body-font: 'Montserrat', sans-serif;;
+    --post-font: 'Mukta', sans-serif;
+    --biggest-font-size: 2.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  
+    /*========== Font weight ==========*/
+    --font-medium: 500;
+    --font-semi-bold: 600;
+  
+    /*========== Bottom ==========*/
+    --mb-0-25: .25rem;
+    --mb-0-5: .5rem;
+    --mb-0-75: .75rem;
+    --mb-1: 1rem;
+    --mb-1-25: 1.25rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --padding-desktop: 12px 24em;
+    --padding-notbook:10px 15em;
+    --padding-tablet:10px 5em;
+    --padding-mobile:10px 3.3em;
+  
+    /*========== z index ==========*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+  
+    /*========== Hover overlay ==========*/
+    --img-transition: .3s;
+    --img-hidden: hidden;
+    --img-scale: scale(1.1);
+  }
+  
+
+  @media screen and (min-width: 968px) {
+    :root {
+      --biggest-font-size: 4rem;
+      --h1-font-size: 2.25rem;
+      --h2-font-size: 1.75rem;
+      --h3-font-size: 1.25rem;
+      --normal-font-size: 1rem;
+      --small-font-size: .875rem;
+      --smaller-font-size: .813rem;
+    }
+  }
+
+  /*=============== BASE ===============*/
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgb(246, 246, 246);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(213, 213, 213);
+    border-radius: 1px;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: var(--header-height) 0 0 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+  }
+  
+  h1, h2, h3 {
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    font-family: var(--title-font);
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  button,
+  input {
+    border: none;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  input {
+    outline: none;
+  }
+
+  .main {
+    overflow-x: hidden;
+  }
+
+
+
+
+
+
+
+  /*======== NAVBAR and MENU  =======*/
+  .nav__desktop__search{
+      display: flex;
+      border-bottom: solid 0.5px var(--border-color);
+  }
+
+  .nav__desktop__search input{
+    width: 400px;
+}
+
+  .nav__desktop__top{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999999;
+    border-bottom: solid 0.5px var(--border-color);
+    background-color: var(--menu-color);
+  }
+
+  .nav__desktop__top img{
+      width: 40px;
+  }
+
+  .nav__desktop__top__items{
+      display: flex;
+      gap: 25px;
+  }
+
+  .icon__user__initial{
+      width: 30px;
+      height: 30px;
+      padding: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 13px;
+      font-weight: 300;
+      border-radius: 50%;
+      background-color: #7D63A9;
+  }
+
+  .links__desktop{
+    padding-right: 25px;
+    padding-bottom: 2.5px;
+    padding-top: 2.5px;
+    border-right: solid 1px var(--border-color);
+  }
+
+
+/*======== MENU MOBILE =======*/
+.nav__mobile{
+    display: none;
+}
+
+.nav__desktop{
+    display: block;
+}
+@media screen and (max-width: 900px) {
+.nav__desktop{
+    display: none;
+}
+
+.nav__mobile{
+    display: block;
+}
+
+}
+
+/*======== NAV MOBILE =======*/
+.nav__mobile__top{
+    padding: 15px 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999999;
+    border-bottom: solid 0.5px var(--border-color);
+    background-color: var(--menu-color);
+  }
+
+  .nav__mobile__top img{
+    width: 36px;
+  }
+
+
+
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    border-top: solid 0.5px var(--border-color);
+    background-color: var(--menu-color);
+  }
+  .mobile-bottom-nav__item {
+    /* flex-grow: 1; */
+    text-align: center;
+    font-size: 15px;
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mobile-bottom-nav__item--active {
+    color: var(--first-color);
+  }
+  .mobile-bottom-nav__item-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon__mobile, .icon__mobile__search{
+      padding-top: 5px;
+      cursor: pointer;
+  }
+
+
+
+
+  /*============================ MEDIAS ===========================*/
+    /*======= PADDING =======*/
+    @media screen and (min-width: 1600px) {
+        .nav__desktop__top{
+        padding: var(--padding-desktop);
+        }
+
+        main{
+            margin-top: 70px;
+            padding: var(--padding-desktop);
+        }
+      }
+    
+      @media screen and (max-width: 1599px) {
+        .nav__desktop__top{
+        padding: var(--padding-notbook);
+        }
+        main{
+            margin-top: 60px;
+            padding: var(--padding-notbook);
+        }
+      }
+    
+      @media screen and (max-width: 1200px) {
+        .nav__desktop__top{
+        padding: var(--padding-tablet);
+        }
+        main{
+            margin-top: 60px;
+            padding: var(--padding-tablet);
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        main{
+            margin-top: 60px;
+            padding: var(--padding-mobile);
+        }
+      }
+    
