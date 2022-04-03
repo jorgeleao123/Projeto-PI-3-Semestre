@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Mukta:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
 :root {
     --header-height: 3rem;
@@ -282,6 +283,46 @@
       cursor: pointer;
   }
 
+  /*============================ MODALS ============================= */
+  .modal-user-options{
+    position: fixed;
+    background: var(--menu-color);
+    z-index: 99999;
+    display: none;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+  }
+
+  .modal-user-options:target{
+    display: block;
+    pointer-events: auto;
+  }
+
+  .exit-modal-option{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+  }
+
+  #open-user-modal{
+    width: 157px;
+    height: 150px;
+    left: 799px;
+    top: 62px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 5px rgba(141, 141, 141, 0.788);
+    font-size: var(--small-font-size);
+  }
+
+  #open-user-modal div{
+    width: 100px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
 
 
