@@ -9,6 +9,9 @@
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
     <title>Feed | GO</title>
     <link rel="stylesheet" href="./assets/css/style-components.css">
+    <link rel="stylesheet" href="./assets/css/style.modais.css">
+    <link rel="stylesheet" href="./assets/css/style.nav.css">
+    <link rel="stylesheet" href="./assets/css/feed.css">
 </head>
 
 <body>
@@ -44,8 +47,8 @@
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content">
                         <label for="modal-1">
-                        <i class="fa-solid fa-caret-down icon__mobile js-open-modal"></i>
-                    </label>
+                            <i class="fa-solid fa-caret-down icon__mobile js-open-modal"></i>
+                        </label>
                     </div>
                 </div>
                 <div class="mobile-bottom-nav__item-content">
@@ -295,21 +298,21 @@
                     <span class="link__modal">Saiba mais</span>
                 </div>
         </section>
-    <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
-    <input class="modal-state" id="modal-1" type="checkbox" />
-    <div class="modal">
-      <label class="modal__bg" for="modal-1"></label>
-      <div class="modal__inner">
-            <a class="options__modal__user" href="#">Casos salvos</a>
-            <a class="options__modal__user" href="#">Denuncias em analise</a>
-            <a class="options__modal__user" href="#">Configurações</a>
-            <hr>
-            <span class="flex justify">
-            <a class="options__modal__user" href="#">Sair</a> 
-            <i class="fa-solid fa-arrow-right-from-bracket"></i>
-        </span>
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
+                <a class="options__modal__user" href="#">Casos salvos</a>
+                <a class="options__modal__user" href="#">Denuncias em analise</a>
+                <a class="options__modal__user" href="#">Configurações</a>
+                <hr>
+                <span class="flex justify">
+                    <a class="options__modal__user" href="#">Sair</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+            </div>
         </div>
-    </div>
     </main>
 
     <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
@@ -334,8 +337,8 @@
             <div class="nav__itens__links">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-1">
-                    <i class="fa-solid fa-angle-up icon__mobile"></i>
-                </label>
+                        <i class="fa-solid fa-angle-up icon__mobile"></i>
+                    </label>
                 </div>
             </div>
         </nav>
@@ -345,18 +348,19 @@
 
 <script>
     $(".js-open-modal").click(function () {
-	$(".modal").addClass("visible");
-  });
-  
-  $(".js-close-modal").click(function () {
-	$(".modal").removeClass("visible");
-  });
-  
-  $(document).click(function (event) {
-	//if you click on anything except the modal itself or the "open modal" link, close the modal
-	if (!$(event.target).closest(".modal,.js-open-modal").length) {
-	  $("body").find(".modal").removeClass("visible");
-	}
-  });
+        $(".modal").addClass("visible");
+    });
+
+    $(".js-close-modal").click(function () {
+        $(".modal").removeClass("visible");
+    });
+
+    $(document).click(function (event) {
+        //if you click on anything except the modal itself or the "open modal" link, close the modal
+        if (!$(event.target).closest(".modal,.js-open-modal").length) {
+            $("body").find(".modal").removeClass("visible");
+        }
+    });
 </script>
+
 </html>
