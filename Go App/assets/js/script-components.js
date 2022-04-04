@@ -7,3 +7,7 @@ navItems.forEach(function(e, i) {
 		this.classList.add("mobile-bottom-nav__item--active");
 	});
 });
+
+
+  
+  
