@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
@@ -18,29 +17,18 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class Driver {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
+    @Column(name = "id_driver")
     private Integer id;
-    @NotBlank
+
     private String name;
-    @Email
     @NotBlank
-    private String email;
-    @NotBlank
-    private String password;
-    @NotBlank
-    private String role;
-    @NotBlank
+    private String license;
+
     private String sex;
-
-//    @OneToMany(mappedBy = "contestation")
-//    private List<Contestation> contestations;
-//
-//    @OneToMany(mappedBy = "complaint")
-//    private List<Complaint> complaints;
-
 
 
 }
