@@ -79,8 +79,8 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateUserById(@PathVariable int id, @RequestBody @Valid User user) {
         user.setId(id);
-        userService.updateById(id, user);
-        return ResponseEntity.status(200).build();
+        User updatedUser = userService.updateById(id, user);
+        return ResponseEntity.status(200).body(convertUserToUserResponse(updatedUser));
     }
 
     @PatchMapping("/email/{id}/{email}")
@@ -111,9 +111,8 @@ public class UserController {
     }
 
     private UserResponse convertUserToUserResponse(User user) {
-        UserResponse userResponse = new UserResponse(
+        return new UserResponse(
                 user.getId(), user.getName(), user.getEmail(), user.getRole(),
                 user.getSex());
-        return userResponse;
     }
 }

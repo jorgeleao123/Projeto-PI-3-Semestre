@@ -31,4 +31,20 @@ public class ComplaintService {
     public List<Complaint> getComplaintByCep(String cep) {
         return complaintRepository.getComplaintByCep(cep);
     }
+
+    public Complaint register(Complaint complaint) {
+        return complaintRepository.save(complaint);
+    }
+
+    public List<Complaint> getComplaintByLicense(String license) {
+        return complaintRepository.getComplaintByLicense(license);
+    }
+
+    public List<Complaint> getComplaintByLicenseAndName(String license, String name) {
+        return complaintRepository.getComplaintByLicenseAndName(license, name);
+    }
+
+    public void setStatus(Integer complaintId, String status) {
+        complaintRepository.setStatus(complaintId, status);
+    }
 }

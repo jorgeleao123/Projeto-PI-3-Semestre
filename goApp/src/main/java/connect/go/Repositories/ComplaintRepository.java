@@ -20,5 +20,12 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
     @Query("select c from Complaint c join c.address a where a.cep = ?1")
     List<Complaint> getComplaintByCep(String cep);
 
+    @Query("select c from Complaint c join c.driver d where d.license = ?1")
+    List<Complaint> getComplaintByLicense(String license);
 
+    @Query("select c from Complaint c join c.driver d where d.license = ?1 and d.name = ?2")
+    List<Complaint> getComplaintByLicenseAndName(String license, String name);
+
+    @Query("update Complaint c set c.status=?2 where c.id=?1")
+    void setStatus(Integer complaintId, String status);
 }
