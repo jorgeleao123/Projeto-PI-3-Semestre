@@ -29,6 +29,8 @@ public class Contestation {
 
     private String archive;
 
+    private String status;
+
     @Column(name = "dt_contestarion")
     private LocalDateTime dateTimeContestation;
 
