@@ -35,51 +35,46 @@ public class ComplaintController {
     private final DriverService driverService;
 
     @GetMapping("/city")
-    public ResponseEntity<Object> getComplaintByCity(@RequestHeader String city) {
-        List<Complaint> list = complaintService.getComplaintByCity(city);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
+        return ResponseEntity.of(complaintService.getComplaintByCity(city));
     }
 
     @GetMapping("/cep")
-    public ResponseEntity<Object> getComplaintByCep(@RequestHeader String cep) {
-        List<Complaint> list = complaintService.getComplaintByCep(cep);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByCep(@RequestHeader String cep) {
+        return ResponseEntity.of(complaintService.getComplaintByCep(cep));
     }
 
     @GetMapping("/district")
-    public ResponseEntity<Object> getComplaintByDistrict(@RequestHeader String district) {
-        List<Complaint> list = complaintService.getComplaintByDistrict(district);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByDistrict(@RequestHeader String district) {
+        return ResponseEntity.of(complaintService.getComplaintByDistrict(district));
     }
 
     @GetMapping("/state")
-    public ResponseEntity<Object> getComplaintByState(@RequestHeader String state) {
-        List<Complaint> list = complaintService.getComplaintByState(state);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByState(@RequestHeader String state) {
+        return ResponseEntity.of(complaintService.getComplaintByState(state));
     }
 
     @GetMapping("id/{complaintId}")
-    public ResponseEntity<Object> getComplaintById(@PathVariable Integer complaintId) {
+    public ResponseEntity<Complaint> getComplaintById(@PathVariable Integer complaintId) {
         Complaint complaint = complaintService.getComplaintById(complaintId);
         return ResponseEntity.status(200).body(complaint);
     }
 
     @GetMapping("license/{license}")
-    public ResponseEntity<Object> getComplaintByLicense(@PathVariable String license) {
-        List<Complaint> list = complaintService.getComplaintByLicense(license);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByLicense(@PathVariable String license) {
+        return ResponseEntity.of(complaintService.getComplaintByLicense(license));
     }
 
     @GetMapping("/{license}/{name}")
-    public ResponseEntity<Object> getComplaintByLicense(@PathVariable String license, @PathVariable String name) {
-        List<Complaint> list = complaintService.getComplaintByLicenseAndName(license, name);
-        return ResponseEntity.status(200).body(list);
+    public ResponseEntity<List<Complaint>> getComplaintByLicense(@PathVariable String license,
+                                                                 @PathVariable String name) {
+        return ResponseEntity.of(complaintService.getComplaintByLicenseAndName(license, name));
     }
 
-    @PostMapping
-    public ResponseEntity<Object> createComplaint(@RequestBody Complaint complaint) {
+    @PostMapping("/{userId}")
+    public ResponseEntity<Complaint> createComplaint(@PathVariable Integer userId, @RequestBody Complaint complaint) {
         Address address = addressService.register(complaint.getAddress());
-        User user = userService.register(complaint.getUser());
+        User user = userService.getById(userId);
         Driver driver = driverService.register(complaint.getDriver());
 
         complaint.setAddress(address);
