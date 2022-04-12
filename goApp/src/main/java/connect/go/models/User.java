@@ -35,11 +35,6 @@ public class User {
     @NotBlank
     private String sex;
 
-//    @OneToMany(mappedBy = "contestation")
-//    private List<Contestation> contestations;
-//
-//    @OneToMany(mappedBy = "complaint")
-//    private List<Complaint> complaints;
 
 
 
