@@ -5,7 +5,7 @@ import connect.go.models.Contestation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +20,11 @@ public class ContestationService {
         return contestationRepository.save(contestation);
     }
 
-    public List<Contestation> getContestationsByLicense(String license) {
-        return contestationRepository.getContestationsByLicense(license);
+    public Optional<Contestation> getContestationsByStatus(String status) {
+        return contestationRepository.getContestationsByStatus(status);
     }
 
-    public List<Contestation> getContestationsByComplaintId(Integer complaintId) {
+    public Optional<Contestation> getContestationsByComplaintId(Integer complaintId) {
         return contestationRepository.getContestationsByComplaintId(complaintId);
     }
 }

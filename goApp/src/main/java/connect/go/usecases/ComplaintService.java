@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,19 +17,19 @@ public class ComplaintService {
         return complaintRepository.getById(complaintId);
     }
 
-    public List<Complaint> getComplaintByCity(String city) {
+    public Optional<List<Complaint>> getComplaintByCity(String city) {
         return complaintRepository.getComplaintByCity(city);
     }
 
-    public List<Complaint> getComplaintByState(String state) {
+    public Optional<List<Complaint>> getComplaintByState(String state) {
         return complaintRepository.getComplaintByState(state);
     }
 
-    public List<Complaint> getComplaintByDistrict(String district) {
+    public Optional<List<Complaint>> getComplaintByDistrict(String district) {
         return complaintRepository.getComplaintByDistrict(district);
     }
 
-    public List<Complaint> getComplaintByCep(String cep) {
+    public Optional<List<Complaint>> getComplaintByCep(String cep) {
         return complaintRepository.getComplaintByCep(cep);
     }
 
@@ -36,11 +37,11 @@ public class ComplaintService {
         return complaintRepository.save(complaint);
     }
 
-    public List<Complaint> getComplaintByLicense(String license) {
+    public Optional<List<Complaint>> getComplaintByLicense(String license) {
         return complaintRepository.getComplaintByLicense(license);
     }
 
-    public List<Complaint> getComplaintByLicenseAndName(String license, String name) {
+    public Optional<List<Complaint>> getComplaintByLicenseAndName(String license, String name) {
         return complaintRepository.getComplaintByLicenseAndName(license, name);
     }
 

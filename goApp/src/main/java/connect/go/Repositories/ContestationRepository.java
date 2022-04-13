@@ -5,14 +5,14 @@ import connect.go.models.Contestation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
+import java.util.Optional;
 
 public interface ContestationRepository extends JpaRepository<Contestation, Integer> {
 
     @Query("update Contestation c set c.status=?2 where c.id=?1")
     void setStatus(Integer contestationId, String status);
 
-    List<Contestation> getContestationsByLicense(String license);
+    Optional<Contestation> getContestationsByStatus(String status);
 
-    List<Contestation> getContestationsByComplaintId(Integer complaintId);
+    Optional<Contestation> getContestationsByComplaintId(Integer complaintId);
 }
