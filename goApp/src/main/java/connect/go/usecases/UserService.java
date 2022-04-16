@@ -26,7 +26,7 @@ public class UserService {
         return this.userRepository.findByEmailAndPassword(email, password);
     }
 
-    public void deleteById(Integer id) throws UserNotFoundException {
+    public void deleteById(Integer id) {
         if (this.userRepository.existsById(id)) {
             this.userRepository.deleteById(id);
         } else {
@@ -37,28 +37,29 @@ public class UserService {
     public User getById(Integer id) {
         return this.userRepository
                 .findById(id)
-                .orElseThrow();
+                .orElseThrow(UserNotFoundException::new);
     }
 
     public List<User> findAll() {
         return this.userRepository.findAll();
     }
 
-    public User updateById(Integer id, User user) throws UserNotFoundException {
-        deleteById(id);
-        user.setId(id);
-        return this.register(user);
+    public boolean updateById(Integer id, User user) {
+        if (userRepository.existsById(id)) {
+            return userRepository.updateById(id, user.getName(), user.getEmail(), user.getRole(), user.getSex()).equals(1);
+        }
+        throw new UserNotFoundException();
     }
 
     public boolean updateEmailById(Integer id, String email) {
-        if(userRepository.existsById(id)) {
+        if (userRepository.existsById(id)) {
             return userRepository.updateEmailById(id, email).equals(1);
         }
         throw new UserNotFoundException();
     }
 
     public boolean updatePasswoordById(Integer id, String oldPassword, String newPassword) {
-        if(userRepository.existsById(id)) {
+        if (userRepository.existsById(id)) {
             return userRepository.updatePasswordById(id, oldPassword, newPassword).equals(1);
         }
         throw new UserNotFoundException();
