@@ -40,7 +40,7 @@ public class UserController {
     private final FavoriteAddressService favoriteAddressService;
 
     @PostMapping
-    public ResponseEntity<Object> createUser(@RequestBody @Valid UserRegistration userRegistration) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegistration userRegistration) {
         User user = userService.register(userRegistration.getUser());
         Address addressRegistration = userRegistration.getAddress();
         Address address = addressService.register(addressRegistration);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/login/{email}/{password}")
-    public ResponseEntity<Object> loginUser(@PathVariable String email, @PathVariable String password) {
+    public ResponseEntity<UserResponse> loginUser(@PathVariable String email, @PathVariable String password) {
         List<User> users = userService.login(email, password);
         if (users.size() != 1) {
             throw new BadRequestException();
@@ -82,8 +82,10 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid User user) {
         user.setId(id);
-        User updatedUser = userService.updateById(id, user);
-        return ResponseEntity.status(200).body(convertUserToUserResponse(updatedUser));
+        if (userService.updateById(id, user)) {
+            return ResponseEntity.status(200).build();
+        }
+        throw new BadRequestException();
     }
 
     @PatchMapping("/email/{id}/{email}")
