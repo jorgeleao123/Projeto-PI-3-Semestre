@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class AppArquivoCsv {
 
-    public void gravaArquivoCsv(Complaint complaint, String nomeArq) {
+    public static  void gravaArquivoCsv(Complaint complaint, String nomeArq) {
         FileWriter arq = null;  // arq é o obj que corresponde ao arquivo
         Formatter saida = null; // obj que será usado para escrever no arquivo
         nomeArq += ".csv";  // acrescenta a extensão .CSV ao nome do arquivo
@@ -34,7 +34,7 @@ public class AppArquivoCsv {
         try {
 
 //               // gravo os dados desse objeto, separando cada campo por um ;
-            saida.format("%s;%s;%s;%s;%s;%s%s;%s;%s;%s;%s;\n", complaint.getId(), complaint.getDescription(), complaint.getTitle(), complaint.getArchive(),
+            saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getTitle(), complaint.getArchive(),
                     complaint.getStatus(), complaint.getBo(), complaint.getDateTimeComplaint(), complaint.getType(), complaint.getDriver().getId()
                     , complaint.getUser().getId(), complaint.getAddress().getId());
 
@@ -74,24 +74,22 @@ public class AppArquivoCsv {
         // Bloco try catch para ler o arquivo
         try {
             // Exibe os títulos das colunas
-            relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", "id", "description", "peso", "title", "archive", "status", "dateTimeComplaint",
+            relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", "id", "description", "bo", "title", "archive", "status", "dateTimeComplaint",
                     "type", "idDriver", "idUser", "idAddress");
             while (entrada.hasNext()) {   // enqto não chegou o final do arquivo
                 String id = entrada.next();   // next() aqui lê até o próximo ;
                 String description = entrada.next();
-                String peso = entrada.next();
                 String title = entrada.next();
                 String archive = entrada.next();
                 String status = entrada.next();
+                String bo = entrada.next();
                 String dateTimeComplaint = entrada.next();   // next() aqui lê até o próximo ;
                 String type = entrada.next();
                 String idDriver = entrada.next();
                 String idUser = entrada.next();
                 String idAddress = entrada.next();
-                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, peso, title, archive, status, dateTimeComplaint,
+                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, title, archive, status,bo, dateTimeComplaint,
                         type, idDriver, idUser, idAddress);
-                // exibo os dados em forma de colunas
-//                System.out.printf("-15s %-9s %4s\n", nome, porte, peso);
             }
         } catch (NoSuchElementException erro) {
             System.out.println("Arquivo com problemas");
