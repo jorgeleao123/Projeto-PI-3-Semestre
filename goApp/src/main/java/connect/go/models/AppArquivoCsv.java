@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class AppArquivoCsv {
 
-    public static void gravaArquivoCsv(Complaint complaint, String nomeArq) {
+    public void gravaArquivoCsv(Complaint complaint, String nomeArq) {
         FileWriter arq = null;  // arq é o obj que corresponde ao arquivo
         Formatter saida = null; // obj que será usado para escrever no arquivo
         nomeArq += ".csv";  // acrescenta a extensão .CSV ao nome do arquivo
@@ -55,11 +55,12 @@ public class AppArquivoCsv {
         }
     }
 
-    public static void leExibeArquivoCsv(String nomeArq) {
+    public String leExibeArquivoCsv(String nomeArq) {
         FileReader arq = null;  // objeto que representa o arquivo para leitura
         Scanner entrada = null; // objeto usado para ler do arquivo
         nomeArq += ".csv";      // acrescenta extensão .csv ao nome do arquivo
         Boolean deuRuim = false;
+        String relatorio = "";
 
         // try catch para abrir o arquivo
         try {
@@ -73,8 +74,8 @@ public class AppArquivoCsv {
         // Bloco try catch para ler o arquivo
         try {
             // Exibe os títulos das colunas
-            System.out.printf(" %-15s %-9s %4s\n", "id", "description", "peso","title","archive","status"
-                    ,"dateTimeComplaint","type");
+            relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", "id", "description", "peso", "title", "archive", "status", "dateTimeComplaint",
+                    "type", "idDriver", "idUser", "idAddress");
             while (entrada.hasNext()) {   // enqto não chegou o final do arquivo
                 String id = entrada.next();   // next() aqui lê até o próximo ;
                 String description = entrada.next();
@@ -87,6 +88,8 @@ public class AppArquivoCsv {
                 String idDriver = entrada.next();
                 String idUser = entrada.next();
                 String idAddress = entrada.next();
+                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, peso, title, archive, status, dateTimeComplaint,
+                        type, idDriver, idUser, idAddress);
                 // exibo os dados em forma de colunas
 //                System.out.printf("-15s %-9s %4s\n", nome, porte, peso);
             }
@@ -108,19 +111,20 @@ public class AppArquivoCsv {
                 System.exit(1);
             }
         }
+        return relatorio;
     }
 
 
-    public static void main(String[] args) {
-        Driver driver = new Driver(5, "Antonio", "total", "calvo-cabeludo");
-        User user = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-        Address address = new Address(1, "04914-040", "SP", "São Paulo", "Esse ai");
-        Complaint complaint = new Complaint(1, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user, address);
-        // Exibe a lista
-//        complaint.exibe();
-        // grava o conteúdo da lista num arquivo CSV
-        gravaArquivoCsv(complaint, "posts");
-        // lê os dados do arquivo CSV e exibe na console
-//        leExibeArquivoCsv("users");
-    }
+//    public static void main(String[] args) {
+//        Driver driver = new Driver(5, "Antonio", "total", "calvo-cabeludo");
+//        User user = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
+//        Address address = new Address(1, "04914-040", "SP", "São Paulo", "Esse ai");
+//        Complaint complaint = new Complaint(1, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user, address);
+//        // Exibe a lista
+////        complaint.exibe();
+//        // grava o conteúdo da lista num arquivo CSV
+//        gravaArquivoCsv(complaint, "posts");
+//        // lê os dados do arquivo CSV e exibe na console
+////        leExibeArquivoCsv("users");
+//    }
 }
