@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class UserAlreadyExistsException extends RuntimeException{
 
     @ExceptionHandler(value = UserAlreadyExistsException.class)
-    public ResponseEntity<Object> exception() {
+    public ResponseEntity<String> exception() {
         return new ResponseEntity<>("Usuário já existe", HttpStatus.BAD_REQUEST);
     }
 }
