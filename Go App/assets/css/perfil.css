@@ -1,0 +1,272 @@
+
+
+
+
+/* card background */
+.background{
+    padding-bottom: 15px;
+    
+}
+.background__content{
+    width: 100%;
+    height: 80%;
+    background-color: #144D6C;
+    padding: 10%;
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+}
+
+/* Card perfil mobile */
+.card__perfil__mobile{
+    display: none;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--menu-color);
+    border-radius: 2px;
+    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+}
+
+/* Card Informações do Perfil  */
+.card__infos__perfil{
+    background-color: white;
+    border-radius: 3px;
+    height: 320px;
+    padding-bottom: 10px;
+    margin-top: -80px;
+    width: 25%;
+    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+    
+}
+.card__flex{
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.icon__perfil{
+    min-width: 35px;
+    min-height: 35px;
+    font-size: 18px;
+}
+.icon__user__perfil{
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 50%;
+    background-color: #7D63A9;
+}
+.fa-solid, .fas{
+    padding-right: 5px;
+}
+.text__location{
+    display: flex;
+    padding: 12px;
+}
+.edit__button{
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 2px;
+    border: solid #144D6C;
+    background-color: Transparent;
+    color: #144D6C;
+    width: 250px;
+    cursor: pointer;
+}
+.edit__button:hover{
+    background-color: #144D6C;
+    color: white;
+}
+.fa-pen-to-square{
+    padding-right: 5px;
+    font-size: 20px;
+}
+
+/* initial menu right*/
+.i__navbar{
+    width: 280px;
+    align-items: center;
+    justify-items: center;
+}
+.i__navbar ul{
+    margin: 16px;
+    padding: 0;
+    background-color: var(--input-color);
+}
+.i__navbar li{
+    border-bottom: 1px solid var(--border-color);
+}
+.i__navbar a.active{
+    border-left: 3px solid #144D6C;
+}
+.i__navbar li a{
+    display: block;
+    color: var(--title-color);
+    padding: 8px 16px;
+    list-style: none;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+.i__navbar li a:hover{
+    border-left: 3px solid #144D6C;
+}
+
+/* Card escrever publicação */
+.card__write{
+    padding: 5px;
+    background-color: var(--background-card);
+    margin: 16px;
+    width: 249px;
+}
+
+/* final menu */
+.f__navbar__mobile{
+    display: grid;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+}
+.f__navbar{
+    width: 360px;
+    display: none;
+}
+.f__navbar ul{
+    margin: 16px;
+    padding: 0;
+    background-color: var(--input-color);
+    overflow: hidden;
+}
+.f__navbar li{
+    border-bottom: 1px solid var(--border-color);
+    float: left;
+    display: inline;
+}
+
+.f__navbar li a{
+    display: block;
+    color: var(--title-color);
+    padding: 10px 18px;
+    list-style: block;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+}
+.f__navbar li a:hover{
+    border-bottom: 3px solid #144D6C;
+}
+.f__navbar li.active{
+    border-bottom: 3px solid #144D6C;
+}
+
+
+
+
+
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+
+@media screen and (min-width: 1600px) {
+
+    .card__infos__perfil {
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+    .card__perfil__mobile{
+        display: none;
+    }
+    
+
+}
+
+@media screen and (max-width: 1448px) {
+
+    .edit__button{
+        width: 243px;
+    }
+    
+    
+}
+
+@media screen and (max-width: 1599px) {
+    .card__infos__perfil{
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+    
+
+}
+
+@media screen and (max-width: 1400px) {
+    .card__infos__perfil{
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+    
+
+}
+@media screen and (max-width: 1200px) {
+    
+    .edit__button{
+        width: 210px;
+    }
+    
+    
+}
+@media screen and (max-width: 1000px) {
+    
+    .edit__button{
+        width: 190px;
+    }
+    .card__infos__perfil {
+        height: 290;
+    }
+   
+    .card__infos__navbar{
+        width: 250px;
+    }
+}
+@media screen and (max-width: 900px) {
+    
+    .card__perfil__mobile{
+        display: block;
+    }
+    .card__infos__perfil {
+        display: none;
+    }
+
+    .i__navbar {
+        display: none;
+    }
+
+    .f__navbar {
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: none;
+    }
+
+
+}
+
+
+
+

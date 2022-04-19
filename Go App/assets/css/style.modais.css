@@ -1,0 +1,101 @@
+/* modal mains opções navbar */
+
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    text-align: left;
+    transition: opacity .25s ease;
+}
+
+.modal__bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.modal-state {
+    display: none;
+}
+
+.modal-state:checked+.modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-state:checked+.modal .modal__inner {
+    top: 0;
+}
+
+.modal__inner {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: var(--city-font);
+    transition: top .25s ease;
+    position: absolute;
+    width: 183px;
+    background: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    height: 130px;
+}
+
+.modal__close:before {
+    transform: rotate(-45deg);
+}
+
+.options__modal__user {
+    padding: 8px 2em;
+    color: var(--text-color);
+}
+
+.options__modal__user:hover {
+    color: var(--color-blue);
+}
+
+.modal__inner i {
+    color: var(--text-color);
+    padding: 10px 2em 0 0;
+}
+
+.modal__inner i:hover {
+    color: var(--color-blue);
+}
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= MARGIN MODAIS =======*/
+@media screen and (min-width: 1600px) {
+    .modal__inner {
+        margin-top: 60px;
+        right: 33em;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+    .modal__inner {
+        margin-top: 60px;
+        right: 21em;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .modal__inner {
+        margin-top: 60px;
+        right: 10em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .modal__inner {
+        margin-top: calc(80vh - 60px);
+        right: 4em;
+    }
+}
