@@ -33,6 +33,8 @@ public class ComplaintController {
 
     private final AppArquivoCsv csv = new AppArquivoCsv();
 
+    private final ListaObj<Complaint> lista;
+
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
         return ResponseEntity.of(complaintService.getComplaintByCity(city));
@@ -85,12 +87,11 @@ public class ComplaintController {
         csv.gravaArquivoCsv(complaint, "posts");
         return ResponseEntity.status(200).body(complaint);
     }
-        @GetMapping("/relatorios")
-    public ResponseEntity getRelatorio() {
 
-        return ResponseEntity.status(200)
-                .header("content-type", "text/csv")
-                .header("content-disposition", "filename=\"posts.csv\"")
-                .body(csv.leExibeArquivoCsv("posts"));
+    @PostMapping("/orderByUserFk")
+    public ResponseEntity<Complaint> orderByFk(@PathVariable String city){
+        List<Complaint> listaComplaint = complaintService.getComplaintByCity(city);
+        lista.ordenarPorIdDoUsuario(listaComplaint);
     }
+
 }

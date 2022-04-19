@@ -10,6 +10,6 @@ public class AddressNotFoundException extends RuntimeException{
 
     @ExceptionHandler(value = AddressNotFoundException.class)
     public ResponseEntity<Object> exception() {
-        return new ResponseEntity<>("Endereço não encontrdo", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Endereço não encontrado", HttpStatus.NOT_FOUND);
     }
 }

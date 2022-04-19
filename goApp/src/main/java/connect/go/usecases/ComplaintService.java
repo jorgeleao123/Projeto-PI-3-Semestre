@@ -48,4 +48,5 @@ public class ComplaintService {
     public void setStatus(Integer complaintId, String status) {
         complaintRepository.setStatus(complaintId, status);
     }
+
 }

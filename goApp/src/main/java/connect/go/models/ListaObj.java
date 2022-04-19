@@ -1,5 +1,7 @@
 package connect.go.models;
 
+import java.util.List;
+
 public class ListaObj<T> {
 
     // Atributos
@@ -101,5 +103,21 @@ public class ListaObj<T> {
     public void limpa() {
         nroElem = 0;
     }
+
+    public void ordenarPorIdDoUsuario(ListaObj<Complaint> lista){
+        for(int i = 0; i < lista.getTamanho(); i++){
+            if(lista.getElemento(i) instanceof Complaint){
+                for(int j = i + 1; j < lista.getTamanho() - 1; j++){
+                    int elementoAnterior = ((Complaint) lista.getElemento(i)).getUser().getId();
+                    int elementoPosterior = ((Complaint)lista.getElemento(j)).getUser().getId();
+                    if(elementoAnterior > elementoPosterior){
+                        ((Complaint) lista.getElemento(i)).setUser(((Complaint) lista.getElemento(j)).getUser());
+                        ((Complaint) lista.getElemento(j)).setUser(((Complaint) lista.getElemento(i)).getUser());
+                    }
+                }
+            }
+        }
+    }
+
 }
 
