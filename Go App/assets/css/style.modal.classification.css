@@ -32,7 +32,7 @@ body{
     background-color: #FFF;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 
@@ -58,7 +58,7 @@ body{
 /*================INDIVIDUAL TYPE====================*/
 .modal__classification__inner .individual__type{
     display: flex;
-    margin-bottom: 30px;
+    padding: 10px 0;
     justify-content: center;
 }
 
