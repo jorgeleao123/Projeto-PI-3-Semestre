@@ -1,0 +1,125 @@
+.profile__container{
+    padding: 40px 70px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+/*mini-menu de configurações do usuário*/
+.configurations{
+    padding: 15px 0;
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: var(--background-card);
+}
+
+.configurations h3{
+    font-size: var(--h3-font-size);
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.configurations nav{
+    display: flex;
+    flex-direction: column;
+}
+
+.button__nav__configurations{
+    font-size: var(--smaller-font-size);
+    font-weight: 300;
+    background-color: transparent;
+    text-align: start;
+    padding: 10px 20px;
+    width: 200px;
+    transition: 0.2s;
+}
+
+.button__nav__configurations:hover{
+    border-left: 2px solid var(--first-color);
+}
+
+/* menu responsivo
+@media screen and (max-width: 900px) {
+    .configurations{
+        padding: 15px 0;
+        height: 10%;
+        display: flex;
+        align-items: center;
+        background-color: var(--background-card);
+    }
+    
+    .configurations h3{
+        font-size: var(--h3-font-size);
+        margin-bottom: 10px;
+        padding-left: 20px;
+    }
+    
+    .configurations nav{
+        display: flex;
+    }
+    
+    .button__nav__configurations{
+        font-size: var(--smaller-font-size);
+        font-weight: 300;
+        background-color: transparent;
+        text-align: start;
+        padding: 10px 20px;
+        width: 200px;
+        transition: 0.2s;
+    }
+    
+    .button__nav__configurations:hover{
+        border-bottom: 2px solid var(--first-color);
+    }
+    
+} */
+
+/*top-profile-configurations*/
+.user__top__configurations{
+    box-shadow: 0 0 3px var(--text-color);
+}
+
+.user__top__configurations .profile__background__color{
+    height: 125px;
+    background-color: var(--first-color);
+}
+
+.user__top__configurations .profile__picture__color{
+    width: 70px;
+    height: 70px;
+    border-radius: 80px;
+    margin: -40px 0 0 40px;
+    background-color: var(--color-orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user__cep__profile__configurations{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 20px 40px;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.input__profile h1{
+    font-size: var(--small-font-size);
+    margin-bottom: 5px;
+}
+
+.input__profile input{
+    background-color: var(--input-color);
+    height: 30px;
+    width: 300px;
+    padding-left: 10px;
+}
+
+.more__informations .grid__more__informations{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20%;
+}

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
+    <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+    <title>Feed | GO</title>
+    <link rel="stylesheet" href="./assets/css/style-components.css">
+    <link rel="stylesheet" href="./assets/css/style.modais.css">
+    <link rel="stylesheet" href="./assets/css/style.nav.css">
+    <link rel="stylesheet" href="./assets/css/feed.css">
+</head>
+
+<body>
+    <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
+    <!-- navbar desktop -->
+    <section class="nav__desktop">
+        <div class="nav__desktop__top">
+            <div class="nav__desktop__top__items">
+                <img src="./assets/img/logo-go-carbon.svg" alt="">
+                <span class="nav__desktop__search">
+                    <input type="search" placeholder="Busque pela placa ou nome do motorista">
+                    <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i>
+                </span>
+            </div>
+            <div class="nav__desktop__top__items">
+                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <i class="fa-solid fa-house icon__mobile"></i>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <i class="fa-solid fa-user icon__mobile"></i>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <i class="fa-solid fa-bell icon__mobile"></i>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content">
+                        <label for="modal-1">
+                            <i class="fa-solid fa-caret-down icon__mobile js-open-modal"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item-content">
+                    <div class="icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- navbar mobile -->
+    <section class="nav__mobile">
+        <div class="nav__mobile__top">
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <img src="./assets/img/logo-go-carbon.svg" alt="">
+                </div>
+            </div>
+
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <h3>Feed</h3>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-regular fa-bell icon__mobile"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main>
+        <!-- card infos user -->
+        <section class="content__feed">
+            <div class="card__infos__user">
+                <div class="flex padding__card">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                    <span>
+                        <h4 id="nameUser">Rafaella Kimberlly</h4>
+                        <p id="city">São Paulo - SP</p>
+                    </span>
+                </div>
+                <hr>
+                <div class="padding__card">
+                    <div class="flex justify">
+                        <h5>Publicações</h5>
+                        <span id="data__pub" class="data__user">5</span>
+                    </div>
+                    <div class="flex justify top">
+                        <h5>Buscas</h5>
+                        <span id="data__bus" class="data__user">5</span>
+                    </div>
+                </div>
+            </div>
+
+            <!------------------------------------------CONTENT FEED ------------------------------>
+            <div class="container__feed">
+                <!-- card informações do usuario -->
+                <div class="flex">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                    <span class="flex new__publication">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p id="city">Escreva uma nova publicação</p>
+                    </span>
+                </div>
+
+                <!-- tópico -->
+                <div class="topic__feed flex justify">
+                    <p>Casos Recentes:</p>
+                    <p id="cityTopic"><b>São Paulo</b></p>
+                    <hr>
+                </div>
+
+                <!-- publicação  -->
+                <div class="content__complaint">
+                    <div class="header__complaint flex justify">
+                        <div class="flex">
+                            <div class="icon__complaint icon__user icon__user__initial">
+                                <span class="initial__user" id="initialPublication">J</span>
+                            </div>
+                            <span class="infos__user__complaint">
+                                <h4 id="nameUser">J**** L****</h4>
+                                <p id="gender">Mulher</p>
+                            </span>
+                        </div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+                    <span class="check__complaint">
+                        <h6>Possui boletim de ocorrencia</h6>
+                        <i class="fa-solid fa-certificate"></i>
+                    </span>
+
+                    <div class="infos__complaint">
+                        <p id="textComplaint">
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                    </div>
+
+                    <div class="photos__complaint">
+                        <div class="item shrink-1-basis">
+                            <img src="/assets/img/print-uber.png" alt="">
+                        </div>
+                        <div class="item shrink-1-basis">
+                            <img src="/assets/img/photo-uber.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="more__infos__complaint flex justify">
+                        <div class="classification__complaint">
+                            <div class="circle__assedio circle__classification"></div>
+                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                        </div>
+                        <span class="location__conplaint" id="locationComplaint">
+                            SP - São Paulo | 15/08/2021
+                        </span>
+                    </div>
+                    <hr>
+                </div>
+                <!-- /publicação  -->
+
+                <!-- publicação  -->
+                <div class="content__complaint">
+                    <div class="header__complaint flex justify">
+                        <div class="flex">
+                            <div style="background-color: rgb(37, 152, 161);"
+                                class="icon__complaint icon__user icon__user__initial">
+                                <span class="initial__user" id="initialPublication">F</span>
+                            </div>
+                            <span class="infos__user__complaint">
+                                <h4 id="nameUser">F**** C****</h4>
+                                <p id="gender">Homem</p>
+                            </span>
+                        </div>
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </div>
+
+
+
+                    <div class="infos__complaint">
+                        <p id="textComplaint">
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                    </div>
+
+                    <div class="photos__complaint">
+                        <div class="item shrink-1-basis">
+                            <img src="/assets/img/print-uber.png" alt="">
+                        </div>
+                        <div class="item shrink-1-basis">
+                            <img src="/assets/img/photo-uber.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="more__infos__complaint flex justify">
+                        <div class="classification__complaint">
+                            <div class="circle__assedio__moral circle__classification"></div>
+                            <h6>Classificação do caso: <span id="classificationPub">Assédio Moral</span></h6>
+                        </div>
+                        <span class="location__conplaint" id="locationComplaint">
+                            SP - São Paulo | 15/08/2021
+                        </span>
+                    </div>
+                    <hr>
+                </div>
+                <!-- /publicação  -->
+            </div>
+            <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
+
+            <!-- card tipos de denuncia -->
+            <div class="card__infos__classifications">
+                <div class="padding__card">
+                    <h4>Classificação dos casos</h4>
+                    <div class="colors__classifications">
+                        <hr class="circle__assedio">
+                        <hr class="circle__assedio__moral">
+                        <hr class="circle__racism">
+                        <hr class="circle__agressao__fisica">
+                        <hr class="circle__agressao__verbal">
+                        <hr class="circle__homofobia">
+                        <hr class="circle__preconceito">
+                        <hr class="circle__furto">
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__assedio circle__classification"></div>
+                        <h6>Assédio</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__assedio__moral circle__classification"></div>
+                        <h6>Assédio Moral</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__racism circle__classification"></div>
+                        <h6>Racismo</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__agressao__fisica circle__classification"></div>
+                        <h6>Agressão Física</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__agressao__verbal circle__classification"></div>
+                        <h6>Agressão Verbal</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__homofobia circle__classification"></div>
+                        <h6>Homofobia</h6>
+                    </div>
+
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__preconceito circle__classification"></div>
+                        <h6>Preconceito</h6>
+                    </div>
+
+                    <div class="top classification__complaint">
+                        <div class="circle__furto circle__classification"></div>
+                        <h6>Furto</h6>
+                    </div>
+
+                    <span class="link__modal">Saiba mais</span>
+                </div>
+        </section>
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
+                <a class="options__modal__user" href="#">Casos salvos</a>
+                <a class="options__modal__user" href="#">Denuncias em analise</a>
+                <a class="options__modal__user" href="#">Configurações</a>
+                <hr>
+                <span class="flex justify">
+                    <a class="options__modal__user" href="#">Sair</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+            </div>
+        </div>
+    </main>
+
+    <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+    <section class="nav__mobile">
+        <nav class="mobile-bottom-nav">
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-solid fa-house icon__mobile"></i>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <i class="fa-solid fa-user icon__mobile"></i>
+                </div>
+            </div>
+
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-1">
+                        <i class="fa-solid fa-angle-up icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <script src="assets/js/script-components.js"></script>
+</body>
+
+</html>
