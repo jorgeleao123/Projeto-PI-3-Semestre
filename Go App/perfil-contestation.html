@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Perfil - Salvos | GO</title>
+    <title>Perfil - Contestação | GO</title>
     <link rel="stylesheet" href="./assets/css/perfil.css">
+    <link rel="stylesheet" href="./assets/css/perfil.contestation.css">
     <link rel="stylesheet" href="./assets/css/perfil.save.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
@@ -92,14 +93,14 @@
     <main>
         <!-- navbar mobile -->
         <div class="f__navbar__mobile">
-        <nav class="f__navbar">
-            <ul>
-                <li><a href="perfil.html">Publicações</a></li>
-                <li><a class="active" href="#">Salvos</a></li>
-                <li><a href="#">Contestação</a></li>
-            </ul>
-        </nav>
-    </div>
+            <nav class="f__navbar">
+                <ul>
+                    <li><a href="perfil.html">Publicações</a></li>
+                    <li><a href="perfil-save.html">Salvos</a></li>
+                    <li><a class="active" href="#">Contestação</a></li>
+                </ul>
+            </nav>
+        </div>
 
         <!-- background card -->
         <div class="background">
@@ -115,7 +116,7 @@
                 </div>
             </div>
         </div>
-                    
+
         <!-- card infos perfil -->
         <section class="content__feed__save">
             <!-- <div class="card__infos__perfil">
@@ -147,9 +148,9 @@
 
 
             <!------------------------------------------CONTENT FEED ------------------------------>
-            
-                <!-- card informações do usuario -->
-                <!-- <div class="flex">
+
+            <!-- card informações do usuario -->
+            <!-- <div class="flex">
                     <div class="icon__user icon__user__initial">
                         <span class="initial__user" id="initial">R</span>
                     </div>
@@ -159,150 +160,127 @@
                     </span>
                 </div> -->
 
-                <div class="container__feed">
-                    <!-- tópico -->
-                <div class="topic__save flex justify">
-                    <p>Salvos:</p>
+            <div class="container__feed">
+                <!-- tópico -->
+                <div class="topic__cont flex justify">
+                    <p>Status da contextação:</p>
                     <hr>
                 </div>
 
+                <div class="topic__link__contestation">
+                    <p class="link__contestation">Visualizar caso denunciado</p>
+                </div>
                 <!-- publicação  -->
                 <br>
                 <div class="content__complaint">
-                    <div class="header__complaint flex justify">
+                    <div class="header__complaint flex justify_step">
                         <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
+                            <div class="about__data">
+                                <div class="form">
+                                    <input id="one" type="radio" name="stage" checked="checked" />
+                                    <input id="two" type="radio" name="stage" />
+                                    <input id="six" type="radio" name="stage" />
+                                    
+                                    <div class="stages">
+                                        <label for="one">1</label>
+                                        <label for="two">2</label>
+                                        <label for="six">3</label>
+                                    </div>                                   
+
+                                    <span class="progress"><span></span></span>
+                                    <div class="step__title"><p style="margin-right:18px;">Enviada</p>
+                                        <p>Em analise</p>
+                                        <p>Conclúida</p>
+                                        </div>
+
+                                    <div class="panels">
+
+                                        <div data-panel="one">
+                                            <form action="">
+                                                <label class="message__step">
+                                                    <span class="icon__message__step">
+                                                        <i class="fa-regular fa-paper-plane"></i>
+                                                    </span>
+                                                    <h2 class="section__title about__title">Sua Denúncia foi enviada com
+                                                        sucesso</h2>
+                                                    <p class="about__description">Estamos aguardando o BackOffice
+                                                        iniciar a análise da sua denúncia,
+                                                        geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
+                                                        esta página.</p>
+                                        </div>
+                                        </label>
+
+                                        <div data-panel="two">
+                                            <label class="message__step">
+                                                <span class="icon__message__step">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </span>
+                                                <h2 class="section__title about__title">Sua denuncia esta sendo
+                                                    analisada</h2>
+                                                <p class="about__description">Estamos analisando a sua denuncia e
+                                                    vericando todos os pontos,
+                                                    geralmente isso leva de 2 a 3 dias. Para acompanhar o processo basta
+                                                    verificar aqui.</p>
+                                        </div>
+                                        </label>
+                                        <div data-panel="six">
+                                            <label class="message__step">
+                                                <span class="icon__message__step">
+                                                    <i class="fa-regular fa-eye"></i>
+                                                </span>
+                                                <h2 class="section__title about__title">Sua Denúncia foi enviada com
+                                                    sucesso</h2>
+                                                <p class="about__description">Estamos aguardando o BackOffice
+                                                    iniciar a análise da sua denúncia,
+                                                    geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
+                                                    esta página.</p>
+                                        </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                </form>
                             </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-
-                    <span class="check__complaint">
-                        <h6>Possui boletim de ocorrencia</h6>
-                        <i class="fa-solid fa-certificate"></i>
-                    </span>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="/assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="/assets/img/photo-uber.png" alt="">
                         </div>
                     </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <hr>
                 </div>
-                <!-- /publicação  -->
-
-                <!-- publicação  -->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div style="background-color: rgb(37, 152, 161);"
-                                class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">F</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">F**** C****</h4>
-                                <p id="gender">Homem</p>
-                            </span>
-                        </div>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-
-
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="/assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="/assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio__moral circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio Moral</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <hr>
+                <!-- Topico do fim -->
+                <div class="bottom__link__contestation">
+                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
                 </div>
-                <!-- /publicação  -->
             </div>
+            <!-- /publicação  -->
+            </div>
+
             <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
 
             <!-- initial navbar right -->
             <div class="card__infos__navbar">
                 <div class="padding__card">
-                        <nav class="i__navbar">
-                            <ul>
-                                <li><a href="perfil.html">Minhas Publicações</a></li>
-                                <li><a class="active" href="#">Salvos</a></li>
-                                <li><a href="#">Minhas Contestações</a></li>
-                            </ul>
-                        </nav>
-                    
-                
+                    <nav class="i__navbar">
+                        <ul>
+                            <li><a href="perfil.html">Minhas Publicações</a></li>
+                            <li><a href="perfil-contestation.html">Salvos</a></li>
+                            <li><a class="active" href="#">Suas Contestações</a></li>
+                        </ul>
+                    </nav>
 
-                <!-- Card  -->
+
+
+                    <!-- Card  -->
                     <div class="card__write">
-                    <div class="flex padding__card">
-                        <button class="edit__button">Escrever</button>
-                    </div>
-                    <hr>
-                    <div class="padding__card">
-                        <div class="flex justify">
-                            <p>Públique uma denuncia no seu perfil</p>
+                        <div class="flex padding__card">
+                            <button class="edit__button">Escrever</button>
+                        </div>
+                        <hr>
+                        <div class="padding__card">
+                            <div class="flex justify">
+                                <p>Públique uma denuncia no seu perfil</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-                
+
         </section>
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
         <input class="modal-state" id="modal-1" type="checkbox" />
@@ -349,7 +327,8 @@
             </div>
         </nav>
     </section>
-    <script src="assets/js/script-components.js"></script>
+    <script src="./assets/js/script-components.js"></script>
+    <script src="./assets/js/script-perfil-contestation.js"></script>
 </body>
 
 </html>
