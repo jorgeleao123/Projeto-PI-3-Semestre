@@ -12,6 +12,9 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
     @Query("select c from Complaint c join c.address a where a.city = ?1 order by c.dateTimeComplaint desc")
     Optional<List<Complaint>> getComplaintByCity(String city);
 
+    @Query("select c from Complaint c join c.address a where a.city = ?1 order by c.dateTimeComplaint desc")
+    List<Complaint> getComplaintByCityCsv(String city);
+
     @Query("select c from Complaint c join c.address a where a.district = ?1 order by c.dateTimeComplaint desc")
     Optional<List<Complaint>> getComplaintByDistrict(String district);
 

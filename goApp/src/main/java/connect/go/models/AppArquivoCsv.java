@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class AppArquivoCsv {
 
-    public static  void gravaArquivoCsv(Complaint complaint, String nomeArq) {
+    public static  void gravaArquivoCsv(Complaint complaint, String nomeArq,boolean reescrever) {
         FileWriter arq = null;  // arq é o obj que corresponde ao arquivo
         Formatter saida = null; // obj que será usado para escrever no arquivo
         nomeArq += ".csv";  // acrescenta a extensão .CSV ao nome do arquivo
@@ -23,7 +23,7 @@ public class AppArquivoCsv {
 //            arq = new FileWriter(nomeArq);
             // Se quiser que o conteúdo seja acrescentado ao final do arquivo,
             // teria que fazer:
-            arq = new FileWriter(nomeArq, true);
+            arq = new FileWriter(nomeArq, reescrever);
             saida = new Formatter(arq);
         } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");

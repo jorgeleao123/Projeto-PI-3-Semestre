@@ -33,7 +33,6 @@ public class ComplaintController {
 
     private final AppArquivoCsv csv = new AppArquivoCsv();
 
-    private final ListaObj<Complaint> lista;
 
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
@@ -84,14 +83,8 @@ public class ComplaintController {
         complaint.setDateTimeComplaint(LocalDateTime.now());
         complaint.setStatus("valido");
         complaintService.register(complaint);
-        csv.gravaArquivoCsv(complaint, "posts");
         return ResponseEntity.status(200).body(complaint);
     }
 
-    @PostMapping("/orderByUserFk")
-    public ResponseEntity<Complaint> orderByFk(@PathVariable String city){
-        List<Complaint> listaComplaint = complaintService.getComplaintByCity(city);
-        lista.ordenarPorIdDoUsuario(listaComplaint);
-    }
 
 }
