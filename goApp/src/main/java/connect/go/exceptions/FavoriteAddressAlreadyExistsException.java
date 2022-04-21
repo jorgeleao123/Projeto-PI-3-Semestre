@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class BadRequestException extends RuntimeException{
+public class FavoriteAddressAlreadyExistsException extends RuntimeException{
 
-    @ExceptionHandler(value = BadRequestException.class)
+    @ExceptionHandler(value = FavoriteAddressAlreadyExistsException.class)
     public ResponseEntity<String> exception() {
-        return new ResponseEntity<>("Dados enviados incorretamente", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Endereço Favorito já existe", HttpStatus.BAD_REQUEST);
     }
 }

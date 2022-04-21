@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class UserNotFoundException extends RuntimeException{
 
     @ExceptionHandler(value = UserNotFoundException.class)
-    public ResponseEntity<Object> exception() {
+    public ResponseEntity<String> exception() {
         return new ResponseEntity<>("Usuario não encontrdo", HttpStatus.NOT_FOUND);
     }
 }
