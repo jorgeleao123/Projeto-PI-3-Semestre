@@ -21,6 +21,10 @@ public class ComplaintService {
         return complaintRepository.getComplaintByCity(city);
     }
 
+    public List<Complaint> getComplaintByCityCsv(String city) {
+        return complaintRepository.getComplaintByCityCsv(city);
+    }
+
     public Optional<List<Complaint>> getComplaintByState(String state) {
         return complaintRepository.getComplaintByState(state);
     }
@@ -48,4 +52,5 @@ public class ComplaintService {
     public void setStatus(Integer complaintId, String status) {
         complaintRepository.setStatus(complaintId, status);
     }
+
 }

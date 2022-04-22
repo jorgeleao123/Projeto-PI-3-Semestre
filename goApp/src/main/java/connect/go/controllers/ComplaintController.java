@@ -1,9 +1,6 @@
 package connect.go.controllers;
 
-import connect.go.models.Address;
-import connect.go.models.Complaint;
-import connect.go.models.Driver;
-import connect.go.models.User;
+import connect.go.models.*;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.DriverService;
@@ -33,6 +30,9 @@ public class ComplaintController {
     private final UserService userService;
 
     private final DriverService driverService;
+
+    private final AppArquivoCsv csv = new AppArquivoCsv();
+
 
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
@@ -85,4 +85,6 @@ public class ComplaintController {
         complaintService.register(complaint);
         return ResponseEntity.status(200).body(complaint);
     }
+
+
 }
