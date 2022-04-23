@@ -95,8 +95,8 @@
         <nav class="f__navbar">
             <ul>
                 <li><a href="perfil.html">Publicações</a></li>
-                <li><a class="active" href="#">Salvos</a></li>
-                <li><a href="#">Contestação</a></li>
+                <li><a id="active" href="#">Salvos</a></li>
+                <li><a href="perfil-contestation.html">Contestação</a></li>
             </ul>
         </nav>
     </div>
@@ -115,9 +115,15 @@
                 </div>
             </div>
         </div>
+
+        <!-- tópico -->
+        <div class="topic__save flex justify">
+            <p>Salvos:</p>
+            <hr>
+        </div>
                     
         <!-- card infos perfil -->
-        <section class="content__feed__save">
+        <section class="content__feed">
             <!-- <div class="card__infos__perfil">
                     <div class="card__flex padding__card">
                         <div class="icon__perfil icon__user__perfil">
@@ -158,13 +164,8 @@
                         <p id="city">Escreva uma nova publicação</p>
                     </span>
                 </div> -->
-
-                <div class="container__feed">
-                    <!-- tópico -->
-                <div class="topic__save flex justify">
-                    <p>Salvos:</p>
-                    <hr>
-                </div>
+                
+                <div class="container__feed margin__save">
 
                 <!-- publicação  -->
                 <br>
@@ -277,21 +278,19 @@
 
             <!-- initial navbar right -->
             <div class="card__infos__navbar">
-                <div class="padding__card">
                         <nav class="i__navbar">
                             <ul>
                                 <li><a href="perfil.html">Minhas Publicações</a></li>
-                                <li><a class="active" href="#">Salvos</a></li>
-                                <li><a href="#">Minhas Contestações</a></li>
+                                <li><a id="activeleft" href="#">Salvos</a></li>
+                                <li><a href="perfil-contestation.html">Minhas Contestações</a></li>
                             </ul>
                         </nav>
-                    
-                
+                                    
 
                 <!-- Card  -->
                     <div class="card__write">
                     <div class="flex padding__card">
-                        <button class="edit__button">Escrever</button>
+                        <button class="edit__button__save">Escrever</button>
                     </div>
                     <hr>
                     <div class="padding__card">
@@ -301,7 +300,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+
                 
         </section>
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->

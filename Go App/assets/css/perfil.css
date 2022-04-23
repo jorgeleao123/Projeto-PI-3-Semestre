@@ -1,5 +1,6 @@
 /* card background */
 .background{
+    padding-top: 15px;
     padding-bottom: 15px;
     
 }
@@ -8,8 +9,8 @@
     height: 80%;
     background-color: #144D6C;
     padding: 10%;
-    border-radius: 2px;
-    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px -5px rgba(0,0,0,0.64);
 }
 .nameUser{
     padding-top: 9px;
@@ -22,19 +23,20 @@
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: var(--menu-color);
-    border-radius: 2px;
-    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px -2px rgba(0,0,0,0.64);
 }
 
 /* Card Informações do Perfil  */
 .card__infos__perfil{
     background-color: white;
     border-radius: 3px;
-    height: 320px;
+    height: 300px;
     padding-bottom: 10px;
-    margin-top: -80px;
+    margin-top: -120px;
+    margin-left: 20px;
     width: 25%;
-    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+    box-shadow: 0px 4px 8px -5px rgba(0,0,0,0.64);
     
 }
 .card__flex{
@@ -77,7 +79,7 @@
     border: solid #144D6C;
     background-color: Transparent;
     color: #144D6C;
-    width: 250px;
+    width: 100%;
     cursor: pointer;
 }
 .edit__button:hover{
@@ -91,62 +93,76 @@
 
 /* initial menu right*/
 .i__navbar{
-    width: 280px;
+    width: 100%;
     align-items: center;
     justify-items: center;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    justify-content: space-between;
 }
 .i__navbar ul{
-    margin: 16px;
     padding: 0;
     background-color: var(--input-color);
 }
 .i__navbar li{
     border-bottom: 1px solid var(--border-color);
 }
-.i__navbar a.active{
+#activeleft{
     border-left: 3px solid #144D6C;
 }
 .i__navbar li a{
     font-size: var(--small-font-size);
     display: block;
     color: var(--title-color);
+    font-family: var(--title-font);
+    font-weight: var(--font-semi-bold);
     padding: 8px 16px;
     list-style: none;
     text-decoration: none;
     border-bottom: 3px solid transparent;
 }
-.i__navbar li a:hover{
-    border-left: 3px solid #144D6C;
-}
+
 
 /* Card escrever publicação */
 .card__write{
     font-size: var(--smaller-font-size);
     background-color: var(--background-card);
-    margin: 15px;
-    width: 249px;
+    margin-top: 15px;
+    width: 100%;
+}
+.font__card{
+    text-align: center;
+    text-justify: inter-word;
 }
 
 /* final menu */
 .f__navbar__mobile{
-    display: flex;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    display: none;
+    border-radius: 3px;
+    height: 50px;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    justify-content: space-between;
 }
 .f__navbar{
-    display: none;
     width: 100%;
-}
+    text-align: center;
+    font-size: 15px;
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
 .f__navbar ul{
     display: flex;
     justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
     background-color: var(--input-color);
-    overflow: hidden;
 }
 .f__navbar li{
     border-bottom: 1px solid var(--input-color);
+    display: flex;
 }
 
 .f__navbar li a{
@@ -159,10 +175,10 @@
     text-align: center;
     border-bottom: 3px solid transparent;
     transition: ease-in 300ms;
+    font-weight: var(--font-semi-bold);
+    font-family: var(--title-font);
 }
-.f__navbar li a:hover{
-    border-bottom: 3px solid #144D6C;
-}
+
 .f__navbar li.active{
     border-bottom: 3px solid #144D6C;
 }
@@ -192,9 +208,7 @@
 
 @media screen and (max-width: 1448px) {
 
-    .edit__button{
-        width: 243px;
-    }
+    
     
     
 }
@@ -219,13 +233,17 @@
     .card__infos__navbar {
         display: block;
     }
+
+    .edit__button{
+        width: 190px;
+    }
     
 
 }
 @media screen and (max-width: 1200px) {
     
     .edit__button{
-        width: 210px;
+        width: 180px;
     }
     
     
@@ -233,7 +251,7 @@
 @media screen and (max-width: 1000px) {
     
     .edit__button{
-        width: 190px;
+        width: 160px;
     }
     .card__infos__perfil {
         height: 290;
@@ -256,7 +274,7 @@
         display: none;
     }
 
-    .f__navbar {
+    .f__navbar__mobile {
         display: block;
     }
 
@@ -264,8 +282,15 @@
         display: none;
     }
 
-
 }
+@media screen and (max-width: 400px) {
+    .f__navbar li a{
+        font-size: var(--smaller-font-size);
+        padding: 10px 5px;
+    }
+    
+}
+
 
 
 

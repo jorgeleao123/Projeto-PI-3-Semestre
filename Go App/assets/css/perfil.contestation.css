@@ -1,6 +1,10 @@
 .stages {
 	font-size: 0;
 	text-align: justify;
+	padding-top: 15px;
+}
+.contest{
+	height: calc(120vh - 81px);
 }
 
 .stages:after {
@@ -135,8 +139,12 @@ input[type="radio"] {
 	padding-bottom: 10px;
     
 }
+.contestation{
+	align-items: center;
+}
 
-.bottom__link__contestation{
+
+.bottom__link__contestation a{
 	display: none;
 	margin-top: 10%;
 	padding-top: 10px;
@@ -168,7 +176,6 @@ input[type="radio"] {
 .step__title{
 	display: flex;
     padding-bottom: 15px;
-    padding-top: 15px;
     justify-content: space-between;
     
 }
@@ -254,6 +261,20 @@ input{
 .about__description{
 	font-size: var(--normal-font-size);
 }
+.edit__button__cont{
+	font-weight: bold;
+    padding: 10px;
+    border-radius: 2px;
+    border: solid #144D6C;
+    background-color: Transparent;
+    color: #144D6C;
+    width: 100%;
+    cursor: pointer;
+}
+.edit__button__save:hover{
+    background-color: #144D6C;
+    color: white;
+}
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
@@ -261,7 +282,7 @@ input{
 
 @media screen and (max-width: 1400px){
     .topic__cont hr {
-    		width: 70%;
+    		width: 75%;
 }
 }
 
@@ -270,7 +291,7 @@ input{
 	.topic__link__contestation{
 		display: none;
 	}
-	.bottom__link__contestation{
+	.bottom__link__contestation a{
 		display: block;
 	}
 	
@@ -287,7 +308,26 @@ input{
 		text-align: center;
 	}
 
-	.bottom__link__contestation{
+	.bottom__link__contestation a{
+		display: block;
+		margin-top: 20%;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+}
+
+@media screen and (max-width:412px) {
+	.progress > span {
+		display: list-item;
+		margin-top: 10px;
+	}
+
+	.form p{
+		text-align: center;
+	}
+
+	.bottom__link__contestation a{
 		display: block;
 		margin-top: 20%;
 		padding-top: 15px;

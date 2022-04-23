@@ -4,6 +4,7 @@
     padding: 30px 0;
     font-size: 13.5px;
     width: 100%;
+    padding-right: 30%;
 }
 
 .topic__save hr {
@@ -14,7 +15,10 @@
     height: 0.2px;
     border-top-width: 0.2px;
     border: 0.2px solid var(--border-color);
+    
 }
+
+
 
 .content__feed__save {
     width: 100%;
@@ -33,35 +37,44 @@
     box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
 }
 
+.edit__button__save{
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 2px;
+    border: solid #144D6C;
+    background-color: Transparent;
+    color: #144D6C;
+    width: 100%;
+    cursor: pointer;
+}
+.edit__button__save:hover{
+    background-color: #144D6C;
+    color: white;
+}
+.margin__save{
+    margin-left: 10%;
+}
 
-
-
-/*================================================================================ RESPONSIVE ====================================================================*/
-/*======= PADDING =======*/
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
 @media screen and (min-width: 1600px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
         display: block;
     }
 
-    .container__feed__save {
-        height: calc(94vh - 51px);
-        overflow: scroll;
-        overflow-x: hidden;
-    }
+    
 
 
 }
 
 @media screen and (max-width: 1448px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .container__feed__save {
@@ -79,7 +92,7 @@
 @media screen and (max-width: 1599px) {
 
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .container__feed__save {
@@ -100,7 +113,7 @@
     }
 
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
@@ -111,7 +124,7 @@
 
 @media screen and (max-width: 1150px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
@@ -120,9 +133,11 @@
 }
 
 @media screen and (max-width: 900px) {
-
+    .topic__save {
+        padding-right: 0%;
+    }
     .topic__save hr {
-        width: 85%;
+        width: 100%;
     }
 
     .container__feed__save {
@@ -132,13 +147,16 @@
     .card__perfil__mobile__print {
         display: block;
     }
+    .margin__save{
+        margin: 0;
+    }
 
 
 }
 
 @media screen and (max-width: 647px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
@@ -148,7 +166,7 @@
 
 @media screen and (max-width: 537px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
@@ -158,7 +176,7 @@
 
 @media screen and (max-width: 1040px) {
     .topic__save hr {
-        width: 80%;
+        width: 100%;
     }
 
     .card__perfil__mobile__print {
