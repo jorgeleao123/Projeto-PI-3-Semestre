@@ -117,14 +117,15 @@ input[type="radio"] {
     display: flex;
     justify-content: flex-end;
 }
-.topic__cont{
+.top__contest{
 	align-items: center;
     gap: 10px;
     padding: 30px 0;
     font-size: 13.5px;
     width: 100%;
 }
-.topic__cont hr{
+.top__contest hr{
+	width: 75%;
 	float: right;
     text-align: right;
     margin-right: 0 0 0;
@@ -139,21 +140,15 @@ input[type="radio"] {
 	padding-bottom: 10px;
     
 }
-.contestation{
-	align-items: center;
-}
 
 
-.bottom__link__contestation a{
+.bottom__link__contestation{
 	display: none;
 	margin-top: 10%;
 	padding-top: 10px;
 	padding-bottom: 10px;
-	
 }
-.link__contestation:hover{
-	color: var(--links-hover);
-}
+
 .link__contestation{
 	float: right;
 	color: var(--first-color);
@@ -162,16 +157,17 @@ input[type="radio"] {
 	cursor: pointer;
     transition: ease-in 300ms;
 }
+.link__contestation:hover{
+	color: var(--links-hover);
+}
 
 /* Custom code for the demo */
 
 .form {
-	min-width: 200px;
+	min-width: 100px;
 	text-align: initial;
     align-items: center;
     flex-direction: column;
-    padding: 15px;
-    
 }
 .step__title{
 	display: flex;
@@ -278,12 +274,35 @@ input{
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+	
+	.top__contest hr {
+        width: 75%;
+    }
+	.bottom__link__contestation{
+		display: none;
+	}
 
-
-@media screen and (max-width: 1400px){
-    .topic__cont hr {
-    		width: 75%;
 }
+@media screen and (max-width: 1448px) {
+    .top__contest hr {
+        width: 75%;
+    }
+}
+@media screen and (max-width: 1400px) {
+    .top__contest hr {
+        width: 100%;
+    }
+
+
+}
+
+@media screen and (max-width: 1150px) {
+    .top__contest hr {
+        width: 75%;
+    }
+
+	
 }
 
 
@@ -291,11 +310,15 @@ input{
 	.topic__link__contestation{
 		display: none;
 	}
-	.bottom__link__contestation a{
+	.bottom__link__contestation{
 		display: block;
 	}
-	
-}
+		
+	.top__contest hr {
+        width: 75%;
+    }
+
+	}
 
 
 @media screen and (max-width:767px) {
@@ -308,12 +331,13 @@ input{
 		text-align: center;
 	}
 
-	.bottom__link__contestation a{
+	.bottom__link__contestation{
 		display: block;
-		margin-top: 20%;
-		padding-top: 15px;
-		padding-bottom: 15px;
 	}
+	
+	.top__contest hr {
+        width: 75%;
+    }
 
 }
 
@@ -322,15 +346,100 @@ input{
 		display: list-item;
 		margin-top: 10px;
 	}
+	.section__title{
+		font-size: 14px;;
+	}
 
 	.form p{
 		text-align: center;
+		font-size: var(--smaller-font-size);
 	}
 
-	.bottom__link__contestation a{
-		display: block;
-		margin-top: 20%;
-		padding-top: 15px;
-		padding-bottom: 15px;
+	
+}
+@media screen and (max-width: 537px) {
+
+    .top__contest hr {
+        width: 75%;
+    }
+	.stages label {
+		height: 45px;
+		line-height: 45px;
+		width: 45px;
 	}
+	.progress span{
+		margin-top: 15px;
+	}
+		
+	.form p{
+		font-size: var(--smaller-font-size);
+	}
+	.section__title{
+		font-size: 14px;;
+	}
+}
+
+@media screen and (max-width:330px) {
+	.stages{
+		padding: 0;
+	}
+	.stages label {
+		height: 45px;
+		line-height: 45px;
+		width: 45px;
+	}
+	.progress span{
+		margin-top: 15px;
+	}
+	
+	.form p{
+		font-size: var(--smaller-font-size);
+	}
+	.section__title{
+		font-size: 14px;;
+	}
+}
+	@media screen and (max-width:380px) {
+		.stages{
+			padding: 0;
+		}
+	
+		.stages label {
+			height: 45px;
+			line-height: 45px;
+			width: 45px;
+		}
+		.progress span{
+			margin-top: 15px;
+		}
+		
+		.form p{
+			font-size: var(--smaller-font-size);
+		}
+		.section__title{
+			font-size: 14px;;
+		}
+	}
+	
+@media screen and (max-width:300px) {
+	.stages{
+		padding: 0;
+	}
+	
+	.stages label {
+		height: 30px;
+		line-height: 30px;
+		width: 30px;
+	}
+	.progress span{
+		margin-top: 15px;
+	}
+	
+	.form p{
+		font-size: var(--smaller-font-size);
+	}
+	.section__title{
+		font-size: 14px;;
+	}
+	
 }
