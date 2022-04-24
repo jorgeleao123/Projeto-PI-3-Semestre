@@ -21,7 +21,9 @@
     cursor: pointer;
 }
 
-
+.new__publication a{
+    color: var(--text-color);
+}
 /* padrão dos cards  */
 .flex {
     display: flex;
@@ -52,9 +54,12 @@ input::placeholder {
 .card__infos__user {
     background-color: var(--background-card);
     border-radius: 3px;
-    height: 160px;
+    height: auto;
+    max-height: 160px;
     padding-bottom: 10px;
     width: 27%;
+    min-width: 170px;
+    max-width: 240px;
 }
 
 .card__infos__user h4 {
@@ -99,7 +104,12 @@ input::placeholder {
     width: 100%;
 }
 
+.topic__feed span{
+    min-width: 200px;
+}
+
 .topic__feed hr {
+    width: 100%;
     float: right;
     text-align: right;
     margin-right: 0 0 0;
@@ -214,6 +224,7 @@ input::placeholder {
     height: 350px;
     padding-bottom: 10px;
     width: 27%;
+    max-width: 240px;
 }
 
 
@@ -267,7 +278,7 @@ input::placeholder {
 }
 
 .link__modal:hover {
-    color: var(--first-color-second);
+    color: var(--second-color-hover);
 }
 
 .colors__classifications hr {
@@ -276,11 +287,53 @@ input::placeholder {
     border: none;
 }
 
+
+.toggle input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.toggle label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: var(--color-toggle);
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+.toggle label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.toggle input:checked + label {
+    background-color: var(--first-color);
+}
+
+.toggle input:checked + label::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.toggle label:active:after {
+    width: 45px;
+}
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
 @media screen and (min-width: 1600px) {
-    .topic__feed hr {
-        width: 60%;
+    .container__feed {
+        max-width: 500px;
     }
 
     .card__infos__user {
@@ -299,9 +352,7 @@ input::placeholder {
 }
 
 @media screen and (max-width: 1448px) {
-    .topic__feed hr {
-        width: 40%;
-    }
+
 
     .container__feed {
         height: calc(94vh - 51px);
@@ -319,9 +370,7 @@ input::placeholder {
         display: block;
     }
 
-    .topic__feed hr {
-        width: 50%;
-    }
+
 
     .container__feed {
         height: calc(94vh - 51px);
@@ -339,9 +388,7 @@ input::placeholder {
         display: block;
     }
 
-    .topic__feed hr {
-        width: 40%;
-    }
+
 
 }
 
@@ -374,19 +421,13 @@ input::placeholder {
 }
 
 @media screen and (max-width: 647px) {
-    .topic__feed hr {
-        width: 50%;
-    }
+
 }
 
 @media screen and (max-width: 537px) {
-    .topic__feed hr {
-        width: 40%;
-    }
+
 }
 
 @media screen and (max-width: 1040px) {
-    .topic__feed hr {
-        display: none !important;
-    }
+
 }

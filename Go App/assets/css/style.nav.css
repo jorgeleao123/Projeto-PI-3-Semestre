@@ -10,6 +10,19 @@
     width: 400px;
 }
 
+.nav__desktop select{
+    background-color: var(--menu-color);
+}
+
+.nav__mobile__input input{
+    background-color: var(--modal-color);
+}
+
+.nav__mobile__input select{
+    background-color: var(--modal-color);
+}
+
+
 .nav__desktop__top {
     position: fixed;
     top: 0;
@@ -65,7 +78,7 @@
 
 /*======== NAV MOBILE =======*/
 .nav__mobile__top {
-    padding: 15px 50px;
+    padding: 15px 1em;
     position: fixed;
     top: 0;
     left: 0;
@@ -75,6 +88,10 @@
     z-index: 999999;
     border-bottom: solid 0.5px var(--border-color);
     background-color: var(--menu-color);
+}
+
+#logo{
+    margin-top: 5px;
 }
 
 .nav__mobile__top img {
@@ -89,7 +106,7 @@
     z-index: 999999;
     will-change: transform;
     transform: translateZ(0);
-    padding: 0 50px;
+    padding: 0 1em;
     display: flex;
     justify-content: space-between;
     height: 50px;
@@ -107,8 +124,12 @@
     justify-content: center;
 }
 
-.mobile-bottom-nav__item--active {
-    color: var(--first-color);
+.mobile-bottom-nav__item--active a {
+    color: var(--first-color) !important;
+}
+
+.link_active {
+    color: var(--first-color) !important;
 }
 
 .nav__itens__links {
@@ -136,6 +157,23 @@
     cursor: pointer;
 }
 
+.mobile-bottom-nav__item a{
+    text-decoration: none;
+    color: var(--links-color);
+}
+
+input, select, option{
+    background-color: var(--input-color);
+    color: var(--text-color);
+    border: none!important;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
 @media screen and (min-width: 1600px) {
@@ -154,6 +192,9 @@
     .nav__desktop__top {
         padding: var(--padding-tablet);
     }
+    .nav__desktop__search input {
+        width: 270px;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -168,5 +209,6 @@
     .mobile-bottom-nav__item--active {
         border-top: solid 2px var(--first-color);
         padding: 0 7px;
+        color: var(--first-color);
     }
 }

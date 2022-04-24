@@ -2,15 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Mukta:wght@200;300;400;500;600&display=swap');
 
-:root {
-  --header-height: 3rem;
 
-  --hue-color: 190;
-
+html {
+  --background-card: #f6f6f6;
   --first-color: #24729E;
   --carbon-color: #242424;
   --first-color-second: #61BAB5;
+  --second-color-hover: #617FBA;
   --links-color: #a7a4a4;
+  --color-toggle: #144D6C;
   --color-blue: #6EB7ED;
   --check-complant: #4272EE;
   --color-blue-second: #D7E2FE;
@@ -19,11 +19,12 @@
   --title-color: #393939;
   --text-color: #5A5A5A;
   --links-hover: #7c7c7c;
-  --input-color: #f7f7f7;
+  --input-color: #ffffff;
+  --inputs-color: #f6f6f6;
   --border-color: #dcdcdc;
   --body-color: white;
   --menu-color: #FFF;
-  --background-card: rgb(250, 250, 250);
+  --modal-color: #FFF;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
 
@@ -39,6 +40,14 @@
   ---color-furto: #c42011;
 
 
+  scroll-behavior: smooth;
+}
+
+:root {
+  --header-height: 3rem;
+
+  --hue-color: 190;
+
   --body-font: 'Montserrat', sans-serif;
   --post-font: 'Mukta', sans-serif;
   --biggest-font-size: 2.5rem;
@@ -48,6 +57,7 @@
   --normal-font-size: .938rem;
   --small-font-size: .813rem;
   --smaller-font-size: .75rem;
+  --label-font-size: 12px;
 
   /*========== Font weight ==========*/
   --font-medium: 500;
@@ -65,7 +75,7 @@
   --padding-desktop: 12px 24em;
   --padding-notbook: 10px 15em;
   --padding-tablet: 10px 5em;
-  --padding-mobile: 10px 3.3em;
+  --padding-mobile: 10px 1em;
 
   /*========== z index ==========*/
   --z-tooltip: 10;
@@ -103,9 +113,7 @@
   border-radius: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+
 
 body {
   margin: var(--header-height) 0 0 0;
@@ -162,6 +170,15 @@ input {
 
 h4 {
   color: var(--text-color);
+}
+
+
+.button{
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 700;
+  font-size: var(--name-font);
+  border: 2px solid;
 }
 
 /*================================================================================ RESPONSIVE ====================================================================*/
