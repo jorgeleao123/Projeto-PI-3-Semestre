@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
+    <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+    <title>Perfil - Contestação | GO</title>
+    <link rel="stylesheet" href="./assets/css/perfil.css">
+    <link rel="stylesheet" href="./assets/css/perfil.contestation.css">
+    <link rel="stylesheet" href="./assets/css/perfil.save.css">
+    <link rel="stylesheet" href="./assets/css/style-components.css">
+    <link rel="stylesheet" href="./assets/css/style.modais.css">
+    <link rel="stylesheet" href="./assets/css/style.nav.css">
+    <link rel="stylesheet" href="./assets/css/feed.css">
+
+</head>
+
+<body style="overflow: scroll">
+    <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
+    <!-- navbar desktop -->
+    <section class="nav__desktop">
+        <div class="nav__desktop__top">
+            <div class="nav__desktop__top__items">
+                <span id="logo">
+                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                </span>
+                <span class="nav__desktop__search">
+                    <input type="search" placeholder="Busque pela placa ou nome do motorista">
+                    <select name="" id="" aria-placeholder="Filtrar por">
+                        <option value="">Placa</option>
+                        <option value="">Nome/Placa</option>
+                        <option value="">Cidade</option>
+                        <option value="">Bairro</option>
+                        <option value="">Estado</option>
+                    </select>
+                    <a href="./search.html"
+                        style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"> <i
+                            class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                </span>
+            </div>
+            <div class="nav__desktop__top__items">
+                <div class="mobile-bottom-nav__item">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile link_active"></i></a>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <label for="modal-4">
+                            <i class="fa-solid fa-bell icon__mobile"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content">
+                        <label for="modal-1">
+                            <i class="fa-solid fa-caret-down icon__mobile js-open-modal"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item-content">
+                    <div class="icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- navbar mobile -->
+    <section class="nav__mobile">
+        <div class="nav__mobile__top">
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <span id="logoMobile">
+                        <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                    </span>
+                </div>
+            </div>
+
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <h3>Perfil</h3>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-4">
+                    <i class="fa-solid fa-bell icon__mobile"></i>
+                </label>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main>
+        <!-- navbar mobile -->
+        <div class="f__navbar__mobile">
+            <nav class="f__navbar">
+                <ul>
+                    <li><a href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span class="public">Publicações</span></a></li>
+                <li><a href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span class="public">Salvos</span></a></li>
+                <li><a id="active" href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span class="public">Contestação</span></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- background card -->
+        <div class="background">
+            <div class="background__content"></div>
+            <div class="card__perfil__mobile__print">
+                <div class="flex padding__card">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                    <span>
+                        <h4 id="nameUser" class="nameUser">Rafaella Kimberlly</h4>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+         <!-- tópico
+         <div class="top__contest flex justify">
+            <p>Contestação:</p>
+            <hr>
+        </div> -->
+
+        <!-- card infos perfil -->
+        <section class="content__feed contestation">
+                        <!-- <div class="card__infos__perfil">
+                    <div class="card__flex padding__card">
+                        <div class="icon__perfil icon__user__perfil">
+                            <span class="initial__user" id="initial">R</span>
+                        </div>
+                        <div class="card__text">
+                        <h4 id="nameUser">Rafaella Kimberlly</h4>
+                            <span class="text__location">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <p id="city">São Paulo - SP</p>
+                    </span>
+                </div>
+                <button class="edit__button"><i class="fa-regular fa-pen-to-square"></i>Editar Perfil</button>
+                    </div>
+                    <div class="padding__card">
+                        <div class="flex justify">
+                            <h5>Publicações</h5>
+                            <span id="data__pub" class="data__user">5</span>
+                        </div>
+                        <div class="flex justify top">
+                            <h5>Buscas</h5>
+                            <span id="data__bus" class="data__user">5</span>
+                        </div>
+                    </div>
+                </div> -->
+            <!-- </div> -->
+
+
+            <!------------------------------------------CONTENT FEED ------------------------------>
+
+            <!-- card informações do usuario -->
+            <!-- <div class="flex">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial">R</span>
+                    </div>
+                    <span class="flex new__publication">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p id="city">Escreva uma nova publicação</p>
+                    </span>
+                </div> -->
+
+            <div class="container__feed__contestation">
+                 <!-- tópico -->
+                 <div class="top__contest flex justify">
+                    <p>Status das Contestações:</p>
+                    <hr>
+                </div>
+
+                <div class="topic__link__contestation">
+                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                </div>
+                <!-- publicação  -->
+                <br>
+                <div class="content__complaint">
+                    <div class="header__complaint flex justify_step">
+                        <div class="flex">
+                            <div class="about__data">
+                                <div class="form">
+                                    <input id="one" type="radio" name="stage" checked="checked" />
+                                    <input id="two" type="radio" name="stage" />
+                                    <input id="six" type="radio" name="stage" />
+                                    
+                                    <div class="stages">
+                                        <label for="one">1</label>
+                                        <label for="two">2</label>
+                                        <label for="six">3</label>
+                                    </div>                                   
+
+                                    <span class="progress"><span></span></span>
+                                    <div class="step__title"><p style="margin-right:18px;">Enviada</p>
+                                        <p>Em análise</p>
+                                        <p>Conclúida</p>
+                                        </div>
+
+                                    <div class="panels">
+
+                                        <div data-panel="one">
+                                            <form action="">
+                                                <label class="message__step">
+                                                    <span class="icon__message__step">
+                                                        <i class="fa-solid fa-paper-plane"></i>
+                                                    </span>
+                                                    <h2 class="section__title about__title">Sua denúncia foi enviada com
+                                                        sucesso</h2>
+                                                    <p class="about__description">Estamos aguardando o BackOffice
+                                                        iniciar a análise da sua denúncia,
+                                                        geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
+                                                        esta página.</p>
+                                        </div>
+                                        </label>
+
+                                        <div data-panel="two">
+                                            <label class="message__step">
+                                                <span class="icon__message__step">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </span>
+                                                <h2 class="section__title about__title">Sua denúncia está sendo
+                                                    analisada</h2>
+                                                <p class="about__description">Estamos analisando a sua denúncia e
+                                                    verificando todos os pontos,
+                                                    geralmente isso leva de 2 a 3 dias. Para acompanhar o processo basta
+                                                    verificar aqui.</p>
+                                        </div>
+                                        </label>
+                                        <div data-panel="six">
+                                            <label class="message__step">
+                                                <span class="icon__message__step">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </span>
+                                                <h2 class="section__title about__title">Denúncia analisada</h2>
+                                                <p class="about__description justify">Averiguamos todas as provas enviadas e comparamos
+                                                    com o relato e concluímos que a denúncia não apresenta nenhum motivo para ser removida.</p>
+                                        </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                </form>
+                                <br><br>
+                                <div class="bottom__link__contestation">
+                                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 
+            <!-- /publicação  -->
+            </div>
+
+            <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
+
+            <!-- initial navbar right -->
+            <div class="card__infos__navbar config">
+                    <nav class="i__navbar">
+                        <ul>
+                            <li><a href="./perfil.html">Minhas Publicações</a></li>
+                            <li><a href="./perfil-save.html">Salvos</a></li>
+                            <li><a id="activeleft" href="#">Suas Contestações</a></li>
+                        </ul>
+                    </nav>
+
+
+
+                    <!-- Card  -->
+                    <div class="card__write">
+                        <div class="flex">
+                            <button class="edit__button__card" style="margin: 0%;"><a href="./new-publication.html">Escrever</a></button>
+                        </div>
+                
+                            <div class="font__card">
+                                <h6>Públique uma denúncia no seu perfil</h6>
+                            </div>
+                    </div>
+                </div>
+            </section>
+    
+            <div style="display: none;" class="toggle">
+                <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+                <label for="switch">Toggle</label>
+            </div>
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+        <!-- modal navbar / mains opções de link -->
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
+                <a class="options__modal__user" href="./perfil-save.html">Casos salvos</a>
+                <a class="options__modal__user" href="./perfil-contestation.html">Denuncias em analise</a>
+                <a class="options__modal__user" href="./config-infos.html">Configurações</a>
+                <hr>
+                <span class="flex justify">
+                    <a class="options__modal__user" href="#">Sair</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- modal / notificações -->
+        <input class="modal-state" id="modal-4" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-4"></label>
+            <div class="modal__inner__notify padding__card">
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <hr>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <hr>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <hr>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <hr>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal classificação dos casos -->
+        <input class="modal-state" id="modal-5" type="checkbox" />
+        <div class="modal modal__classific">
+            <label class="modal__bg__search" for="modal-5"></label>
+            <div class="modal__inner__classific padding__card ">
+                <h5>Classificação dos casos</h5>
+                <p class="desc__cases__type">Aqui na GO as denúncias são classificadas, facilitando para que você faça a
+                    sua denúncia e também
+                    para que visualize de forma mais rápida o tipo de caso que está lendo.</p>
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__assedio circle__classification"></div>
+                        <h5>Assédio</h5>
+                    </div>
+                    <p class="desc__classfication">De acordo com a lei, o assédio é crime quando praticado por superior
+                        hierárquico ou ascendente. Há duas interpretações em relação à prática do ato: o assédio pode
+                        ocorrer pelo simples constrangimento da vítima ou pela prática contínua de atos constrangedores.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__assedio__moral circle__classification"></div>
+                        <h5>Assédio Moral</h5>
+                    </div>
+                    <p class="desc__classfication">assédio moral é definido como “ofensa reiterada da dignidade de
+                        alguém que cause danos ou sofrimento físico ou mental no exercício do emprego, cargo ou função”.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__racism circle__classification"></div>
+                        <h5>Racismo</h5>
+                    </div>
+                    <p class="desc__classfication">Racismo é definido como “Praticar, induzir ou incitar a discriminação
+                        ou preconceito de raça, cor, etnia, religião ou procedência nacional.”.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__agressao__fisica circle__classification"></div>
+                        <h5>Agressão Fisica</h5>
+                    </div>
+                    <p class="desc__classfication">
+                        É caracterizada como qualquer ação que ofenda a integridade e saúde do corpo da vítima. São
+                        considerados atos de violência física: espancamentos, lesões causadas por objetos, empurrões,
+                        beliscões, pontapés, ou qualquer outra forma de agressão.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__agressao__verbal circle__classification"></div>
+                        <h5>Agressão Verbal</h5>
+                    </div>
+                    <p class="desc__classfication">
+                        A violência verbal é um comportamento agressivo, caracterizado por palavras danosas, que têm a
+                        intenção de ridicularizar, humilhar, manipular e/ou ameaçar.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__homofobia circle__classification"></div>
+                        <h5>Homofobia</h5>
+                    </div>
+                    <p class="desc__classfication">
+                        "praticar, induzir ou incitar a discriminação ou preconceito" em razão da orientação sexual da
+                        pessoa pode ser considerado homofobia.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__preconceito circle__classification"></div>
+                        <h5>Preconceito</h5>
+                    </div>
+                    <p class="desc__classfication">
+                        Praticar, induzir ou incitar a discriminação ou preconceito de raça, cor, etnia, religião ou
+                        procedência nacional. Pena: reclusão de um a três anos e multa.
+                    </p>
+                    <hr>
+                </div>
+
+                <div class="card__more__class">
+                    <div class="top__classification classification__complaint">
+                        <div class="circle__furto circle__classification"></div>
+                        <h5>Furto</h5>
+                    </div>
+                    <p class="desc__classfication">
+                        O crime de furto é descrito como subtração, ou seja, diminuição do patrimônio de outra pessoa,
+                        sem que haja violência
+                    </p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal de busca -->
+        <span class="display__modal">
+            <input class="modal-state" id="modal-2" type="checkbox" />
+            <div class="modal modal__search">
+                <label class="modal__bg__search" for="modal-2"></label>
+                <div class="modal__inner__search">
+                    <div>
+                        <p>Faça sua busca</p>
+                        <span class="nav__mobile__input">
+                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
+                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
+                                <option value="">Placa</option>
+                                <option value="">Nome/Placa</option>
+                                <option value="">Cidade</option>
+                                <option value="">Bairro</option>
+                                <option value="">Estado</option>
+                            </select>
+                            <a href="./search.html"
+                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
+                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </span>
+
+    </main>
+
+    <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+    <section class="nav__mobile">
+        <nav class="mobile-bottom-nav">
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                </div>
+            </div>
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-2">
+                       <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                <div class="mobile-bottom-nav__item-content">
+                    <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
+                </div>
+            </div>
+
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-1">
+                        <i class="fa-solid fa-angle-up icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <script src="./assets/js/script-components.js"></script>
+    <script src="./assets/js/dark-mode.js"></script>
+</body>
+
+</html>
