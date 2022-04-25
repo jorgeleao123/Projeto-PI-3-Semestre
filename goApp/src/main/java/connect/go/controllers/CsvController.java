@@ -36,8 +36,8 @@ public class CsvController {
                 for (int i2 = i; i2 < complaintListaObj.getTamanho(); i2++) {
                     Complaint aux = complaintListaObj.getElemento(i);
                     if (complaintListaObj.getElemento(i2).getUser().getId() < aux.getUser().getId()) {
-                        complaintListaObj.AlterarIndex(i, complaintListaObj.getElemento(i2));
-                        complaintListaObj.AlterarIndex(i2, aux);
+                        complaintListaObj.alterarIndex(i, complaintListaObj.getElemento(i2));
+                        complaintListaObj.alterarIndex(i2, aux);
                     }
                 }
             }
@@ -92,8 +92,8 @@ public class CsvController {
             for (int i2 = i; i2 < complaintListaObj.getTamanho(); i2++) {
                 Complaint aux = complaintListaObj.getElemento(i);
                 if (complaintListaObj.getElemento(i2).getUser().getId() < aux.getUser().getId()) {
-                    complaintListaObj.AlterarIndex(i, complaintListaObj.getElemento(i2));
-                    complaintListaObj.AlterarIndex(i2, aux);
+                    complaintListaObj.alterarIndex(i, complaintListaObj.getElemento(i2));
+                    complaintListaObj.alterarIndex(i2, aux);
                 }
             }
         }

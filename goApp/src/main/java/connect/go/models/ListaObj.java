@@ -106,7 +106,7 @@ public class ListaObj<T> {
         nroElem = 0;
     }
 
-    public void AlterarIndex(int index, T valorNovo) {
+    public void alterarIndex(int index, T valorNovo) {
         if (index > nroElem + 1) {
             System.out.println("index não existe");
         } else {
