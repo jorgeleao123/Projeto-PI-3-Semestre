@@ -26,7 +26,7 @@ public class Driver {
     @NotBlank
     private String license;
 
-    private String sex;
+    private String genre;
 
 
 }

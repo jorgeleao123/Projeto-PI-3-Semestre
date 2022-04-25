@@ -47,7 +47,7 @@ class FavoriteAddressServiceTest {
         user.setEmail("mauricio@teste.com");
         user.setPassword("senhaTeste");
         user.setRole("Usuario");
-        user.setSex("Masculino");
+        user.setGenre("Masculino");
         user = userService.register(user);
         address.setCep("03427080");
         address.setCity("São Paulo");

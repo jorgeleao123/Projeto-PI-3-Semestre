@@ -33,7 +33,7 @@ public class User {
     @NotBlank
     private String role;
     @NotBlank
-    private String sex;
+    private String genre;
 
 
 

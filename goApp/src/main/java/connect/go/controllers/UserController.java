@@ -9,6 +9,7 @@ import connect.go.models.UserRegistration;
 import connect.go.models.UserResponse;
 import connect.go.usecases.FavoriteAddressService;
 import connect.go.usecases.AddressService;
+import connect.go.usecases.UserResponseAdapter;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -39,6 +39,8 @@ public class UserController {
 
     private final FavoriteAddressService favoriteAddressService;
 
+    private final UserResponseAdapter userResponseAdapter = new UserResponseAdapter();
+
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegistration userRegistration) {
         User user = userService.register(userRegistration.getUser());
@@ -48,7 +50,7 @@ public class UserController {
         favoriteAddressId.setAddressId(address.getId());
         favoriteAddressId.setUserId(user.getId());
         favoriteAddressService.register(favoriteAddressId);
-        return ResponseEntity.status(201).body(this.convertUserToUserResponse(user));
+        return ResponseEntity.status(201).body(userResponseAdapter.execute(user));
     }
 
     @PostMapping("/login/{email}/{password}")
@@ -57,7 +59,7 @@ public class UserController {
         if (users.size() != 1) {
             throw new BadRequestException();
         }
-        return ResponseEntity.status(200).body(this.convertUserToUserResponse(users.get(0)));
+        return ResponseEntity.status(200).body(userResponseAdapter.execute(users.get(0)));
     }
 
     @GetMapping
@@ -66,17 +68,13 @@ public class UserController {
         if (users.isEmpty()) {
             return ResponseEntity.status(204).build();
         }
-        List<UserResponse> responseUser = new ArrayList<>();
-        for (User user : users) {
-            responseUser.add(convertUserToUserResponse(user));
-        }
-        return ResponseEntity.status(200).body(responseUser);
+        return ResponseEntity.status(200).body(userResponseAdapter.execute(users));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponse> getUserById(@PathVariable int id) {
         User user = userService.getById(id);
-        return ResponseEntity.status(200).body(convertUserToUserResponse(user));
+        return ResponseEntity.status(200).body(userResponseAdapter.execute(user));
     }
 
     @PutMapping("/{id}")
@@ -113,11 +111,5 @@ public class UserController {
         } catch (Exception e) {
             throw new UserNotFoundException();
         }
-    }
-
-    private UserResponse convertUserToUserResponse(User user) {
-        return new UserResponse(
-                user.getId(), user.getName(), user.getEmail(), user.getRole(),
-                user.getSex());
     }
 }

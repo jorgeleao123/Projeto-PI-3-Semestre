@@ -139,7 +139,7 @@ class UserServiceTest {
         user.setEmail("mauricio@teste.com");
         user.setPassword("senhaTeste");
         user.setRole("Usuario");
-        user.setSex("Masculino");
+        user.setGenre("Masculino");
         return user;
     }
 }
