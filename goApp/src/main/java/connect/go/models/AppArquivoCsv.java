@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class AppArquivoCsv {
 
-    public static  void gravaArquivoCsv(Complaint complaint, String nomeArq,boolean reescrever) {
+    public static void gravaArquivoCsv(ListaObj<Complaint> complaintListaObj, String nomeArq) {
         FileWriter arq = null;  // arq é o obj que corresponde ao arquivo
         Formatter saida = null; // obj que será usado para escrever no arquivo
         nomeArq += ".csv";  // acrescenta a extensão .CSV ao nome do arquivo
@@ -23,7 +23,7 @@ public class AppArquivoCsv {
 //            arq = new FileWriter(nomeArq);
             // Se quiser que o conteúdo seja acrescentado ao final do arquivo,
             // teria que fazer:
-            arq = new FileWriter(nomeArq, reescrever);
+            arq = new FileWriter(nomeArq, false);
             saida = new Formatter(arq);
         } catch (IOException erro) {
             System.out.println("Erro ao abrir o arquivo");
@@ -33,10 +33,13 @@ public class AppArquivoCsv {
         // Bloco try catch para gravar no arquivo
         try {
 
-//               // gravo os dados desse objeto, separando cada campo por um ;
-            saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getTitle(), complaint.getArchive(),
-                    complaint.getStatus(), complaint.getBo(), complaint.getDateTimeComplaint(), complaint.getType(), complaint.getDriver().getId()
-                    , complaint.getUser().getId(), complaint.getAddress().getId());
+            for (int i = 0; i < complaintListaObj.getTamanho(); i++) {
+                Complaint complaint = complaintListaObj.getElemento(i);
+                //               // gravo os dados desse objeto, separando cada campo por um ;
+                saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getTitle(), complaint.getArchive(),
+                        complaint.getStatus(), complaint.getBo(), complaint.getDateTimeComplaint(), complaint.getType(), complaint.getDriver().getId()
+                        , complaint.getUser().getId(), complaint.getAddress().getId());
+            }
 
         } catch (FormatterClosedException erro) {
             System.out.println("Erro ao gravar o arquivo");
@@ -88,7 +91,7 @@ public class AppArquivoCsv {
                 String idDriver = entrada.next();
                 String idUser = entrada.next();
                 String idAddress = entrada.next();
-                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, title, archive, status,bo, dateTimeComplaint,
+                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, title, archive, status, bo, dateTimeComplaint,
                         type, idDriver, idUser, idAddress);
             }
         } catch (NoSuchElementException erro) {
