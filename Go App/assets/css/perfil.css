@@ -7,7 +7,7 @@
 .background__content{
     width: 100%;
     height: 80%;
-    background-color: #144D6C;
+    background-color: var(--color-toggle);
     padding: 10%;
     border-radius: 3px;
     box-shadow: 0px 4px 8px -5px rgba(0,0,0,0.64);
@@ -22,14 +22,14 @@
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: var(--menu-color);
+    background-color: var(--modal-color);
     border-radius: 3px;
     box-shadow: 0px 4px 8px -2px rgba(0,0,0,0.64);
 }
 
 /* Card Informações do Perfil  */
 .card__infos__perfil{
-    background-color: white;
+    background-color: var(--modal-color);
     border-radius: 3px;
     height: 300px;
     padding-bottom: 15px;
@@ -51,6 +51,9 @@
 .card__text{
     align-items: center;
     width: 100%;
+}
+.card__text h4{
+    padding-bottom: 10px;
 }
 .icon__perfil{
     min-width: 35px;
@@ -78,35 +81,38 @@
     font-weight: bold;
     padding: 10px;
     border-radius: 2px;
-    border: solid #144D6C;
+    border: solid 2px var(--first-color);
     background-color: Transparent;
-    color: #144D6C;
+    color: var(--first-color);
     width: 100%;
     cursor: pointer;
 }
 .edit__button:hover{
-    background-color: #144D6C;
-    color: white;
+    background-color: var(--first-color);
+    color: var(--text-color);
 }
 .edit__button__card{
     font-weight: bold;
     padding: 10px;
     border-radius: 2px;
-    border: solid #144D6C;
+    border: solid 2px var(--first-color);
     background-color: Transparent;
-    color: #144D6C;
+    color: var(--first-color);
     width: 100%;
     cursor: pointer;
 }
 .edit__button__card:hover{
-    background-color: #144D6C;
-    color: white;
+    background-color: var(--first-color);
+    color: var(--text-color);
 }
 .fa-pen-to-square{
     padding-right: 5px;
     font-size: 20px;
 }
-
+/* feed */
+.container__feed__perfil{
+    width: 49%;
+}
 /* initial menu right*/
 .i__navbar{
     width: 100%;
@@ -119,14 +125,14 @@
 }
 .i__navbar ul{
     padding: 0;
-    background-color: var(--input-color);
+    background-color: var(--background-card);
 }
 .i__navbar li{
     border-bottom: 1px solid var(--border-color);
 }
 #activeleft{
-    border-left: 3px solid #144D6C;
-    color: solid #144D6C;
+    border-left: 3px solid var(--first-color);
+    color: solid var(--first-color);
 }
 .i__navbar li a{
     font-size: var(--small-font-size);
@@ -143,15 +149,19 @@
 
 /* Card escrever publicação */
 .card__write{
-    font-size: var(--smaller-font-size);
-    background-color: var(--background-card);
-    margin-top: 15px;
     width: 100%;
-}
-.font__card{
+    height: auto;
+    padding: 15px;
+    background-color: var(--background-card);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
-    text-justify: inter-word;
+    color: rgb(191, 189, 189);
+    margin-top: 15px;
 }
+
+
 
 /* final menu */
 .f__navbar__mobile{
@@ -175,7 +185,7 @@
 .f__navbar ul{
     display: flex;
     justify-content: space-between;
-    background-color: var(--input-color);
+    background-color: var(--background-card);
 }
 .f__navbar li{
     border-bottom: 1px solid var(--input-color);
@@ -197,12 +207,12 @@
 }
 
 .f__navbar li.active{
-    border-bottom: 3px solid #144D6C;
+    border-bottom: 3px solid var(--first-color);
 }
 
 #active{
-    border-bottom: 3px solid #144D6C;
-    color:#144D6C;
+    border-bottom: 3px solid var(--first-color);
+    color:var(--first-color);
 }
 
 
@@ -211,7 +221,9 @@
 /*======= PADDING =======*/
 
 @media screen and (min-width: 1600px) {
-
+    .container__feed__perfil {
+        max-width: 500px;
+    }
     .card__infos__perfil {
         display: block;
     }
@@ -222,6 +234,9 @@
     .card__perfil__mobile{
         display: none;
     }
+    .perfil{
+        width: 50%;
+    }
     
 
 }
@@ -229,6 +244,11 @@
 
 
 @media screen and (max-width: 1599px) {
+    .container__feed__perfil {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
     .card__infos__perfil{
         display: block;
     }
@@ -250,7 +270,12 @@
 
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1448px) {
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
     .card__infos__perfil{
         display: block;
     }
@@ -296,7 +321,9 @@
     }
 }
 @media screen and (max-width: 950px) {
-    
+    .container__feed__perfil {
+        width: 100% !important;
+    }
    
     .card__infos__perfil {
         height: 320px;
@@ -307,6 +334,9 @@
     }
 }
 @media screen and (max-width: 900px) {
+    .container__feed__perfil {
+        width: 100% !important;
+    }
     
     .card__perfil__mobile{
         display: block;
@@ -327,7 +357,7 @@
         display: none;
         height: 320px;
     }
-
+    
 
 }
 @media screen and (max-width: 400px) {

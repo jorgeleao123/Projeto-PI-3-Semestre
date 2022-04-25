@@ -144,7 +144,6 @@ input[type="radio"] {
 
 .bottom__link__contestation{
 	display: none;
-	margin-top: 10%;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -179,7 +178,7 @@ input[type="radio"] {
 .message__step{
     display: grid;
     justify-items: center;
-    padding: 15px;
+    padding: 45px;
     gap: 10%;
     text-align: center;
 }
@@ -236,10 +235,10 @@ input{
 .icon__message__step{
     display: flex;
     border-radius: 50%;
-    border: 4px solid #122C69;
+    border: 4px solid var(--first-color);
     width: 60px !important;
     height: 60px !important;
-    background-color: #ffffff;
+    background-color: var(--body-color);
     padding: 10px;
     position: relative;
 }
@@ -247,7 +246,7 @@ input{
     position: absolute;
     font-size: 30px;
     padding-top: 1px;
-    color: #122C69;
+    color: var(--first-color);
     font-style: var(--font-semi-bold);
 }
 
@@ -261,20 +260,30 @@ input{
 	font-weight: bold;
     padding: 10px;
     border-radius: 2px;
-    border: solid #144D6C;
+    border: solid var(--color-toggle);
     background-color: Transparent;
     color: #144D6C;
     width: 100%;
     cursor: pointer;
 }
 .edit__button__save:hover{
-    background-color: #144D6C;
+    background-color: var(--color-toggle);
     color: white;
+}
+.container__feed__contestation{
+	width: 73%;
+}
+.config{
+	width: 300px;
+	padding-top: 33px;
 }
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
 @media screen and (min-width: 1600px) {
+	.container__feed__contestation {
+        max-width: 730px;
+    }
 	
 	.top__contest hr {
         width: 75%;
@@ -288,12 +297,21 @@ input{
     .top__contest hr {
         width: 75%;
     }
+	.container__feed__contestation {
+		height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
 }
 @media screen and (max-width: 1400px) {
     .top__contest hr {
         width: 100%;
     }
-
+	.container__feed__contestation {
+		height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
 
 }
 
@@ -301,7 +319,9 @@ input{
     .top__contest hr {
         width: 75%;
     }
-
+	.container__feed__contestation {
+        width: 100% !important;
+    }
 	
 }
 
@@ -316,6 +336,9 @@ input{
 		
 	.top__contest hr {
         width: 75%;
+    }
+	.container__feed__contestation {
+        width: 100% !important;
     }
 
 	}

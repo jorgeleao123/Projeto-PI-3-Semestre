@@ -4,7 +4,6 @@
     padding: 30px 0;
     font-size: 13.5px;
     width: 100%;
-    padding-right: 30%;
 }
 
 .topic__save hr {
@@ -17,8 +16,6 @@
     border: 0.2px solid var(--border-color);
     
 }
-
-
 
 .content__feed__save {
     width: 100%;
@@ -36,25 +33,17 @@
     border-radius: 2px;
     box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
 }
+.top__save{
+    padding-top: 25px;
+    width: 350px;
+}
 
-.edit__button__save{
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 2px;
-    border: solid #144D6C;
-    background-color: Transparent;
-    color: #144D6C;
-    width: 100%;
-    cursor: pointer;
-}
-.edit__button__save:hover{
-    background-color: #144D6C;
-    color: white;
-}
 .margin__save{
     margin-left: 10%;
 }
-
+.container__feed__save{
+    width: 75%;
+}
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
@@ -67,7 +56,9 @@
         display: block;
     }
 
-    
+    .container__feed__save {
+        max-width: 730px;
+    }   
 
 
 }
@@ -78,7 +69,7 @@
     }
 
     .container__feed__save {
-        height: calc(94vh - 51px);
+        height: calc(94vh - 40px);
         overflow: scroll;
         overflow-x: hidden;
     }
@@ -96,7 +87,7 @@
     }
 
     .container__feed__save {
-        height: calc(94vh - 51px);
+        height: calc(94vh - 40px);
         overflow: scroll;
         overflow-x: hidden;
     }
@@ -104,6 +95,7 @@
     .card__perfil__mobile__print {
         display: block;
     }
+    
 
 }
 
@@ -133,9 +125,7 @@
 }
 
 @media screen and (max-width: 900px) {
-    .topic__save {
-        padding-right: 0%;
-    }
+    
     .topic__save hr {
         width: 100%;
     }
