@@ -46,7 +46,7 @@ public class UserService {
 
     public boolean updateById(Integer id, User user) {
         if (userRepository.existsById(id)) {
-            return userRepository.updateById(id, user.getName(), user.getEmail(), user.getRole(), user.getSex()).equals(1);
+            return userRepository.updateById(id, user.getName(), user.getEmail(), user.getRole(), user.getGenre()).equals(1);
         }
         throw new UserNotFoundException();
     }

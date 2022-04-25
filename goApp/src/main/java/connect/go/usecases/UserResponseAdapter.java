@@ -11,7 +11,7 @@ public class UserResponseAdapter {
     public UserResponse execute(User user) {
         return new UserResponse(
                 user.getId(), user.getName(), user.getEmail(), user.getRole(),
-                user.getSex());
+                user.getGenre());
     }
 
     public List<UserResponse> execute(List<User> users) {

@@ -81,7 +81,7 @@ class AddressServiceTest {
         user.setEmail("mauricio@teste.com");
         user.setPassword("senhaTeste");
         user.setRole("Usuario");
-        user.setSex("Masculino");
+        user.setGenre("Masculino");
         user = userService.register(user);
         Address address = service.register(generateValidAdderss());
         Address address2 = generateValidAdderss();
