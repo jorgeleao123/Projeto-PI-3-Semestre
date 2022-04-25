@@ -108,4 +108,19 @@ public class ListaObj<T>{
         nroElem = 0;
     }
 
+    public void ordenarPorIdDoUsuario(){
+        for(int i = 0; i < this.getTamanho(); i++){
+            if(this.getElemento(i) instanceof Complaint){
+                for(int j = i + 1; j < this.getTamanho() - 1; j++){
+                    int elementoAnterior = ((Complaint) this.getElemento(i)).getUser().getId();
+                    int elementoPosterior = ((Complaint) this.getElemento(j)).getUser().getId();
+                    if(elementoAnterior > elementoPosterior){
+                        ((Complaint) this.getElemento(i)).setUser(((Complaint) this.getElemento(j)).getUser());
+                        ((Complaint) this.getElemento(j)).setUser(((Complaint) this.getElemento(i)).getUser());
+                    }
+                }
+            }
+        }
+    }
+
 }
