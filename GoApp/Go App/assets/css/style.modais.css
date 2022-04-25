@@ -73,7 +73,9 @@
     opacity: 0;
     visibility: hidden;
     z-index: 4545456;
-    position: fixed;
+    position: absolute;
+    top: 24px;
+    right: 0;
     text-align: left;
     transition: opacity .25s ease;
 }

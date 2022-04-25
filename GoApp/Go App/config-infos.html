@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Contestar | GO</title>
+    <title>Configurações | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
+    <link rel="stylesheet" href="./assets/css/style.configs.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
         <div class="nav__desktop__top">
             <div class="nav__desktop__top__items">
                 <span id="logo">
-                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                    <img src="../assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
                     <input type="search" placeholder="Busque pela placa ou nome do motorista">
@@ -35,7 +36,7 @@
                         <option value="">Bairro</option>
                         <option value="">Estado</option>
                     </select>
-                    <a href="./search.html"
+                    <a href="../search.html"
                         style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
@@ -48,7 +49,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <i class="fa-solid fa-user icon__mobile"></i>
+                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                     </div>
                 </div>
 
@@ -89,14 +90,14 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Contestar</h3>
+                    <h3>Configurações</h3>
                 </div>
             </div>
 
             <div class="">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
-                        <i class="fa-regular fa-bell icon__mobile"></i>
+                        <i class="fa-solid fa-bell icon__mobile"></i>
                     </label>
                 </div>
             </div>
@@ -108,65 +109,99 @@
     <main>
         <section>
             <div class="container__form form__publication">
+                <!-- navegações configs -->
+                <div class="more__inputs">
+                    <nav class="i__navbar">
+                        <ul>
+                            <li class="title__card">
+                                <p><b>Configurações</b></p>
+                            </li>
+                            <li><a id="activeleft" href="./config-infos.html">Minhas Informações</a></li>
+                            <li><a href="./config-view.html">Opções de Visualização</a></li>
+                            <li class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Perfil navbar mobile -->
+                    <div class="f__navbar__mobile">
+                        <nav class="f__navbar">
+                            <ul>
+                                <li><a id="active" href="./config-infos.html"><i class="fa-regular fa-pen-to-square"></i><span
+                                            class="public">Dados</span></a></li>
+                                <li><a href="./config-view.html"><i class="fa-regular fa-eye"></i></i><span
+                                            class="public">Visualização</span></a></li>
+                                <li><a href="./config-account.html"><i class="fa-regular fa-id-badge"></i><span
+                                            class="public">Conta</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- formulario -->
                 <div class="inputs__publication">
+                    <form action="">
+                    <!-- card capa e perfil -->
+                    <div class="edit__profile">
+                        <div class="edit__capa">
+                            <div class="edit__icon">
+                                <input class="ipt__edit__color" type="color" value="#7b68ee" placeholder="lala">
+                            </div>
+                            <div>
+                                <input class="ipt__edit__color" type="color" value="#be156a" placeholder="lala">
+                            </div>
+                        </div>
+                        <div class="padding__edit">
+                        
+                        <div class="form__publication">
+                            <div class="ipt__form">
+                                <label for="Nome">Nome</label>
+                                <input type="text" name="" id="" placeholder="Insira seu nome de usuario">
+                            </div>
+                            <div class="ipt__form">
+                                <label for="CEP">CEP</label>
+                                <input type="text" name="" id="" placeholder="Insira seu CEP">
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                     <!-- tópico -->
                     <div class="topic__feed flex justify">
                         <span class="flex">
-                            <p><b>Contestar</b></p>
+                            <p><b>Mais Informações</b></p>
                         </span>
                         <hr>
                     </div>
-                    <form action="">
-                        <label for="Descrição">Descrição</label>
-                        <textarea name="" id="" cols="10" rows="6" placeholder="Descreva a sua versão"></textarea>
-                        <div class="form__publication">
-                            <div class="ipt__form">
-                                <label for="Data do ocorrido">Data do ocorrido</label>
-                                <input type="date" name="" id="">
-                            </div>
-                            <div class="ipt__form">
-                                <label for="codigo do boletim">codigo do boletim</label>
-                                <input type="text" name="" id="" placeholder="Insira o código do boletim de ocorrencia">
-                            </div>
-                        </div>
-                        <div class="form__publication">
-                            <div class="ipt__form">
-                                <label for="Nome do motorista">Seu nome</label>
-                                <input type="text" name="" id="" placeholder="Insira o nome do motorista">
-                            </div>
 
-                            <div class="ipt__form">
-                                <label for="Placa do veiculo">Placa do veiculo</label>
-                                <input type="text" name="" id="" placeholder="Insira a placa do veiculo">
-                            </div>
-
+                    <div class="form__publication">
+                        <div class="ipt__form">
+                            <label for="Email">Email</label>
+                            <input type="text" name="" id="" placeholder="Insira seu Email">
                         </div>
                     </div>
-                        <div class="more__inputs">
-                            <div class="form__publication">
-                                <div class="ipt__form">
-                                    <label for="codigo do boletom">Quem é você</label>
-                                    <select class="form__sel" name="" id="">
-                                        <option value="Sou o(a) motorista">Sou o(a) motorista</option>
-                                        <option value="Sou parente do motorista">Sou parente do motorista</option>
-                                        <option value="Conheço o motorista">Conheço o motorista</option>
-                                    </select>
-                                </div>
-                            </div>
-                                <div class="card__arq padding__card">
-                                    <h4>Adicionar Midia</h4>
-                                    <button class="btn__anx">
-                                        Anexar Arquivo
-                                    </button>
-                                    <h6>Deixe a sua contextação ainda mais completa, caso tenha boletim de ocorrencia, videos, fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
-                                </div>
+                    <div class="form__publication">
+                        <div class="ipt__form">
+                            <label for="Alterar senha">Alterar Senha</label>
+                            <input type="password" name="" id="" placeholder="Insira uma nova senha">
+                        </div>
 
-                                <button class="color__btn btn__publication"> Enviar
-                                </button>
+                        <div class="ipt__form">
+                            <label for="Confirmar senha">Confirmar Senha</label>
+                            <input type="password" name="" id="" placeholder="Insira a senha novamente">
+                        </div>
+                    </div>
 
-                                <div class="card__dics padding__card">
-                                    <h6>Apenas a nossa equipe vai ter acesso a essas informações. Faremos o possivel para evitar mais transtorno.</h6>
-                                </div>
+                        <div class="ipt__form">
+                            <span class="ipt__terms">
+                            <input type="checkbox">
+                            <h5>Concordo com os termos de responsabilidade</h5>
+                        </span>
+                        </div>
+
+                        <div class="ipt__form">
+                            <button class="edit__btn">
+                                Salvar Alterações
+                            </button>
+                        </div>
                     </form>
                 </div>
         </section>
@@ -174,7 +209,6 @@
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
-        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
@@ -183,8 +217,8 @@
         <div class="modal">
             <label class="modal__bg" for="modal-1"></label>
             <div class="modal__inner">
-                <a class="options__modal__user" href="#">Casos salvos</a>
-                <a class="options__modal__user" href="#">Denuncias em analise</a>
+                <a class="options__modal__user" href="./perfil-save.html">Casos salvos</a>
+                <a class="options__modal__user" href="./perfil-contestation.html">Denuncias em analise</a>
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
@@ -397,7 +431,7 @@
             </div>
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <i class="fa-solid fa-user icon__mobile"></i>
+                    <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                 </div>
             </div>
 
@@ -410,8 +444,8 @@
             </div>
         </nav>
     </section>
-    <script src="assets/js/script-components.js"></script>
-    <script src="assets/js/dark-mode.js"></script>
+    <script src="./assets/js/script-components.js"></script>
+    <script src="./assets/js/dark-mode.js"></script>
 </body>
 
 </html>

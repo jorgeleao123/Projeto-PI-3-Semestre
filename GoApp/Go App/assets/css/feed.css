@@ -50,6 +50,10 @@ input::placeholder {
     margin-top: 18px;
 }
 
+.header__complaint{
+    position: relative;
+}
+
 /* Card Informações do Usuario  */
 .card__infos__user {
     background-color: var(--background-card);
@@ -60,6 +64,14 @@ input::placeholder {
     width: 27%;
     min-width: 170px;
     max-width: 240px;
+}
+
+.label__modal{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
 }
 
 .card__infos__user h4 {

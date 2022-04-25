@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Publicar | GO</title>
+    <title>Configurações | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
+    <link rel="stylesheet" href="./assets/css/style.configs.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
         <div class="nav__desktop__top">
             <div class="nav__desktop__top__items">
                 <span id="logo">
-                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                    <img src="..//assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
                     <input type="search" placeholder="Busque pela placa ou nome do motorista">
@@ -35,7 +36,7 @@
                         <option value="">Bairro</option>
                         <option value="">Estado</option>
                     </select>
-                    <a href="./search.html"
+                    <a href="../search.html"
                         style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
@@ -48,7 +49,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <i class="fa-solid fa-user icon__mobile"></i>
+                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                     </div>
                 </div>
 
@@ -89,14 +90,14 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Publicar</h3>
+                    <h3>Configurações</h3>
                 </div>
             </div>
 
             <div class="">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
-                        <i class="fa-regular fa-bell icon__mobile"></i>
+                        <i class="fa-solid fa-bell icon__mobile"></i>
                     </label>
                 </div>
             </div>
@@ -108,117 +109,56 @@
     <main>
         <section>
             <div class="container__form form__publication">
-                <div class="inputs__publication">
+                <!-- navegações configs -->
+                <div class="more__inputs">
+                    <nav class="i__navbar">
+                        <ul>
+                            <li class="title__card">
+                                <p><b>Configurações</b></p>
+                            </li>
+                            <li><a href="./config-infos.html">Minhas Informações</a></li>
+                            <li><a id="activeleft" href="./config-view.html">Opções de Visualização</a></li>
+                            <li class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
+                        </ul>
+                    </nav>
+
+                    <!-- Perfil navbar mobile -->
+                    <div class="f__navbar__mobile">
+                        <nav class="f__navbar">
+                            <ul>
+                                <li><a href="./config-infos.html"><i
+                                            class="fa-regular fa-pen-to-square"></i><span
+                                            class="public">Dados</span></a></li>
+                                <li><a id="active" href="./config-view.html"><i class="fa-regular fa-eye"></i></i><span
+                                            class="public">Visualização</span></a></li>
+                                <li><a href="./config-account.html"><i class="fa-regular fa-id-badge"></i><span
+                                            class="public">Conta</span></a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="inputs__publication mode__text">
                     <!-- tópico -->
                     <div class="topic__feed flex justify">
                         <span class="flex">
-                            <p><b>Nova Publicação</b></p>
+                            <p><b>Tema</b></p>
                         </span>
                         <hr>
                     </div>
-                    <form action="">
-                        <label for="Descrição">Descrição</label>
-                        <textarea name="" id="" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
-                        <div class="form__publication">
-                            <div class="ipt__form">
-                                <label for="Data do ocorrido">Data do ocorrido</label>
-                                <input type="date" name="" id="">
-                            </div>
-                            <div class="ipt__form">
-                                <label for="codigo do boletim">codigo do boletim</label>
-                                <input type="text" name="" id="" placeholder="Insira o código do boletim de ocorrencia">
-                            </div>
+                    <div class="flex justify">
+                        <div>
+                            <h4>Escolha o tema da aplicação</h4>
+                            <h5>Você pode escolher entre o tema Light ou Dark</h5>
                         </div>
-                        <div class="form__publication">
-                            <div class="ipt__form">
-                                <label for="codigo do boletom">Estado onde ocorreu</label>
-                                <select class="form__sel" name="" id="">
-                                    <option value="AC">AC</option>
-                                    <option value="AL">AL</option>
-                                    <option value="AP">AP</option>
-                                    <option value="AM">AM</option>
-                                    <option value="BA">BA</option>
-                                    <option value="CE">CE</option>
-                                    <option value="DF">DF</option>
-                                    <option value="ES">ES</option>
-                                    <option value="GO">GO</option>
-                                    <option value="MA">MA</option>
-                                    <option value="MT">MT</option>
-                                    <option value="MS">MS</option>
-                                    <option value="MG">MG</option>
-                                    <option value="PA">PA</option>
-                                    <option value="PB">PB</option>
-                                    <option value="PR">PR</option>
-                                    <option value="PE">PE</option>
-                                    <option value="PI">PI</option>
-                                    <option value="RJ">RJ</option>
-                                    <option value="RN">RN</option>
-                                    <option value="RS">RS</option>
-                                    <option value="RO">RO</option>
-                                    <option value="RR">RR</option>
-                                    <option value="SC">SC</option>
-                                    <option value="SP">SP</option>
-                                    <option value="SE">SE</option>
-                                    <option value="TO">TO</option>
-                                </select>
-                            </div>
-                            <div class="ipt__form">
-                                <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
-                                <input type="text" name="" id="" placeholder="Insira a cidade onde o caso ocorreu">
-                            </div>
-                        </div>
-                        <div class="form__publication">
-                            <div class="ipt__form">
-                                <label for="Nome do motorista">Nome do(a) motorista</label>
-                                <input type="text" name="" id="" placeholder="Insira o nome do motorista">
-                            </div>
-
-                            <div class="ipt__form">
-                                <label for="Placa do veiculo">Placa do veiculo</label>
-                                <input type="text" name="" id="" placeholder="Insira a placa do veiculo">
-                            </div>
-
+                        <div class="toggle">
+                            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+                            <label for="switch">Toggle</label>
                         </div>
                     </div>
-                        <div class="more__inputs">
-                            <div class="form__publication">
-                                <div class="ipt__form">
-                                    <label for="codigo do boletom">Classificação do Caso</label>
-                                    <select class="form__sel" name="" id="">
-                                        <option value="Assédio">Assédio</option>
-                                        <option value="Assédio Moral">Assédio Moral</option>
-                                        <option value="Racismo">Racismo</option>
-                                        <option value="Agressão Física">Agressão Física</option>
-                                        <option value="Agressão Verbal">Agressão Verbal</option>
-                                        <option value="Homofobia">Homofobia</option>
-                                        <option value="Preconceito">Preconceito</option>
-                                        <option value="Furto">Furto</option>
-                                    </select>
-                                </div>
-                            </div>
-                                <div class="card__arq padding__card">
-                                    <h4>Adicionar Midia</h4>
-                                    <button>
-                                        Anexar Arquivo
-                                    </button>
-                                    <h6>Deixe a sua denuncia ainda mais completa, adicionando print do aplicativo, foto do motorista, video ou foto  do boletim de ocorrencia.</h6>
-                                </div>
-
-                                <button class="btn__publication">
-                                    Publicar
-                                </button>
-
-                                <div class="card__dics padding__card">
-                                    <h6>Seus dados não são visiveis para outros usuarios. Tomamos todos os cuidados para garantir sua segurança, verifique suas imagens adicionadas e garanta que nenhum dado seu vaze.</h6>
-                                </div>
-                    </form>
                 </div>
+            </div>
         </section>
-        <div style="display: none;" class="toggle">
-            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
-            <label for="switch">Toggle</label>
-        </div>
-        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
@@ -227,8 +167,8 @@
         <div class="modal">
             <label class="modal__bg" for="modal-1"></label>
             <div class="modal__inner">
-                <a class="options__modal__user" href="#">Casos salvos</a>
-                <a class="options__modal__user" href="#">Denuncias em analise</a>
+                <a class="options__modal__user" href="./perfil-save.html">Casos salvos</a>
+                <a class="options__modal__user" href="./perfil-contestation.html">Denuncias em analise</a>
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
@@ -441,7 +381,7 @@
             </div>
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <i class="fa-solid fa-user icon__mobile"></i>
+                    <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                 </div>
             </div>
 
@@ -454,8 +394,8 @@
             </div>
         </nav>
     </section>
-    <script src="assets/js/script-components.js"></script>
-    <script src="assets/js/dark-mode.js"></script>
+    <script src="./assets/js/script-components.js"></script>
+    <script src="./assets/js/dark-mode.js"></script>
 </body>
 
 </html>
