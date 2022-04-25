@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Busca | GO</title>
+    <title>Configurações | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/publication.css">
+    <link rel="stylesheet" href="./assets/css/style.configs.css">
 </head>
 
 <body>
@@ -23,7 +25,7 @@
         <div class="nav__desktop__top">
             <div class="nav__desktop__top__items">
                 <span id="logo">
-                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                    <img src="..//assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
                     <input type="search" placeholder="Busque pela placa ou nome do motorista">
@@ -34,7 +36,7 @@
                         <option value="">Bairro</option>
                         <option value="">Estado</option>
                     </select>
-                    <a href="./search.html"
+                    <a href="../search.html"
                         style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
@@ -54,8 +56,8 @@
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
                         <label for="modal-4">
-                        <i class="fa-solid fa-bell icon__mobile"></i>
-                    </label>
+                            <i class="fa-solid fa-bell icon__mobile"></i>
+                        </label>
                     </div>
                 </div>
 
@@ -88,15 +90,15 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Busca</h3>
+                    <h3>Configurações</h3>
                 </div>
             </div>
 
             <div class="">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
-                    <i class="fa-regular fa-bell icon__mobile"></i>
-                </label>
+                        <i class="fa-regular fa-bell icon__mobile"></i>
+                    </label>
                 </div>
             </div>
         </div>
@@ -105,227 +107,108 @@
 
     <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
     <main>
-        <!-- card infos user -->
-        <section class="content__feed">
-            <div class="card__infos__user">
-                <div class="flex padding__card">
-                    <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
-                    </div>
-                    <span>
-                        <h4 id="nameUser">Rafaella Kimberlly</h4>
-                        <p id="city">São Paulo - SP</p>
-                    </span>
-                </div>
-                <hr>
-                <div class="padding__card">
-                    <div class="flex justify">
-                        <h5>Publicações</h5>
-                        <span id="data__pub" class="data__user">5</span>
-                    </div>
-                    <div class="flex justify top">
-                        <h5>Buscas</h5>
-                        <span id="data__bus" class="data__user">5</span>
-                    </div>
-                </div>
-            </div>
+        <section>
+            <div class="container__form form__publication">
+                <!-- navegações configs -->
+                <div class="more__inputs">
+                    <nav class="i__navbar">
+                        <ul>
+                            <li class="title__card">
+                                <p><b>Configurações</b></p>
+                            </li>
+                            <li><a id="activeleft" href="./config-infos.html">Minhas Informações</a></li>
+                            <li><a href="./config-view.html">Opções de Visualização</a></li>
+                            <li class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
+                        </ul>
+                    </nav>
 
-            <!------------------------------------------Infos Search ------------------------------>
-            <div class="container__feed">
-                <div class="card__result__search">
-                    <div class="flex">
-                        <div class="color__topic__result">
-                            <h2>2</h2>
-                        </div>
-                        <div>
-                            <h4>Casos de Assédio</h4>
-                            <p>Casos ocorridos entre 15/02/2022 e 20/03/2022</p>
-                        </div>
+                    <!-- Perfil navbar mobile -->
+                    <div class="f__navbar__mobile">
+                        <nav class="f__navbar">
+                            <ul>
+                                <li><a id="active" href="./config-infos.html"><i class="fa-regular fa-pen-to-square"></i><span
+                                            class="public">Dados</span></a></li>
+                                <li><a href="./config-view.html"><i class="fa-regular fa-eye"></i></i><span
+                                            class="public">Visualização</span></a></li>
+                                <li><a href="./config-account.html"><i class="fa-regular fa-id-badge"></i><span
+                                            class="public">Conta</span></a></li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
-                <!-- publicação  -->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
+
+                <!-- formulario -->
+                <div class="inputs__publication">
+                    <form action="">
+                    <!-- card capa e perfil -->
+                    <div class="edit__profile">
+                        <div class="edit__capa">
+                            <div class="edit__icon">
+                                <input class="ipt__edit__color" type="color" value="#7b68ee" placeholder="lala">
                             </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <label for="modal-3">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                    </div>
-
-                    <span class="check__complaint">
-                        <h6>Possui boletim de ocorrencia</h6>
-                        <i class="fa-solid fa-certificate"></i>
-                    </span>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <hr>
-                </div>
-                <!-- /publicação  -->
-
-                <!-- publicação  -->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div style="background-color: rgb(37, 152, 161);"
-                                class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">F</span>
+                            <div>
+                                <input class="ipt__edit__color" type="color" value="#be156a" placeholder="lala">
                             </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">F**** C****</h4>
-                                <p id="gender">Homem</p>
-                            </span>
                         </div>
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
+                        <div class="padding__edit">
+                        
+                        <div class="form__publication">
+                            <div class="ipt__form">
+                                <label for="Nome">Nome</label>
+                                <input type="text" name="" id="" placeholder="Insira seu nome de usuario">
+                            </div>
+                            <div class="ipt__form">
+                                <label for="CEP">CEP</label>
+                                <input type="text" name="" id="" placeholder="Insira seu CEP">
+                            </div>
                         </div>
                     </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio__moral circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio Moral</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
+                    </div>
+                    <!-- tópico -->
+                    <div class="topic__feed flex justify">
+                        <span class="flex">
+                            <p><b>Mais Informações</b></p>
                         </span>
+                        <hr>
                     </div>
-                    <hr>
+
+                    <div class="form__publication">
+                        <div class="ipt__form">
+                            <label for="Email">Email</label>
+                            <input type="text" name="" id="" placeholder="Insira seu Email">
+                        </div>
+                    </div>
+                    <div class="form__publication">
+                        <div class="ipt__form">
+                            <label for="Alterar senha">Alterar Senha</label>
+                            <input type="password" name="" id="" placeholder="Insira uma nova senha">
+                        </div>
+
+                        <div class="ipt__form">
+                            <label for="Confirmar senha">Confirmar Senha</label>
+                            <input type="password" name="" id="" placeholder="Insira a senha novamente">
+                        </div>
+                    </div>
+
+                        <div class="ipt__form">
+                            <span class="ipt__terms">
+                            <input type="checkbox">
+                            <h5>Concordo com os termos de responsabilidade</h5>
+                        </span>
+                        </div>
+
+                        <div class="ipt__form">
+                            <button class="edit__btn">
+                                Salvar Alterações
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <!-- /publicação  -->
-            </div>
-            <!-- card tipos de denuncia -->
-
-            <div class="card__infos__classifications">
-                <div class="padding__card">
-                    <h4>Classificação dos casos</h4>
-                    <div class="colors__classifications">
-                        <hr class="circle__assedio">
-                        <hr class="circle__assedio__moral">
-                        <hr class="circle__racism">
-                        <hr class="circle__agressao__fisica">
-                        <hr class="circle__agressao__verbal">
-                        <hr class="circle__homofobia">
-                        <hr class="circle__preconceito">
-                        <hr class="circle__furto">
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__assedio circle__classification"></div>
-                        <h6>Assédio</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__assedio__moral circle__classification"></div>
-                        <h6>Assédio Moral</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__racism circle__classification"></div>
-                        <h6>Racismo</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__agressao__fisica circle__classification"></div>
-                        <h6>Agressão Física</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__agressao__verbal circle__classification"></div>
-                        <h6>Agressão Verbal</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__homofobia circle__classification"></div>
-                        <h6>Homofobia</h6>
-                    </div>
-
-                    <div class="top__classification classification__complaint">
-                        <div class="circle__preconceito circle__classification"></div>
-                        <h6>Preconceito</h6>
-                    </div>
-
-                    <div class="top classification__complaint">
-                        <div class="circle__furto circle__classification"></div>
-                        <h6>Furto</h6>
-                    </div>
-
-                    <label for="modal-5">
-                    <span class="link__modal">Saiba mais</span>
-                </label>
-                </div>
-                <div class="card__new__case padding__card">
-                    <h4>Adicionar caso</h4>
-                    <button>
-                        <a href="./new-publication.html">Adicionar Caso</a>
-                    </button>
-                    <h6>Públique uma denuncia com os dados desse(a) motorista.</h6>
-                </div>
-            </div>
-
-
         </section>
-
         <div style="display: none;" class="toggle">
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
-        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
@@ -536,10 +419,10 @@
         <nav class="mobile-bottom-nav">
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="../index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
-            <div class="nav__itens__links mobile-bottom-nav__item--active">
+            <div class="nav__itens__links ">
                 <div class="mobile-bottom-nav__item-content ">
                     <label for="modal-2">
                         <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
@@ -561,8 +444,8 @@
             </div>
         </nav>
     </section>
-    <script src="assets/js/script-components.js"></script>
-    <script src="assets/js/dark-mode.js"></script>
+    <script src="../assets/js/script-components.js"></script>
+    <script src="../assets/js/dark-mode.js"></script>
 </body>
 
 </html>
