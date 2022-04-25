@@ -1,5 +1,6 @@
 package connect.go.controllers;
 
+import connect.go.exceptions.UserAlreadyExistsException;
 import connect.go.models.*;
 import connect.go.usecases.ComplaintService;
 import lombok.RequiredArgsConstructor;
@@ -8,12 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/relatorios")
+@RequestMapping("/reports")
 public class CsvController {
 
     private final AppArquivoCsv csv = new AppArquivoCsv();
@@ -21,31 +23,30 @@ public class CsvController {
 
     @GetMapping("/{city}")
     public ResponseEntity getRelatorioComplaintByCity(@PathVariable String city) {
-        List<Complaint> myArrayList = complaintService.getComplaintByCityCsv(city);
+        List<Complaint> myArrayList = complaintService.getComplaintByCity(city).orElse(Collections.emptyList());
+        if (myArrayList.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        } else {
+            for (int i = 0; i < myArrayList.size() - 1; i++) {
+                for (int i2 = i; i2 < myArrayList.size(); i2++) {
+                    Complaint aux = myArrayList.get(i);
+                    if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
+                        myArrayList.set(i, myArrayList.get(i2));
+                        myArrayList.set(i2, aux);
 
-        for (int i = 0; i < myArrayList.size() - 1; i++) {
-            for (int i2 = i; i2 < myArrayList.size(); i2++) {
-                Complaint aux = myArrayList.get(i);
-                if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
-                    myArrayList.set(i, myArrayList.get(i2));
-                    myArrayList.set(i2, aux);
-
+                    }
                 }
             }
-        }
-        boolean primeira = false;
-        for (Complaint complaint : myArrayList) {
-            if (!primeira) {
-                primeira = true;
-                csv.gravaArquivoCsv(complaint, "posts", false);
-            } else {
-                csv.gravaArquivoCsv(complaint, "posts", true);
+            ListaObj<Complaint> complaintListaObj = new ListaObj<>(myArrayList.size());
+            for (Complaint complaint : myArrayList) {
+                complaintListaObj.adiciona(complaint);
             }
+            csv.gravaArquivoCsv(complaintListaObj, "posts");
+            return ResponseEntity.status(200)
+                    .header("content-type", "text/csv")
+                    .header("content-disposition", "filename=\"posts.csv\"")
+                    .body(csv.leExibeArquivoCsv("posts"));
         }
-        return ResponseEntity.status(200)
-                .header("content-type", "text/csv")
-                .header("content-disposition", "filename=\"posts.csv\"")
-                .body(csv.leExibeArquivoCsv("posts"));
     }
 
 
@@ -90,14 +91,11 @@ public class CsvController {
             }
         }
         boolean primeira = false;
+        ListaObj<Complaint> complaintListaObj = new ListaObj<>(10);
         for (Complaint complaint : myArrayList) {
-            if (!primeira) {
-                primeira = true;
-                csv.gravaArquivoCsv(complaint, "posts", false);
-            } else {
-                csv.gravaArquivoCsv(complaint, "posts", true);
-            }
+            complaintListaObj.adiciona(complaint);
         }
+        csv.gravaArquivoCsv(complaintListaObj, "posts");
         return ResponseEntity.status(200).body(myArrayList);
     }
 }
