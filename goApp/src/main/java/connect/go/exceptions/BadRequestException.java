@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class BadRequestException extends RuntimeException{
 
     @ExceptionHandler(value = BadRequestException.class)
-    public ResponseEntity<Object> exception() {
+    public ResponseEntity<String> exception() {
         return new ResponseEntity<>("Dados enviados incorretamente", HttpStatus.BAD_REQUEST);
     }
 }

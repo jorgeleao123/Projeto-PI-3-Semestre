@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +15,7 @@ public class AddressService {
 
     public Address register(Address address) {
         if (isAddressExists(address)){
-            return addressRepository.findAllByCep(address.getCep()).get(0);
+            return findAllByCep(address.getCep()).get().get(0);
         }
         return addressRepository.save(address);
     }
@@ -23,7 +24,11 @@ public class AddressService {
         return addressRepository.existsByCep(address.getCep());
     }
 
-    public List<Address> getFavoriteAddressByUserId(Integer id) {
+    public Optional<List<Address>> getFavoriteAddressByUserId(Integer id) {
         return addressRepository.getFavoriteAddressByUserId(id);
-    };
+    }
+
+    public Optional<List<Address>> findAllByCep(String cep) {
+        return addressRepository.findAllByCep(cep);
+    }
 }

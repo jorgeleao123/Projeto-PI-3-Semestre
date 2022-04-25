@@ -27,19 +27,18 @@ public class AddressController {
     private final FavoriteAddressService favoriteAddressService;
 
     @GetMapping("/users/{userId}")
-    public ResponseEntity<Object> getAddressByUserId(@PathVariable Integer userId) {
-        List<Address> addressList = addressService.getFavoriteAddressByUserId(userId);
-        return ResponseEntity.status(200).body(addressList);
+    public ResponseEntity<List<Address>> getAddressByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.of(addressService.getFavoriteAddressByUserId(userId));
     }
 
     @PostMapping()
-    public ResponseEntity<Object> createAddress(@RequestBody Address address) {
+    public ResponseEntity<Address> createAddress(@RequestBody Address address) {
         Address newAddress = addressService.register(address);
         return ResponseEntity.status(201).body(newAddress);
     }
 
     @PostMapping("/users/{userId}")
-    public ResponseEntity<Object> createAddress(@RequestBody Address address, @PathVariable Integer userId) {
+    public ResponseEntity<Address> createAddress(@RequestBody Address address, @PathVariable Integer userId) {
         Address newAddress = addressService.register(address);
         favoriteAddressService.register(new FavoriteAddressId(userId,
                 newAddress.getId()));
@@ -47,7 +46,7 @@ public class AddressController {
     }
 
     @DeleteMapping("/users/{userId}/{addressId}")
-    public ResponseEntity<Object> deleteFavoriteAddress(@PathVariable Integer userId, @PathVariable Integer addressId) {
+    public ResponseEntity<Void> deleteFavoriteAddress(@PathVariable Integer userId, @PathVariable Integer addressId) {
         favoriteAddressService.deleteById(new FavoriteAddressId(userId, addressId));
         return ResponseEntity.status(201).build();
     }

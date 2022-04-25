@@ -9,7 +9,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,6 +25,7 @@ public class User {
     private Integer id;
     @NotBlank
     private String name;
+    @Email
     @NotBlank
     private String email;
     @NotBlank
@@ -30,6 +34,7 @@ public class User {
     private String role;
     @NotBlank
     private String sex;
+
 
 
 

@@ -40,7 +40,7 @@ public class UserController {
     private final FavoriteAddressService favoriteAddressService;
 
     @PostMapping
-    public ResponseEntity<Object> createUser(@RequestBody @Valid UserRegistration userRegistration) {
+    public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegistration userRegistration) {
         User user = userService.register(userRegistration.getUser());
         Address addressRegistration = userRegistration.getAddress();
         Address address = addressService.register(addressRegistration);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @PostMapping("/login/{email}/{password}")
-    public ResponseEntity<Object> loginUser(@PathVariable String email, @PathVariable String password) {
+    public ResponseEntity<UserResponse> loginUser(@PathVariable String email, @PathVariable String password) {
         List<User> users = userService.login(email, password);
         if (users.size() != 1) {
             throw new BadRequestException();
@@ -61,8 +61,11 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<Object> getUsers() {
+    public ResponseEntity<List<UserResponse>> getUsers() {
         List<User> users = userService.findAll();
+        if (users.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
         List<UserResponse> responseUser = new ArrayList<>();
         for (User user : users) {
             responseUser.add(convertUserToUserResponse(user));
@@ -71,20 +74,22 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable int id) {
+    public ResponseEntity<UserResponse> getUserById(@PathVariable int id) {
         User user = userService.getById(id);
         return ResponseEntity.status(200).body(convertUserToUserResponse(user));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateUserById(@PathVariable int id, @RequestBody @Valid User user) {
+    public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid User user) {
         user.setId(id);
-        userService.updateById(id, user);
-        return ResponseEntity.status(200).build();
+        if (userService.updateById(id, user)) {
+            return ResponseEntity.status(200).build();
+        }
+        throw new BadRequestException();
     }
 
     @PatchMapping("/email/{id}/{email}")
-    public ResponseEntity<Object> updateUserById(@PathVariable int id, @PathVariable String email) {
+    public ResponseEntity<Void> updateUserById(@PathVariable int id, @PathVariable String email) {
         if (userService.updateEmailById(id, email)){
             return ResponseEntity.status(200).build();
         }
@@ -92,7 +97,7 @@ public class UserController {
     }
 
     @PatchMapping("/password/{id}/{oldPassword}/{newPassword}")
-    public ResponseEntity<Object> updateUserById(@PathVariable int id, @PathVariable String oldPassword,
+    public ResponseEntity<Void> updateUserById(@PathVariable int id, @PathVariable String oldPassword,
                                                  @PathVariable String newPassword) {
         if(userService.updatePasswoordById(id, oldPassword, newPassword)){
             return ResponseEntity.status(200).build();
@@ -101,7 +106,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUserById(@PathVariable Integer id) {
+    public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
         try {
             userService.deleteById(id);
             return ResponseEntity.status(200).build();
@@ -111,9 +116,8 @@ public class UserController {
     }
 
     private UserResponse convertUserToUserResponse(User user) {
-        UserResponse userResponse = new UserResponse(
+        return new UserResponse(
                 user.getId(), user.getName(), user.getEmail(), user.getRole(),
                 user.getSex());
-        return userResponse;
     }
 }
