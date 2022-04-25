@@ -120,7 +120,7 @@
     //   senhaUsuario: document.getElementById('senha').value
     // };
 
-    fetch(`http://localhost:8080/usuarios2/login/${document.getElementById('login').value}/${document.getElementById('senha').value}`, {
+    fetch(`http://localhost:8080/users/login/${document.getElementById('login').value}/${document.getElementById('senha').value}`, {
       method: 'POST', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
@@ -130,7 +130,7 @@
       .then(Response => {
         console.log('Success:', Response);
         if (Response.status == 200) {
-          alert("Usuario logado com sucesso")
+          window.location.href = "http://127.0.0.1:5501/index.html";
         } else {
           alert("Login e/ou senha inválidos")
         }

@@ -45,21 +45,23 @@ document.getElementById('cep')
         .addEventListener('focusout',pesquisarCep);
   function cadastrar() {
     const data = {
-      nomeUsuario: document.getElementById('nome').value,
-      loginUsuario: document.getElementById('login').value,
-      senhaUsuario: document.getElementById('senha').value,
-      sexoUsuario: document.getElementById('sexo').value,
-      emailUsuario: document.getElementById('email').value,
+      user: {
+        name: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        password: document.getElementById('senha').value,
+        genre: document.getElementById('sexo').value,
+        role: "User" 
+      },
       endereco: {
         cep: document.getElementById('cep').value.replace("-",""),
-        estado: document.getElementById('estado').value,
-        cidade: document.getElementById('cidade').value,
-        bairro: document.getElementById('bairro').value
+        state: document.getElementById('estado').value,
+        city: document.getElementById('cidade').value,
+        district: document.getElementById('bairro').value
       }
     };
 
-    fetch('http://localhost:8080/usuarios2', {
-      method: 'POST', // or 'PUT'
+    fetch('http://localhost:8080/users', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
