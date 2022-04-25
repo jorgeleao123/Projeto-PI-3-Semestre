@@ -1,6 +1,6 @@
 package connect.go.models;
 
-public class ListaObj<T>{
+public class ListaObj<T> {
 
     protected T[] vetor;
     protected int nroElem;
@@ -13,8 +13,7 @@ public class ListaObj<T>{
     public void adiciona(T objeto) {
         if (nroElem >= vetor.length) {
             System.out.println("Lista está cheia");
-        }
-        else {
+        } else {
             vetor[nroElem++] = objeto;
         }
     }
@@ -22,8 +21,7 @@ public class ListaObj<T>{
     public void exibe() {
         if (nroElem == 0) {
             System.out.println("\nA lista está vazia.");
-        }
-        else {
+        } else {
             System.out.println("\nElementos da lista:");
             for (int i = 0; i < nroElem; i++) {
                 System.out.println(vetor[i]);
@@ -47,7 +45,7 @@ public class ListaObj<T>{
             return false;
         }
         for (int i = indice; i < nroElem - 1; i++) {
-            vetor[i] = vetor[i+1];
+            vetor[i] = vetor[i + 1];
         }
         nroElem--;
         return true;
@@ -57,11 +55,11 @@ public class ListaObj<T>{
         return removePeloIndice(busca(elementoARemover));
     }
 
-    public boolean substituiElemento(T valorAntigo, T valorNovo){
+    public boolean substituiElemento(T valorAntigo, T valorNovo) {
 
         int indiceProvisorio = busca(valorAntigo);
 
-        if(indiceProvisorio != -1){
+        if (indiceProvisorio != -1) {
             vetor[indiceProvisorio] = valorNovo;
             return true;
         }
@@ -69,57 +67,51 @@ public class ListaObj<T>{
         return false;
     }
 
-    public int contaOcorrencias(T objeto){
+    public int contaOcorrencias(T objeto) {
         int contador = 0;
-        for(int i = 0; i < nroElem; i++){
-            if(vetor[i].equals(objeto)){
+        for (int i = 0; i < nroElem; i++) {
+            if (vetor[i].equals(objeto)) {
                 contador++;
             }
         }
         return contador;
     }
 
-    public void adicionaNoInicio(T objeto){
+    public void adicionaNoInicio(T objeto) {
 
-        if(nroElem == vetor.length){
+        if (nroElem == vetor.length) {
             System.out.println("Lista cheia");
             return;
         }
 
-        for(int i = nroElem; i > 0; i--){
+        for (int i = nroElem; i > 0; i--) {
             vetor[i] = vetor[i - 1];
         }
         vetor[0] = objeto;
         nroElem++;
     }
 
-    public int getTamanho(){
+    public int getTamanho() {
         return nroElem;
     }
 
-    public T getElemento(int indice){
-        if(indice < 0 || indice >= nroElem){
+    public T getElemento(int indice) {
+        if (indice < 0 || indice >= nroElem) {
             return null;
         }
         return vetor[indice];
     }
 
-    public void limpa(){
+    public void limpa() {
         nroElem = 0;
     }
 
-    public void ordenarPorIdDoUsuario(){
-        for(int i = 0; i < this.getTamanho(); i++){
-            if(this.getElemento(i) instanceof Complaint){
-                for(int j = i + 1; j < this.getTamanho() - 1; j++){
-                    int elementoAnterior = ((Complaint) this.getElemento(i)).getUser().getId();
-                    int elementoPosterior = ((Complaint) this.getElemento(j)).getUser().getId();
-                    if(elementoAnterior > elementoPosterior){
-                        ((Complaint) this.getElemento(i)).setUser(((Complaint) this.getElemento(j)).getUser());
-                        ((Complaint) this.getElemento(j)).setUser(((Complaint) this.getElemento(i)).getUser());
-                    }
-                }
-            }
+    public void AlterarIndex(int index, T valorNovo) {
+        if (index > nroElem + 1) {
+            System.out.println("index não existe");
+        } else {
+            vetor[index] = valorNovo;
+            System.out.println("Adicionado");
         }
     }
 
