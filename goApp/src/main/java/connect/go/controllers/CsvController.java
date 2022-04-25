@@ -24,25 +24,29 @@ public class CsvController {
     @GetMapping("/{city}")
     public ResponseEntity getRelatorioComplaintByCity(@PathVariable String city) {
         List<Complaint> myArrayList = complaintService.getComplaintByCity(city).orElse(Collections.emptyList());
-        for (int i = 0; i < myArrayList.size() - 1; i++) {
-            for (int i2 = i; i2 < myArrayList.size(); i2++) {
-                Complaint aux = myArrayList.get(i);
-                if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
-                    myArrayList.set(i, myArrayList.get(i2));
-                    myArrayList.set(i2, aux);
+        if (myArrayList.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        } else {
+            for (int i = 0; i < myArrayList.size() - 1; i++) {
+                for (int i2 = i; i2 < myArrayList.size(); i2++) {
+                    Complaint aux = myArrayList.get(i);
+                    if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
+                        myArrayList.set(i, myArrayList.get(i2));
+                        myArrayList.set(i2, aux);
 
+                    }
                 }
             }
+            ListaObj<Complaint> complaintListaObj = new ListaObj<>(myArrayList.size());
+            for (Complaint complaint : myArrayList) {
+                complaintListaObj.adiciona(complaint);
+            }
+            csv.gravaArquivoCsv(complaintListaObj, "posts");
+            return ResponseEntity.status(200)
+                    .header("content-type", "text/csv")
+                    .header("content-disposition", "filename=\"posts.csv\"")
+                    .body(csv.leExibeArquivoCsv("posts"));
         }
-        ListaObj<Complaint> complaintListaObj = new ListaObj<>(myArrayList.size());
-        for (Complaint complaint : myArrayList) {
-            complaintListaObj.adiciona(complaint);
-        }
-        csv.gravaArquivoCsv(complaintListaObj, "posts");
-        return ResponseEntity.status(200)
-                .header("content-type", "text/csv")
-                .header("content-disposition", "filename=\"posts.csv\"")
-                .body(csv.leExibeArquivoCsv("posts"));
     }
 
 
