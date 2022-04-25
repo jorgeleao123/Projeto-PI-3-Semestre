@@ -24,23 +24,24 @@ public class CsvController {
     @GetMapping("/{city}")
     public ResponseEntity getRelatorioComplaintByCity(@PathVariable String city) {
         List<Complaint> myArrayList = complaintService.getComplaintByCity(city).orElse(Collections.emptyList());
+
         if (myArrayList.isEmpty()) {
             return ResponseEntity.status(204).build();
         } else {
-            for (int i = 0; i < myArrayList.size() - 1; i++) {
-                for (int i2 = i; i2 < myArrayList.size(); i2++) {
-                    Complaint aux = myArrayList.get(i);
-                    if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
-                        myArrayList.set(i, myArrayList.get(i2));
-                        myArrayList.set(i2, aux);
-
-                    }
-                }
-            }
             ListaObj<Complaint> complaintListaObj = new ListaObj<>(myArrayList.size());
             for (Complaint complaint : myArrayList) {
                 complaintListaObj.adiciona(complaint);
             }
+            for (int i = 0; i < complaintListaObj.getTamanho(); i++) {
+                for (int i2 = i; i2 < complaintListaObj.getTamanho(); i2++) {
+                    Complaint aux = complaintListaObj.getElemento(i);
+                    if (complaintListaObj.getElemento(i2).getUser().getId() < aux.getUser().getId()) {
+                        complaintListaObj.alterarIndex(i, complaintListaObj.getElemento(i2));
+                        complaintListaObj.alterarIndex(i2, aux);
+                    }
+                }
+            }
+
             csv.gravaArquivoCsv(complaintListaObj, "posts");
             return ResponseEntity.status(200)
                     .header("content-type", "text/csv")
@@ -61,8 +62,8 @@ public class CsvController {
 
 
     @GetMapping("/gravarTest")
-    public ResponseEntity<List<Complaint>> gravarTest() {
-        List<Complaint> myArrayList = new ArrayList<>();
+    public ResponseEntity<ListaObj<Complaint>>gravarTest() {
+        ListaObj<Complaint> complaintListaObj = new ListaObj<>(10);
 
         Driver driver = new Driver(5, "Antonio", "total", "calvo-cabeludo");
         Address address = new Address(1, "04914-040", "SP", "São Paulo", "Esse ai");
@@ -74,28 +75,29 @@ public class CsvController {
         Complaint complaint2 = new Complaint(2, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user2, address);
 
         User user3 = new User(2, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-        Complaint complaint3 = new Complaint(1, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user3, address);
-        myArrayList.add(complaint1);
-        myArrayList.add(complaint2);
-        myArrayList.add(complaint3);
-        myArrayList.add(complaint3);
+        Complaint complaint3 = new Complaint(1, "decr   ição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user3, address);
+        complaintListaObj.adiciona(complaint1);
+        complaintListaObj.adiciona(complaint2);
+        complaintListaObj.adiciona(complaint3);
+        complaintListaObj.adiciona(complaint3);
+        complaintListaObj.adiciona(complaint1);
+        complaintListaObj.adiciona(complaint1);
+        complaintListaObj.adiciona(complaint2);
+        complaintListaObj.adiciona(complaint3);
+        complaintListaObj.adiciona(complaint3);
+        complaintListaObj.adiciona(complaint1);
 
-        for (int i = 0; i < myArrayList.size() - 1; i++) {
-            for (int i2 = i; i2 < myArrayList.size(); i2++) {
-                Complaint aux = myArrayList.get(i);
-                if (myArrayList.get(i2).getUser().getId() < aux.getUser().getId()) {
-                    myArrayList.set(i, myArrayList.get(i2));
-                    myArrayList.set(i2, aux);
 
+        for (int i = 0; i < complaintListaObj.getTamanho(); i++) {
+            for (int i2 = i; i2 < complaintListaObj.getTamanho(); i2++) {
+                Complaint aux = complaintListaObj.getElemento(i);
+                if (complaintListaObj.getElemento(i2).getUser().getId() < aux.getUser().getId()) {
+                    complaintListaObj.alterarIndex(i, complaintListaObj.getElemento(i2));
+                    complaintListaObj.alterarIndex(i2, aux);
                 }
             }
         }
-        boolean primeira = false;
-        ListaObj<Complaint> complaintListaObj = new ListaObj<>(10);
-        for (Complaint complaint : myArrayList) {
-            complaintListaObj.adiciona(complaint);
-        }
         csv.gravaArquivoCsv(complaintListaObj, "posts");
-        return ResponseEntity.status(200).body(myArrayList);
+        return ResponseEntity.status(200).body(complaintListaObj);
     }
 }
