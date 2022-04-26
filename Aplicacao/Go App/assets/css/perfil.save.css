@@ -31,7 +31,7 @@
     padding-bottom: 5px;
     background-color: var(--menu-color);
     border-radius: 2px;
-    box-shadow: 2px 2px 2px 2px rgba(206, 204, 204, 0.842);
+    box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
 }
 .top__save{
     padding-top: 25px;

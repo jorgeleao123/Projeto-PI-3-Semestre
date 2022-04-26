@@ -43,6 +43,7 @@
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
     
 }
+
 .card__flex{
     display: flex;
     gap: 20px;
@@ -273,9 +274,10 @@
     .fa-bookmark{
         display: none;
     }
-    .fa-comments{
+    .fa-signal{
         display: none;
     }
+    
     .top__perfil{
         padding-top: 25px;
         max-width: 265px;
