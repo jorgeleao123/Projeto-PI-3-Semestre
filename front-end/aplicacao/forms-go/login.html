@@ -104,6 +104,7 @@
 
         function logar() {
 
+            sessionStorage.login_meuapp = innerHTML.email.value;
             fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -115,6 +116,10 @@
                 console.log('Success:', Response);
                 if (Response.status == 200) {
                 window.location.href = "http://127.0.0.1:5500/index.html";
+                resposta.json().then(json => {
+                    sessionStorage.userId = json["userId"];
+
+                })
                 } else {
                 alert("Login e/ou senha inválidos")
                 }
