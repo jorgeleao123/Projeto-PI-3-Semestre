@@ -57,3 +57,14 @@
     text-align: center;
     background-color: #1FAD58;
 }
+
+.desc__error h4{
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.desc__error p{
+    margin-bottom: 10px;
+    text-align: center;
+    max-width: 600px;
+}
