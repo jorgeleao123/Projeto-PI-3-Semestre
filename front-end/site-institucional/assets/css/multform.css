@@ -1,0 +1,180 @@
+.stages {
+	font-size: 0;
+	text-align: justify;
+}
+
+.stages:after {
+	content: '';
+	display: inline-block;
+	font-size: 0;
+	text-align: center;
+	width: 100%;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+.stages label {
+	background: #c8c8c8;
+	border-radius: 3px;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 0;
+	font-weight: 700;
+	height: 50px;
+	line-height: 50px;
+	text-align: center!important;
+	position: relative;
+	width: 50px;
+	z-index: 1;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+.stages label:after {
+	padding: 0;
+	background: #61BAB5;
+	width: 100%;
+	border-radius: 3px;
+	text-align: center;
+	content: '\2713';
+	color: #ffffff;
+	display: inline-block;
+	font-size: 16px;
+
+}
+
+#one:checked ~ .stages label,
+#two:checked ~ .stages label[for="one"] ~ label,
+#six:checked ~ .stages label[for="five"] ~ label {
+	font-size: 1rem;
+}
+
+#one:checked ~ .stages label:after,
+#two:checked ~ .stages label[for="one"] ~ label:after,
+#three:checked ~ .stages label[for="two"] ~ label:after,
+#four:checked ~ .stages label[for="three"] ~ label:after,
+#five:checked ~ .stages label[for="four"] ~ label:after,
+#six:checked ~ .stages label[for="five"] ~ label:after {
+	display: none;
+}
+
+.progress > span {
+	background: #61BAB5;
+	display: inline-block;
+	height: 5px;
+	transform: translateY(-2.75em);
+	transition: 0.3s;
+	width: 0;
+}
+
+#two:checked ~ .progress span {
+	width: calc(100% / 2 * 1);
+}
+
+#three:checked ~ .progress span {
+	width: calc(100% / 5 * 2);
+}
+
+#four:checked ~ .progress span {
+	width: calc(100% / 5 * 3);
+}
+
+#five:checked ~ .progress span {
+	width: calc(100% / 5 * 4);
+}
+
+#six:checked ~ .progress span {
+	width: calc(100% / 5 * 5);
+}
+
+.panels div {
+	display: none;
+}
+
+#one:checked ~ .panels [data-panel="one"],
+#two:checked ~ .panels [data-panel="two"],
+#three:checked ~ .panels [data-panel="three"],
+#four:checked ~ .panels [data-panel="four"],
+#five:checked ~ .panels [data-panel="five"],
+#six:checked ~ .panels [data-panel="six"] {
+	display: block;
+}
+/* Custom code for the demo */
+
+
+
+
+
+
+.form {
+	min-width: 200px;
+	text-align: initial;
+}
+
+.panels div {
+	padding: 0.5em 0 0;
+}
+
+.left{
+	float: left;
+	background-color: #ffffff;
+	border: solid 2px #61BAB5;
+	border-radius: 3px;
+	color: #61BAB5;
+}
+
+button {
+	float: right;
+	border: solid 2px #61BAB5;
+	background-color: #61BAB5;
+	border-radius: 3px;
+	color: #ffffff;
+	cursor: pointer;
+	font-weight: 700;
+	margin: 1em 0 0 0;
+	padding: 0.5em 2em;
+}
+
+button:hover {
+	opacity: 0.8;
+}
+
+input{
+	margin-bottom: 10px;
+}
+
+.icon__pass {
+	left: 86%;
+    top: -42px;
+}
+
+.buttons__form{
+	margin-top: 50px;
+}
+
+.display {
+    display: block !important;
+}
+.inputs__formcad{
+	width: 100%;
+	display: flex;
+	gap: 50px;
+}
+
+@media screen and (max-width:767px) {
+	.progress > span {
+		display: list-item;
+		margin-top: 10px;
+	}
+
+	.form p{
+		text-align: center;
+	}
+}
