@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go 2.svg" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/multform.css">
     <title>GO | Cadastro</title>
@@ -15,10 +14,12 @@
 <body>
     <header class="header" id="header">
         <nav class="nav container">
-            <a href="#home" class="nav__logo ">
-                <img src="./assets/img/logo-go 1.svg" alt="">
-            </a>
-
+            <span id="logo">
+                <img src=".//assets/img/logo-go-carbon.svg" alt="">
+            </span>
+            <span style="display: none;" id="logoMobile">
+                <img src=".//assets/img/logo-go-carbon.svg" alt="">
+            </span>
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item" style="display: none;">
@@ -91,7 +92,7 @@
                                     personalizada.</p>
 
                                 <label for="Nome">Nome</label>
-                                <input type="text" placeholder="Digite seu nome" />
+                                <input type="text" placeholder="Digite seu nome" onkeyup="atualizarNome()" id="nome-colocado"/>
 
                                 <label for="Data de nascimento">Data de nascimento</label> <br>
                                 <input type="date" name="" id="data" placeholder="Insira sua data de nascimento">
@@ -99,13 +100,13 @@
                                 <label for="Sexo">Sexo</label>
                                 <span class="inputs__formcad">
                                     <span class="inputs__gen">
-                                        <input class="display" type="radio" id="sexo" name="sexo" value="F" checked>
+                                        <input class="display" type="radio" id="feminino" name="genero" value="F" checked>
                                         <p>Feminino</p>
-                                    
+
                                     </span>
                                     <span class="inputs__gen">
-                                        <input class="display" type="radio" id="sexo" name="sexo" value="M">
-                                        <p>Maculino</p>
+                                        <input class="display" type="radio" id="masculino" name="genero" value="M">
+                                        <p>Masculino</p>
                                     </span>
                                 </span>
                                 <span class="buttons__form">
@@ -114,19 +115,21 @@
                                 </span>
                             </div>
                             <div data-panel="six">
-                                <h2 class="section__title about__title">Muito bom, Fulano</h2>
-                                <p class="about__description">Agora precisamos da sua localidade para filtrarmos melhor as públicações do seu Feed.</p>
+                                <h2 class="section__title about__title">Muito bom, <span id="nome_colocado"></span></h2>
+                                <p class="about__description">Agora precisamos da sua localidade para filtrarmos melhor
+                                    as públicações do seu Feed.</p>
 
                                 <label for="CEP">CEP</label>
-                                <input type="text" placeholder="Digite seu CEP" />
+                                <input type="text" placeholder="Digite seu CEP" id="cep" />
 
                                 <label for="Cidade">Cidade</label>
-                                <input type="text" placeholder="Digite sua cidade" />
+                                <input type="text" placeholder="Digite sua cidade" id="cidade" />
 
                                 <label for="Estado">Estado</label>
-                                <input type="text" placeholder="Digite seu Estado" />
+                                <input type="text" placeholder="Digite seu Estado" id="estado" />
 
-                                <button type="submit" class="button__cad button btn-ctt"> Cadastrar</button>
+                                <button type="submit" class="button__cad button btn-ctt" onclick="cadastrar()">
+                                    Cadastrar</button>
                             </div>
                         </div>
 
@@ -157,6 +160,8 @@
         <label for="switch">Toggle</label>
     </div>
     <script>
+
+
         $('.form .stages label ').click(function () {
             var radioButtons = $('.form input:radio');
             var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
@@ -175,21 +180,94 @@
                 $('button').html('Submit');
             }
         });
+
+        function atualizarNome(){
+            nome_colocado.innerHTML = document.getElementById('nome-colocado').value;
+        }
+
+        function cadastrar() {
+            alert("teste")
+        }
+
+        function limparFormulario(endereco) {
+            document.getElementById('cidade').value = '';
+            document.getElementById('estado').value = '';
+        }
+
+
+        function preencherFormulario(endereco) {
+            document.getElementById('cidade').value = endereco.localidade;
+            document.getElementById('estado').value = endereco.uf;
+        }
+
+
+        function eNumero(numero) {
+            return /^[0-9]+$/.test(numero);
+        }
+
+        function cepValido(cep) {
+            return cep.length == 8 && eNumero(cep);
+        }
+
+        const pesquisarCep = async () => {
+            limparFormulario();
+
+            const cep = document.getElementById('cep').value.replace("-", "");
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+            if (cepValido(cep)) {
+                const dados = await fetch(url);
+                const endereco = await dados.json();
+                if (endereco.hasOwnProperty('erro')) {
+                    document.getElementById('endereco').value = 'CEP não encontrado!';
+                } else {
+                    preencherFormulario(endereco);
+                }
+            } else {
+                document.getElementById('endereco').value = 'CEP incorreto!';
+            }
+
+        }
+
+        document.getElementById('cep')
+            .addEventListener('focusout', pesquisarCep);
+        function cadastrar() {
+            const data = {
+                user: {
+                    name: document.getElementById('nome').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    genre: document.querySelector('input[name="genero"]:checked').value,
+                    role: "User"
+                },
+                endereco: {
+                    cep: document.getElementById('cep').value.replace("-", ""),
+                    state: document.getElementById('estado').value,
+                    city: document.getElementById('cidade').value,
+                    district: document.getElementById('bairro').value
+                }
+            };
+
+            fetch('http://localhost:8080/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(data => {
+                    console.log('Success:', data);
+                    alert("Usuario cadastrado com sucesso")
+                })
+                .catch((error) => {
+                    alert("Erro ao realizar login")
+                    console.error('Error:', error);
+                });
+
+        }
+
+
     </script>
 
-    <!--========== SCROLL UP ==========-->
-    <a href="#" class="scrollup" id="scroll-up">
-        <i class="ri-arrow-up-line scrollup__icon"></i>
-    </a>
-
-    <!--=============== SCROLL REVEAL===============-->
-    <script src="assets/js/scrollreveal.min.js"></script>
-
-    <!--=============== SWIPER JS ===============-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-
-    <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
 
     <script src="../go-app/assets/js/dark-mode.js"></script>
 </body>

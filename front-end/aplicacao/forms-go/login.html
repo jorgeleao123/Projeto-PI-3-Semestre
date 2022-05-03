@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go 2.svg" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>GO | Login</title>
 </head>
@@ -13,6 +12,9 @@
     <header class="header" id="header">
         <nav class="nav container">
                 <span id="logo">
+                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                </span>
+                <span style="display: none;" id="logoMobile">
                     <img src=".//assets/img/logo-go-carbon.svg" alt="">
                 </span>
 
@@ -107,7 +109,7 @@
 
         function logar() {
 
-            sessionStorage.login_meuapp = innerHTML.email.value;
+        
             fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -118,13 +120,12 @@
             .then(Response => {
                 console.log('Success:', Response);
                 if (Response.status == 200) {
-                window.location.href = "http://127.0.0.1:5500/index.html";
+                alert('Success!', Response);
                 resposta.json().then(json => {
                     sessionStorage.userId = json["userId"];
-
                 })
                 } else {
-                alert("Login e/ou senha inválidos")
+                alert("Login e/ou senha inválidos");
                 }
 
             })
@@ -137,21 +138,7 @@
 
 
 
-    </script>
-             <!--========== SCROLL UP ==========-->
-             <a href="#" class="scrollup" id="scroll-up">
-                <i class="ri-arrow-up-line scrollup__icon"></i>
-            </a>
-    
-            <!--=============== SCROLL REVEAL===============-->
-            <script src="./assets/js/scrollreveal.min.js"></script>
-            
-            <!--=============== SWIPER JS ===============-->
-            <script src="./assets/js/swiper-bundle.min.js"></script>
-    
-            <!--=============== MAIN JS ===============-->
-            <script src="./assets/js/main.js"></script>
-
-            <script src="../go-app/assets/js/dark-mode.js"></script>
+    </script>            
+    <script src="../go-app/assets/js/dark-mode.js"></script>
 </body>
 </html>
