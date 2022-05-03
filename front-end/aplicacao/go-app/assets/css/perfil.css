@@ -1,0 +1,424 @@
+/* card background */
+.background{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+}
+.background__content{
+    width: 100%;
+    height: 80%;
+    background-color: #be156a;
+    padding: 10%;
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
+}
+.nameUser{
+    padding-top: 9px;
+}
+
+/* Card perfil mobile */
+.card__perfil__mobile{
+    display: none;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--modal-color);
+    border-radius: 3px;
+    box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
+}
+.top__perfil{
+    padding-top: 17px;
+    max-width: 255px;
+}
+
+/* Card Informações do Perfil  */
+.card__infos__perfil{
+    background-color: var(--modal-color);
+    border-radius: 3px;
+    height: 300px;
+    padding-bottom: 15px;
+    margin-top: -120px;
+    margin-left: 10px;
+    width: 22%;
+    box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
+    
+}
+
+.card__flex{
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.card__text{
+    align-items: center;
+    width: 100%;
+}
+.card__text h4{
+    padding-bottom: 10px;
+}
+.icon__perfil{
+    min-width: 35px;
+    min-height: 35px;
+    font-size: 18px;
+}
+.icon__user__perfil{
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 50%;
+    background-color: #7D63A9;
+}
+.fa-solid, .fas{
+    padding-right: 5px;
+}
+
+.edit__button{
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 2px;
+    border: solid 2px var(--first-color);
+    background-color: Transparent;
+    width: 100%;
+    cursor: pointer;
+}
+
+.edit__button a{
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.edit__button__card{
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 2px;
+    border: solid 2px var(--first-color);
+    background-color: Transparent;
+    color: var(--first-color);
+    width: 100%;
+    cursor: pointer;
+    
+}
+.edit__button__card a{
+    color: var(--first-color);
+    text-decoration: none;
+}
+
+.fa-pen-to-square{
+    padding-right: 5px;
+    font-size: 20px;
+}
+/* feed */
+.container__feed__perfil{
+    width: 50%;
+}
+/* initial menu right*/
+.i__navbar{
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    justify-content: space-between;
+}
+.i__navbar ul{
+    padding: 0;
+    background-color: var(--background-card);
+}
+.i__navbar li{
+    border-bottom: 1px solid var(--border-color);
+}
+#activeleft{
+    border-left: 3px solid var(--first-color);
+    color: solid var(--first-color);
+}
+.i__navbar li a{
+    font-size: var(--small-font-size);
+    display: block;
+    color: var(--title-color);
+    font-family: var(--title-font);
+    font-weight: var(--font-semi-bold);
+    padding: 8px 16px;
+    list-style: none;
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+
+/* Card escrever publicação */
+.card__write{
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background-color: var(--background-card);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    color: rgb(191, 189, 189);
+    margin-top: 15px;
+}
+
+
+
+/* final menu */
+.f__navbar__mobile{
+    display: none;
+    border-radius: 3px;
+    height: 50px;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    justify-content: space-between;
+}
+.f__navbar{
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+.f__navbar ul{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--background-card);
+}
+.f__navbar li{
+    border-bottom: 1px solid var(--input-color);
+    display: flex;
+}
+
+.f__navbar li a{
+    font-size: var(--small-font-size);
+    display: block;
+    color: var(--title-color);
+    padding: 10px 18px;
+    list-style: block;
+    text-decoration: none;
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: ease-in 300ms;
+    font-weight: var(--font-semi-bold);
+    font-family: var(--title-font);
+}
+
+.f__navbar li.active{
+    border-bottom: 3px solid var(--first-color);
+}
+
+#active{
+    border-bottom: 3px solid var(--first-color);
+    color:var(--first-color);
+}
+
+
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+
+@media screen and (min-width: 1600px) {
+    .container__feed__perfil {
+        max-width: 500px;
+    }
+    .card__infos__perfil {
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+    .card__perfil__mobile{
+        display: none;
+    }
+    .perfil{
+        width: 50%;
+    }
+    .top__perfil{
+        padding-top: 25px;
+        max-width: 265px;
+    }
+
+}
+
+
+
+@media screen and (max-width: 1599px) {
+    .container__feed__perfil {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    .card__infos__perfil{
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+
+    .fa-newspaper{
+        display: none;
+    }
+    .fa-bookmark{
+        display: none;
+    }
+    .fa-signal{
+        display: none;
+    }
+    
+    .top__perfil{
+        padding-top: 25px;
+        max-width: 265px;
+    }
+
+}
+
+@media screen and (max-width: 1448px) {
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    .card__infos__perfil{
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: block;
+    }
+
+    .edit__button{
+        width: 100%;
+    }
+    
+    .card__text{
+        font-size: small;
+    }
+    .top__perfil{
+        padding-top: 25px;
+        max-width: 265px;
+    }
+
+}
+@media screen and (max-width: 1200px) {
+    
+    .edit__button{
+        width: 100%;
+        font-size: small;
+    }
+    
+    .card__text{
+        font-size: small;
+    }
+    
+}
+@media screen and (max-width: 1000px) {
+    
+    .card__infos__perfil {
+        height: 320px;
+    }
+   
+    .card__infos__navbar{
+        width: 250px;
+    }
+
+    .card__text{
+        font-size: small;
+    }
+}
+@media screen and (max-width: 950px) {
+    .container__feed__perfil {
+        width: 100% !important;
+    }
+   
+    .card__infos__perfil {
+        height: 320px;
+    }
+   
+    .card__infos__navbar{
+        width: 250px;
+    }
+}
+@media screen and (max-width: 900px) {
+    .container__feed__perfil {
+        width: 100% !important;
+    }
+    
+    .card__perfil__mobile{
+        display: block;
+    }
+    .card__infos__perfil {
+        display: none;
+    }
+
+    .i__navbar {
+        display: none;
+    }
+
+    .f__navbar__mobile {
+        display: block;
+    }
+
+    .card__infos__navbar {
+        display: none;
+        height: 320px;
+    }
+    
+
+}
+@media screen and (max-width: 400px) {
+    .f__navbar li a{
+        font-size: var(--smaller-font-size);
+        padding: 10px 5px;
+    }
+    .nameUser{
+        font-size: var(--small-font-size);
+    }
+    .card__perfil__mobile{
+        padding: 0;
+        }
+    
+}
+@media screen and (max-width: 350px){
+
+    .fa-newspaper{
+        display: block;
+        font-size: large;
+        padding: 5px;
+    }
+    .fa-bookmark{
+        display: block;
+        font-size: large;
+        padding: 5px;
+    }
+    .fa-signal{
+        display: block;
+        font-size: large;
+        padding: 5px;
+    }
+
+    .public{
+        display: none;
+    }
+    
+
+}
+    
+
+
+
+
+
+
