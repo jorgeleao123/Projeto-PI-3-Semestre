@@ -115,34 +115,27 @@
 
   //Função login
   function logar() {
-    // const data = {
-    //   loginUsuario: document.getElementById('login').value,
-    //   senhaUsuario: document.getElementById('senha').value
-    // };
 
     fetch(`http://localhost:8080/users/login/${document.getElementById('login').value}/${document.getElementById('senha').value}`, {
-      method: 'POST', // or 'PUT'
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      // body: JSON.stringify(data),
     })
-      .then(Response => {
-        console.log('Success:', Response);
-        if (Response.status == 200) {
-          window.location.href = "http://127.0.0.1:5501/index.html";
-        } else {
-          alert("Login e/ou senha inválidos")
+      .then(response =>
+        response.json())
+      .then(json => {
+        if (json["id"] != null) {
+          sessionStorage.userId = json["id"];
+          sessionStorage.userNome = json["name"];
+          window.location.href = "index.html";
         }
 
       })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-
+      .catch(err => console.log(err.message))
   }
 
-  function voltarIndex(){
+  function voltarIndex() {
     window.location.href = "./index.html";
   }
 
