@@ -161,27 +161,7 @@
     </div>
     <script>
 
-
-        $('.form .stages label ').click(function () {
-            var radioButtons = $('.form input:radio');
-            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
-            selectedIndex = selectedIndex + 1;
-        });
-
-        $('.form button next').click(function () {
-            var radioButtons = $('.form input:radio next');
-            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
-
-            selectedIndex = selectedIndex + 2;
-
-            $('.form input[type="radio"]:nth-of-type(' + selectedIndex + ')').prop('checked', true);
-
-            if (selectedIndex == 3) {
-                $('button').html('Submit');
-            }
-        });
-
-        function atualizarNome(){
+function atualizarNome(){
             nome_colocado.innerHTML = document.getElementById('nome-colocado').value;
         }
 
@@ -228,8 +208,10 @@
 
         }
 
+        //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
         document.getElementById('cep')
             .addEventListener('focusout', pesquisarCep);
+
         function cadastrar() {
             const data = {
                 user: {
@@ -264,6 +246,26 @@
                 });
 
         }
+
+
+        $('.form .stages label ').click(function () {
+            var radioButtons = $('.form input:radio');
+            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+            selectedIndex = selectedIndex + 1;
+        });
+
+        $('.form button next').click(function () {
+            var radioButtons = $('.form input:radio next');
+            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+
+            selectedIndex = selectedIndex + 2;
+
+            $('.form input[type="radio"]:nth-of-type(' + selectedIndex + ')').prop('checked', true);
+
+            if (selectedIndex == 3) {
+                $('button').html('Submit');
+            }
+        });
 
 
     </script>

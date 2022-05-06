@@ -66,7 +66,9 @@
                             <input type="password" name="" id="password" placeholder="Insira sua senha">
                             <img class="icon__pass" src="./assets/img/eye.png" onclick="viewPassword()" alt="">
                         </div>
-                        <span class="link__pass">Esqueceu sua senha?</span>
+                        <span class="link__pass" id="login_error" style="display: none; color:red">
+                            Email e/ou senha incorretos
+                        </span>
                         <span class="rem__check">
                             <input type="checkbox">
                             <p>Lembrar de mim</p>
@@ -125,18 +127,17 @@
                     sessionStorage.userId = json["userId"];
                 })
                 } else {
-                alert("Login e/ou senha inválidos");
+                    document.getElementById('login_error').style.display = 'block';
+                    alert("Login e/ou senha inválidos");
                 }
 
             })
             .catch((error) => {
                 console.error('Error:', error);
+                alert("Não foi possível se conectar com o servidor: ", error);
             });
 
         }
-
-
-
 
     </script>            
     <script src="../go-app/assets/js/dark-mode.js"></script>
