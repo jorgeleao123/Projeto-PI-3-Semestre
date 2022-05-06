@@ -12,15 +12,9 @@
 <body>
     <header class="header" id="header">
         <nav class="nav container">
-<<<<<<< HEAD
-            <a href="#home" class="nav__logo ">
-                <img src="./assets/img/logo-go 1.svg" alt="">
-            </a>
-=======
                 <span id="logo">
                     <img src=".//assets/img/logo-go-carbon.svg" alt="">
                 </span>
->>>>>>> 77a170f0fd144e7fb72066421c80dd5412432337
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -96,14 +90,10 @@
                     </div>
                 </footer>   
     </main>
-<<<<<<< HEAD
-
-=======
     <div style="display: none;" class="toggle">
         <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
         <label for="switch">Toggle</label>
     </div>
->>>>>>> 77a170f0fd144e7fb72066421c80dd5412432337
     <script>
 
         function viewPassword() {
@@ -117,10 +107,7 @@
 
         function logar() {
 
-<<<<<<< HEAD
-=======
             sessionStorage.login_meuapp = innerHTML.email.value;
->>>>>>> 77a170f0fd144e7fb72066421c80dd5412432337
             fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
             method: 'POST', // or 'PUT'
             headers: {
@@ -132,13 +119,10 @@
                 console.log('Success:', Response);
                 if (Response.status == 200) {
                 window.location.href = "http://127.0.0.1:5500/index.html";
-<<<<<<< HEAD
-=======
                 resposta.json().then(json => {
                     sessionStorage.userId = json["userId"];
 
                 })
->>>>>>> 77a170f0fd144e7fb72066421c80dd5412432337
                 } else {
                 alert("Login e/ou senha inválidos")
                 }
@@ -167,10 +151,7 @@
     
             <!--=============== MAIN JS ===============-->
             <script src="./assets/js/main.js"></script>
-<<<<<<< HEAD
-=======
 
             <script src="../go-app/assets/js/dark-mode.js"></script>
->>>>>>> 77a170f0fd144e7fb72066421c80dd5412432337
 </body>
 </html>

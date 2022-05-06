@@ -130,7 +130,8 @@
       .then(Response => {
         console.log('Success:', Response);
         if (Response.status == 200) {
-          window.location.href = "http://127.0.0.1:5501/index.html";
+          //window.location.href = "http://127.0.0.1:5501/index.html";
+        localStorage.setItem('nome', Response.json()[0]["status"])
         } else {
           alert("Login e/ou senha inválidos")
         }
@@ -140,10 +141,26 @@
         console.error('Error:', error);
       });
 
+      pegarId();
+
+  }
+
+  function pegarId(){
+
+    fetch('http://localhost:8080/users', { method: 'GET' })
+    .then(response => {
+      response.json();
+      localStorage.setItem('usuario', response[0]["id"]);
+    })
+    .then(texto => {
+      console.log(texto);
+      console.log(texto[0]["id"]);
+    })
+    .catch(err => console.log(err.message));
   }
 
   function voltarIndex(){
-    window.location.href = "./index.html";
+    //window.location.href = "./index.html";
   }
 
 </script>
