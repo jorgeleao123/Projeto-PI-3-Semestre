@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,13 @@
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>GO | Login</title>
 </head>
+
 <body>
     <header class="header" id="header">
         <nav class="nav container">
-                <span id="logo">
-                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
-                </span>
+            <span id="logo">
+                <img src="./assets/img/logo-go-carbon.svg" alt="">
+            </span>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -51,7 +53,8 @@
 
                 <div class="about__data">
                     <h2 class="section__title about__title">Faça Login</h2>
-                    <p class="about__description">Acesse a nossa plataforma e tenha acesso a denuncias e noticias sobre aplicativos de transporte
+                    <p class="about__description">Acesse a nossa plataforma e tenha acesso a denuncias e noticias sobre
+                        aplicativos de transporte
                         urbano.</p>
                     <form action="">
                         <div class="inputs__form">
@@ -63,7 +66,9 @@
                             <input type="password" name="" id="password" placeholder="Insira sua senha">
                             <img class="icon__pass" src="./assets/img/eye.png" onclick="viewPassword()" alt="">
                         </div>
-                        <span class="link__pass">Esqueceu sua senha?</span>
+                        <span class="link__pass" id="erro_login" style="display: none; color: rgb(253, 25, 25)">
+                            Email e/ou senha inválidos!
+                        </span>
                         <!-- <span class="rem__check">
                             <input type="checkbox">
                             <p>Lembrar de mim</p>
@@ -76,18 +81,18 @@
             </div>
         </section>
 
-                <!--==================== FOOTER ====================-->
-                <footer class="footer">
-                    <div class="footer__container container grid">
-                        <div class="footer__rights">
-                            <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
-                            <div class="footer__terms">
-                                <a href="#" class="footer__terms-link">Termos</a>
-                                <a href="#" class="footer__terms-link">Politica de privacidade</a>
-                            </div>
-                        </div>
+        <!--==================== FOOTER ====================-->
+        <footer class="footer">
+            <div class="footer__container container grid">
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Termos</a>
+                        <a href="#" class="footer__terms-link">Politica de privacidade</a>
                     </div>
-                </footer>   
+                </div>
+            </div>
+        </footer>
     </main>
     <div style="display: none;" class="toggle">
         <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
@@ -105,42 +110,80 @@
             }
         }
 
+        function erroLogin(){
+            document.getElementById("erro_login").style.display="block";
+            document.getElementById("email").style.border = "1px solid rgb(253, 25, 25);"
+            document.getElementById("password").style.border = "1px solid rgb(253, 25, 25);"
+            alert("Email e/ou senha inválidos!");
+        }
+
         function logar() {
 
-            sessionStorage.login_meuapp = innerHTML.email.value;
-            fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // body: JSON.stringify(data),
-            })
-            .then(Response => {
-                console.log('Success:', Response);
-                if (Response.status == 200) {
-                window.location.href = "http://127.0.0.1:5500/index.html";
-                resposta.json().then(json => {
-                    sessionStorage.userId = json["userId"];
+            // var axios = require("axios")
 
+            const email = document.getElementById("email");
+            const password = document.getElementById("password");
+
+            if(email == null || password == null) {
+                alert('teste')
+                erroLogin();
+            } else {
+                axios.post(`http://localhost:8080/users/login/`, {
+                    email: email,
+                    password: password
                 })
-                } else {
-                alert("Login e/ou senha inválidos")
-                }
+                    .then((res) => {
+                        console.log("Connection success!" + res);
+                        if(res.status == 200){
+                            alert("logado!");
+                        } else {
+                            alert(res.status)
+                            erroLogin();
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error: ' + error);
+                        alert("Não foi possível se conectar com o servidor: " + error);
+                    })
+                    .then((res) => {
+                        alert("sla")
+                    })
+            }
 
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            
+
+
+            // fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
+            //     method: 'POST', // or 'PUT'
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     // body: JSON.stringify(data),
+            // })
+            //     .then(Response => {
+            //         console.log('Success:', Response);
+            //         if (Response.status == 200) {
+            //             alert('Success!', Response);
+            //             resposta.json().then(json => {
+            //                 sessionStorage.userId = json["userId"];
+            //             })
+            //         } else {
+            //             document.getElementById('login_error').style.display = 'block';
+            //             alert("Login e/ou senha inválidos");
+            //         }
+
+            //     })
+            //     .catch((error) => {
+            //         console.error('Error:', error);
+            //         alert("Não foi possível se conectar com o servidor: ", error);
+            //     });
 
         }
 
+    </script>
+    
+    <!-- <script src="../go-app/assets/js/dark-mode.js"></script>  -->
 
-
-
-    </script>    
-            <!--=============== MAIN JS ===============-->
-            <script src="./assets/js/main.js"></script>
-
-            <script src="../go-app/assets/js/dark-mode.js"></script>
 </body>
+
 </html>
