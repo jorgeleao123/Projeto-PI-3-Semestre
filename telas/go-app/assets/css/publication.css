@@ -1,0 +1,240 @@
+@media screen and (min-width: 900.1px) {
+  .scrool_form {
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+
+
+  ::-webkit-scrollbar {
+    width: 2.5px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f174;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgba(167, 164, 164, 0.585);
+  }
+
+  .container__form {
+    overflow: hidden;
+  }
+}
+
+
+
+
+@media screen and (max-width: 900px) {
+  .container__form {
+    overflow: scroll;
+  }
+
+  .container__form {
+    padding-bottom: 40px;
+  }
+
+  .flex__inputs {
+    gap: 0;
+    flex-direction: column;
+  }
+
+  .form__publication {
+    flex-direction: column;
+  }
+
+  .inputs__publication {
+    width: 100% !important;
+  }
+
+  .more__inputs {
+    width: 100% !important;
+    padding-top: 0 !important;
+  }
+}
+
+.form__publication {
+  width: 100%;
+  gap: 20px;
+  display: flex;
+
+
+}
+
+.container__form {
+  height: calc(94vh - 51px);
+}
+
+.inputs__publication {
+  width: 70%;
+}
+
+.more__inputs {
+  padding-top: 30px;
+  width: 25%;
+  gap: 25px;
+  max-height: 560px;
+}
+
+.justify__more__infos{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.topic__feed span {
+  margin: 0 !important;
+  min-width: 145px !important;
+}
+
+
+.center {
+  justify-items: center;
+}
+
+.container__form input {
+  padding: 0.7rem;
+  width: 100%;
+  background-color: var(--inputs-color);
+  outline: none;
+  border: none;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 26px;
+  border-radius: 1px;
+}
+
+.form__sel {
+  padding: 0.5rem;
+  width: 100%;
+  background-color: var(--inputs-color);
+  outline: none;
+  border: none;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 26px;
+}
+
+.form__publication select {
+  padding: 0.9rem;
+  border-radius: 1px;
+}
+
+.card__arq {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  background-color: var(--inputs-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+border-radius: 1px;
+}
+
+.card__dics {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  background-color: var(--body-color);
+  border: solid 1px var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  color: rgb(191, 189, 189);
+  border-radius: 1px;
+}
+
+.card__arq button {
+  padding: 10px 10px;
+  border: solid 2px var(--first-color);
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: ease-in 300ms;
+  border-radius: 1px;
+  background-color: var(--background-card);
+  font-weight: 600;
+  color: var(--first-color);
+  transition: ease-in 300ms;
+}
+
+.btn__anx {
+  border: solid 2px var(--second-color-hover) !important;
+  color: var(--second-color-hover) !important;
+}
+
+.btn__publication {
+  padding: 10px 10px;
+  border: solid 2px var(--first-color);
+  text-align: center;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: ease-in 300ms;
+  border-radius: 1px;
+  background-color: var(--first-color);
+  font-weight: 600;
+  color: white;
+  transition: ease-in 300ms;
+  width: 100%;
+}
+
+.btn__publication:hover {
+  background-color: var(--inputs-color);
+  color: var(--first-color);
+}
+
+
+.card__arq h6 {
+  text-align: center;
+  color: rgb(191, 189, 189);
+}
+
+textarea {
+  padding: 0.7rem;
+  width: 100%;
+  background-color: var(--inputs-color);
+  border: none;
+  height: auto;
+  outline: none;
+  resize: none;
+  font-family: var(--body-font);
+  font-size: 14px;
+  line-height: 26px;
+  color: var(--color-font-descrit);
+  margin-top: 5px;
+  border-radius: 1px;
+  margin-bottom: 20px;
+}
+
+.container__form label {
+  font-size: var(--label-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+
+.ipt__form {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.flex__inputs {
+  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.color__btn {
+  border: solid 2px var(--second-color-hover);
+  background-color: var(--second-color-hover);
+  color: var(--body-color);
+}
+
+.color__btn :hover {
+  background-color: var(--inputs-color);
+  color: var(--second-color-hover);
+}

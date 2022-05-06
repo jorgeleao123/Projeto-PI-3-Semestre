@@ -1,0 +1,468 @@
+/*========================================================================= CONTEUDO ===========================================================================*/
+/* tamanho das 3 divs (card / feed / card) */
+.content__feed {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.container__feed {
+    width: 50%;
+}
+
+.new__publication {
+    width: 90%;
+    height: 80px;
+    padding: 10px;
+    border-radius: 3px;
+    font-size: 13px;
+    background-color: var(--background-card);
+    cursor: pointer;
+}
+
+.new__publication a{
+    color: var(--text-color);
+}
+/* padrão dos cards  */
+.flex {
+    display: flex;
+    gap: 15px;
+}
+
+.padding__card {
+    padding: 15px;
+}
+
+input::placeholder {
+    font-size: 13px;
+}
+
+.justify {
+    justify-content: space-between;
+}
+
+.top {
+    margin-top: 14px;
+}
+
+.top__classification {
+    margin-top: 18px;
+}
+
+.header__complaint{
+    position: relative;
+}
+
+/* Card Informações do Usuario  */
+.card__infos__user {
+    background-color: var(--background-card);
+    border-radius: 3px;
+    height: auto;
+    padding-bottom: 10px;
+    width: 27%;
+    min-width: 170px;
+    max-width: 240px;
+}
+
+.label__modal{
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: right;
+}
+
+.card__infos__user h4 {
+    font-weight: 600;
+    font-size: var(--name-font);
+}
+
+.card__infos__user h5 {
+    font-weight: 500;
+    font-size: var(--datas-font);
+}
+
+.card__infos__user p {
+    margin-top: 5px;
+    font-size: var(--city-font);
+}
+
+.card__infos__user hr {
+    border-width: 0;
+    height: 0.2px;
+    border-top-width: 0.2px;
+    border: 0.2px solid var(--border-color);
+}
+
+.icon__user {
+    min-width: 35px;
+    min-height: 35px;
+    font-size: 16px;
+}
+
+.data__user {
+    font-size: var(--datas-font);
+    font-weight: 700;
+}
+
+/* tópico da pagina  */
+.topic__feed {
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0;
+    font-size: 13.5px;
+    width: 100%;
+}
+
+.topic__feed span{
+    min-width: 200px;
+}
+
+.topic__feed hr {
+    width: 100%;
+    float: right;
+    text-align: right;
+    margin-right: 0 0 0;
+    border-width: 0;
+    height: 0.1px;
+    border: 0.1px solid var(--border-color);
+}
+
+.hr{
+    border-bottom: solid 0.5px var(--border-color);
+    width: 100%;
+    float: right;
+    text-align: right;
+}
+
+.margin-bottom{
+    margin-bottom: 40px;
+}
+
+.content__complaint{
+    margin-bottom: 60px;
+}
+
+/*======================== publicação  ============================*/
+.icon__complaint {
+    width: 14px !important;
+    height: 14px !important;
+    background-color: #ce480a;
+}
+
+.infos__user__complaint h4 {
+    font-size: var(--name-font);
+    font-weight: 600;
+}
+
+.infos__user__complaint p {
+    font-size: var(--city-font);
+    padding-top: 2px;
+}
+
+.check__complaint {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    gap: 5px;
+    align-items: center;
+}
+
+.check__complaint i {
+    color: var(--check-complant);
+}
+
+.check__complaint h6 {
+    font-weight: 600;
+}
+
+.infos__complaint {
+    margin-top: 10px;
+    text-align: justify;
+    font-size: 14px;
+}
+
+.photos__complaint {
+    margin-top: 12px;
+    gap: 5px;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item img {
+    width: 100%;
+    height: 200px;
+    border-radius: 3px;
+}
+
+.shrink-1-basis {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 150px;
+}
+
+.more__infos__complaint {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.classification__complaint {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.classification__complaint h6 {
+    font-weight: 500;
+    font-size: var(--city-font);
+}
+
+.location__conplaint {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+
+.circle__classification {
+    min-width: 14px !important;
+    min-height: 14px !important;
+    border-radius: 50%;
+}
+
+.content__complaint hr {
+    border: 0.2px solid var(--border-color);
+    margin-bottom: 40px;
+}
+
+
+
+/* card classifications  */
+.card__infos__classifications {
+    background-color: var(--background-card);
+    border-radius: 3px;
+    height: 350px;
+    padding-bottom: 10px;
+    width: 27%;
+    max-width: 240px;
+}
+
+
+.colors__classifications {
+    width: 100%;
+    height: 3px;
+    display: flex;
+    margin: 10px 0;
+}
+
+.circle__assedio {
+    background-color: var(---color-assedio);
+}
+
+.circle__assedio__moral {
+    background-color: var(---color-assedio-moral);
+}
+
+.circle__agressao__fisica {
+    background-color: var(---color-agressao-fisica);
+}
+
+.circle__agressao__verbal {
+    background-color: var(---color-agressao-verbal);
+}
+
+.circle__homofobia {
+    background-color: var(---color-homofobia);
+}
+
+.circle__racism {
+    background-color: var(---color-racismo);
+}
+
+.circle__preconceito {
+    background-color: var(---color-preconceito);
+}
+
+.circle__furto {
+    background-color: var(---color-furto);
+}
+
+.link__modal {
+    margin-top: 5px;
+    color: var(--first-color);
+    font-size: 12px;
+    font-weight: bold;
+    float: right;
+    cursor: pointer;
+    transition: ease-in 300ms;
+}
+
+.link__modal:hover {
+    color: var(--second-color-hover);
+}
+
+.colors__classifications hr {
+    width: 12.5%;
+    height: 4px;
+    border: none;
+}
+
+
+.toggle input[type=checkbox]{
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.toggle label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 52px;
+    height: 27px;
+    background: var(--color-toggle);
+    float: right;
+    border-radius: 100px;
+    position: relative;
+}
+
+.toggle label::after{
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.toggle input:checked + label {
+    background-color: var(--first-color);
+}
+
+.toggle input:checked + label::after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.toggle label:active:after {
+    width: 45px;
+}
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    .card__infos__user {
+        max-height: 150px;
+    }
+    .container__feed {
+        max-width: 500px;
+    }
+
+    .card__infos__user {
+        display: block;
+    }
+
+    .card__infos__classifications {
+        display: block;
+    }
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1448px) {
+    .card__infos__user {
+        max-height: 145px;
+    }
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+    .card__infos__user {
+        display: block;
+    }
+
+    .card__infos__classifications {
+        display: block;
+    }
+
+    .card__infos__user {
+        max-height: 140px;
+    }
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1168px) {
+    .card__infos__user {
+        max-height: 160px!important;
+    }
+}
+
+
+@media screen and (max-width: 1400px) {
+    .card__infos__user {
+        display: block;
+    }
+
+    .card__infos__classifications {
+        display: block;
+    }
+
+
+    .card__infos__user {
+        max-height: 140px;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .card__infos__user {
+        display: none;
+    }
+
+    .card__infos__classifications {
+        display: none;
+    }
+
+    .container__feed {
+        width: 100% !important;
+    }
+
+    .new__publication {
+        width: 100%;
+    }
+
+    .topic__feed hr {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 647px) {
+
+}
+
+@media screen and (max-width: 537px) {
+
+}
+
+@media screen and (max-width: 1040px) {
+
+}
