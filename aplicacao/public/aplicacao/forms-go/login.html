@@ -119,36 +119,44 @@
 
         function logar() {
 
-            // var axios = require("axios")
+            // var axios = require("axios");
 
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
+            axios.get("https://api.github.com/users/techtuxbr")
+            .then((response) => {
+                alert(response);
+            })
+            .catch((error) => {
+                alert(error);
+            })
 
-            if(email == null || password == null) {
-                alert('teste')
-                erroLogin();
-            } else {
-                axios.post(`http://localhost:8080/users/login/`, {
-                    email: email,
-                    password: password
-                })
-                    .then((res) => {
-                        console.log("Connection success!" + res);
-                        if(res.status == 200){
-                            alert("logado!");
-                        } else {
-                            alert(res.status)
-                            erroLogin();
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error: ' + error);
-                        alert("Não foi possível se conectar com o servidor: " + error);
-                    })
-                    .then((res) => {
-                        alert("sla")
-                    })
-            }
+            // const email = document.getElementById("email").value;
+            // const password = document.getElementById("password").value;
+
+            // if(email == null || password == null) {
+            //     alert('teste')
+            //     erroLogin();
+            // } else {
+            //     axios.post(`http://localhost:8080/users/login/`, {
+            //         email: email,
+            //         password: password
+            //     })
+            //         .then((res) => {
+            //             console.log("Connection success!" + res);
+            //             if(res.status == 200){
+            //                 alert("logado!");
+            //             } else {
+            //                 alert(res.status)
+            //                 erroLogin();
+            //             }
+            //         })
+            //         .catch((error) => {
+            //             console.error('Error: ' + error);
+            //             alert("Não foi possível se conectar com o servidor: " + error);
+            //         })
+            //         .then((res) => {
+            //             alert("sla")
+            //         })
+            // }
 
             
 
