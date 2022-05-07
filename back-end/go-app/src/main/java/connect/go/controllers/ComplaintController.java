@@ -75,13 +75,14 @@ public class ComplaintController {
         complaint.setDescription(complaintRegistration.getDescription());
         complaint.setArchive(complaintRegistration.getArchive());
         complaint.setType(complaintRegistration.getType());
+        complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
         complaint.setAddress(address);
         complaint.setUser(user);
         complaint.setDriver(driver);
-        complaint.setDateTimeComplaint(LocalDateTime.now());
+        complaint.setDateTimePost(LocalDateTime.now());
         complaint.setStatus("valido");
         complaintService.register(complaint);
-        return ResponseEntity.status(200).body(complaint);
+        return ResponseEntity.status(201).build();
     }
 
 

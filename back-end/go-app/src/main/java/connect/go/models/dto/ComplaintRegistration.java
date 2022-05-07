@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
@@ -14,8 +15,6 @@ public class ComplaintRegistration {
     private String description;
 
     private String archive;
-
-    private String status;
 
     private String bo;
 
@@ -28,4 +27,6 @@ public class ComplaintRegistration {
     private String city;
     @NotBlank
     private String district;
+
+    private LocalDateTime dateTimeComplaint;
 }

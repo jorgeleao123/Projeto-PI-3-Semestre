@@ -35,6 +35,9 @@ public class Complaint {
     @Column(name = "dt_complaint")
     private LocalDateTime dateTimeComplaint;
 
+    @Column(name = "dt_post")
+    private LocalDateTime dateTimePost;
+
     private String type;
 
     @JoinColumn(name = "id_driver")
