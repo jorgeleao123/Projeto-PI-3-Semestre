@@ -1,4 +1,4 @@
-package connect.go.models;
+package connect.go.models.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

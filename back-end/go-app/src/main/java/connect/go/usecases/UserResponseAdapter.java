@@ -1,7 +1,7 @@
 package connect.go.usecases;
 
 import connect.go.models.User;
-import connect.go.models.UserResponse;
+import connect.go.models.dto.UserResponse;
 
 import java.util.ArrayList;
 import java.util.List;

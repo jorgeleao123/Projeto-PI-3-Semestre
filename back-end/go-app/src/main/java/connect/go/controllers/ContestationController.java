@@ -1,6 +1,7 @@
 package connect.go.controllers;
 
 import connect.go.models.Contestation;
+import connect.go.models.dto.ContestationRegistration;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.ContestationService;
 import connect.go.usecases.UserService;
@@ -35,17 +36,20 @@ public class ContestationController {
         return ResponseEntity.of(contestationService.getContestationsByStatus(status));
     }
 
-    @PostMapping("/{complaintId}/{userId}")
-    public ResponseEntity<Void> registerContestation(@PathVariable Integer complaintId,@PathVariable Integer userId,
-                                                                @RequestBody Contestation contestation) {
-        contestation.setComplaint(complaintService.getComplaintById(complaintId));
-        contestation.setUser(userService.getById(userId));
+    @PostMapping
+    public ResponseEntity<Void> registerContestation(@RequestBody ContestationRegistration contestationRegistration) {
+        Contestation contestation = new Contestation();
+        contestation.setArchive(contestationRegistration.getArchive());
+        contestation.setDescription(contestationRegistration.getDescription());
+        contestation.setComplaint(complaintService.getComplaintById(contestationRegistration.getComplaintId()));
+        contestation.setUser(userService.getById(contestationRegistration.getUserId()));
         contestation.setStatus("em analise");
         contestation.setDateTimeContestation(LocalDateTime.now());
         Contestation newContestation =contestationService.register(contestation);
-        complaintService.setStatus(complaintId, "em análise");
+        complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
         return ResponseEntity.status(201).build();
     }
+
 
     @PatchMapping("/aprove/{contestationId}")
     public ResponseEntity<Void> approveContestation(@PathVariable Integer contestationId) {

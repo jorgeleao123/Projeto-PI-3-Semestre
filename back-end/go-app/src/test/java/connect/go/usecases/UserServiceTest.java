@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.transaction.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -123,7 +124,7 @@ class UserServiceTest {
     void successUpdateByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
-        User newUser = new User(user.getId(),"Tais", "tais@teste.com", user.getPassword(), "admin","Faminino");
+        User newUser = new User(user.getId(),"Tais", "tais@teste.com", user.getPassword(), "admin","Faminino", "cor","cor", LocalDate.now());
         assertTrue(service.updateById(user.getId(), newUser));
         User updatedUser = service.getById(user.getId());
         assertEquals(user.getId(), updatedUser.getId());

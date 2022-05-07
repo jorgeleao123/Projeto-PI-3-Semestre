@@ -25,8 +25,6 @@ public class Contestation {
 
     private String description;
 
-    private String title;
-
     private String archive;
 
     private String status;

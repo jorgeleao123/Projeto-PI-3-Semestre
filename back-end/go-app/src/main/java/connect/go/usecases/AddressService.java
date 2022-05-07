@@ -15,20 +15,20 @@ public class AddressService {
 
     public Address register(Address address) {
         if (isAddressExists(address)){
-            return findAllByCep(address.getCep()).get().get(0);
+            return findAllByDistrict(address.getDistrict()).orElseThrow(RuntimeException::new);
         }
         return addressRepository.save(address);
     }
 
     private boolean isAddressExists(Address address) {
-        return addressRepository.existsByCep(address.getCep());
+        return addressRepository.existsByDistrict(address.getDistrict());
     }
 
     public Optional<List<Address>> getFavoriteAddressByUserId(Integer id) {
         return addressRepository.getFavoriteAddressByUserId(id);
     }
 
-    public Optional<List<Address>> findAllByCep(String cep) {
-        return addressRepository.findAllByCep(cep);
+    public Optional<Address> findAllByDistrict(String district) {
+        return addressRepository.findAllByDistrict(district);
     }
 }

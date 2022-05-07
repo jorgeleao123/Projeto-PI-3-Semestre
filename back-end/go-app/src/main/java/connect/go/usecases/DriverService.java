@@ -13,15 +13,15 @@ public class DriverService {
     private final DriverRepository driverRepository;
 
     public Driver register(Driver driver) {
-        List<Driver> drivers = findDriverByNameAndLicense(driver.getName(), driver.getLicense());
+        List<Driver> drivers = findDriverByNameAndLicensePlate(driver.getName(), driver.getLicensePlate());
         if (drivers.isEmpty()) {
             return driverRepository.save(driver);
         }
         return drivers.get(0);
     }
 
-    public List<Driver> findDriverByNameAndLicense(String name, String license) {
-        return driverRepository.findDriverByNameAndLicense(name, license);
+    public List<Driver> findDriverByNameAndLicensePlate(String name, String license) {
+        return driverRepository.findDriverByNameAndLicensePlate(name, license);
     }
 
 }

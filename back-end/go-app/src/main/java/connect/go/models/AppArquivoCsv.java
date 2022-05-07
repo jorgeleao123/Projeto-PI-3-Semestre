@@ -36,7 +36,7 @@ public class AppArquivoCsv {
             for (int i = 0; i < complaintListaObj.getTamanho(); i++) {
                 Complaint complaint = complaintListaObj.getElemento(i);
                 //               // gravo os dados desse objeto, separando cada campo por um ;
-                saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getTitle(), complaint.getArchive(),
+                saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getArchive(),
                         complaint.getStatus(), complaint.getBo(), complaint.getDateTimeComplaint(), complaint.getType(), complaint.getDriver().getId()
                         , complaint.getUser().getId(), complaint.getAddress().getId());
             }

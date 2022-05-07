@@ -24,9 +24,10 @@ public class Driver {
 
     private String name;
     @NotBlank
-    private String license;
+    private String licensePlate;
 
-    private String genre;
-
-
+    public Driver(String name, String licensePlate) {
+        this.name = name;
+        this.licensePlate = licensePlate;
+    }
 }

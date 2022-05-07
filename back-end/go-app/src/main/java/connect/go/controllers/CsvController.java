@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,17 +66,17 @@ public class CsvController {
     public ResponseEntity<ListaObj<Complaint>>gravarTest() {
         ListaObj<Complaint> complaintListaObj = new ListaObj<>(10);
 
-        Driver driver = new Driver(5, "Antonio", "total", "calvo-cabeludo");
-        Address address = new Address(1, "04914-040", "SP", "São Paulo", "Esse ai");
+        Driver driver = new Driver(5, "Antonio", "OMS1548");
+        Address address = new Address(1, "SP", "São Paulo", "Esse ai");
 
-        User user1 = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-        Complaint complaint1 = new Complaint(1, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user1, address);
+        User user1 = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now());
+        Complaint complaint1 = new Complaint(1, "decrição", "archive", "Verificado", null, LocalDateTime.now(), "tipo", driver, user1, address);
 
-        User user2 = new User(3, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-        Complaint complaint2 = new Complaint(2, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user2, address);
+        User user2 = new User(3, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now());
+        Complaint complaint2 = new Complaint(2, "decrição", "archive", "Verificado", null, LocalDateTime.now(), "tipo", driver, user1, address);
 
-        User user3 = new User(2, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-        Complaint complaint3 = new Complaint(1, "decr   ição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user3, address);
+        User user3 = new User(5, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now());
+        Complaint complaint3 = new Complaint(1, "decrição", "archive", "Verificado", null, LocalDateTime.now(), "tipo", driver, user1, address);
         complaintListaObj.adiciona(complaint1);
         complaintListaObj.adiciona(complaint2);
         complaintListaObj.adiciona(complaint3);

@@ -30,20 +30,16 @@ public class ComplaintService {
         return complaintRepository.getComplaintByDistrict(district);
     }
 
-    public Optional<List<Complaint>> getComplaintByCep(String cep) {
-        return complaintRepository.getComplaintByCep(cep);
-    }
-
     public Complaint register(Complaint complaint) {
         return complaintRepository.save(complaint);
     }
 
     public Optional<List<Complaint>> getComplaintByLicense(String license) {
-        return complaintRepository.getComplaintByLicense(license);
+        return complaintRepository.getComplaintByLicensePlate(license);
     }
 
     public Optional<List<Complaint>> getComplaintByLicenseAndName(String license, String name) {
-        return complaintRepository.getComplaintByLicenseAndName(license, name);
+        return complaintRepository.getComplaintByLicensePlateAndName(license, name);
     }
 
     public void setStatus(Integer complaintId, String status) {

@@ -1,6 +1,7 @@
 package connect.go.controllers;
 
 import connect.go.models.*;
+import connect.go.models.dto.ComplaintRegistration;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.DriverService;
@@ -31,17 +32,10 @@ public class ComplaintController {
 
     private final DriverService driverService;
 
-    private final AppArquivoCsv csv = new AppArquivoCsv();
-
 
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
         return ResponseEntity.of(complaintService.getComplaintByCity(city));
-    }
-
-    @GetMapping("/cep")
-    public ResponseEntity<List<Complaint>> getComplaintByCep(@RequestHeader String cep) {
-        return ResponseEntity.of(complaintService.getComplaintByCep(cep));
     }
 
     @GetMapping("/district")
@@ -72,11 +66,15 @@ public class ComplaintController {
     }
 
     @PostMapping("/{userId}")
-    public ResponseEntity<Complaint> createComplaint(@PathVariable Integer userId, @RequestBody Complaint complaint) {
-        Address address = addressService.register(complaint.getAddress());
+    public ResponseEntity<Complaint> createComplaint(@PathVariable Integer userId, @RequestBody ComplaintRegistration complaintRegistration) {
+        Address address = addressService.register(new Address(complaintRegistration.getState(), complaintRegistration.getCity(), complaintRegistration.getDistrict()));
         User user = userService.getById(userId);
-        Driver driver = driverService.register(complaint.getDriver());
-
+        Driver driver = driverService.register(new Driver(complaintRegistration.getDriverName(), complaintRegistration.getLicensePlate()));
+        Complaint complaint = new Complaint();
+        complaint.setBo(complaintRegistration.getBo());
+        complaint.setDescription(complaintRegistration.getDescription());
+        complaint.setArchive(complaintRegistration.getArchive());
+        complaint.setType(complaintRegistration.getType());
         complaint.setAddress(address);
         complaint.setUser(user);
         complaint.setDriver(driver);

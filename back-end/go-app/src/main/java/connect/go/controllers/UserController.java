@@ -5,8 +5,8 @@ import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.Address;
 import connect.go.models.FavoriteAddressId;
 import connect.go.models.User;
-import connect.go.models.UserRegistration;
-import connect.go.models.UserResponse;
+import connect.go.models.dto.UserRegistration;
+import connect.go.models.dto.UserResponse;
 import connect.go.usecases.FavoriteAddressService;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.UserResponseAdapter;
@@ -43,8 +43,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegistration userRegistration) {
-        User user = userService.register(userRegistration.getUser());
-        Address addressRegistration = userRegistration.getAddress();
+        User user = userService.register(new User(userRegistration));
+        Address addressRegistration = new Address(userRegistration.getState(), userRegistration.getCity(), userRegistration.getDistrict());
         Address address = addressService.register(addressRegistration);
         FavoriteAddressId favoriteAddressId = new FavoriteAddressId();
         favoriteAddressId.setAddressId(address.getId());
