@@ -22,13 +22,16 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_address")
     private Integer id;
-
-    @NotBlank
-    private String cep;
     @NotBlank
     private String state;
     @NotBlank
     private String city;
     @NotBlank
     private String district;
+
+    public Address(String state, String city, String district) {
+        this.state = state;
+        this.city = city;
+        this.district = district;
+    }
 }

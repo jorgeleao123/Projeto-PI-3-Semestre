@@ -59,19 +59,18 @@ class AddressServiceTest {
     }
 
     @Test
-    void successFindAllByCepTest() {
+    void successFindAllByDistrictTest() {
         Address address = service.register(generateValidAdderss());
         service.register(generateValidAdderss());
-        List<Address> address2 = service.findAllByCep(address.getCep()).get();
-        assertEquals(1, address2.size(), "Apenas 1 cadastro do Cep");
-        assertEquals(address, address2.get(0));
+        Address address2 = service.findAllByDistrict(address.getDistrict()).get();
+        assertEquals(address, address2);
 
     }
 
     @Test
     void failFindAllByCepTest() {
-        Optional<List<Address>> listOptional = service.findAllByCep("00000000");
-        assertTrue(listOptional.orElse(Collections.EMPTY_LIST).isEmpty());
+        Optional<Address> addressOptional = service.findAllByDistrict("00000000");
+        assertFalse(addressOptional.isPresent());
     }
 
     @Test
@@ -85,7 +84,6 @@ class AddressServiceTest {
         user = userService.register(user);
         Address address = service.register(generateValidAdderss());
         Address address2 = generateValidAdderss();
-        address2.setCep("05351000");
         address2.setDistrict("Cidade São Francisco");
         address2 = service.register(address2);
         favoriteAddressService.register(new FavoriteAddressId(user.getId(), address.getId()));
@@ -100,7 +98,6 @@ class AddressServiceTest {
 
     private Address generateValidAdderss() {
         Address address = new Address();
-        address.setCep("03427080");
         address.setCity("São Paulo");
         address.setDistrict("Vila Carrrão");
         address.setState("SP");

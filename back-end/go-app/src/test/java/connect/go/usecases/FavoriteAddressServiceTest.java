@@ -49,13 +49,11 @@ class FavoriteAddressServiceTest {
         user.setRole("Usuario");
         user.setGenre("Masculino");
         user = userService.register(user);
-        address.setCep("03427080");
         address.setCity("São Paulo");
         address.setDistrict("Vila Carrrão");
         address.setState("SP");
         address2.setCity("São Paulo");
         address2.setState("SP");
-        address2.setCep("05351000");
         address2.setDistrict("Cidade São Francisco");
     }
     @Test

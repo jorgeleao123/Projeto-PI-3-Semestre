@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface AddressRepository extends JpaRepository<Address, Integer> {
 
-    boolean existsByCep(String cep);
+    boolean existsByDistrict(String district);
 
-    Optional<List<Address>> findAllByCep(String cep);
+    Optional<Address> findAllByDistrict(String district);
 
     @Query("select a from FavoriteAddress f join f.address a where f.user.id = ?1")
-    Optional<List<Address>> getFavoriteAddressByUserId(Integer id);
+    Optional<List<Address>> getFavoriteAddressByUserId(Integer userId);
 
 }

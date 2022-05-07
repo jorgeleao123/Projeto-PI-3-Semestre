@@ -26,8 +26,6 @@ public class Complaint {
 
     private String description;
 
-    private String title;
-
     private String archive;
 
     private String status;
