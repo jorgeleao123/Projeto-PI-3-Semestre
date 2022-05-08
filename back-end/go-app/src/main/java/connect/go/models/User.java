@@ -38,7 +38,7 @@ public class User {
     private String colorProfile;
     @NotBlank
     private String colorMenu;
-    @NotBlank
+
     private LocalDate birthDate;
 
     public User(UserRegistration userRegistration) {
