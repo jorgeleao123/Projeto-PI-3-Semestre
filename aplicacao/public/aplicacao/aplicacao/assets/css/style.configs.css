@@ -8,13 +8,13 @@
     will-change: transform;
     transform: translateZ(0);
     justify-content: space-between;
-    border-radius: 3px;
+    border-radius: 1px;
 }
 .i__navbar ul{
     margin-top: -30px;
     padding: 0;
     background-color: var(--background-card);
-    border-radius: 3px;
+    border-radius: 1px;
 }
 .i__navbar li{
     border-bottom: 1px solid var(--border-color);
@@ -40,7 +40,7 @@
 }
 
 .edit__profile{
-    border-radius: 3px;
+    border-radius: 1px;
     width: 100%;
     
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
@@ -92,7 +92,7 @@
     margin: 20px 0;
     cursor: pointer;
     transition: ease-in 300ms;
-    border-radius: 3px;
+    border-radius: 1px;
     font-weight: 600;
     color: var(--body-color);
     transition: ease-in 300ms;
@@ -120,7 +120,7 @@
 /* final menu */
 .f__navbar__mobile{
     display: none;
-    border-radius: 3px;
+    border-radius: 1px;
     height: 50px;
     z-index: 999999;
     will-change: transform;
@@ -264,7 +264,7 @@
     text-align: center;
     cursor: pointer;
     transition: ease-in 300ms;
-    border-radius: 3px;
+    border-radius: 1px;
     font-weight: 600;
     transition: ease-in 300ms;
     float: right;

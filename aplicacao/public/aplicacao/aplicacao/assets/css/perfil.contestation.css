@@ -22,7 +22,7 @@ input[type="radio"] {
 
 .stages label {
 	background: #c8c8c8;
-	border-radius: 3px;
+	border-radius: 1px;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 0;
@@ -46,7 +46,7 @@ input[type="radio"] {
 	padding: 0;
 	background: var(--first-color);
 	width: 100%;
-	border-radius: 3px;
+	border-radius: 1px;
 	text-align: center;
 	content: '\2713';
 	color: #ffffff;
@@ -192,7 +192,7 @@ input[type="radio"] {
 	float: left;
 	background-color: #ffffff;
 	border: solid 2px var(--first-color);
-	border-radius: 3px;
+	border-radius: 1px;
 	color: var(--first-color);
 }
 
@@ -200,7 +200,7 @@ button {
 	float: right;
 	border: solid 2px var(--first-color);
 	background-color: var(--first-color);
-	border-radius: 3px;
+	border-radius: 1px;
 	color: #ffffff;
 	cursor: pointer;
 	font-weight: 700;
@@ -260,7 +260,7 @@ input{
 .edit__button__cont{
 	font-weight: bold;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 1px;
     border: solid var(--color-toggle);
     background-color: Transparent;
     color: #144D6C;

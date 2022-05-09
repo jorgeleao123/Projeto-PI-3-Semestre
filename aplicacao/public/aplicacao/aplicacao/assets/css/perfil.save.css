@@ -30,7 +30,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: var(--menu-color);
-    border-radius: 2px;
+    border-radius: 1px;
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
 }
 .top__save{

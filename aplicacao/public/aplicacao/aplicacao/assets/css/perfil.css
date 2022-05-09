@@ -9,7 +9,7 @@
     height: 80%;
     background-color: #be156a;
     padding: 10%;
-    border-radius: 3px;
+    border-radius: 1px;
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
 }
 .nameUser{
@@ -23,7 +23,7 @@
     padding-top: 5px;
     padding-bottom: 5px;
     background-color: var(--modal-color);
-    border-radius: 3px;
+    border-radius: 1px;
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
 }
 .top__perfil{
@@ -34,7 +34,7 @@
 /* Card Informações do Perfil  */
 .card__infos__perfil{
     background-color: var(--modal-color);
-    border-radius: 3px;
+    border-radius: 1px;
     height: 300px;
     padding-bottom: 15px;
     margin-top: -120px;
@@ -85,7 +85,7 @@
 .edit__button{
     font-weight: bold;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 1px;
     border: solid 2px var(--first-color);
     background-color: Transparent;
     width: 100%;
@@ -174,7 +174,7 @@
 /* final menu */
 .f__navbar__mobile{
     display: none;
-    border-radius: 3px;
+    border-radius: 1px;
     height: 50px;
     z-index: 999999;
     will-change: transform;

@@ -1,7 +1,7 @@
 .card__result__search{
     width: 100%;
     background-color: var(--background-card);
-    border-radius: 3px;
+    border-radius: 1px;
     height: 100px;
     padding-bottom: 10px;
     display: flex;
@@ -25,7 +25,7 @@
     margin-bottom: 10px;
     cursor: pointer;
     transition: ease-in 300ms;
-    border-radius: 3px;
+    border-radius: 1px;
     background-color: var(--background-card);
 }
 
@@ -70,7 +70,7 @@
 
 .card__new__case {
     background-color: var(--background-card);
-    border-radius: 3px;
+    border-radius: 1px;
     height: auto;
     padding-bottom: 10px;
     width: 100%;
