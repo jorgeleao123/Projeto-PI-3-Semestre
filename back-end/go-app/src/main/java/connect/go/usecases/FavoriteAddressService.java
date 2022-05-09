@@ -1,8 +1,6 @@
 package connect.go.usecases;
 
 import connect.go.Repositories.FavoriteAddressRepository;
-import connect.go.exceptions.AddressNotFoundException;
-import connect.go.exceptions.BadRequestException;
 import connect.go.exceptions.FavoriteAddressAlreadyExistsException;
 import connect.go.exceptions.FavoriteAddressNotFoundException;
 import connect.go.models.FavoriteAddress;

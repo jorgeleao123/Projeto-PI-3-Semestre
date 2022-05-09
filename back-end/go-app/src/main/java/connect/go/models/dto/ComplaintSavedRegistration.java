@@ -5,14 +5,8 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ContestationRegistration {
-
-    private String description;
-
-    private String archive;
+public class ComplaintSavedRegistration {
 
     private Integer userId;
-
     private Integer complaintId;
-
 }

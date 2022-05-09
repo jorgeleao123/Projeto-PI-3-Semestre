@@ -87,7 +87,7 @@ public class UserController {
     }
 
     @PatchMapping("/email/{id}/{email}")
-    public ResponseEntity<Void> updateUserById(@PathVariable int id, @PathVariable String email) {
+    public ResponseEntity<Void> updateEmailById(@PathVariable int id, @PathVariable String email) {
         if (userService.updateEmailById(id, email)){
             return ResponseEntity.status(200).build();
         }
@@ -95,7 +95,7 @@ public class UserController {
     }
 
     @PatchMapping("/password/{id}/{oldPassword}/{newPassword}")
-    public ResponseEntity<Void> updateUserById(@PathVariable int id, @PathVariable String oldPassword,
+    public ResponseEntity<Void> updatePasswordById(@PathVariable int id, @PathVariable String oldPassword,
                                                  @PathVariable String newPassword) {
         if(userService.updatePasswoordById(id, oldPassword, newPassword)){
             return ResponseEntity.status(200).build();
