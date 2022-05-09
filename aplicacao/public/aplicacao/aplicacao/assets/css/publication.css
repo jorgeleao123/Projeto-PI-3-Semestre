@@ -6,17 +6,17 @@
 
 
 
-  ::-webkit-scrollbar {
+  .scrool_form::-webkit-scrollbar {
     width: 2.5px;
   }
 
   /* Track */
-  ::-webkit-scrollbar-track {
+  .scrool_form::-webkit-scrollbar-track {
     background: #f1f1f174;
   }
 
   /* Handle */
-  ::-webkit-scrollbar-thumb {
+  .scrool_form::-webkit-scrollbar-thumb {
     background: rgba(167, 164, 164, 0.585);
   }
 
