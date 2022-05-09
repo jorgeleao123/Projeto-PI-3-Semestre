@@ -1,6 +1,6 @@
 /*======== SIDEBAR and MENU  =======*/
 
-.sidenav {
+.sidenav__top{
     height: 100%;
     width: 0;
     position: fixed;
@@ -23,35 +23,192 @@
     padding-bottom: 30px;
 
   }
-  .sidenav a {
+  .sidenav__top a {
     padding: 12px 12px 12px 32px;
     text-decoration: none;
-    font-size: var(--h2-font-size);
+    font-size: var(--h3-font-size);
     color: #818181;
     display: block;
     transition: 0.3s;
   }
+
+  .sidenav__top i{
+    padding-right: 5px;
+  }
   
-  .sidenav a:hover {
-    color: var(--first-color-second);
+  .sidenav__top a:hover {
+    color: var(--first-color);
   }
   
 
-  .sidenav .closebtn {
+  .sidenav__top .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
   }
-  
-  #main {
-    margin-left: 160px; /* Same as the width of the sidenav */
-    padding: 0px 35px;
+  #active{
+    color: var(--first-color);
   }
+  #maindash {
+   /* Same as the width of the sidenav */
+    padding: 0px 25px;
+  }
+
+  /*======== MENU MOBILE =======*/
+.nav__mobile {
+  display: none;
+}
+
+.sidenav__desktop {
+  display: block;
+}
+
+  /* NavMobile */
+  .nav__mobile__top {
+    padding: 15px 1em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    z-index: 999999;
+    border-bottom: solid 0.5px var(--border-color);
+    background-color: var(--menu-color);
+}
+
+#logo{
+    margin-top: 5px;
+}
+
+.nav__mobile__top img {
+    width: 36px;
+}
+
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999999;
+    will-change: transform;
+    transform: translateZ(0);
+    padding: 0 1em;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    border-top: solid 0.5px var(--border-color);
+    background-color: var(--menu-color);
+}
+
+.mobile-bottom-nav__item {
+    /* flex-grow: 1; */
+    text-align: center;
+    font-size: 15px;
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mobile-bottom-nav__item--active a {
+    color: var(--first-color) !important;
+}
+
+.link_active {
+    color: var(--first-color) !important;
+}
+
+.nav__itens__links {
+    /* flex-grow: 1; */
+    text-align: center;
+    font-size: 15px;
+    color: var(--links-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav__itens__links:hover {
+    color: var(--links-hover);
+}
+
+.mobile-bottom-nav__item-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon__mobile,
+.icon__mobile__search {
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.mobile-bottom-nav__item a{
+    text-decoration: none;
+    color: var(--links-color);
+}
+
+input, select, option{
+    background-color: var(--input-color);
+    color: var(--text-color);
+    border: none!important;
+}
+
+textarea:focus, input:focus, select:focus {
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+} 
+
+
   
   /* ---------------------------------------------------------------RESPONSIVIDADE ---------------------------------------------*/
+  /*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+  .sidenav__desktop__top {
+    padding: var(--padding-desktop);
+}
+  
+  
+}
+
+@media screen and (max-width: 1599px) {
+  .sidenav__desktop__top {
+    padding: var(--padding-notbook);
+}
+}
+
+@media screen and (max-width: 1400px) {
+  .sidenav__desktop__top {
+    padding: var(--padding-tablet);
+}
+.nav__desktop__search input {
+    width: 270px;
+}
+  
+}
+
+@media screen and (max-width: 900px) {
+
+  .sidenav__desktop{
+    display: none;
+  }
+
+  .nav__mobile {
+      display: block;
+  }
+
+  .mobile-bottom-nav__item--active {
+      border-top: solid 2px var(--first-color);
+      padding: 0 7px;
+      color: var(--first-color);
+  }
+}
+ 
   @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: var(--h2-font-size);}
+    .sidenav__top {padding-top: 15px;}
+    .sidenav__top a {font-size: var(--h2-font-size);}
   }
