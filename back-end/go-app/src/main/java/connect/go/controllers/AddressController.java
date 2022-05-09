@@ -1,7 +1,6 @@
 package connect.go.controllers;
 
 import connect.go.models.Address;
-import connect.go.models.FavoriteAddress;
 import connect.go.models.FavoriteAddressId;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.FavoriteAddressService;
