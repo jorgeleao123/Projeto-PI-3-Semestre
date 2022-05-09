@@ -16,6 +16,9 @@
             <span id="logo">
                 <img src="./assets/img/logo-go-carbon.svg" alt="">
             </span>
+            <span style="display: none;" id="logoMobile">
+                <img src="./assets/img/logo-go-carbon.svg" alt="">
+            </span>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -66,13 +69,9 @@
                             <input type="password" name="" id="password" placeholder="Insira sua senha">
                             <img class="icon__pass" src="./assets/img/eye.png" onclick="viewPassword()" alt="">
                         </div>
-                        <span class="link__pass" id="erro_login" style="display: none; color: rgb(253, 25, 25)">
-                            Email e/ou senha inválidos!
+                        <span class="link__pass" id="login_error" style="display: none; color:red">
+                            Email e/ou senha incorretos
                         </span>
-                        <!-- <span class="rem__check">
-                            <input type="checkbox">
-                            <p>Lembrar de mim</p>
-                        </span> -->
                         <button class="button__log button btn-ctt" onclick="logar()">
                             <a class="link__btn__log">Entrar</a>
                         </button>
@@ -82,7 +81,7 @@
         </section>
 
         <!--==================== FOOTER ====================-->
-        <footer class="footer">
+        <footer class="footer section">
             <div class="footer__container container grid">
                 <div class="footer__rights">
                     <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
@@ -98,7 +97,7 @@
         <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
         <label for="switch">Toggle</label>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
 
         function viewPassword() {
@@ -110,58 +109,25 @@
             }
         }
 
-        function erroLogin(){
-            document.getElementById("erro_login").style.display="block";
-            document.getElementById("email").style.border = "1px solid rgb(253, 25, 25);"
-            document.getElementById("password").style.border = "1px solid rgb(253, 25, 25);"
-            alert("Email e/ou senha inválidos!");
-        }
-
         function logar() {
 
-            // var axios = require("axios");
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-            axios.get("https://api.github.com/users/techtuxbr")
-            .then((response) => {
-                alert(response);
+            axios.post(`http://localhost:8080/users/login/${email}/${password}`, {})
+            .then((resp) => {
+                console.log(resp.data);
+                sessionStorage.user_email = resp.data.email;
+                sessionStorage.user_nome = resp.data.name;
+                sessionStorage.user_id = resp.data.id;
+                window.location.href = "../aplicacao/index.html";
             })
             .catch((error) => {
-                alert(error);
+                document.getElementById('login_error').style.display = 'block';
             })
 
-            // const email = document.getElementById("email").value;
-            // const password = document.getElementById("password").value;
 
-            // if(email == null || password == null) {
-            //     alert('teste')
-            //     erroLogin();
-            // } else {
-            //     axios.post(`http://localhost:8080/users/login/`, {
-            //         email: email,
-            //         password: password
-            //     })
-            //         .then((res) => {
-            //             console.log("Connection success!" + res);
-            //             if(res.status == 200){
-            //                 alert("logado!");
-            //             } else {
-            //                 alert(res.status)
-            //                 erroLogin();
-            //             }
-            //         })
-            //         .catch((error) => {
-            //             console.error('Error: ' + error);
-            //             alert("Não foi possível se conectar com o servidor: " + error);
-            //         })
-            //         .then((res) => {
-            //             alert("sla")
-            //         })
-            // }
-
-            
-
-
-            // fetch(`http://localhost:8080/users/login/${document.getElementById('email').value}/${document.getElementById('password').value}`, {
+            // fetch(`http://localhost:8080/users/login/${email}/${password}`, {
             //     method: 'POST', // or 'PUT'
             //     headers: {
             //         'Content-Type': 'application/json',
@@ -169,29 +135,20 @@
             //     // body: JSON.stringify(data),
             // })
             //     .then(Response => {
-            //         console.log('Success:', Response);
-            //         if (Response.status == 200) {
-            //             alert('Success!', Response);
-            //             resposta.json().then(json => {
-            //                 sessionStorage.userId = json["userId"];
-            //             })
-            //         } else {
-            //             document.getElementById('login_error').style.display = 'block';
-            //             alert("Login e/ou senha inválidos");
-            //         }
-
+            //         alert('Logado')
             //     })
             //     .catch((error) => {
             //         console.error('Error:', error);
             //         alert("Não foi possível se conectar com o servidor: ", error);
+            //         document.getElementById('login_error').style.display = 'block';
+            //         alert("Login e/ou senha inválidos");
             //     });
 
         }
 
     </script>
-    
-    <!-- <script src="../go-app/assets/js/dark-mode.js"></script>  -->
 
+    <script src="./assets/js/dark-mode.js"></script>
 </body>
 
 </html>
