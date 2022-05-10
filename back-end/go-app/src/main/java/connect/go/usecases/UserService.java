@@ -4,6 +4,7 @@ import connect.go.Repositories.UserRepository;
 import connect.go.exceptions.UserAlreadyExistsException;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.User;
+import connect.go.models.dto.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,9 @@ public class UserService {
 
     public void deleteById(Integer id) {
         if (this.userRepository.existsById(id)) {
-            this.userRepository.deleteById(id);
+            User user = getById(id);
+            user.setStatus("inativo");
+            userRepository.save(user);
         } else {
             throw new UserNotFoundException();
         }
@@ -44,21 +47,33 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
-    public boolean updateById(Integer id, User user) {
+    public boolean updateById(Integer id, UserResponse userResponse) {
         if (userRepository.existsById(id)) {
-            return userRepository.updateById(id, user.getName(), user.getEmail(), user.getRole(), user.getGenre()).equals(1);
+            User user = getById(id);
+            user.setEmail(userResponse.getEmail());
+            user.setName(userResponse.getName());
+            user.setGenre(userResponse.getGenre());
+            user.setColorMenu(userResponse.getColorMenu());
+            user.setColorProfile(userResponse.getColorProfile());
+            user.setBirthDate(userResponse.getBirthDate());
+            user.setRole(userResponse.getRole());
+            userRepository.save(user);
+            return true;
         }
         throw new UserNotFoundException();
     }
 
     public boolean updateEmailById(Integer id, String email) {
         if (userRepository.existsById(id)) {
-            return userRepository.updateEmailById(id, email).equals(1);
+            User user = getById(id);
+            user.setEmail(email);
+            userRepository.save(user);
+            return true;
         }
         throw new UserNotFoundException();
     }
 
-    public boolean updatePasswoordById(Integer id, String oldPassword, String newPassword) {
+    public boolean updatePasswordById(Integer id, String oldPassword, String newPassword) {
         if (userRepository.existsById(id)) {
             return userRepository.updatePasswordById(id, oldPassword, newPassword).equals(1);
         }

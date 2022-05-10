@@ -3,6 +3,9 @@ package connect.go.models.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 public class UserResponse {
@@ -16,5 +19,13 @@ public class UserResponse {
     private String role;
 
     private String genre;
+
+    private String colorProfile;
+
+    private String colorMenu;
+
+    private LocalDate birthDate;
+
+    private String status;
 
 }

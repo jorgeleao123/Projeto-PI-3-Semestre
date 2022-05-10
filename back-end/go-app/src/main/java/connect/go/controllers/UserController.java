@@ -78,7 +78,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid User user) {
+    public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid UserResponse user) {
         user.setId(id);
         if (userService.updateById(id, user)) {
             return ResponseEntity.status(200).build();
@@ -88,7 +88,7 @@ public class UserController {
 
     @PatchMapping("/email/{id}/{email}")
     public ResponseEntity<Void> updateEmailById(@PathVariable int id, @PathVariable String email) {
-        if (userService.updateEmailById(id, email)){
+        if (userService.updateEmailById(id, email)) {
             return ResponseEntity.status(200).build();
         }
         throw new BadRequestException();
@@ -96,8 +96,8 @@ public class UserController {
 
     @PatchMapping("/password/{id}/{oldPassword}/{newPassword}")
     public ResponseEntity<Void> updatePasswordById(@PathVariable int id, @PathVariable String oldPassword,
-                                                 @PathVariable String newPassword) {
-        if(userService.updatePasswoordById(id, oldPassword, newPassword)){
+                                                   @PathVariable String newPassword) {
+        if (userService.updatePasswordById(id, oldPassword, newPassword)) {
             return ResponseEntity.status(200).build();
         }
         throw new BadRequestException();
@@ -105,11 +105,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
-        try {
-            userService.deleteById(id);
-            return ResponseEntity.status(200).build();
-        } catch (Exception e) {
-            throw new UserNotFoundException();
-        }
+        userService.deleteById(id);
+        return ResponseEntity.status(200).build();
     }
 }
