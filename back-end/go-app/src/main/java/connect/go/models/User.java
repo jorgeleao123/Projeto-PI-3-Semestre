@@ -41,6 +41,8 @@ public class User {
 
     private LocalDate birthDate;
 
+    private String status;
+
     public User(UserRegistration userRegistration) {
         this.name = userRegistration.getName();
         this.email = userRegistration.getEmail();
@@ -50,5 +52,6 @@ public class User {
         this.birthDate = userRegistration.getBirthDate();
         this.colorMenu = "default";
         this.colorProfile = "default";
+        this.status = "ativo";
     }
 }
