@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Publicar | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
@@ -117,22 +118,22 @@
                     </div>
 
 
-                    <form action="">
+                    <form>
                         <div class="scrool_form">
 
                                 <label for="Descrição">Descrição</label>
-                                <textarea name="" id="" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
+                                <textarea name="" id="descricao" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
 
                                 <div class="form__publication">
 
                                     <div class="ipt__form">
                                         <label for="Data do ocorrido">Data do ocorrido</label>
-                                        <input type="date" name="" id="">
+                                        <input type="date" name="" id="dataOcorrido">
                                     </div>
 
                                     <div class="ipt__form">
                                         <label for="codigo do boletim">codigo do boletim</label>
-                                        <input type="text" name="" id=""
+                                        <input type="text" name="" id="codigoBoletim"
                                             placeholder="Insira o código do boletim de ocorrencia">
                                     </div>
 
@@ -142,12 +143,12 @@
                                     
                                     <div class="ipt__form">
                                         <label for="CEP">CEP</label>
-                                        <input type="text" name="" id="" placeholder="Ponto de partida ou Destino">
+                                        <input type="text" name="" id="cep" placeholder="Ponto de partida ou Destino">
                                     </div>
 
                                     <div class="ipt__form">
                                         <label for="codigo do boletom">Estado onde ocorreu</label>
-                                        <select class="form__sel" name="" id="">
+                                        <select class="form__sel" name="" id="uf">
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
                                             <option value="AP">AP</option>
@@ -182,25 +183,25 @@
                                 <div class="form__publication">
                                     <div class="ipt__form">
                                         <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
-                                        <input type="text" name="" id=""
+                                        <input type="text" name="" id="cidade"
                                             placeholder="Insira a cidade onde o caso ocorreu">
                                     </div>
 
                                     <div class="ipt__form">
                                         <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
-                                        <input type="text" name="" id=""
+                                        <input type="text" name="" id="bairro"
                                             placeholder="Insira a Bairro onde o caso ocorreu">
                                     </div>
                                 </div>
                                 <div class="form__publication">
                                     <div class="ipt__form">
                                         <label for="Nome do motorista">Nome do(a) motorista</label>
-                                        <input type="text" name="" id="" placeholder="Insira o nome do motorista">
+                                        <input type="text" name="" id="nomeMotorista" placeholder="Insira o nome do motorista">
                                     </div>
 
                                     <div class="ipt__form">
                                         <label for="Placa do veiculo">Placa do veiculo</label>
-                                        <input type="text" name="" id="" placeholder="Insira a placa do veiculo">
+                                        <input type="text" name="" id="placaDoVeiculo" placeholder="Insira a placa do veiculo">
                                     </div>
                                 </div>
                         </div>
@@ -210,7 +211,7 @@
                         <div class="form__publication">
                             <div class="ipt__form">
                                 <label for="codigo do boletom">Classificação do Caso</label>
-                                <select class="form__sel" name="" id="">
+                                <select class="form__sel" name="" id="classificacaoDoCaso">
                                     <option value="Assédio">Assédio</option>
                                     <option value="Assédio Moral">Assédio Moral</option>
                                     <option value="Racismo">Racismo</option>
@@ -233,7 +234,7 @@
                     </div>
 
                     <div>
-                        <button class="btn__publication">
+                        <button class="btn__publication" onclick="NewPublication()">
                             Publicar
                         </button>
 
@@ -250,6 +251,7 @@
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
+        
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
@@ -489,5 +491,55 @@
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
 </body>
+<script>
+    NewPublication()
+    function NewPublication(){
+        
+        event.preventDefault();
 
+        var descricao = document.getElementById('descricao').value;
+        var dataOcorrido = document.getElementById('dataOcorrido').value;
+        var codigoBoletim = document.getElementById('codigoBoletim').value;
+        var cep = document.getElementById('cep').value;
+        var uf = document.getElementById('uf').value;
+        var cidade = document.getElementById('cidade').value;
+        var bairro = document.getElementById('bairro').value;
+        var nomeMotorista = document.getElementById('nomeMotorista').value;
+        var placaDoVeiculo = document.getElementById('placaDoVeiculo').value;
+        var classificacaoDoCaso = document.getElementById('classificacaoDoCaso').value;
+
+        console.log(descricao);
+        console.log(dataOcorrido);
+        console.log(codigoBoletim);
+        console.log(cep);
+        console.log(uf);
+        console.log(cidade);
+        console.log(bairro);
+        console.log(nomeMotorista);
+        console.log(placaDoVeiculo);
+        console.log(classificacaoDoCaso);
+
+        const data = {
+            type: `${classificacaoDoCaso}`,
+            description: `${descricao}`,
+            archive: "aaaaa",
+            bo: `${codigoBoletim}`,
+            driverName: `${nomeMotorista}`,
+            licensePlate: `${placaDoVeiculo}`,
+            state: `${uf}`,
+            city: `${cidade}`,
+            district: `${bairro}`,
+            dateTimeComplaint: `${dataOcorrido}`
+        };
+
+        axios.post('http://localhost:8080/complaints/1', data)
+        .then((response) => {
+            alert("Sucesso", response);
+            //response.json();
+        })
+        .then((data) => {
+            console.log(data);
+        })
+    }
+</script>
 </html>
