@@ -1,0 +1,351 @@
+.content__feed {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.container__feed {
+  max-height: 400px;
+  max-width: 50%;
+
+}
+.flex__box{
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+/* padrão dos cards  */
+.flex {
+    display: flex;
+    gap: 15px;
+}
+.padding__card {
+    padding: 15px;
+}
+.justify {
+    justify-content: space-between;
+}
+
+/* tópico da pagina  */
+.topic__complaint {
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0;
+    font-size: 13.5px;
+    width: 100%;
+}
+
+.topic__complaint span{
+    min-width: 200px;
+}
+
+.topic__complaint hr {
+    width: 100%;
+    float: right;
+    text-align: right;
+    margin-right: 0 0 0;
+    border-width: 0;
+    height: 0.2px;
+    border-top-width: 0.2px;
+    border: 0.2px solid var(--border-color);
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    padding: 15px 0px;
+    align-items: center;
+    width: 49%;
+    
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #f1f1f1;
+    
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #f1f1f1;
+    border-bottom: 2px solid;
+    border-color: var(--first-color);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 15px 15px;
+    border: 1px solid #ccc;
+    border-top: none;
+    
+  }
+.tab__botton{
+    display: flex;
+    padding: 15px;
+    justify-content: space-between
+}
+
+/* Style the tab 2 */
+
+.tabcontent2 {
+  display: none;
+  padding: 15px 15px;
+  border: 1px solid #ccc;
+  border-top: none;
+  
+}
+.tab__botton{
+  display: flex;
+  padding: 15px;
+  justify-content: space-between
+}
+
+.info__tab{
+    padding: 15px;
+}
+.info{
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.info p{
+    padding-top: 2px;
+    padding-left: 10px;
+}
+.but{
+    background-color: transparent;
+    border-color: var(--first-color);
+    color: var(--first-color);
+}
+.but:hover{
+    background-color: var(--first-color);
+    color: white;
+}
+.but__red{
+    background-color: var(--but-remove);
+    border-color: var(--but-remove);
+    color: white;
+}
+.but__red:hover{
+    background-color: transparent;
+    color: var(--but-remove);
+}
+
+.data__tab{
+    padding-top: 15px;
+    font-size: var( --datas-font);
+}
+.content__contest__two{
+  padding-top: 15px;
+}
+
+/* tab content caso */
+.icon__user {
+  min-width: 35px;
+  min-height: 35px;
+  font-size: 16px;
+}
+.icon__user__initial {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 300;
+  border-radius: 50%;
+  background-color: #7D63A9;
+}
+
+
+.icon__complaint {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: #ce480a;
+}
+
+.infos__user__complaint h4 {
+  font-size: var(--name-font);
+  font-weight: 600;
+}
+
+.infos__user__complaint p {
+  font-size: var(--city-font);
+  padding-top: 2px;
+}
+
+.check__complaint {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  align-items: center;
+}
+
+.check__complaint i {
+  color: var(--check-complant);
+}
+
+.check__complaint h6 {
+  font-weight: 600;
+}
+
+
+/* Calendario */
+.month {
+    padding: 70px 25px;
+    width: 100%;
+    background: #1abc9c;
+    text-align: center;
+  }
+  
+  .month ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .month ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  
+  .month .prev {
+    float: left;
+    padding-top: 10px;
+  }
+  
+  .month .next {
+    float: right;
+    padding-top: 10px;
+  }
+  
+  .weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color: #ddd;
+  }
+  
+  .weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #666;
+    text-align: center;
+  }
+  
+  .days {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+  }
+  
+  .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:12px;
+    color: #777;
+  }
+  
+  .days li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+  }
+  
+
+  /*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    .container__feed {
+        max-width: 500px;
+    }
+
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1448px) {
+
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+    
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+
+
+
+}
+
+@media screen and (max-width: 1150px) {
+    .topic__complaint hr {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    
+
+    .container__feed {
+        width: 100% !important;
+    }
+
+
+    .topic__complaint hr {
+        width: 65%;
+    }
+}
+/* Add media queries for smaller screens */
+@media screen and (max-width:720px) {
+    .weekdays li, .days li {width: 13.1%;}
+  }
+  
+  @media screen and (max-width: 420px) {
+    .weekdays li, .days li {width: 12.5%;}
+    .days li .active {padding: 2px;}
+  }
+  
+  @media screen and (max-width: 290px) {
+    .weekdays li, .days li {width: 12.2%;}
+  }

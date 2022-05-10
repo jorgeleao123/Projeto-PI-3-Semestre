@@ -25,6 +25,7 @@ html {
   --body-color: white;
   --menu-color: #111;
   --modal-color: #FFF;
+  --but-remove: #BA2525;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
 
@@ -165,7 +166,7 @@ h4 {
 .button{
   text-decoration: none;
   padding: 10px;
-  font-weight: 700;
+  font-weight: 800;
   font-size: var(--name-font);
   border: 2px solid;
 }
@@ -173,28 +174,28 @@ h4 {
 /*================================================================================ RESPONSIVE ====================================================================*/
 @media screen and (min-width: 1600px) {
   main {
-    margin-top: 70px;
+    margin-top: 10px;
     padding: var(--padding-desktop);
   }
 }
 
 @media screen and (max-width: 1599px) {
   main {
-    margin-top: 60px;
+    margin-top:10px;
     padding: var(--padding-notbook);
   }
 }
 
 @media screen and (max-width: 1400px) {
   main {
-    margin-top: 60px;
+    margin-top: 10px;
     padding: var(--padding-tablet);
   }
 }
 
 @media screen and (max-width: 900px) {
   main {
-    margin-top: 60px;
+    margin-top: 10px;
     margin-bottom: 60px;
     padding: var(--padding-mobile);
   }
