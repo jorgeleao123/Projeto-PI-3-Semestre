@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Contestar | GO</title>
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
@@ -114,25 +115,29 @@
                         </span>
                         <div class="hr"></div>
                     </div>
-                    <form action="">
+                    <form>
                         <label for="Descrição">Descrição</label>
-                        <textarea name="" id="" cols="10" rows="9" placeholder="Descreva a sua versão"></textarea>
+                        <textarea name="" id="description" cols="10" rows="9"
+                            placeholder="Descreva a sua versão"></textarea>
+                </div>description
+                <div class="more__inputs">
+                    <div class="card__arq padding__card">
+                        <h4>Adicionar Midia</h4>
+                        <button class="btn__anx">
+                            Anexar Arquivo
+                        </button>
+                        <h6>Deixe a sua contextação ainda respostamais completa, caso tenha boletim de ocorrencia,
+                            videos,
+                            fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
                     </div>
-                        <div class="more__inputs">
-                                <div class="card__arq padding__card">
-                                    <h4>Adicionar Midia</h4>
-                                    <button class="btn__anx">
-                                        Anexar Arquivo
-                                    </button>
-                                    <h6>Deixe a sua contextação ainda mais completa, caso tenha boletim de ocorrencia, videos, fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
-                                </div>
 
-                                <button class="color__btn btn__publication"> Enviar
-                                </button>
+                    <button onclick="registerContestation()" class="color__btn btn__publication"> Enviar
+                    </button>
 
-                                <div class="card__dics padding__card">
-                                    <h6>Apenas a nossa equipe vai ter acesso a essas informações. Faremos o possivel para evitar mais transtorno.</h6>
-                                </div>
+                    <div class="card__dics padding__card">
+                        <h6>Apenas a nossa equipe vai ter acesso a essas informações. Faremos o possivel para evitar
+                            mais transtorno.</h6>
+                    </div>
                     </form>
                 </div>
         </section>
@@ -381,3 +386,51 @@
 </body>
 
 </html>
+
+<script>
+    function registerContestation() {
+        event.preventDefault();
+        const data = {
+            description: "fffffff",
+            archive: "string",
+            userId: 1,
+            complaintId: 1
+        }
+        axios.post(`http://localhost:8080/contestations`, data)
+            .then((resp) => {
+                alert('Success', resp);
+                console.log(resp);
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data)
+                alert('Error', error)
+            })
+
+        // fetch("http://localhost:8080/contestations", {
+        //     method: "POST",
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         description: "string",
+        //         archive: "string",
+        //         userId: 1,
+        //         complaintId: 1
+        //     }),
+        // }).then(Response => {
+        //     console.log('Success:', Response);
+        //     if (Response.status == 200) {
+        //         window.location.href = "http://127.0.0.1:5501/index.html";
+        //     } else {
+        //         alert("foi")
+        //     }
+
+        // })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //         alert("Login e/ou senha inválidos")
+        //     });
+
+    }
+</script>
