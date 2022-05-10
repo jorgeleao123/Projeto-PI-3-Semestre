@@ -121,9 +121,9 @@
                 sessionStorage.user_email = resp.data.email;
                 sessionStorage.user_nome = resp.data.name;
                 sessionStorage.user_id = resp.data.id;
+                window.location.href = "../aplicacao/index.html";
             })
             .catch((error) => {
-                alert("Login e/ou senha inválidos");
                 document.getElementById('login_error').style.display = 'block';
             })
 
