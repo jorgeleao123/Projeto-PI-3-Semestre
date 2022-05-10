@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
     <link rel="stylesheet" href="./assets/css/style.configs.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -36,7 +37,8 @@
                         <option value="">Bairro</option>
                         <option value="">Estado</option>
                     </select>
-                    <a class="search__icon" href="./search.html"> <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                    <a class="search__icon" href="./search.html"> <i
+                            class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
             <div class="nav__desktop__top__items">
@@ -124,13 +126,12 @@
                     <div class="f__navbar__mobile">
                         <nav class="f__navbar">
                             <ul>
-                                <li><a href="./config-infos.html"><i
-                                            class="fa-solid fa-pen-to-square"></i><span
+                                <li><a href="./config-infos.html"><i class="fa-solid fa-pen-to-square"></i><span
                                             class="public">Dados</span></a></li>
                                 <li><a href="./config-view.html"><i class="fa-solid fa-eye"></i></i><span
                                             class="public">Visualização</span></a></li>
-                                <li><a id="active" href="./config-account.html"><i class="fa-solid fa-id-badge"></i><span
-                                            class="public">Conta</span></a></li>
+                                <li><a id="active" href="./config-account.html"><i
+                                            class="fa-solid fa-id-badge"></i><span class="public">Conta</span></a></li>
                             </ul>
                         </nav>
                     </div>
@@ -143,16 +144,16 @@
                         </span>
                         <div class="hr"></div>
                     </div>
-                        <div>
-                            <h4>Remoção de Conta</h4>
-                            <h5>Desativar sua conta significa que você poderá recupera-la quando quiser</h5>
-                            <div class="flex remove__btns">
-                                <button class="des__btn">Desativar conta</button>
-                                <button class="rem__btn">Excluir conta</button>
-                            </div>
+                    <div>
+                        <h4>Remoção de Conta</h4>
+                        <h5>Desativar sua conta significa que você poderá recupera-la quando quiser</h5>
+                        <div class="flex remove__btns">
+                            <button class="des__btn">Desativar conta</button>
+                            <button onclick="deleteUser()"  class="rem__btn">Excluir conta</button>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
         <div style="display: none;" class="toggle">
@@ -399,3 +400,19 @@
 </body>
 
 </html>
+
+<script>
+    function deleteUser() {
+        event.preventDefault();
+        axios.delete('http://localhost:8080/users/1')
+            .then((resp) => {
+                alert('Success', resp);
+                console.log(resp);
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data)
+                alert('Error', error)
+            })
+    }
+</script>

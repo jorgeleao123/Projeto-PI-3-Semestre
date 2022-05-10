@@ -391,7 +391,7 @@
     function registerContestation() {
         event.preventDefault();
         const data = {
-            description: "fffffff",
+            description: description.value,
             archive: "string",
             userId: 1,
             complaintId: 1
@@ -407,30 +407,7 @@
                 alert('Error', error)
             })
 
-        // fetch("http://localhost:8080/contestations", {
-        //     method: "POST",
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         description: "string",
-        //         archive: "string",
-        //         userId: 1,
-        //         complaintId: 1
-        //     }),
-        // }).then(Response => {
-        //     console.log('Success:', Response);
-        //     if (Response.status == 200) {
-        //         window.location.href = "http://127.0.0.1:5501/index.html";
-        //     } else {
-        //         alert("foi")
-        //     }
 
-        // })
-        //     .catch((error) => {
-        //         console.error('Error:', error);
-        //         alert("Login e/ou senha inválidos")
-        //     });
 
     }
 </script>

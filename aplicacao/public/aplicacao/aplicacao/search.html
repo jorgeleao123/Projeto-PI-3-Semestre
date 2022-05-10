@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -130,7 +131,7 @@
             </div>
 
             <!------------------------------------------Infos Search ------------------------------>
-            <div class="container__feed">
+            <div class="container__feed" id="feed">
                 <div class="card__result__search">
                     <div class="flex">
                         <div class="color__topic__result">
@@ -143,216 +144,11 @@
                     </div>
                 </div>
                 <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1002">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1002" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1002"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Salvar</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
+                
                 <!------------------------------ /publicação  ----------------------------------------->
 
                 <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1003">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1003" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1003"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Salvar</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
-                <!------------------------------ /publicação  ----------------------------------------->
-
-                <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1004">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1004" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1004"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Salvar</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
+                
                 <!------------------------------ /publicação  ----------------------------------------->
             </div>
             <!-- card tipos de denuncia -->
@@ -417,8 +213,10 @@
                 </div>
                 <div class="card__new__case padding__card">
                     <h4>Adicionar caso</h4>
-                    <button>
-                        <a href="./new-publication.html">Adicionar Caso</a>
+                    <button onclick="teste()">
+                        <!-- <a href="./new-publication.html"> -->
+                            Adicionar Caso
+                        <!-- </a> -->
                     </button>
                     <h6>Públique uma denuncia com os dados desse(a) motorista.</h6>
                 </div>
@@ -672,3 +470,91 @@
 </body>
 
 </html>
+
+<script>
+function teste(){
+    event.preventDefault();
+    axios.get('http://localhost:8080/complaints/city', {
+  headers: {
+    'city': `ddd`
+  }
+})
+    .then((resp) => {
+        alert(resp, resp);
+        console.log(resp.data.length);
+        feed.innerHTML += `<div class="content__complaint"  >
+                    <div class="header__complaint flex justify">
+                        <div class="flex">
+                            <div class="icon__complaint icon__user icon__user__initial">
+                                <span class="initial__user" id="initialPublication">J</span>
+                            </div>
+                            <span class="infos__user__complaint">
+                                <h4 id="nameUser">J**** L****</h4>
+                                <p id="gender">Mulher</p>
+                            </span>
+                        </div>
+                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                        <label class="label__modal" for="1002">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </label>
+                        <!----------- modal funcionalidades ----------->
+                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                        <input class="modal-state" id="1002" type="checkbox" />
+                        <div class="modal__functions">
+                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                            <label class="" for="1002"></label>
+                            <div class="modal__inner__func">
+                                <form action="">
+                                    <p style="cursor: pointer;" class="options__modal__user"><input
+                                            style="display: none; cursor: pointer;" type="submit"
+                                            class="option__modal__user" value="idCaso">Salvar</p>
+                                    <a href="./contest.html">
+                                        <p style="cursor: pointer;" class="options__modal__user"><input
+                                                style="display: none; cursor: pointer;" type="submit"
+                                                class="option__modal__user" value="idCaso">Denunciar</p>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="infos__complaint">
+                        <p id="textComplaint">
+                            It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                            here', making it look like readable English. Many desktop publishing packages and web page
+                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                            uncover many web sites still in their infancy. Various versions have evolved over the years,
+                            sometimes by accident, sometimes on purpose (injected humour and the like).
+                        </p>
+                    </div>
+
+                    <div class="photos__complaint">
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/print-uber.png" alt="">
+                        </div>
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/photo-uber.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="more__infos__complaint flex justify">
+                        <div class="classification__complaint">
+                            <div class="circle__assedio circle__classification"></div>
+                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                        </div>
+                        <span class="location__conplaint" id="locationComplaint">
+                            SP - São Paulo | 15/08/2021
+                        </span>
+                    </div>
+                    <div class="hr margin-bottom"></div>
+                </div>`
+    })
+        .catch((error) => {
+            console.log(error);
+            console.log(data)
+            alert('Error', error)
+        });
+}
+</script>

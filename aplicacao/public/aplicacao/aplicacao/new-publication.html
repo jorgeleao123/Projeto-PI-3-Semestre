@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
                         <option value="">Bairro</option>
                         <option value="">Estado</option>
                     </select>
-                    <a href="./search.html"class="search__icon"> <i
+                    <a href="./search.html" class="search__icon"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
@@ -117,92 +118,90 @@
                     </div>
 
 
-                    <form action="">
+                    <form>
                         <div class="scrool_form">
 
-                                <label for="Descrição">Descrição</label>
-                                <textarea name="" id="" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
+                            <label for="Descrição">Descrição</label>
+                            <textarea name="" id="description" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
 
-                                <div class="form__publication">
+                            <div class="form__publication">
 
-                                    <div class="ipt__form">
-                                        <label for="Data do ocorrido">Data do ocorrido</label>
-                                        <input type="date" name="" id="">
-                                    </div>
-
-                                    <div class="ipt__form">
-                                        <label for="codigo do boletim">codigo do boletim</label>
-                                        <input type="text" name="" id=""
-                                            placeholder="Insira o código do boletim de ocorrencia">
-                                    </div>
-
+                                <div class="ipt__form">
+                                    <label for="Data do ocorrido">Data do ocorrido</label>
+                                    <input type="date" name="" id="dateTimeComplaint">
                                 </div>
 
-                                <div class="form__publication">
-                                    
-                                    <div class="ipt__form">
-                                        <label for="CEP">CEP</label>
-                                        <input type="text" name="" id="" placeholder="Ponto de partida ou Destino">
-                                    </div>
-
-                                    <div class="ipt__form">
-                                        <label for="codigo do boletom">Estado onde ocorreu</label>
-                                        <select class="form__sel" name="" id="">
-                                            <option value="AC">AC</option>
-                                            <option value="AL">AL</option>
-                                            <option value="AP">AP</option>
-                                            <option value="AM">AM</option>
-                                            <option value="BA">BA</option>
-                                            <option value="CE">CE</option>
-                                            <option value="DF">DF</option>
-                                            <option value="ES">ES</option>
-                                            <option value="GO">GO</option>
-                                            <option value="MA">MA</option>
-                                            <option value="MT">MT</option>
-                                            <option value="MS">MS</option>
-                                            <option value="MG">MG</option>
-                                            <option value="PA">PA</option>
-                                            <option value="PB">PB</option>
-                                            <option value="PR">PR</option>
-                                            <option value="PE">PE</option>
-                                            <option value="PI">PI</option>
-                                            <option value="RJ">RJ</option>
-                                            <option value="RN">RN</option>
-                                            <option value="RS">RS</option>
-                                            <option value="RO">RO</option>
-                                            <option value="RR">RR</option>
-                                            <option value="SC">SC</option>
-                                            <option value="SP">SP</option>
-                                            <option value="SE">SE</option>
-                                            <option value="TO">TO</option>
-                                        </select>
-                                    </div>
-
+                                <div class="ipt__form">
+                                    <label for="codigo do boletim">codigo do boletim</label>
+                                    <input type="text" name="" id="bo"
+                                        placeholder="Insira o código do boletim de ocorrencia">
                                 </div>
-                                <div class="form__publication">
-                                    <div class="ipt__form">
-                                        <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
-                                        <input type="text" name="" id=""
-                                            placeholder="Insira a cidade onde o caso ocorreu">
-                                    </div>
 
-                                    <div class="ipt__form">
-                                        <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
-                                        <input type="text" name="" id=""
-                                            placeholder="Insira a Bairro onde o caso ocorreu">
-                                    </div>
-                                </div>
-                                <div class="form__publication">
-                                    <div class="ipt__form">
-                                        <label for="Nome do motorista">Nome do(a) motorista</label>
-                                        <input type="text" name="" id="" placeholder="Insira o nome do motorista">
-                                    </div>
+                            </div>
 
-                                    <div class="ipt__form">
-                                        <label for="Placa do veiculo">Placa do veiculo</label>
-                                        <input type="text" name="" id="" placeholder="Insira a placa do veiculo">
-                                    </div>
+                            <div class="form__publication">
+
+                                <div class="ipt__form">
+                                    <label for="CEP">CEP</label>
+                                    <input type="text" name="" id="" placeholder="Ponto de partida ou Destino">
                                 </div>
+
+                                <div class="ipt__form">
+                                    <label for="codigo do boletom">Estado onde ocorreu</label>
+                                    <select class="form__sel" name="" id="district">
+                                        <option value="AC">AC</option>
+                                        <option value="AL">AL</option>
+                                        <option value="AP">AP</option>
+                                        <option value="AM">AM</option>
+                                        <option value="BA">BA</option>
+                                        <option value="CE">CE</option>
+                                        <option value="DF">DF</option>
+                                        <option value="ES">ES</option>
+                                        <option value="GO">GO</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MT">MT</option>
+                                        <option value="MS">MS</option>
+                                        <option value="MG">MG</option>
+                                        <option value="PA">PA</option>
+                                        <option value="PB">PB</option>
+                                        <option value="PR">PR</option>
+                                        <option value="PE">PE</option>
+                                        <option value="PI">PI</option>
+                                        <option value="RJ">RJ</option>
+                                        <option value="RN">RN</option>
+                                        <option value="RS">RS</option>
+                                        <option value="RO">RO</option>
+                                        <option value="RR">RR</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SP">SP</option>
+                                        <option value="SE">SE</option>
+                                        <option value="TO">TO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
+                                    <input type="text" name="" id="city" placeholder="Insira a cidade onde o caso ocorreu">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
+                                    <input type="text" name="" id="" placeholder="Insira a Bairro onde o caso ocorreu">
+                                </div>
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Nome do motorista">Nome do(a) motorista</label>
+                                    <input type="text" name="" id="driverName" placeholder="Insira o nome do motorista">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Placa do veiculo">Placa do veiculo</label>
+                                    <input type="text" name="" id="licensePlate" placeholder="Insira a placa do veiculo">
+                                </div>
+                            </div>
                         </div>
                 </div>
                 <div class="more__inputs justify__more__infos">
@@ -210,7 +209,7 @@
                         <div class="form__publication">
                             <div class="ipt__form">
                                 <label for="codigo do boletom">Classificação do Caso</label>
-                                <select class="form__sel" name="" id="">
+                                <select class="form__sel" name="" id="type">
                                     <option value="Assédio">Assédio</option>
                                     <option value="Assédio Moral">Assédio Moral</option>
                                     <option value="Racismo">Racismo</option>
@@ -233,7 +232,7 @@
                     </div>
 
                     <div>
-                        <button class="btn__publication">
+                        <button onclick="registerComplaints()" class="btn__publication">
                             Publicar
                         </button>
 
@@ -491,3 +490,34 @@
 </body>
 
 </html>
+
+<script>
+    function registerComplaints() {
+        event.preventDefault();
+        const data = {
+            type: type.value,
+            description: description.value,
+            archive: "string",
+            bo: bo.value,
+            driverName: driverName.value,
+            licensePlate: licensePlate.value,
+            state: "string",
+            city: city.value,
+            district: district.value,
+            dateTimeComplaint: "2022-05-10T21:25:50.462Z"
+        }
+        axios.post(`http://localhost:8080/complaints/1`, data)
+            .then((resp) => {
+                alert('Success', resp);
+                console.log(resp);
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data)
+                alert('Error', error)
+            })
+
+
+
+    }
+</script>

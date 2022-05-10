@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
     <link rel="stylesheet" href="./assets/css/style.configs.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -125,8 +126,9 @@
                     <div class="f__navbar__mobile">
                         <nav class="f__navbar">
                             <ul>
-                                <li><a id="active" href="./config-infos.html"><i class="fa-solid fa-pen-to-square"></i><span
-                                            class="public">Dados</span></a></li>
+                                <li><a id="active" href="./config-infos.html"><i
+                                            class="fa-solid fa-pen-to-square"></i><span class="public">Dados</span></a>
+                                </li>
                                 <li><a href="./config-view.html"><i class="fa-solid fa-eye"></i></i><span
                                             class="public">Visualização</span></a></li>
                                 <li><a href="./config-account.html"><i class="fa-solid fa-id-badge"></i><span
@@ -138,59 +140,59 @@
 
                 <!-- formulario -->
                 <div class="inputs__publication">
-                    <form action="">
-                    <!-- card capa e perfil -->
-                    <div class="edit__profile">
-                        <div class="edit__capa">
-                            <div class="edit__icon">
-                                <input class="ipt__edit__color" type="color" value="#7D63A9" placeholder="lala">
+                    <form >
+                        <!-- card capa e perfil -->
+                        <div class="edit__profile">
+                            <div class="edit__capa">
+                                <div class="edit__icon">
+                                    <input class="ipt__edit__color" type="color" value="#7D63A9" placeholder="lala">
+                                </div>
+                                <div>
+                                    <input class="ipt__edit__color" type="color" value="#be156a" placeholder="lala">
+                                </div>
                             </div>
-                            <div>
-                                <input class="ipt__edit__color" type="color" value="#be156a" placeholder="lala">
+                            <div class="padding__edit">
+
+                                <div class="form__publication">
+                                    <div class="ipt__form">
+                                        <label for="Nome">Nome</label>
+                                        <input type="text" name="" id="" placeholder="Insira seu nome de usuario">
+                                    </div>
+                                    <div class="ipt__form">
+                                        <label for="CEP">CEP</label>
+                                        <input type="text" name="" id="" placeholder="Insira seu CEP">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="padding__edit">
-                        
+                        <!-- tópico -->
+                        <div class="topic__feed flex justify">
+                            <span class="flex">
+                                <p><b>Mais Informações</b></p>
+                            </span>
+                            <div class="hr"></div>
+                        </div>
+
                         <div class="form__publication">
                             <div class="ipt__form">
-                                <label for="Nome">Nome</label>
-                                <input type="text" name="" id="" placeholder="Insira seu nome de usuario">
+                                <label for="Email">Email</label>
+                                <input type="text" name="" id="" placeholder="Insira seu Email">
                             </div>
+                        </div>
+                        <div class="form__publication">
                             <div class="ipt__form">
-                                <label for="CEP">CEP</label>
-                                <input type="text" name="" id="" placeholder="Insira seu CEP">
+                                <label for="Alterar senha">Alterar Senha</label>
+                                <input type="password" name="" id="" placeholder="Insira uma nova senha">
+                            </div>
+
+                            <div class="ipt__form">
+                                <label for="Confirmar senha">Confirmar Senha</label>
+                                <input type="password" name="" id="" placeholder="Insira a senha novamente">
                             </div>
                         </div>
-                    </div>
-                    </div>
-                    <!-- tópico -->
-                    <div class="topic__feed flex justify">
-                        <span class="flex">
-                            <p><b>Mais Informações</b></p>
-                        </span>
-                        <div class="hr"></div>
-                    </div>
-
-                    <div class="form__publication">
-                        <div class="ipt__form">
-                            <label for="Email">Email</label>
-                            <input type="text" name="" id="" placeholder="Insira seu Email">
-                        </div>
-                    </div>
-                    <div class="form__publication">
-                        <div class="ipt__form">
-                            <label for="Alterar senha">Alterar Senha</label>
-                            <input type="password" name="" id="" placeholder="Insira uma nova senha">
-                        </div>
 
                         <div class="ipt__form">
-                            <label for="Confirmar senha">Confirmar Senha</label>
-                            <input type="password" name="" id="" placeholder="Insira a senha novamente">
-                        </div>
-                    </div>
-
-                        <div class="ipt__form">
-                            <button class="edit__btn">
+                            <button onclick="registerUser()"  class="edit__btn">
                                 Salvar Alterações
                             </button>
                         </div>
@@ -441,3 +443,30 @@
 </body>
 
 </html>
+
+<script>
+    function registerUser() {
+        event.preventDefault();
+        const data = {
+            id: 1,
+            name: "string",
+            email: "phaa@gamil.com",
+            password: "string",
+            role: "string",
+            genre: "string",
+            colorProfile: "string",
+            colorMenu: "string"
+        }
+        axios.put('http://localhost:8080/users/1', data)
+            .then((resp) => {
+                alert('Success', resp);
+                console.log(resp);
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data)
+                alert('Error', error)
+            })
+
+    }
+</script>
