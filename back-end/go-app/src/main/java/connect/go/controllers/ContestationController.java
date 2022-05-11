@@ -47,6 +47,7 @@ public class ContestationController {
         contestation.setDateTimeContestation(LocalDateTime.now());
         contestationService.register(contestation);
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
+        //TODO criar notificação de denúncia em análise
         return ResponseEntity.status(201).build();
     }
 
@@ -63,6 +64,7 @@ public class ContestationController {
     public ResponseEntity<Void> reproveContestation(@PathVariable Integer contestationId) {
         contestationService.setStatus(contestationId, "reprovado");
         complaintService.setStatus(contestationId, "valido");
+        //TODO criar notificação de denúncia validada
         return ResponseEntity.status(200).build();
     }
 }

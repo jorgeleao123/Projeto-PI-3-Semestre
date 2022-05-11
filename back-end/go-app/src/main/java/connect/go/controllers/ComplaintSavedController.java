@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/complaints-saved")
@@ -22,8 +25,8 @@ public class ComplaintSavedController {
     private final ComplaintSavedService complaintSavedService;
 
     @GetMapping("/{userId}")
-    public ResponseEntity<Complaint> getComplaintsSaved(@PathVariable Integer userId) {
-        return ResponseEntity.of(complaintSavedService.getComplaintSavedByUserId(userId));
+    public ResponseEntity<List<Complaint>> getComplaintsSaved(@PathVariable Integer userId) {
+        return ResponseEntity.ok().body(complaintSavedService.getComplaintSavedByUserId(userId).stream().collect(Collectors.toList()));
     }
 
     @PostMapping
@@ -34,10 +37,9 @@ public class ComplaintSavedController {
         return ResponseEntity.status(201).build();
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> deleteComplaintsSaved(@RequestBody ComplaintSavedRegistration complaintSavedRegistration) {
-        ComplaintSavedId id = new ComplaintSavedId(complaintSavedRegistration.getUserId(),
-                complaintSavedRegistration.getComplaintId());
+    @DeleteMapping("/{userId}/{complaintId}")
+    public ResponseEntity<Void> deleteComplaintsSaved(@PathVariable Integer userId, @PathVariable Integer complaintId) {
+        ComplaintSavedId id = new ComplaintSavedId(userId, complaintId);
         complaintSavedService.deleteById(id);
         return ResponseEntity.status(200).build();
     }
