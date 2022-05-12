@@ -9,7 +9,7 @@
 
 .farol__collum{
     width: 100%;
-    height: 10px;
+    height: 20px;
     background-color: #454545;
 }
 
@@ -67,4 +67,35 @@
     margin-bottom: 10px;
     text-align: center;
     max-width: 600px;
+}
+
+.container__building{
+    position:absolute;
+    background-color: var(--background-building);
+    padding: 15px;
+}
+
+.building__one{
+    height: 250px;
+    width: 100px;
+    bottom: 0; 
+    left:0; 
+}
+
+.building__two{
+    height: 170px;
+    width: 90px;
+    bottom: 0;
+    right: 5px;
+}
+
+.window{
+    width: 20px;
+    height: 20px;
+    background-color: var(--background-window);
+    margin-bottom: 30px;
+}
+
+.lit{
+    background-color: var(--background-lit);
 }

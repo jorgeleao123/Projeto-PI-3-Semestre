@@ -96,7 +96,7 @@
 }
 
 .container__form input {
-  padding: 0.7rem;
+  padding: 0.6rem;
   width: 100%;
   background-color: var(--inputs-color);
   outline: none;
@@ -119,7 +119,7 @@
 }
 
 .form__publication select {
-  padding: 0.9rem;
+  padding: 0.8rem;
   border-radius: 1px;
 }
 

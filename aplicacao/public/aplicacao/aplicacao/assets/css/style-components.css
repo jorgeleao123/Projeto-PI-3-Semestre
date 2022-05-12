@@ -25,6 +25,9 @@ html {
   --body-color: white;
   --menu-color: #FFF;
   --modal-color: #FFF;
+  --background-building: #DFDEDE;
+  --background-window: #C8C8C8;
+  --background-lit: #C8C8C8;
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
 

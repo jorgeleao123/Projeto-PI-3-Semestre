@@ -160,7 +160,7 @@ input {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: transparent;
+  background-color: white;
   z-index: 9999;
 }
 

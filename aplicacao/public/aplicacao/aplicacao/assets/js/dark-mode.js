@@ -17,6 +17,7 @@ const initialColors = {
     inputColor: getStyle(html, "--input-color"),
     modalColor: getStyle(html, "--modal-color"),
     inputsColor: getStyle(html,"--inputs-color"),
+    backgroundLit: getStyle(html, "--background-lit")
 }
 
 const darkMode = {
@@ -28,7 +29,8 @@ const darkMode = {
     backgroundCard: "#2D333B",
     inputColor: "#1C2128",
     modalColor: "#2D333B",
-    inputsColor: "#2E3135"
+    inputsColor: "#2E3135",
+    backgroundLit: "#FEFFB9"
 }
 
 const transformKey = key => 

@@ -1,6 +1,5 @@
 /* card background */
 .background{
-    padding-top: 15px;
     padding-bottom: 15px;
     
 }
@@ -8,7 +7,7 @@
     width: 100%;
     height: 80%;
     background-color: #be156a;
-    padding: 10%;
+    padding: 85px;
     border-radius: 1px;
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
 }
@@ -39,7 +38,7 @@
     padding-bottom: 15px;
     margin-top: -120px;
     margin-left: 10px;
-    width: 22%;
+    width: 20%;
     box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
     
 }
@@ -78,8 +77,9 @@
     border-radius: 50%;
     background-color: #7D63A9;
 }
-.fa-solid, .fas{
+.fa-location-dot{
     padding-right: 5px;
+    color: var(--text-color);
 }
 
 .edit__button{
@@ -113,27 +113,29 @@
     text-decoration: none;
 }
 
-.fa-pen-to-square{
-    padding-right: 5px;
-    font-size: 20px;
-}
 /* feed */
 .container__feed__perfil{
     width: 50%;
 }
+
 /* initial menu right*/
 .i__navbar{
+    margin-top: 25px;
     width: 100%;
+    max-width: 255px;
     align-items: center;
     justify-items: center;
     z-index: 999999;
     will-change: transform;
     transform: translateZ(0);
     justify-content: space-between;
+    border-radius: 1px;
 }
 .i__navbar ul{
+    margin-top: -30px;
     padding: 0;
     background-color: var(--background-card);
+    border-radius: 1px;
 }
 .i__navbar li{
     border-bottom: 1px solid var(--border-color);
@@ -153,6 +155,7 @@
     text-decoration: none;
     border-bottom: 3px solid transparent;
 }
+
 
 
 /* Card escrever publicação */
@@ -223,6 +226,11 @@
     color:var(--first-color);
 }
 
+.container__feed__perfil {
+    height: 70vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
 
 
 /*================================================================================ RESPONSIVE ====================================================================*/
@@ -256,7 +264,7 @@
 
 @media screen and (max-width: 1599px) {
     .container__feed__perfil {
-        height: calc(94vh - 51px);
+        height: 63vh;
         overflow: scroll;
         overflow-x: hidden;
     }
@@ -307,7 +315,7 @@
         font-size: small;
     }
     .top__perfil{
-        padding-top: 25px;
+        padding-top: 30px;
         max-width: 265px;
     }
 
@@ -352,6 +360,9 @@
     }
 }
 @media screen and (max-width: 900px) {
+    .background__content {
+        padding: 40px;
+    }
     .container__feed__perfil {
         width: 100% !important;
     }
@@ -415,10 +426,9 @@
     
 
 }
-    
 
-
-
-
-
-
+@media screen and (min-width: 900.1px) {
+    .none{
+        border-bottom: none!important;
+    }
+}

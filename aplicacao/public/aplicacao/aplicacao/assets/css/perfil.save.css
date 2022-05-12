@@ -1,7 +1,17 @@
+.content__complaint {
+    padding: 30px 100px;
+}
+
+.lala{
+    height: 45vh;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
 .topic__save {
     align-items: center;
     gap: 10px;
-    padding: 30px 0;
+    padding: 12px 0;
     font-size: 13.5px;
     width: 100%;
 }

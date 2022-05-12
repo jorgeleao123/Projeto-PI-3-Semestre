@@ -10,7 +10,7 @@
     margin-bottom: 20px;
 }
 
-.card__new__case a{
+.card__new__case button{
     font-weight: 600;
     color: var(--first-color);
     transition: ease-in 300ms;

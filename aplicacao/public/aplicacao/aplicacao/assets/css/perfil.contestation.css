@@ -23,7 +23,6 @@ input[type="radio"] {
 .stages label {
 	background: #c8c8c8;
 	border-radius: 1px;
-	cursor: pointer;
 	display: inline-block;
 	font-size: 0;
 	font-weight: 700;
@@ -44,7 +43,7 @@ input[type="radio"] {
 
 .stages label:after {
 	padding: 0;
-	background: var(--first-color);
+	background: var(--second-color-hover);
 	width: 100%;
 	border-radius: 1px;
 	text-align: center;
@@ -55,23 +54,9 @@ input[type="radio"] {
 
 }
 
-#one:checked ~ .stages label,
-#two:checked ~ .stages label[for="one"] ~ label,
-#six:checked ~ .stages label[for="five"] ~ label {
-	font-size: 1rem;
-}
-
-#one:checked ~ .stages label:after,
-#two:checked ~ .stages label[for="one"] ~ label:after,
-#three:checked ~ .stages label[for="two"] ~ label:after,
-#four:checked ~ .stages label[for="three"] ~ label:after,
-#five:checked ~ .stages label[for="four"] ~ label:after,
-#six:checked ~ .stages label[for="five"] ~ label:after {
-	display: none;
-}
 
 .progress > span {
-	background: var(--first-color);
+	background: var(--second-color-hover);
 	display: inline-block;
 	height: 5px;
 	transform: translateY(-2.75em);
@@ -79,39 +64,19 @@ input[type="radio"] {
 	width: 0;
 }
 
-#two:checked ~ .progress span {
+.check__one:checked ~ .progress span {
+	width: calc(100% / 2 * 0);
+}
+
+.check__two:checked ~ .progress span {
 	width: calc(100% / 2 * 1);
 }
 
-#three:checked ~ .progress span {
-	width: calc(100% / 5 * 2);
+.check__tree:checked ~ .progress span {
+	width: calc(100% / 2 * 2);
 }
 
 
-#four:checked ~ .progress span {
-	width: calc(100% / 5 * 3);
-}
-
-#five:checked ~ .progress span {
-	width: calc(100% / 5 * 4);
-}
-
-#six:checked ~ .progress span {
-	width: calc(100% / 5 * 5);
-}
-
-.panels div {
-	display: none;
-}
-
-#one:checked ~ .panels [data-panel="one"],
-#two:checked ~ .panels [data-panel="two"],
-#three:checked ~ .panels [data-panel="three"],
-#four:checked ~ .panels [data-panel="four"],
-#five:checked ~ .panels [data-panel="five"],
-#six:checked ~ .panels [data-panel="six"] {
-	display: block;
-}
 
 /* Topico da pagina */
 .topic__link__contestation{
@@ -161,7 +126,16 @@ input[type="radio"] {
 	color: var(--links-hover);
 }
 
+.date__contestation{
+	font-size: var(--smaller-font-size);
+	font-weight: normal;
+	color: var(--text-color);
+}
 /* Custom code for the demo */
+
+.topic__cont{
+	margin-bottom: 25px;
+}
 
 .form {
 	min-width: 100px;
@@ -186,14 +160,6 @@ input[type="radio"] {
 
 .panels div {
 	padding: 0.5em 0 0;
-}
-
-.left{
-	float: left;
-	background-color: #ffffff;
-	border: solid 2px var(--first-color);
-	border-radius: 1px;
-	color: var(--first-color);
 }
 
 button {
@@ -236,7 +202,7 @@ input{
 .icon__message__step{
     display: flex;
     border-radius: 50%;
-    border: 4px solid var(--first-color);
+    border: 4px solid var(  --second-color-hover);
     width: 60px !important;
     height: 60px !important;
     background-color: var(--body-color);
@@ -247,7 +213,7 @@ input{
     position: absolute;
     font-size: 30px;
     padding-top: 1px;
-    color: var(--first-color);
+    color: var(  --second-color-hover);
     font-style: var(--font-semi-bold);
 }
 
@@ -263,7 +229,7 @@ input{
     border-radius: 1px;
     border: solid var(--color-toggle);
     background-color: Transparent;
-    color: #144D6C;
+    color: var(--first-color);
     width: 100%;
     cursor: pointer;
 }
