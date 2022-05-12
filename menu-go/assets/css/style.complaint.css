@@ -28,7 +28,37 @@
 .justify {
     justify-content: space-between;
 }
+/* Calendario mobile */
+.container__calendar__mobile{
+  padding: 0px 0px 30px 0px;
+  display: none;
+}
 
+.content__calendar_mobile input{
+  width: 100%;
+  height: 50px;
+  background-color: var(--background-card);
+  padding: 15px;
+  border-radius: 2px;
+  color: var(--links-color);
+}
+.content__calendar_mobile input:hover{
+  color: var(--carbon-color);
+
+}
+/* // calendario mobile */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  filter: invert(0.5);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover{
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  filter: invert(0.1);
+}
 /* tópico da pagina  */
 .topic__complaint {
     align-items: center;
@@ -39,7 +69,7 @@
 }
 
 .topic__complaint span{
-    min-width: 200px;
+    min-width: 100px;
 }
 
 .topic__complaint hr {
@@ -71,26 +101,30 @@
     padding: 15px 0px;
     align-items: center;
     width: 49%;
-    
-  }
+    font-weight: var(--font-semi-bold);
+    color: var(--links-hover);
+}
+
   
   /* Change background color of buttons on hover */
   .tab button:hover {
     background-color: #f1f1f1;
+    color: var(--carbon-color);
     
   }
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: #f1f1f1;
+    background-color: var(--background-card);
     border-bottom: 2px solid;
     border-color: var(--first-color);
+    color: var(--first-color);
   }
   
   /* Style the tab content */
   .tabcontent {
     display: none;
-    padding: 15px 15px;
+    padding: 30px;
     border: 1px solid #ccc;
     border-top: none;
     
@@ -105,7 +139,7 @@
 
 .tabcontent2 {
   display: none;
-  padding: 15px 15px;
+  padding: 30px;
   border: 1px solid #ccc;
   border-top: none;
   
@@ -116,13 +150,11 @@
   justify-content: space-between
 }
 
-.info__tab{
-    padding: 15px;
-}
+
 .info{
     display: flex;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .info p{
     padding-top: 2px;
@@ -132,6 +164,7 @@
     background-color: transparent;
     border-color: var(--first-color);
     color: var(--first-color);
+    width: 99px;
 }
 .but:hover{
     background-color: var(--first-color);
@@ -152,7 +185,7 @@
     font-size: var( --datas-font);
 }
 .content__contest__two{
-  padding-top: 15px;
+  padding-top: 30px;
 }
 
 /* tab content caso */
@@ -179,7 +212,7 @@
 .icon__complaint {
   width: 14px !important;
   height: 14px !important;
-  background-color: #ce480a;
+  background-color: var(--color-orange);
 }
 
 .infos__user__complaint h4 {
@@ -210,71 +243,401 @@
 }
 
 
-/* Calendario */
-.month {
-    padding: 70px 25px;
+/* Calendario desktop*/
+
+  .calendar {
+    color: var(--title-color);
+    background: #fff;
+    padding: 60px 30px 30px 30px;
+    max-width: 500px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(2, 2, 2, 0.2);
+    position: relative;
+  }
+  .calendar__title {
+    text-align: center;
+  }
+  .calendar--day-view {
+    position: absolute;
+    border-radius: 3px;
+    top: -2.5%;
+    left: -2.5%;
     width: 100%;
-    background: #1abc9c;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 3px 12px 5px rgba(2, 2, 2, 0.16);
+    z-index: 2;
+    overflow: hidden;
+    transform: scale(0.9) translate(30px, 30px);
+    opacity: 0;
+    visibility: hidden;
+    /*   border-radius: 5px; */
+    display: none;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .day-view-content {
+    color: var(--title-color);
+    width: 100%;
+    padding-top: 55px;
+  }
+  .day-highlight,
+  .day-add-event {
+    padding: 8px 10px;
+    margin: 12px 15px;
+    border-radius: 4px;
+    background: #e7e8e8;
+    color: var(--title-color);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .row .qtr {
+    width: 40%;
+  }
+  .row .half {
+    width: 100%;
+  }
+  
+  
+  .day-add-event {
+    background: var(--first-color);
+    color: #fff;
+    padding: 16px;
+    display: none;
+    transform: translateY(-15px);
+    opacity: 0;
+  }
+  .day-add-event[data-active="true"] {
+    display: block;
+    animation: popIn 250ms 1 forwards;
+  }
+  .add-event-label {
+    padding: 10px 0;
+    font-size: 18px;
+    color: var(--text-color);
+    font-weight: 400;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .add-event-edit {
+    display: block;
+    margin: 4px 0;
+    max-width: 70%;
+    border-bottom: 2px solid #fff;
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .add-event-edit--long {
+    max-width: 90%;
+  }
+  
+  input.add-event-edit {
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    font: inherit;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .add-event-edit--error,
+  input.add-event-edit--error {
+    border-color: var(--first-color);
+    animation: shake 300ms 1 forwards;
+  }
+  @keyframes shake {
+    20%,
+    60% {
+      transform: translateX(4px);
+    }
+    40%,
+    80% {
+      transform: translateX(-4px);
+    }
+  }
+  input.add-event-edit::-webkit-input-placeholder {
+    color: #fff;
+  }
+  
+  input.add-event-edit:-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff;
+  }
+  
+  input.add-event-edit::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff;
+  }
+  
+  input.add-event-edit:-ms-input-placeholder {
+    color: #fff;
+  }
+  .event-btn {
+    padding: 3px 8px;
+    border: 3px solid #fff;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    width: 76px;
+    margin: 5px 0;
     text-align: center;
   }
   
-  .month ul {
-    margin: 0;
+  .event-btn--save {
+    border-color: #fff;
+    background: var(--text-color);
+    color: #fff;
+    border-color: transparent;
+  }
+  .event-btn--save:hover {
+    box-shadow: 0px 2px 4px rgba(2, 2, 2, 0.2);
+  }
+  .event-btn--cancel {
+    background: var(--but-remove);
+    color: #fff;
+    border-color: transparent;
+  }
+  .event-btn--cancel:hover {
+    box-shadow: 0px 2px 4px rgba(2, 2, 2, 0.2);
+  }
+  /* .add-event-btn:hover, .add.event-btn:focus{
+    background: #00258e;
+    box-shadow: 0px -1px 2px rgba(3,2,2,0.2);
+  } */
+  .day-highlight .day-events-link {
+    border-bottom: 2px solid var(--carbon-color);
     padding: 0;
+    cursor: pointer;
   }
-  
-  .month ul li {
-    color: white;
-    font-size: 20px;
+  #add-event {
+    color: var(--first-color);
+    border-color: var(--first-color);
+  }
+  .day-view-exit {
+    position: absolute;
+    top: 24px;
+    line-height: 1em;
+    left: 22px;
+    font-size: 22px;
+    color: var(--carbon-color);
+    font-weight: 800;
+    cursor: pointer;
+    opacity: 0;
+    animation: popIn 200ms 1 forwards;
     text-transform: uppercase;
-    letter-spacing: 3px;
   }
-  
-  .month .prev {
-    float: left;
-    padding-top: 10px;
+  .day-view-date {
+    position: absolute;
+    top: 19px;
+    right: 22px;
+    text-align: right;
+    font-size: 22px;
+    font-weight: 800;
+    color: #393939;
+    border-bottom: 2px solid var(--carbon-color);
+    cursor: pointer;
   }
-  
-  .month .next {
-    float: right;
-    padding-top: 10px;
+  .day-inspiration-quote {
+    position: absolute;
+    /*   top: 90px; */
+    margin-top: -40px;
+    left: 10%;
+    width: 80%;
+    height: calc(100% - 110px);
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    color: #ddd;
+    line-height: 1.1em;
+    z-index: -1;
   }
-  
-  .weekdays {
-    margin: 0;
-    padding: 10px 0;
-    background-color: #ddd;
+  .day-event-list-ul {
+    list-style: none;
+    margin: auto;
+    width: 95%;
+    padding: 0;
+    max-height: 300px;
+    overflow: auto;
   }
-  
-  .weekdays li {
-    display: inline-block;
-    width: 13.6%;
-    color: #666;
+  .day-event-list-ul li {
+    padding: 10px;
+    margin: 10px 0;
+    /*   background: #04b6e2; */
+    /*   box-shadow: 0px 1px 1px  rgba(2,2,2,0.5); */
+    position: relative;
+  }
+  .event-dates small {
+    font-size: 0.65em;
+    color: var(--carbon-color);
+  }
+  .event-dates {
+    font-weight: 600;
+    color: var(--first-color);
+    font-size: 18px;
+    text-transform: lowercase;
+    /*   position: relative; */
+  }
+  .event-delete {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 12px;
+    color: var(--but-remove);
+    cursor: pointer;
+  }
+  .event-name {
+    font-size: 18px;
+    color: var(--carbon-color);
+    padding: 10px;
+    background: #f7f7f7;
+    margin: 2px 0;
+    display: block;
+    text-transform: initial;
+  }
+  .calendar--day-view-active {
+    animation: popIn 200ms 1 forwards;
+    visibility: visible;
+    display: flex;
+    transition: visibility 0ms;
+  }
+  .calendar--view {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 82%;
+  }
+  .cview__month {
+    width: 100%;
     text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    padding-bottom: 10px;
+    color: var(--carbon-color);
+    text-transform: uppercase;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: baseline;
+    justify-content: space-around;
   }
-  
-  .days {
-    padding: 10px 0;
-    background: #eee;
-    margin: 0;
+  .color{
+    background-color: var(--first-color);
   }
-  
-  .days li {
-    list-style-type: none;
-    display: inline-block;
-    width: 13.6%;
+  .cview__month-last,
+  .cview__month-next,
+  .cview__month-current {
+    width: 33.33333%;
     text-align: center;
-    margin-bottom: 5px;
-    font-size:12px;
-    color: #777;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--first-color);
+  }
+  .cview__month-last:hover,
+  .cview__month-next:hover {
+    color: var(--text-color);
   }
   
-  .days li .active {
+  .cview__month-current {
+    font-size: 20px;
+    cursor: default;
+    animation: popIn 200ms 1 forwards;
+    transform: translateY(20px);
+    opacity: 0;
+    position: relative;
+  }
+  .cview__month-reset {
+    animation: none;
+  }
+  .cview__month-activate {
+    animation: popIn 100ms 1 forwards;
+  }
+  .cview--spacer,
+  .cview__header,
+  .cview--date {
+    width: 14.28571428571429%;
+    max-width: 14.28571428571429%;
     padding: 5px;
-    background: #1abc9c;
-    color: white !important
+    box-sizing: border-box;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: clip;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .cview--date {
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+  }
+  .has-events::after {
+    border-radius: 100%;
+    animation: popIn 200ms 1 forwards;
+    background: rgba(255, 255, 255, 0.95);
+    transform: scale(0);
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 8px;
+    left: 12px;
+  }
+  .cview--date:hover::before {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .cview--date.today {
+    color: var(--carbon-color);
+  }
+  .cview--date.today::before {
+    animation: popIn 200ms 1 forwards;
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0);
+  }
+  @keyframes popIn {
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  .cview--date::before {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    transform: scale(0.8);
+    z-index: 0;
+  }
+  .footer {
+    width: 100%;
+    bottom: 50px;
+    left: 0;
+    position: absolute;
+    font-size: 14px;
+    text-align: center;
+  }
+  .footer__link {
+    cursor: pointer;
+    padding: 2px 5px;
+    border-bottom: 1px solid var(--modal-color);
   }
   
+
 
   /*================================================================================ RESPONSIVE ====================================================================*/
 /*======= PADDING =======*/
@@ -282,17 +645,18 @@
     .container__feed {
         max-width: 500px;
     }
-
-
-    .container__feed {
-        height: calc(94vh - 51px);
-        overflow: scroll;
-        overflow-x: hidden;
+    .button__tab{
+      display: flex;
+      width: 200px;
     }
+    .button{
+      width: 100px;
+    }
+
+   
 }
 
 @media screen and (max-width: 1448px) {
-
 
     .container__feed {
         height: calc(94vh - 51px);
@@ -302,7 +666,6 @@
 }
 
 @media screen and (max-width: 1599px) {
-    
 
     .container__feed {
         height: calc(94vh - 51px);
@@ -313,39 +676,86 @@
 
 @media screen and (max-width: 1400px) {
     
-
+      
 
 
 }
 
 @media screen and (max-width: 1150px) {
     .topic__complaint hr {
-        width: 50%;
+        width: 80%;
     }
 }
 
 @media screen and (max-width: 900px) {
-    
+  body{
+    overflow: scroll;
+  }
 
+  .calendar__desktop{
+    display: none;
+  }
+  .container__calendar__mobile{
+    display: block;
+  }
     .container__feed {
         width: 100% !important;
     }
 
-
     .topic__complaint hr {
-        width: 65%;
+        width: 80%;
     }
+
+   
 }
-/* Add media queries for smaller screens */
-@media screen and (max-width:720px) {
-    .weekdays li, .days li {width: 13.1%;}
+@media (min-width: 800px) {
+  .row {
+    flex-wrap: nowrap;
   }
-  
-  @media screen and (max-width: 420px) {
-    .weekdays li, .days li {width: 12.5%;}
-    .days li .active {padding: 2px;}
+  .row .half {
+    width: 23%;
   }
-  
-  @media screen and (max-width: 290px) {
-    .weekdays li, .days li {width: 12.2%;}
+  .row .qtr {
+    width: 25%;
   }
+}
+@media  screen and (max-width: 500px) {
+  .tab__botton{
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button__tab{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .but{
+    margin-top: 10px;
+    
+  }
+  .info h3{
+    font-size: var(--small-font-size);
+  }
+  .info p{
+    font-size: smaller;
+  }
+  .infos__complaint p{
+    font-size: smaller;
+  }
+  .tab button{
+    font-size: 14px;
+  }
+  .button{
+    margin-top: 10px;
+    width: 100%;
+  }
+  .data__tab{
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+}

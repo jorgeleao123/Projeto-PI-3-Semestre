@@ -180,21 +180,23 @@ textarea:focus, input:focus, select:focus {
   /* ---------------------------------------------------------------RESPONSIVIDADE ---------------------------------------------*/
   /*======= PADDING =======*/
 @media screen and (min-width: 1600px) {
-  .sidenav__desktop__top {
-    padding: var(--padding-desktop);
-}
   
+  .menu__dash{
+    padding: var(--padding-desktop);
+  }
   
 }
 
 @media screen and (max-width: 1599px) {
-  .sidenav__desktop__top {
-    padding: var(--padding-notbook);
+  
+.menu__dash{
+  padding: var(--padding-notbook);
 }
+
 }
 
 @media screen and (max-width: 1400px) {
-  .sidenav__desktop__top {
+  .menu__dash {
     padding: var(--padding-tablet);
 }
 .nav__desktop__search input {
@@ -210,6 +212,9 @@ textarea:focus, input:focus, select:focus {
 }
 
 @media screen and (max-width: 900px) {
+  .menu__dash{
+    padding: var(--padding-mobile);
+  }
   
   .sidenav__desktop{
     display: none;
