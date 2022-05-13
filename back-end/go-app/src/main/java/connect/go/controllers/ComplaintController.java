@@ -1,5 +1,6 @@
 package connect.go.controllers;
 
+import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.*;
 import connect.go.models.dto.ComplaintRegistration;
 import connect.go.usecases.AddressService;
@@ -8,13 +9,7 @@ import connect.go.usecases.DriverService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -83,6 +78,29 @@ public class ComplaintController {
         complaint.setStatus("valido");
         complaintService.register(complaint);
         return ResponseEntity.status(201).build();
+    }
+
+    @PutMapping("/{userId}/{complaintId}")
+    public ResponseEntity<Complaint> updateComplaint(@PathVariable Integer userId, @PathVariable Integer complaintId,
+                                                     @RequestBody ComplaintRegistration complaintRegistration) {
+        Address address = addressService.register(new Address(complaintRegistration.getState(), complaintRegistration.getCity(), complaintRegistration.getDistrict()));
+        Driver driver = driverService.register(new Driver(complaintRegistration.getDriverName(), complaintRegistration.getLicensePlate()));
+        Complaint complaint = complaintService.getComplaintById(complaintId);
+        if (complaint.getUser().getId().equals(userId)) {
+            complaint.setBo(complaintRegistration.getBo());
+            complaint.setDescription(complaintRegistration.getDescription());
+            complaint.setArchive(complaintRegistration.getArchive());
+            complaint.setType(complaintRegistration.getType());
+            complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
+            complaint.setDateTimePost(LocalDateTime.now());
+            complaint.setStatus("valido");
+            complaint.setAddress(address);
+            complaint.setDriver(driver);
+            complaint = complaintService.register(complaint);
+            return ResponseEntity.status(200).body(complaint);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
 

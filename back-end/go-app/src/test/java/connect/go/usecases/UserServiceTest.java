@@ -29,6 +29,9 @@ class UserServiceTest {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private UserResponseAdapter userResponseAdapter;
+
     @BeforeEach
     void setUp() {
         service = new UserService(repository);
@@ -123,9 +126,9 @@ class UserServiceTest {
     void successUpdateByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
-        User newUser = new User(user.getId(),"Tais", "tais@teste.com", user.getPassword(), "admin","Faminino", "cor","cor", LocalDate.now(), "ativo");
-        UserResponseAdapter adapter = new UserResponseAdapter();
-        assertTrue(service.updateById(user.getId(), adapter.execute(newUser)));
+        User newUser = new User(user.getId(),"Tais", "tais@teste.com", user.getPassword(), "admin","Faminino", "cor","cor", LocalDate.now(), "ativo", 0);
+
+        assertTrue(service.updateById(user.getId(), userResponseAdapter.execute(newUser)));
         User updatedUser = service.getById(user.getId());
         assertEquals(user.getId(), updatedUser.getId());
 //        assertNotEquals(user, updatedUser);
