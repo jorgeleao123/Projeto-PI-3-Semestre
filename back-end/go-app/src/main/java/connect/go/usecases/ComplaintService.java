@@ -46,4 +46,7 @@ public class ComplaintService {
         complaintRepository.setStatus(complaintId, status);
     }
 
+    public Integer countByUserId(Integer userId) {
+        return complaintRepository.countByUserId(userId);
+    }
 }

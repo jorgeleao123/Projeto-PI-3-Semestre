@@ -69,13 +69,13 @@ public class CsvController {
         Driver driver = new Driver(5, "Antonio", "OMS1548");
         Address address = new Address(1, "SP", "São Paulo", "Esse ai");
 
-        User user1 = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo");
+        User user1 = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint1 = new Complaint(1, "decrição", "archive", "Verificado", null, LocalDateTime.now(), LocalDateTime.now(),"tipo", driver, user1, address);
 
-        User user2 = new User(3, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo");
+        User user2 = new User(3, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint2 = new Complaint(2, "decrição", "archive", "Verificado", null, LocalDateTime.now(), LocalDateTime.now(),"tipo", driver, user1, address);
 
-        User user3 = new User(5, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo");
+        User user3 = new User(5, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint3 = new Complaint(1, "decrição", "archive", "Verificado", null, LocalDateTime.now(), LocalDateTime.now(),"tipo", driver, user1, address);
         complaintListaObj.adiciona(complaint1);
         complaintListaObj.adiciona(complaint2);
