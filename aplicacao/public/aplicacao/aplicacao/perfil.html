@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
 
 </head>
 
-<body class="body__profile">
+<body class="body__profile" onload="loadComplains()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -271,7 +273,8 @@
                                                         </a>
                                                         <p style="cursor: pointer;" class="options__modal__user"><input
                                                                 style="display: none; cursor: pointer;" type="submit"
-                                                                class="option__modal__user" value="idCaso">Excluir</p>
+                                                                class="option__modal__user" value="idCaso"
+                                                                onclick="deleteComplaint(id)">Excluir</p>
                                                     </a>
                                                 </form>
                                             </div>
@@ -474,6 +477,30 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+
+    <script>
+
+        function loadComplains(){
+            //função onde vai carregar as denuncias
+        }
+
+        function deleteComplaint(id){
+
+            event.preventDefault();
+
+            axios.delete(`http://localhost:8080/users/${id}`)
+            .then((resp) => {
+                alert("Denuncia excluida com sucesso!");
+                loadComplains();
+            })
+            .catch((err) => {
+                
+            })
+
+        }
+
+
+    </script>
 </body>
 
 </html>
