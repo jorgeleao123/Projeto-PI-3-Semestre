@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./assets/css/style.components.css">
   <link rel="stylesheet" href="./assets/css/style.modais.css">
   <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <link rel="stylesheet" href="./assets/css/style.profile.css">
   <title>Dashboard | Perfil</title>
 </head>
 
@@ -42,7 +43,7 @@
         <span class="hamburger" onclick="openNav()">&#9776;</span>
         <button class="adc__admin"><a href="">Adicionar Administrador</a></button>
       </div>
-      <h4 class="title__page">Dashboard</h4>
+      <h4 class="title__page">Perfil</h4>
       <div class="flex">
         <div class="icon__user__initial"></div>
         <span>
@@ -59,12 +60,49 @@
       <!-- tópico -->
       <div class="topic__complaint flex justify">
         <span class="flex">
-          <p><b>Denúncias</b></p>
+          <p><b>Perfil</b></p>
         </span>
         <div class="hr"></div>
       </div>
-      <section class="content__feed">
-        
+
+      <section class="flex__box">
+        <div class="profille__card">
+          <div class="profille__capa">
+            <input type="color">
+          </div>
+          <div class="profile__icon">
+            <input type="color">
+          </div>
+          <div class="ipts__dash">
+          <label for="Alterar Nome">Alterar Nome</label>
+          <input type="text" name="" id="">
+        </div>
+        </div>
+
+        <div class="topic__complaint flex justify top">
+          <span class="flex">
+            <p style="min-width: 170px;"><b>Mais Informações</b></p>
+          </span>
+          <div class="hr"></div>
+        </div>
+
+        <div>
+          <div class="style__ipt flex__inp">
+            <label for="Alterar Email">Alterar Email</label>
+            <input type="email" name="" id="">
+          </div>
+          <div class="flex__gap">
+            <div class="style__ipt">
+              <label for="Alterar senha">Alterar senha</label>
+              <input type="password" name="" id="">
+            </div>
+            <div class="style__ipt">
+              <label for="Confirmar senha">Confirmar senha</label>
+              <input type="password" name="" id="">
+            </div>
+          </div>
+          <button class="edit__profile">Salvar Alterações</button>
+        </div>
   </section>
   <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
