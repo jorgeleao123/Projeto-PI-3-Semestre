@@ -11,6 +11,8 @@
   <link rel="stylesheet" href="./assets/css/style.components.css">
   <link rel="stylesheet" href="./assets/css/style.modais.css">
   <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <link rel="stylesheet" href="./assets/css/style.profile.css">
+  <link rel="stylesheet" href="./assets/css/style.table.css">
   <title>Dashboard | Administradores</title>
 </head>
 
@@ -54,17 +56,96 @@
     <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
 
     <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
-    <main>
+    <main class="flex__box">
 
       <!-- tópico -->
       <div class="topic__complaint flex justify">
         <span class="flex">
-          <p><b>Denúncias</b></p>
+          <p style="width: 240px;"><b>Adicionar Administrador</b></p>
         </span>
         <div class="hr"></div>
       </div>
+      <section class="">
+        <div class="content__form">
+          <div>
+            <div class="flex__gap">
+              <div class="style__ipt">
+                <label for="Nome">Nome</label>
+                <input type="text" name="" id="">
+              </div>
+              <div class="style__ipt">
+                <label for="Cargo">Cargo</label>
+                <input type="text" name="" id="">
+              </div>
+            </div>
+            <div>
+              <div class="flex__gap">
+                <div class="style__ipt">
+                  <label for="Alterar senha">Senha</label>
+                  <input type="password" name="" id="">
+                </div>
+                <div class="style__ipt">
+                  <label for="Confirmar senha">Confirmar senha</label>
+                  <input type="password" name="" id="">
+                </div>
+              </div>
+              <button class="cad__adm">Cadastrar Administrador</button>
+            </div>
+        </div>
+        </div>
+
+        <!-- tópico -->
+      <div class="topic__complaint flex justify">
+        <span class="flex">
+          <p><b>Buscar Admin</b></p>
+        </span>
+        <div class="hr"></div>
+      </div>
+      <div class="search__crud">
+        <input type="search" name="" id="">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
       <section class="content__feed">
-        
+        <div class="flex__box">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Email</th>
+              <th scope="col">Cargo</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Nome">Rafaella Kimberlly</td>
+              <td data-label="Email">rafa.kim@gmail.com</td>
+              <td data-label="Cargo">20</td>
+              <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+            
+            <tr>
+              <td data-label="Nome">Rafaella Kimberlly</td>
+              <td data-label="Email">rafa.kim@gmail.com</td>
+              <td data-label="Cargo">20</td>
+              <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+            
+            <tr>
+              <td data-label="Nome">Rafaella Kimberlly</td>
+              <td data-label="Email">rafa.kim@gmail.com</td>
+              <td data-label="Cargo">20</td>
+              <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+
+            <tr>
+              <td data-label="Nome">Rafaella Kimberlly</td>
+              <td data-label="Email">rafa.kim@gmail.com</td>
+              <td data-label="Cargo">20</td>
+              <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+            </tr>
+          </tbody>
+        </table>
   </section>
   <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
