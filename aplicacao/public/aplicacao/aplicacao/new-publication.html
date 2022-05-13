@@ -123,7 +123,8 @@
                         <div class="scrool_form">
 
                             <label for="Descrição">Descrição</label>
-                            <textarea name="" id="description" cols="10" rows="6" placeholder="Descreva o ocorrido"></textarea>
+                            <textarea name="" id="description" cols="10" rows="6"
+                                placeholder="Descreva o ocorrido"></textarea>
 
                             <div class="form__publication">
 
@@ -144,12 +145,15 @@
 
                                 <div class="ipt__form">
                                     <label for="CEP">CEP</label>
-                                    <input type="text" name="" id="" placeholder="Ponto de partida ou Destino">
+                                    <input type="text" name="" id="cep" placeholder="Ponto de partida ou Destino">
+                                    <span id="endereco_validator" style="color: rgb(253, 81, 81);
+                                    display: none">CEP inválido</span>
                                 </div>
 
                                 <div class="ipt__form">
                                     <label for="codigo do boletom">Estado onde ocorreu</label>
-                                    <select class="form__sel" name="" id="district">
+                                    <input type="text" id="uf" class="form_sel">
+                                    <!--<select class="form__sel" name="combo_state" id="district">
                                         <option value="AC">AC</option>
                                         <option value="AL">AL</option>
                                         <option value="AP">AP</option>
@@ -177,19 +181,20 @@
                                         <option value="SP">SP</option>
                                         <option value="SE">SE</option>
                                         <option value="TO">TO</option>
-                                    </select>
+                                    </select>-->
                                 </div>
 
                             </div>
                             <div class="form__publication">
                                 <div class="ipt__form">
                                     <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
-                                    <input type="text" name="" id="city" placeholder="Insira a cidade onde o caso ocorreu">
+                                    <input type="text" name="" id="city"
+                                        placeholder="Insira a cidade onde o caso ocorreu">
                                 </div>
 
                                 <div class="ipt__form">
                                     <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
-                                    <input type="text" name="" id="" placeholder="Insira a Bairro onde o caso ocorreu">
+                                    <input type="text" name="" id="district" placeholder="Insira a Bairro onde o caso ocorreu">
                                 </div>
                             </div>
                             <div class="form__publication">
@@ -200,7 +205,8 @@
 
                                 <div class="ipt__form">
                                     <label for="Placa do veiculo">Placa do veiculo</label>
-                                    <input type="text" name="" id="licensePlate" placeholder="Insira a placa do veiculo">
+                                    <input type="text" name="" id="licensePlate"
+                                        placeholder="Insira a placa do veiculo">
                                 </div>
                             </div>
                         </div>
@@ -250,7 +256,7 @@
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
-        
+
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
@@ -503,23 +509,61 @@
             bo: bo.value,
             driverName: driverName.value,
             licensePlate: licensePlate.value,
-            state: "string",
+            state: uf.value,
             city: city.value,
             district: district.value,
             dateTimeComplaint: "2022-05-10T21:25:50.462Z"
         }
         axios.post(`http://localhost:8080/complaints/1`, data)
             .then((resp) => {
-                alert('Success', resp);
+                alert('Denúncia publicada com sucesso', resp);
                 console.log(resp);
             })
             .catch((error) => {
                 console.log(error);
                 console.log(data)
-                alert('Error', error)
+                alert('Ocorreu um erro', error)
             })
+    }
 
+    function preencherFormulario(endereco) {
+        uf.value = endereco.uf;
+        city.value = endereco.localidade;
+        district.value = endereco.bairro;
+        
+    }
 
+    function eNumero(numero) {
+        return /^[0-9]+$/.test(numero);
+    }
+    
+    function cepValido(cep) {
+        return cep.length == 8 && eNumero(cep);
+    }
+
+    const pesquisarCep = async () => {
+        const cep = document.getElementById('cep').value.replace("-", "");
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+        if (cepValido(cep)) {
+            const dados = await fetch(url);
+            const endereco = await dados.json();
+            if (endereco.hasOwnProperty('erro')) {
+                document.getElementById('endereco_validator').value = 'CEP não encontrado!';
+                document.getElementById('endereco_validator').style.display = 'block';
+            } else {
+                preencherFormulario(endereco);
+                bairro = endereco.bairro;
+                document.getElementById('endereco_validator').style.display = 'none';
+            }
+        } else {
+            document.getElementById('endereco_validator').value = 'CEP incorreto!';
+            document.getElementById('endereco_validator').style.display = 'block';
+        }
 
     }
+    //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
+    document.getElementById('cep')
+        .addEventListener('focusout', pesquisarCep);
+
 </script>
