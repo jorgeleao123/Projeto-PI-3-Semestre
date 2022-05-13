@@ -6,14 +6,14 @@
 }
 .container__feed {
   max-height: 400px;
-  max-width: 50%;
+  max-width: 500px;
 
 }
 .flex__box{
   display: flex;
   flex-direction:column;
   width: 100%;
-  max-height: 400px;
+  max-height: 80vh;
   overflow-y: scroll;
 }
 
@@ -39,7 +39,7 @@
   height: 50px;
   background-color: var(--background-card);
   padding: 15px;
-  border-radius: 2px;
+  border-radius: 1px;
   color: var(--links-color);
 }
 .content__calendar_mobile input:hover{
@@ -49,13 +49,13 @@
 /* // calendario mobile */
   input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 1px;
   margin-right: 2px;
   filter: invert(0.5);
 }
 input[type="date"]::-webkit-calendar-picker-indicator:hover{
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 1px;
   margin-right: 2px;
   filter: invert(0.1);
 }
@@ -63,7 +63,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
 .topic__complaint {
     align-items: center;
     gap: 10px;
-    padding: 30px 0;
+    padding: 5px 0;
+    margin-bottom: 20px;
     font-size: 13.5px;
     width: 100%;
 }
@@ -86,8 +87,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
 /* Style the tab */
 .tab {
     overflow: hidden;
-    background-color: #f1f1f1;
+    background-color: white;
+    border: solid 0.5px var(--border-color);;
     width: 100%;
+
   }
   
   /* Style the buttons inside the tab */
@@ -97,7 +100,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
     outline: none;
     cursor: pointer;
     transition: 0.3s;
-    font-size: 18px;
+    font-size: 14px;
     padding: 15px 0px;
     align-items: center;
     width: 49%;
@@ -115,7 +118,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
   
   /* Create an active/current tablink class */
   .tab button.active {
-    background-color: var(--background-card);
+    background-color: white;
     border-bottom: 2px solid;
     border-color: var(--first-color);
     color: var(--first-color);
@@ -125,7 +128,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
   .tabcontent {
     display: none;
     padding: 30px;
-    border: 1px solid #ccc;
+    border: solid 0.5px var(--border-color);
     border-top: none;
     
   }
@@ -153,36 +156,68 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
 
 .info{
     display: flex;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    margin-bottom: 15px;
+    align-items: center;
 }
-.info p{
+
+.info h3{
+  font-size: var(--datas-font);
+    font-weight: 600;
+    color: var(--text-color);
+    width: 60px;
+}
+
+.desc__text{
+  padding-top: 15px;
+}
+
+.info h6{
     padding-top: 2px;
     padding-left: 10px;
+    font-weight: 500;
+    font-size: var(--city-font);
+    color: var(--text-color);
 }
+
+.tabcontent{
+  max-width: 750px;
+}
+
+.tab{
+  max-width: 750px;
+}
+
 .but{
-    background-color: transparent;
-    border-color: var(--first-color);
-    color: var(--first-color);
-    width: 99px;
+    background-color: white;
+    border-color: var(--second-color-hover);
+    color: var(--second-color-hover);
+    padding: 10px 20px;
+    transition: ease-in 300ms;
+    margin-right: 10px;
+    text-align: center;
 }
 .but:hover{
-    background-color: var(--first-color);
+    background-color: var(--second-color-hover);
     color: white;
 }
 .but__red{
+  font-weight: 600;
+  transition: ease-in 300ms;
     background-color: var(--but-remove);
     border-color: var(--but-remove);
     color: white;
 }
 .but__red:hover{
+  font-weight: 700;
     background-color: transparent;
     color: var(--but-remove);
 }
 
 .data__tab{
     padding-top: 15px;
-    font-size: var( --datas-font);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
 }
 .content__contest__two{
   padding-top: 30px;
@@ -205,7 +240,7 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
   font-size: 13px;
   font-weight: 300;
   border-radius: 50%;
-  background-color: #7D63A9;
+  background-color: #638ba9;
 }
 
 
@@ -249,10 +284,10 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
     color: var(--title-color);
     background: #fff;
     padding: 60px 30px 30px 30px;
-    max-width: 500px;
+    max-width: 400px;
     height: 300px;
-    border-radius: 5px;
-    box-shadow: 0px 2px 6px rgba(2, 2, 2, 0.2);
+    border-radius: 1px;
+    border: solid 0.5px var(--border-color);
     position: relative;
   }
   .calendar__title {
@@ -685,6 +720,12 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
     .topic__complaint hr {
         width: 80%;
     }
+}
+
+@media screen and (min-width: 1000px) {
+  .tabcontent {
+    height: 400px;
+}
 }
 
 @media screen and (max-width: 900px) {

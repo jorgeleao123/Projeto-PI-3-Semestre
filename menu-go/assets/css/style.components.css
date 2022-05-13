@@ -166,9 +166,17 @@ h4 {
 .button{
   text-decoration: none;
   padding: 10px;
-  font-weight: 800;
+  font-weight: 700;
   font-size: var(--name-font);
+  border-radius: 1px;
   border: 2px solid;
+}
+
+.hr {
+  border-bottom: solid 0.5px var(--border-color);
+  width: 100%;
+  float: right;
+  text-align: right;
 }
 
 /*================================================================================ RESPONSIVE ====================================================================*/
