@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body onload="itensSave()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -96,8 +96,8 @@
             <div class="">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
-                    <i class="fa-solid fa-bell icon__mobile"></i>
-                </label>
+                        <i class="fa-solid fa-bell icon__mobile"></i>
+                    </label>
                 </div>
             </div>
         </div>
@@ -110,9 +110,12 @@
         <div class="f__navbar__mobile">
             <nav class="f__navbar">
                 <ul>
-                <li><a href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span class="public">Publicações</span></a></li>
-                <li><a id="active" href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span class="public">Salvos</span></a></li>
-                <li><a href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span class="public">Contestação</span></a></li>
+                    <li><a href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span
+                                class="public">Publicações</span></a></li>
+                    <li><a id="active" href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span
+                                class="public">Salvos</span></a></li>
+                    <li><a href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span
+                                class="public">Contestação</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -141,229 +144,10 @@
                     <div class="hr"></div>
                 </div>
                 <br>
-                <div class="lala">
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="modal-1000">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="modal-1000" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="modal-1000"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Remover dos Salvos</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+                <div class="lala" id="itens">
 
-                    <span class="check__complaint">
-                        <h6>Possui boletim de ocorrencia</h6>
-                        <i class="fa-solid fa-certificate"></i>
-                    </span>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
+                    <!------------------------------ /publicação  ----------------------------------------->
                 </div>
-                <!------------------------------ /publicação  ----------------------------------------->
-
-                <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1001">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1001" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1001"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Remover dos Salvos</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <span class="check__complaint">
-                        <h6>Possui boletim de ocorrencia</h6>
-                        <i class="fa-solid fa-certificate"></i>
-                    </span>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
-                <!------------------------------ /publicação  ----------------------------------------->
-
-                <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
-                                <span class="initial__user" id="initialPublication">J</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">J**** L****</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1002">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1002" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1002"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Remover dos Salvos</p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Denunciar</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
-                <!------------------------------ /publicação  ----------------------------------------->
-            </div>
             </div>
             <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
 
@@ -594,6 +378,7 @@
                                 <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
                     </div>
+                    
                 </div>
             </div>
         </span>
@@ -610,7 +395,7 @@
             <div class="nav__itens__links">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-2">
-                       <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
+                        <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
                     </label>
                 </div>
             </div>
@@ -634,3 +419,104 @@
 </body>
 
 </html>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function itensSave() {
+        event.preventDefault();
+        axios.get(`http://localhost:8080/complaints-saved/${1}`, {})
+            .then((resp) => {
+                alert('Success', resp);
+                console.log(resp);
+                itens.innerHTML =='';
+                resp.data.map((e) => {
+                    bo = false;
+                    e["bo"] != null && e["bo"] != '' ? bo = true : bo = false;
+                    itens.innerHTML += `                <div class="content__complaint">
+                    <div class="header__complaint flex justify">
+                        <div class="flex">
+                            <div class="icon__complaint icon__user icon__user__initial">
+                                <span class="initial__user" id="initialPublication">${e["user"]["name"][0]}</span>
+                            </div>
+                            <span class="infos__user__complaint">
+                                <h4 id="nameUser">${e["user"]["name"]}</h4>
+                                <p id="gender">${e["user"]["genre"]}</p>
+                            </span>
+                        </div>
+                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                        <label class="label__modal" for="1001">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                        </label>
+                        <!----------- modal funcionalidades ----------->
+                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                        <input class="modal-state" id="1001" type="checkbox" />
+                        <div class="modal__functions">
+                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                            <label class="" for="1001"></label>
+                            <div class="modal__inner__func">
+                                <form action="">
+                                    <p style="cursor: pointer;" class="options__modal__user"><input
+                                            style="display: none; cursor: pointer;" type="submit"
+                                            class="option__modal__user" value="idCaso"><button onclick="apagar(${e["id"]})">Remover dos Salvos</button></p>
+                                    <a href="./contest.html">
+                                        <p style="cursor: pointer;" class="options__modal__user"><input
+                                                style="display: none; cursor: pointer;" type="submit"
+                                                class="option__modal__user" value="idCaso"><button onclick="abrirContestacao(${e["id"]})">Denunciar</button></p>
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <span class="check__complaint">
+                        <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
+                        <i class="fa-solid fa-certificate"></i>
+                    </span>
+
+                    <div class="infos__complaint">
+                        <p id="textComplaint">
+                           ${e["description"]}
+                        </p>
+                    </div>
+
+                    <div class="photos__complaint">
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/print-uber.png" alt="">
+                        </div>
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/photo-uber.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="more__infos__complaint flex justify">
+                        <div class="classification__complaint">
+                            <div class="circle__assedio circle__classification"></div>
+                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                        </div>
+                        <span class="location__conplaint" id="locationComplaint">
+                            SP - São Paulo | 15/08/2021
+                        </span>
+                    </div>
+                    <div class="hr margin-bottom"></div>
+                </div>`
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data)
+                alert('Error', error)
+            })
+
+    }
+    function apagar(id) {
+        axios.delete(`http://localhost:8080/complaints-saved/${1}/${id}`)
+            .then((resp) => itensSave())
+            .catch((error) => {
+                alert('erro', resp);
+            })
+    }
+    function abrirContestacao(id) {
+        event.preventDefault();
+            sessionStorage.idPublic =id;
+            window.location.href = "./contest.html";
+    }
+</script>
