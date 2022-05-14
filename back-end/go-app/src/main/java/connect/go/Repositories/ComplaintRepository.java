@@ -34,4 +34,7 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
 
     @Query("select count(c.id) from Complaint c where c.user.id = ?1")
     Integer countByUserId(Integer userId);
+
+    @Query("select c from Complaint c where c.user.id = ?1 order by c.dateTimeComplaint desc")
+    Optional<List<Complaint>> getComplaintByUserId(Integer userId);
 }
