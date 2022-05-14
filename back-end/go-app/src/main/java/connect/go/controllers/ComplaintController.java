@@ -49,6 +49,11 @@ public class ComplaintController {
         return ResponseEntity.status(200).body(complaint);
     }
 
+    @GetMapping("user/{userId}")
+    public ResponseEntity<List<Complaint>> getComplaintByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.of(complaintService.getComplaintByUserId(userId));
+    }
+
     @GetMapping("license/{license}")
     public ResponseEntity<List<Complaint>> getComplaintByLicense(@PathVariable String license) {
         return ResponseEntity.of(complaintService.getComplaintByLicense(license));
