@@ -2,7 +2,6 @@ package connect.go.usecases;
 
 import connect.go.Repositories.ComplaintSavedRepository;
 import connect.go.exceptions.ComplaintSavedAlreadyExistsException;
-import connect.go.exceptions.FavoriteAddressAlreadyExistsException;
 import connect.go.exceptions.FavoriteAddressNotFoundException;
 import connect.go.models.Complaint;
 import connect.go.models.ComplaintSaved;
@@ -10,6 +9,7 @@ import connect.go.models.ComplaintSavedId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,7 +39,7 @@ public class ComplaintSavedService {
         return complaintSavedRepository.existsByUserIdAndComplaintId(complaintSavedId.getUserId(), complaintSavedId.getComplaintId());
     }
 
-    public Optional<Complaint> getComplaintSavedByUserId(Integer userId) {
+    public Optional<List<Complaint>> getComplaintSavedByUserId(Integer userId) {
         return complaintSavedRepository.findAllComplaintsSavedByUserId(userId);
     }
 }
