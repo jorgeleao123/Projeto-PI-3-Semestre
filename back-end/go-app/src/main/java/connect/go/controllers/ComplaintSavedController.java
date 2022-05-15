@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,7 +25,7 @@ public class ComplaintSavedController {
 
     @GetMapping("/{userId}")
     public ResponseEntity<List<Complaint>> getComplaintsSaved(@PathVariable Integer userId) {
-        return ResponseEntity.ok().body(complaintSavedService.getComplaintSavedByUserId(userId).stream().collect(Collectors.toList()));
+        return ResponseEntity.of(complaintSavedService.getComplaintSavedByUserId(userId));
     }
 
     @PostMapping

@@ -43,18 +43,18 @@ public class ComplaintController {
         return ResponseEntity.of(complaintService.getComplaintByState(state));
     }
 
-    @GetMapping("id/{complaintId}")
+    @GetMapping("/id/{complaintId}")
     public ResponseEntity<Complaint> getComplaintById(@PathVariable Integer complaintId) {
         Complaint complaint = complaintService.getComplaintById(complaintId);
         return ResponseEntity.status(200).body(complaint);
     }
 
-    @GetMapping("user/{userId}")
+    @GetMapping("/user/{userId}")
     public ResponseEntity<List<Complaint>> getComplaintByUserId(@PathVariable Integer userId) {
         return ResponseEntity.of(complaintService.getComplaintByUserId(userId));
     }
 
-    @GetMapping("license/{license}")
+    @GetMapping("/license/{license}")
     public ResponseEntity<List<Complaint>> getComplaintByLicense(@PathVariable String license) {
         return ResponseEntity.of(complaintService.getComplaintByLicense(license));
     }
