@@ -140,15 +140,17 @@
 
                 <!-- formulario -->
                 <div class="inputs__publication">
-                    <form >
+                    <form onsubmit="registerUser()">
                         <!-- card capa e perfil -->
                         <div class="edit__profile">
                             <div class="edit__capa">
                                 <div class="edit__icon">
-                                    <input class="ipt__edit__color" type="color" value="#7D63A9" placeholder="lala">
+                                    <input id="newColorMenu" class="ipt__edit__color" type="color" value="#7D63A9"
+                                        placeholder="lala">
                                 </div>
                                 <div>
-                                    <input class="ipt__edit__color" type="color" value="#be156a" placeholder="lala">
+                                    <input id="newColorPerfil" class="ipt__edit__color" type="color" value="#be156a"
+                                        placeholder="lala">
                                 </div>
                             </div>
                             <div class="padding__edit">
@@ -156,7 +158,8 @@
                                 <div class="form__publication">
                                     <div class="ipt__form">
                                         <label for="Nome">Nome</label>
-                                        <input type="text" name="" id="" placeholder="Insira seu nome de usuario">
+                                        <input type="text" name="" id="newName"
+                                            placeholder="Insira seu nome de usuario">
                                     </div>
                                     <div class="ipt__form">
                                         <label for="CEP">CEP</label>
@@ -176,7 +179,7 @@
                         <div class="form__publication">
                             <div class="ipt__form">
                                 <label for="Email">Email</label>
-                                <input type="text" name="" id="" placeholder="Insira seu Email">
+                                <input type="text" name="" id="newEmail" placeholder="Insira seu Email">
                             </div>
                         </div>
                         <div class="form__publication">
@@ -192,7 +195,7 @@
                         </div>
 
                         <div class="ipt__form">
-                            <button onclick="registerUser()"  class="edit__btn">
+                            <button type="submit" class="edit__btn">
                                 Salvar Alterações
                             </button>
                         </div>
@@ -449,13 +452,17 @@
         event.preventDefault();
         const data = {
             id: 1,
-            name: "string",
-            email: "phaa@gamil.com",
-            password: "string",
+            name: newName.value,
+            email: newEmail.value,
             role: "string",
             genre: "string",
-            colorProfile: "string",
-            colorMenu: "string"
+            // password: newSenha.valeu,
+            colorProfile: newColorPerfil.value,
+            colorMenu: newColorMenu.value,
+            birthDate: "2022-05-15",
+            status: "string",
+            searchCounter: 0,
+            postCounter: 0,
         }
         axios.put('http://localhost:8080/users/1', data)
             .then((resp) => {

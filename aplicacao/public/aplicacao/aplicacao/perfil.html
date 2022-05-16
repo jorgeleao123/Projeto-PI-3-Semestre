@@ -19,7 +19,7 @@
 
 </head>
 
-<body class="body__profile" onload="loadComplains()">
+<body class="body__profile" onload="itensPublic()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial3">R</span>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
                         <i class="fa-solid fa-bell icon__mobile"></i>
-                </label>
+                    </label>
                 </div>
             </div>
         </div>
@@ -110,14 +110,17 @@
     <main>
         <!-- Perfil navbar mobile -->
         <div class="f__navbar__mobile">
-        <nav class="f__navbar">
-            <ul>
-                <li><a id="active" href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span class="public">Publicações</span></a></li>
-                <li><a href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span class="public">Salvos</span></a></li>
-                <li><a href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span class="public">Contestação</span></a></li>
-            </ul>
-        </nav>
-    </div>
+            <nav class="f__navbar">
+                <ul>
+                    <li><a id="active" href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span
+                                class="public">Publicações</span></a></li>
+                    <li><a href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span
+                                class="public">Salvos</span></a></li>
+                    <li><a href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span
+                                class="public">Contestação</span></a></li>
+                </ul>
+            </nav>
+        </div>
 
         <!-- background card -->
         <div class="background">
@@ -125,195 +128,52 @@
             <div class="card__perfil__mobile">
                 <div class="flex padding__card">
                     <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial2">R</span>
                     </div>
                     <span>
-                        <h4 id="nameUser" class="nameUser">Rafaella Kimberlly</h4>
+                        <h4 id="nameUser1" class="nameUser">Rafaella Kimberlly</h4>
                     </span>
                 </div>
             </div>
         </div>
-                    
+
         <!-- card infos perfil -->
         <section class="content__feed">
             <div class="card__infos__perfil">
-                    <div class="card__flex padding__card">
-                        <div class="icon__perfil icon__user__perfil">
-                            <span class="initial__user" id="initial">R</span>
-                        </div>
-                        <div class="card__text">
-                        <h4 id="nameUser">Rafaella Kimberlly</h4>
-                            <span>
+                <div class="card__flex padding__card">
+                    <div class="icon__perfil icon__user__perfil">
+                        <span class="initial__user" id="initial1">R</span>
+                    </div>
+                    <div class="card__text">
+                        <h4 id="nameUser2">Rafaella Kimberlly</h4>
+                        <span>
                             <p id="city"><i class="fa-solid fa-location-dot"></i>São Paulo - SP</p>
                             <br>
-                    </span>
-                    <button class="edit__button">
-                        <a class="edit__input" href="./config-infos.html">Editar Perfil</a>
-                    </button>
-                </div>
-                
+                        </span>
+                        <button class="edit__button">
+                            <a class="edit__input" href="./config-infos.html">Editar Perfil</a>
+                        </button>
                     </div>
-                    <div class="padding__card">
-                        <div class="flex justify">
-                            <h5>Publicações</h5>
-                            <span id="data__pub" class="data__user">5</span>
-                        </div>
-                        <div class="flex justify top">
-                            <h5>Buscas</h5>
-                            <span id="data__bus" class="data__user">5</span>
-                        </div>
+
+                </div>
+                <div class="padding__card">
+                    <div class="flex justify">
+                        <h5>Publicações</h5>
+                        <span id="data__pub" class="data__user">5</span>
+                    </div>
+                    <div class="flex justify top">
+                        <h5>Buscas</h5>
+                        <span id="data__bus" class="data__user">5</span>
                     </div>
                 </div>
             </div>
+            </div>
 
             <!------------------------------------------CONTENT FEED ------------------------------>
-            <div class="container__feed__perfil">
+            <div id="itens" class="container__feed__perfil">
                 <!------------------------------- publicação  ----------------------------------->
-                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__user__initial">
-                                <span class="initial__user" id="initial">R</span>
-                            </div>
 
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">Rafaella Kimberlly</h4>
-                                <p id="gender">Mulher</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1002">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1002" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1002"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <a href="./edit.html">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso">Editar</p>
-                                        </a>
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Excluir</p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web page
-                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>
                 <!------------------------------ /publicação  ----------------------------------------->
-
-                                <!------------------------------- publicação  ----------------------------------->
-                                <div class="content__complaint">
-                                    <div class="header__complaint flex justify">
-                                        <div class="flex">
-                                            <div class="icon__user__initial">
-                                                <span class="initial__user" id="initial">R</span>
-                                            </div>
-                
-                                            <span class="infos__user__complaint">
-                                                <h4 id="nameUser">Rafaella Kimberlly</h4>
-                                                <p id="gender">Mulher</p>
-                                            </span>
-                                        </div>
-                                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                                        <label class="label__modal" for="1005">
-                                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                                        </label>
-                                        <!----------- modal funcionalidades ----------->
-                                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                                        <input class="modal-state" id="1005" type="checkbox" />
-                                        <div class="modal__functions">
-                                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                                            <label class="" for="1005"></label>
-                                            <div class="modal__inner__func">
-                                                <form action="">
-                                                    <a href="./edit.html">
-                                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                                            style="display: none; cursor: pointer;" type="submit"
-                                                            class="option__modal__user" value="idCaso">Editar</p>
-                                                        </a>
-                                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                                style="display: none; cursor: pointer;" type="submit"
-                                                                class="option__modal__user" value="idCaso"
-                                                                onclick="deleteComplaint(id)">Excluir</p>
-                                                    </a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                
-                                    <div class="infos__complaint">
-                                        <p id="textComplaint">
-                                            It is a long established fact that a reader will be distracted by the readable content of a
-                                            page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                                            here', making it look like readable English. Many desktop publishing packages and web page
-                                            editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
-                                            uncover many web sites still in their infancy. Various versions have evolved over the years,
-                                            sometimes by accident, sometimes on purpose (injected humour and the like).
-                                        </p>
-                                    </div>
-                
-                                    <div class="photos__complaint">
-                                        <div class="item shrink-1-basis">
-                                            <img src="./assets/img/print-uber.png" alt="">
-                                        </div>
-                                        <div class="item shrink-1-basis">
-                                            <img src="./assets/img/photo-uber.png" alt="">
-                                        </div>
-                                    </div>
-                
-                                    <div class="more__infos__complaint flex justify">
-                                        <div class="classification__complaint">
-                                            <div class="circle__assedio circle__classification"></div>
-                                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                                        </div>
-                                        <span class="location__conplaint" id="locationComplaint">
-                                            SP - São Paulo | 15/08/2021
-                                        </span>
-                                    </div>
-                                    <div class="hr margin-bottom"></div>
-                                </div>
-                                <!------------------------------ /publicação  ----------------------------------------->
             </div>
             <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
 
@@ -326,18 +186,18 @@
                         <li class="none"><a href="./perfil-save.html">Salvos</a></li>
                     </ul>
                 </nav>
-                    
-                
+
+
 
                 <!-- Card  -->
-                    <div class="card__write">
+                <div class="card__write">
                     <div class="flex">
                         <button class="edit__button__card"><a href="./new-publication.html">Escrever</a></button>
                     </div>
-            
-                        <div class="font__card">
-                            <h6>Públique uma denúncia no seu perfil</h6>
-                        </div>
+
+                    <div class="font__card">
+                        <h6>Públique uma denúncia no seu perfil</h6>
+                    </div>
                 </div>
             </div>
         </section>
@@ -346,103 +206,103 @@
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
-        
+
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
-         <!-- modal navbar / mains opções de link -->
-         <input class="modal-state" id="modal-1" type="checkbox" />
-         <div class="modal">
-             <label class="modal__bg" for="modal-1"></label>
-             <div class="modal__inner">
+        <!-- modal navbar / mains opções de link -->
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
                 <a class="options__modal__user" href="./perfil-save.html">Casos salvos</a>
                 <a class="options__modal__user" href="./perfil-contestation.html">Denuncias em analise</a>
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
-                 <div class="hr"></div>
-                 <span class="flex justify">
-                     <a class="options__modal__user" href="#">Sair</a>
-                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                 </span>
-             </div>
-         </div>
- 
-         <!-- modal / notificações -->
-         <input class="modal-state" id="modal-4" type="checkbox" />
-         <div class="modal">
-             <label class="modal__bg" for="modal-4"></label>
-             <div class="modal__inner__notify padding__card">
-                 <div class="content__notify">
-                     <h5>Seu caso foi removido</h5>
-                     <span class="date">23/02/2022</span>
-                     <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                         exclui-la.</p>
-                     <a href="#">Saiba Mais</a>
-                     <div class="hr"></div>
-                 </div>
- 
-                 <div class="content__notify">
-                     <h5>Seu caso foi removido</h5>
-                     <span class="date">23/02/2022</span>
-                     <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                         exclui-la.</p>
-                     <a href="#">Saiba Mais</a>
-                     <div class="hr"></div>
-                 </div>
- 
-                 <div class="content__notify">
-                     <h5>Seu caso foi removido</h5>
-                     <span class="date">23/02/2022</span>
-                     <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                         exclui-la.</p>
-                     <a href="#">Saiba Mais</a>
-                     <div class="hr"></div>
-                 </div>
- 
-                 <div class="content__notify">
-                     <h5>Seu caso foi removido</h5>
-                     <span class="date">23/02/2022</span>
-                     <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                         exclui-la.</p>
-                     <a href="#">Saiba Mais</a>
-                     <div class="hr"></div>
-                 </div>
- 
-                 <div class="content__notify">
-                     <h5>Seu caso foi removido</h5>
-                     <span class="date">23/02/2022</span>
-                     <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                         exclui-la.</p>
-                     <a href="#">Saiba Mais</a>
-                     <div class="hr"></div>
-                 </div>
-             </div>
-         </div>
- 
-         <!-- modal de busca -->
-         <span class="display__modal">
-             <input class="modal-state" id="modal-2" type="checkbox" />
-             <div class="modal modal__search">
-                 <label class="modal__bg__search" for="modal-2"></label>
-                 <div class="modal__inner__search">
-                     <div>
-                         <p>Faça sua busca</p>
-                         <span class="nav__mobile__input">
-                             <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                             <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
-                                 <option value="">Placa</option>
-                                 <option value="">Nome/Placa</option>
-                                 <option value="">Cidade</option>
-                                 <option value="">Bairro</option>
-                                 <option value="">Estado</option>
-                             </select>
-                             <a href="./search.html"
-                                 style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
-                                 <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
-                         </span>
-                     </div>
-                 </div>
-             </div>
-         </span>
- 
+                <div class="hr"></div>
+                <span class="flex justify">
+                    <a class="options__modal__user" href="#">Sair</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- modal / notificações -->
+        <input class="modal-state" id="modal-4" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-4"></label>
+            <div class="modal__inner__notify padding__card">
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <div class="hr"></div>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <div class="hr"></div>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <div class="hr"></div>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <div class="hr"></div>
+                </div>
+
+                <div class="content__notify">
+                    <h5>Seu caso foi removido</h5>
+                    <span class="date">23/02/2022</span>
+                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
+                        exclui-la.</p>
+                    <a href="#">Saiba Mais</a>
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal de busca -->
+        <span class="display__modal">
+            <input class="modal-state" id="modal-2" type="checkbox" />
+            <div class="modal modal__search">
+                <label class="modal__bg__search" for="modal-2"></label>
+                <div class="modal__inner__search">
+                    <div>
+                        <p>Faça sua busca</p>
+                        <span class="nav__mobile__input">
+                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
+                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
+                                <option value="">Placa</option>
+                                <option value="">Nome/Placa</option>
+                                <option value="">Cidade</option>
+                                <option value="">Bairro</option>
+                                <option value="">Estado</option>
+                            </select>
+                            <a href="./search.html"
+                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
+                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </span>
+
     </main>
 
     <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
@@ -456,7 +316,7 @@
             <div class="nav__itens__links">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-2">
-                       <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
+                        <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
                     </label>
                 </div>
             </div>
@@ -480,22 +340,108 @@
 
     <script>
 
-        function loadComplains(){
-            //função onde vai carregar as denuncias
-        }
 
-        function deleteComplaint(id){
+        function deleteComplaint(id) {
 
             event.preventDefault();
 
             axios.delete(`http://localhost:8080/users/${id}`)
-            .then((resp) => {
-                alert("Denuncia excluida com sucesso!");
-                loadComplains();
-            })
-            .catch((err) => {
+                .then((resp) => {
+                    alert("Denuncia excluida com sucesso!");
+                    itensPublic();
+                })
+                .catch((err) => {
+
+                })
+
+        }
+
+        function itensPublic() {
+            sessionStorage.user_id = 1
+            sessionStorage.user_nome = "Pedro"
+            nameUser1.innerHTML = sessionStorage.user_nome
+            nameUser2.innerHTML = sessionStorage.user_nome
+            initial1.innerHTML = sessionStorage.user_nome[0]
+            initial2.innerHTML = sessionStorage.user_nome[0]
+            initial3.innerHTML = sessionStorage.user_nome[0]
+            event.preventDefault();
+            axios.get(`http://localhost:8080/complaints/user/${sessionStorage.user_id }`, {})
+                .then((resp) => {
+                    console.log(resp);
+                    itens.innerHTML == '';
+                    resp.data.map((e) => {
+                        itens.innerHTML += `                            <div class="content__complaint">
+                                    <div class="header__complaint flex justify">
+                                        <div class="flex">
+                                            <div class="icon__user__initial">
+                                                <span class="initial__user" id="initial">${e["user"]["name"][0]}</span>
+                                            </div>
                 
-            })
+                                            <span class="infos__user__complaint">
+                                                <h4 >${e["user"]["name"]}</h4>
+                                                <p >${e["user"]["genre"]}</p>
+                                            </span>
+                                        </div>
+                                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                                        <label class="label__modal" for="${e["id"]}">
+                                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                                        </label>
+                                        <!----------- modal funcionalidades ----------->
+                                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                                        <input class="modal-state" id="${e["id"]}" type="checkbox" />
+                                        <div class="modal__functions">
+                                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                                            <label class="" for="${e["id"]}"></label>
+                                            <div class="modal__inner__func">
+                                                <form action="">
+                                                    <a href="./edit.html">
+                                                    <p style="cursor: pointer;" class="options__modal__user"><input
+                                                            style="display: none; cursor: pointer;" type="submit"
+                                                            class="option__modal__user" value="idCaso">Editar</p>
+                                                        </a>
+                                                        <p style="cursor: pointer;" class="options__modal__user"><input
+                                                                style="display: none; cursor: pointer;" type="submit"
+                                                                class="option__modal__user" value="idCaso"
+                                                                onclick="deleteComplaint(${e['id']})">Excluir</p>
+                                                    </a>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                
+                                    <div class="infos__complaint">
+                                        <p id="textComplaint">
+                                            ${e["description"]}
+                                        </p>
+                                    </div>
+                
+                                    <div class="photos__complaint">
+                                        <div class="item shrink-1-basis">
+                                            <img src="./assets/img/print-uber.png" alt="">
+                                        </div>
+                                        <div class="item shrink-1-basis">
+                                            <img src="./assets/img/photo-uber.png" alt="">
+                                        </div>
+                                    </div>
+                
+                                    <div class="more__infos__complaint flex justify">
+                                        <div class="classification__complaint">
+                                            <div class="circle__assedio circle__classification"></div>
+                                            <h6>Classificação do caso: <span id="classificationPub">${e["type"]}</span></h6>
+                                        </div>
+                                        <span class="location__conplaint" id="locationComplaint">
+                                            ${e["address"]["state"]} - ${e["address"]["city"]} | ${e["dateTimeComplaint"]}
+                                        </span>
+                                    </div>
+                                    <div class="hr margin-bottom"></div></div>`
+
+                    });
+                })
+                .catch((error) => {
+                    console.log(error);
+                    console.log(data)
+                    alert('Error', error)
+                })
 
         }
 

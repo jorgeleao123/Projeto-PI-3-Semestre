@@ -17,7 +17,7 @@
 
 </head>
 
-<body onload="itensSave()">
+<body onload="itensSave(), dadosUser()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -68,7 +68,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial1">R</span>
                     </div>
                 </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="card__perfil__mobile__print">
                 <div class="flex padding__card">
                     <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial2">R</span>
                     </div>
                     <span>
                         <h4 id="nameUser" class="nameUser">Rafaella Kimberlly</h4>
@@ -421,11 +421,16 @@
 </html>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    function dadosUser(){
+        nameUser.innerHTML = sessionStorage.user_nome
+        initial1.innerHTML = sessionStorage.user_nome[0]
+        initial2.innerHTML = sessionStorage.user_nome[0]
+
+    }
     function itensSave() {
         event.preventDefault();
-        axios.get(`http://localhost:8080/complaints-saved/${1}`, {})
+        axios.get(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}`, {})
             .then((resp) => {
-                alert('Success', resp);
                 console.log(resp);
                 itens.innerHTML =='';
                 resp.data.map((e) => {
@@ -443,24 +448,24 @@
                             </span>
                         </div>
                         <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="1001">
+                        <label class="label__modal" for="${e["id"]}">
                             <i class="fa-solid fa-ellipsis-vertical"></i>
                         </label>
                         <!----------- modal funcionalidades ----------->
                         <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="1001" type="checkbox" />
+                        <input class="modal-state" id="${e["id"]}" type="checkbox" />
                         <div class="modal__functions">
                             <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="1001"></label>
+                            <label class="" for="${e["id"]}"></label>
                             <div class="modal__inner__func">
                                 <form action="">
                                     <p style="cursor: pointer;" class="options__modal__user"><input
                                             style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso"><button onclick="apagar(${e["id"]})">Remover dos Salvos</button></p>
+                                            class="option__modal__user" value="idCaso" button onclick="apagar(${e["id"]})"><span onclick="apagar(${e["id"]})">Remover dos Salvos</span></p>
                                     <a href="./contest.html">
                                         <p style="cursor: pointer;" class="options__modal__user"><input
                                                 style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso"><button onclick="abrirContestacao(${e["id"]})">Denunciar</button></p>
+                                                class="option__modal__user" value="idCaso"><span onclick="abrirContestacao(${e["id"]})">Denunciar</span></p>
                                     </a>
                                 </form>
                             </div>
@@ -490,10 +495,10 @@
                     <div class="more__infos__complaint flex justify">
                         <div class="classification__complaint">
                             <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                            <h6>Classificação do caso: <span id="classificationPub"> ${e["type"]}</span></h6>
                         </div>
                         <span class="location__conplaint" id="locationComplaint">
-                            SP - São Paulo | 15/08/2021
+                            ${e["address"]["state"]} - ${e["address"]["city"]} | ${e["dateTimeComplaint"]}
                         </span>
                     </div>
                     <div class="hr margin-bottom"></div>
@@ -508,7 +513,7 @@
 
     }
     function apagar(id) {
-        axios.delete(`http://localhost:8080/complaints-saved/${1}/${id}`)
+        axios.delete(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}/${id}`)
             .then((resp) => itensSave())
             .catch((error) => {
                 alert('erro', resp);
