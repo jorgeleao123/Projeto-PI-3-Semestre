@@ -29,6 +29,16 @@ html {
   --scroll-bar-color: hsl(var(--hue-color), 12%, 90%);
   --scroll-thumb-color: hsl(var(--hue-color), 12%, 75%);
 
+  /* colors classifications */
+  ---color-assedio: #ab1212;
+  ---color-assedio-moral: #ab4212;
+  ---color-racismo: #5a1b0c;
+  ---color-agressao-fisica: #e6aa15;
+  ---color-agressao-verbal: #b1793e;
+  ---color-homofobia: #d15a32;
+  ---color-preconceito: #793f2c;
+  ---color-furto: #c42011;
+
 
   scroll-behavior: smooth;
 }
