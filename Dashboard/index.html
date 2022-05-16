@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="./assets/css/style.components.css">
   <link rel="stylesheet" href="./assets/css/style.modais.css">
   <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <link rel="stylesheet" href="./assets/css/style.home.css">
   <title>Dashboard</title>
 </head>
 
-<body style="margin-top: 0px;">
+<body>
   <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
   <!-- SideBar initial -->
   <section class="sidenav__desktop">
@@ -23,12 +24,12 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <img class="logo__sidebar" src="./assets/img/icon-admin.svg" alt="logo-go-white">
         <div class="links__nav">
-        <a id="active" href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
-        <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
-        <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i> Usuarios</a>
-        <a href="./dashboardProfile.html"><i class="fa-solid fa-user"></i> Perfil</a>
-        <a href="./dashboardAdmins.html"><i class="fa-solid fa-user-plus"></i> Administrador</a>
-      </div>
+          <a id="active" href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
+          <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i> Usuarios</a>
+          <a href="./dashboardProfile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+          <a href="./dashboardAdmins.html"><i class="fa-solid fa-user-plus"></i> Administrador</a>
+        </div>
         <a href="#exit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
       </div>
     </div>
@@ -59,64 +60,202 @@
       <!-- tópico -->
       <div class="topic__complaint flex justify">
         <span class="flex">
-          <p><b>Denúncias</b></p>
+          <p><b>Dados</b></p>
         </span>
         <div class="hr"></div>
       </div>
-      <section class="content__feed">
-        
-  </section>
-  <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+      <section class="container__home">
 
-  <!-- modal navbar / mains opções de link -->
-  <input class="modal-state" id="modal-1" type="checkbox" />
-  <div class="modal">
-    <label class="modal__bg" for="modal-1"></label>
-    <div class="modal__inner">
-      <a class="options__modal__user"> Perfil</a>
-      <a class="options__modal__user"> Administrador</a>
-      <hr>
-      <span class="flex justify">
-        <a class="options__modal__user" href="#">Sair</a>
-        <i class="fa-solid fa-arrow-right-from-bracket"></i>
-      </span>
-    </div>
-  </div>
-  </main>
-  <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+        <!-- Cards -->
+        <div class="container__card">
+          <div class="content__card">
 
-  <section class="nav__mobile">
-    <nav class="mobile-bottom-nav">
-      <div class="mobile-bottom-nav__item">
-        <div class="mobile-bottom-nav__item-content">
-          <a href="#home"><i class="fa-solid fa-house"></i></a>
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>publicações</h4>
+                <span class="flex data__tab">
+                  <p>09/05/2022</p>
+                </span>
+              </div>
+
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>publicações</h4>
+                <span class="flex data__tab">
+                  <p>09/05/2022</p>
+                </span>
+              </div>
+
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>publicações</h4>
+                <span class="flex data__tab">
+                  <p>09/05/2022</p>
+                </span>
+              </div>
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Graficos -->
+        <div class="container__grafic">
+          <div class="content__grafic">
+            <!-- gafico 1 -->
+            <div class="grafic__one">
+              <canvas id="myChart" width="400" height="250"></canvas>
+            </div>
+
+            <!-- grafico 2 -->
+            <div class="grafic__two">
+              <canvas id="myCharttwo" width="600" height="300"></canvas>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+      </section>
+      <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
+      <!-- modal navbar / mains opções de link -->
+      <input class="modal-state" id="modal-1" type="checkbox" />
+      <div class="modal">
+        <label class="modal__bg" for="modal-1"></label>
+        <div class="modal__inner">
+          <a href="./dashboardProfile.html" class="options__modal__user"> Perfil</a>
+          <a href="./dashboardAdmins.html" class="options__modal__user"> Administrador</a>
+          <hr>
+          <span class="flex justify">
+            <a class="options__modal__user" href="#exit">Sair</a>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </span>
         </div>
       </div>
+    </main>
+    <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
 
-      <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-        <div class="mobile-bottom-nav__item-content">
-          <a id="active" href="./sidenav.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+    <section class="nav__mobile">
+      <nav class="mobile-bottom-nav">
+        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+          <div class="mobile-bottom-nav__item-content">
+            <a id="active" href="./index.html"><i class="fa-solid fa-house"></i></a>
+          </div>
         </div>
-      </div>
 
-      <div class="mobile-bottom-nav__item">
-        <div class="mobile-bottom-nav__item-content">
-          <a href="#user"><i class="fa-solid fa-user-minus"></i></a>
+        <div class="mobile-bottom-nav__item">
+          <div class="mobile-bottom-nav__item-content">
+            <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+          </div>
         </div>
-      </div>
 
-
-      <div class="nav__itens__links">
-        <div class="mobile-bottom-nav__item-content">
-          <label for="modal-1">
-            <i class="fa-solid fa-angle-up icon__mobile"></i>
-          </label>
+        <div class="mobile-bottom-nav__item">
+          <div class="mobile-bottom-nav__item-content">
+            <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i></a>
+          </div>
         </div>
-      </div>
-    </nav>
-  </section>
+
+
+        <div class="nav__itens__links">
+          <div class="mobile-bottom-nav__item-content">
+            <label for="modal-1">
+              <i class="fa-solid fa-angle-up icon__mobile"></i>
+            </label>
+          </div>
+        </div>
+      </nav>
+    </section>
 </body>
 
 </html>
 <script src="./assets/js/script.sidenav.js"></script>
-<script src="./assets/js/script.complaint.js"></script>
+<script src="./assets/js/script.home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- chart 1 -->
+<script>
+const ctx = document.getElementById('myChart');
+const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [
+    'Red',
+    'Blue',
+    'Yellow'
+  ],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            hoverOffset: 4
+        }]
+    },
+    
+});
+</script>
+
+<!-- chart 2 -->
+<script>
+ const ctxtwo = document.getElementById('myCharttwo');
+const myCharttwo = new Chart(ctxtwo, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+           
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+  </script>

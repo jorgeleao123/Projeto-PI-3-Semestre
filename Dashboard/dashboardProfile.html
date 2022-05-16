@@ -15,7 +15,7 @@
   <title>Dashboard | Perfil</title>
 </head>
 
-<body style="margin-top: 0px;">
+<body>
   <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
   <!-- SideBar initial -->
   <section class="sidenav__desktop">
@@ -111,8 +111,8 @@
   <div class="modal">
     <label class="modal__bg" for="modal-1"></label>
     <div class="modal__inner">
-      <a class="options__modal__user"> Perfil</a>
-      <a class="options__modal__user"> Administrador</a>
+      <a id="active" href="./dashboardProfile.html" class="options__modal__user"> Perfil</a>
+      <a href="./dashboardAdmins.html" class="options__modal__user"> Administrador</a>
       <hr>
       <span class="flex justify">
         <a class="options__modal__user" href="#">Sair</a>
@@ -127,19 +127,19 @@
     <nav class="mobile-bottom-nav">
       <div class="mobile-bottom-nav__item">
         <div class="mobile-bottom-nav__item-content">
-          <a href="#home"><i class="fa-solid fa-house"></i></a>
-        </div>
-      </div>
-
-      <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
-        <div class="mobile-bottom-nav__item-content">
-          <a id="active" href="./sidenav.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+          <a href="/index.html"><i class="fa-solid fa-house"></i></a>
         </div>
       </div>
 
       <div class="mobile-bottom-nav__item">
         <div class="mobile-bottom-nav__item-content">
-          <a href="#user"><i class="fa-solid fa-user-minus"></i></a>
+          <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i></a>
         </div>
       </div>
 

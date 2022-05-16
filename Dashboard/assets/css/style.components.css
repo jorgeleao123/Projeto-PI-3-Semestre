@@ -181,6 +181,9 @@ h4 {
 
 /*================================================================================ RESPONSIVE ====================================================================*/
 @media screen and (min-width: 1600px) {
+  body{
+    margin-top: 0px;
+  }
   main {
     margin-top: 10px;
     padding: var(--padding-desktop);
@@ -188,6 +191,9 @@ h4 {
 }
 
 @media screen and (max-width: 1599px) {
+  body{
+    margin-top: 0px;
+  }
   main {
     margin-top:10px;
     padding: var(--padding-notbook);
@@ -195,6 +201,9 @@ h4 {
 }
 
 @media screen and (max-width: 1400px) {
+  body{
+    margin-top: 0px;
+  }
   main {
     margin-top: 10px;
     padding: var(--padding-tablet);
@@ -202,6 +211,9 @@ h4 {
 }
 
 @media screen and (max-width: 900px) {
+  body{
+    margin-top: 0px;
+  }
   main {
     margin-top: 10px;
     margin-bottom: 60px;
