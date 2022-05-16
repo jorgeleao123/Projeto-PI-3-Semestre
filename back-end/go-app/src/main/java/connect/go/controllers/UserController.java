@@ -1,7 +1,6 @@
 package connect.go.controllers;
 
 import connect.go.exceptions.BadRequestException;
-import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.Address;
 import connect.go.models.FavoriteAddressId;
 import connect.go.models.User;
@@ -40,7 +39,7 @@ public class UserController {
 
     private final FavoriteAddressService favoriteAddressService;
 
-    private final UserResponseAdapter userResponseAdapter = new UserResponseAdapter();
+    private final UserResponseAdapter userResponseAdapter;
 
     @PostMapping
     public ResponseEntity<UserResponse> createUser(@RequestBody @Valid UserRegistration userRegistration) {
@@ -108,5 +107,11 @@ public class UserController {
     public ResponseEntity<Void> deleteUserById(@PathVariable Integer id) {
         userService.deleteById(id);
         return ResponseEntity.status(200).build();
+    }
+
+    @PutMapping("/count/{userId}")
+    public ResponseEntity<UserResponse> addCounter(@PathVariable Integer userId) {
+        User user = userService.addCounter(userId);
+        return ResponseEntity.status(200).body(userResponseAdapter.execute(user));
     }
 }

@@ -43,6 +43,8 @@ public class User {
 
     private String status;
 
+    private Integer searchCounter;
+
     public User(UserRegistration userRegistration) {
         this.name = userRegistration.getName();
         this.email = userRegistration.getEmail();
@@ -53,5 +55,6 @@ public class User {
         this.colorMenu = "default";
         this.colorProfile = "default";
         this.status = "ativo";
+        this.searchCounter = 0;
     }
 }

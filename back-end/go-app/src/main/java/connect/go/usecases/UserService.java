@@ -80,4 +80,12 @@ public class UserService {
     private boolean isUserExistsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
+
+    public User addCounter(Integer userId) {
+        User user = getById(userId);
+        Integer newCounter = user.getSearchCounter() + 1;
+        user.setSearchCounter(newCounter);
+        user = userRepository.save(user);
+        return  user;
+    }
 }

@@ -1,5 +1,6 @@
 package connect.go.controllers;
 
+import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.*;
 import connect.go.models.dto.ComplaintRegistration;
 import connect.go.usecases.AddressService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -49,13 +51,18 @@ public class ComplaintController {
         return ResponseEntity.of(complaintService.getComplaintByState(state));
     }
 
-    @GetMapping("id/{complaintId}")
+    @GetMapping("/id/{complaintId}")
     public ResponseEntity<Complaint> getComplaintById(@PathVariable Integer complaintId) {
         Complaint complaint = complaintService.getComplaintById(complaintId);
         return ResponseEntity.status(200).body(complaint);
     }
 
-    @GetMapping("license/{license}")
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Complaint>> getComplaintByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.of(complaintService.getComplaintByUserId(userId));
+    }
+
+    @GetMapping("/license/{license}")
     public ResponseEntity<List<Complaint>> getComplaintByLicense(@PathVariable String license) {
         return ResponseEntity.of(complaintService.getComplaintByLicense(license));
     }
@@ -90,6 +97,29 @@ public class ComplaintController {
     public ResponseEntity<Void> deleteComplaintById(@PathVariable Integer complaintId) {
         complaintService.setStatus(complaintId, "Inativo");
         return ResponseEntity.status(200).build();
+    }
+
+    @PutMapping("/{userId}/{complaintId}")
+    public ResponseEntity<Complaint> updateComplaint(@PathVariable Integer userId, @PathVariable Integer complaintId,
+                                                     @RequestBody ComplaintRegistration complaintRegistration) {
+        Address address = addressService.register(new Address(complaintRegistration.getState(), complaintRegistration.getCity(), complaintRegistration.getDistrict()));
+        Driver driver = driverService.register(new Driver(complaintRegistration.getDriverName(), complaintRegistration.getLicensePlate()));
+        Complaint complaint = complaintService.getComplaintById(complaintId);
+        if (complaint.getUser().getId().equals(userId)) {
+            complaint.setBo(complaintRegistration.getBo());
+            complaint.setDescription(complaintRegistration.getDescription());
+            complaint.setArchive(complaintRegistration.getArchive());
+            complaint.setType(complaintRegistration.getType());
+            complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
+            complaint.setDateTimePost(LocalDateTime.now());
+            complaint.setStatus("valido");
+            complaint.setAddress(address);
+            complaint.setDriver(driver);
+            complaint = complaintService.register(complaint);
+            return ResponseEntity.status(200).body(complaint);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
 

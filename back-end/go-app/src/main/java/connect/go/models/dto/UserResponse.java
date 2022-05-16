@@ -3,7 +3,6 @@ package connect.go.models.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Data
@@ -27,5 +26,9 @@ public class UserResponse {
     private LocalDate birthDate;
 
     private String status;
+
+    private Integer searchCounter;
+
+    private Integer postCounter;
 
 }

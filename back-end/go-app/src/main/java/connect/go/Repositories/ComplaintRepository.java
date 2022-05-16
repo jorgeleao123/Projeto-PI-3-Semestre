@@ -31,4 +31,10 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
     @Modifying(clearAutomatically = true)
     @Query("update Complaint c set c.status=?2 where c.id=?1")
     void setStatus(Integer complaintId, String status);
+
+    @Query("select count(c.id) from Complaint c where c.user.id = ?1")
+    Integer countByUserId(Integer userId);
+
+    @Query("select c from Complaint c where c.user.id = ?1 order by c.dateTimeComplaint desc")
+    Optional<List<Complaint>> getComplaintByUserId(Integer userId);
 }
