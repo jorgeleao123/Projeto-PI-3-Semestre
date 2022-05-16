@@ -18,7 +18,7 @@
 }
 
 .links__nav{
-  margin-top: -60px;
+  margin-top: -80px;
   font-style: normal;
 font-weight: 600;
 font-size: 18px;
@@ -65,7 +65,7 @@ line-height: 30px;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 #active {

@@ -14,7 +14,7 @@
   <title>Dashboard | Contestações</title>
 </head>
 
-<body style="margin-top: 0px;">
+<body>
   <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
   <!-- SideBar initial -->
   <section class="sidenav__desktop">
@@ -59,7 +59,7 @@
       <!-- tópico -->
       <div class="topic__complaint flex justify">
         <span class="flex">
-          <p><b>Denúncias</b></p>
+          <p><b>Contestações</b></p>
         </span>
         <div class="hr"></div>
       </div>
@@ -176,20 +176,16 @@
               <div id="contest__tab2" class="tabcontent2">
                 <div class="info__tab">
                   <div class="info">
-                    <h3>Denúncia feita por:</h3>
-                    <p>Parente do motorista</p>
-                  </div>
-                  <div class="info">
                     <h3>Nome:</h3>
-                    <p>Maria</p>
-                  </div>
-                  <div class="info">
-                    <h3>Boletim:</h3>
-                    <p>Não possui</p>
+                    <h6>Maria</h6>
                   </div>
                   <div class="info">
                     <h3>Placa:</h3>
-                    <p>ABC1222</p>
+                    <h6>ABC1222</h6>
+                  </div>
+                  <div class="info">
+                    <h3>Boletim:</h3>
+                    <h6>Não possui</h6>
                   </div>
 
                   <br>
@@ -220,12 +216,41 @@
               <!-- Casos -->
               <div id="caso__tab2" class="tabcontent2">
                 <div class="info__tab">
-
+                  <div class="info">
+                    <div class="flex">
+                      <div class="icon__complaint icon__user icon__user__initial">
+                        <span class="initial__user" id="initialPublication">J</span>
+                      </div>
+                      <span class="infos__user__complaint">
+                        <h4 id="nameUser">J**** L****</h4>
+                        <p id="gender">Mulher</p>
+                      </span>
+                    </div>
+  
+                  </div>
+                  <span class="check__complaint">
+                    <h6>Possui boletim de ocorrência</h6>
+                    <i class="fa-solid fa-certificate"></i>
+                  </span>
+  
+                  <br>
+                  <div class="infos__complaint">
+                    <p id="textComplaint">
+                      It is a long established fact that a reader will be distracted by the readable content of a
+                      page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                      more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                      here', making it look like readable English. Many desktop publishing packages and web page
+                      editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                      uncover many web sites still in their infancy. Various versions have evolved over the years,
+                      sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                  </div>
+                  <br>
                   <div class="tab__botton">
                     <span class="flex data__tab">
                       <p>09/05/2022</p>
                     </span>
-
+  
                   </div>
                 </div>
               </div>
@@ -236,84 +261,30 @@
 
         <!-- Calendario -->
         <div class="calendar__desktop">
-          <div class="calendar" id="calendar-app">
-            <div class="calendar--day-view" id="day-view">
-
-              <span class="day-view-exit" id="day-view-exit">&times;</span>
-              <span class="day-view-date" id="day-view-date">MAI 11 2022</span>
-              <div class="day-view-content">
-                <div class="day-highlight">
-                  <span class="day-events" id="day-events">Não existe eventos</span>. &nbsp; <span tabindex="0"
-                    onkeyup="if(event.keyCode != 13) return; this.click();" class="day-events-link" id="add-event"
-                    data-date>Adicionar evento</span>
+          
+          <div class="container">
+            <div class="calendar">
+              <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                  <h3></h3>
+                  <h6></h6>
                 </div>
-                <div class="day-add-event" id="add-day-event-box" data-active="false">
-                  <div class="row">
-                    <div class="half">
-                      <label class="add-event-label">
-                        Evento
-                        <input type="text" class="add-event-edit add-event-edit--long" placeholder="Novo evento"
-                          id="input-add-event-name">
-
-                      </label>
-                    </div>
-                    <div class="qtr">
-                      <label class="add-event-label">
-                        Inicio
-                        <input type="text" class="add-event-edit" placeholder="8:15" id="input-add-event-start-time"
-                          data-options="1,2,3,4,5,6,7,8,9,10,11,12" data-format="datetime">
-                        <input type="text" class="add-event-edit" placeholder="am" id="input-add-event-start-ampm"
-                          data-options="a,p,am,pm">
-                      </label>
-                    </div>
-                    <div class="qtr">
-                      <label class="add-event-label">
-                        Fim
-                        <input type="text" class="add-event-edit" placeholder="9:00" id="input-add-event-end-time"
-                          data-options="1,2,3,4,5,6,7,8,9,10,11,12" data-format="datetime">
-                        <input type="text" class="add-event-edit" placeholder="am" id="input-add-event-end-ampm"
-                          data-options="a,p,am,pm">
-                      </label>
-                    </div>
-                    <div class="half">
-                      <a onkeyup="if(event.keyCode != 13) return; this.click();" tabindex="0" id="add-event-save"
-                        class="event-btn--save event-btn">salvar</a>
-                      <a tabindex="0" id="add-event-cancel" class="event-btn--cancel event-btn">cancelar</a>
-                    </div>
-                  </div>
-
-                </div>
-                <div id="day-events-list" class="day-events-list">
-
-                </div>
-                <div class="day-inspiration-quote" id="inspirational-quote">
-                  adicione um evento
-                </div>
+                <i class="fas fa-angle-right next"></i>
               </div>
-            </div>
-            <span class="color">
-              <div class="calendar--view" id="calendar-view">
-
-                <div class="cview__month">
-                  <span class="cview__month-last" id="calendar-month-last">Abr</span>
-                  <span class="cview__month-current" id="calendar-month">Mai</span>
-                  <span class="cview__month-next" id="calendar-month-next">Jun</span>
-                </div>
-            </span>
-            <div class="cview__header">Seg</div>
-            <div class="cview__header">Ter</div>
-            <div class="cview__header">Qua</div>
-            <div class="cview__header">Qui</div>
-            <div class="cview__header">Sex</div>
-            <div class="cview__header">Sab</div>
-            <div class="cview__header">Dom</div>
-            <div class="calendar--view" id="dates">
+              <div class="weekdays">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sab</div>
+              </div>
+              <div class="days"></div>
             </div>
           </div>
-        </div>
-  </div>
-  </div>
-
+      </div>
 
 
   </div>
