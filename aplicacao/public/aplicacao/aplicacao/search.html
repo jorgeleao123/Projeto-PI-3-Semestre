@@ -14,10 +14,9 @@
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body onload="">
+<body onload="searchComplaint()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -28,9 +27,9 @@
                 </span>
                 <span class="nav__desktop__search">
                     <input type="search" id="input" placeholder="Busque pela placa ou nome do motorista">
-                    <select name="" id="combo_search" aria-placeholder="Filtrar por">
+                    <select name="" id="searchComplaint" aria-placeholder="Filtrar por">
                         <option value="/license/">Placa</option>
-                        <option value="nome">Nome/Placa</option>
+                        <option value="">Nome/Placa</option>
                         <option value="/city/">Cidade</option>
                         <option value="/district/">Bairro</option>
                         <option value="/state/">Estado</option>
@@ -142,6 +141,9 @@
                             <p>Casos ocorridos entre 15/02/2022 e 20/03/2022</p>
                         </div>
                     </div>
+                </div>
+                <div id="publicacoes">
+
                 </div>
                 <!------------------------------- publicação  ----------------------------------->
                 
@@ -468,5 +470,98 @@
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
 </body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
 
+    function searchComplaint() {
+        console.log(sessionStorage.getItem('uriParamComplaint'));
+        console.log(sessionStorage.getItem('endPointComplaint'));
+        
+        let endPoint = sessionStorage.getItem('endPointComplaint');
+        let uri = sessionStorage.getItem('uriParamComplaint');
+
+        let url = `http://localhost:8080/complaints`;
+
+        let header = "";
+        let param;
+
+        var data;
+
+        switch(endPoint){
+            case "license":
+                url += `/${endPoint}/${uri}`;
+                break;
+            case "city":
+                url +=`/${endPoint}`;
+                data = {
+                    headers: {
+                        city: uri
+                    }
+                };
+                break;
+            case "district":
+                url += `/${endPoint}`;
+                data = {
+                    headers: {
+                        district: uri
+                    }
+                };
+                break;
+            case "state":
+                url += `/${endPoint}`;
+                data = {
+                    headers: {
+                        state: uri
+                    }
+                };
+                break;
+            case "":
+                break;
+        }
+
+        axios.get((url), {
+            headers: {
+                city: uri,
+                district: uri,
+                state: uri
+            }
+        })
+        .then((resp) => {
+            console.log('PASSOU');
+            resp.data.map(item => {
+                console.log('ENTROU');
+                document.getElementById('publicacoes').innerHTML += `
+                    <div class="infos__complaint">
+                        <p id="textComplaint">
+                            ${item.description}
+                        </p>
+                    </div>
+
+                    <div class="photos__complaint">
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/print-uber.png" alt="">
+                        </div>
+                        <div class="item shrink-1-basis">
+                            <img src="./assets/img/photo-uber.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="more__infos__complaint flex justify">
+                        <div class="classification__complaint">
+                            <div class="circle__assedio circle__classification"></div>
+                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                        </div>
+                        <span class="location__conplaint" id="locationComplaint">
+                            ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                        </span>
+                    </div>
+                    <div class="hr margin-bottom"></div>
+                `;
+            })
+        }).catch(
+            
+        )
+    }
+
+</script>
 </html>

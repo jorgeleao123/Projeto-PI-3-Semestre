@@ -241,7 +241,8 @@
                     state: document.getElementById('estado').value,
                     city: document.getElementById('cidade').value,
                     district: bairro
-                }
+                };
+                sessionStorage.setItem('usuario', JSON.stringify(data));
                 axios.post(`http://localhost:8080/users`, data)
                 .then((resp) => {
                     alert('Success', resp);
