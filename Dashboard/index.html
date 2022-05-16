@@ -12,10 +12,11 @@
   <link rel="stylesheet" href="./assets/css/style.modais.css">
   <link rel="stylesheet" href="./assets/css/style.complaint.css">
   <link rel="stylesheet" href="./assets/css/style.home.css">
+  <link rel="stylesheet" href="./assets/css/style.table.css">
   <title>Dashboard</title>
 </head>
 
-<body>
+<body style="overflow-y:scroll">
   <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
   <!-- SideBar initial -->
   <section class="sidenav__desktop">
@@ -137,13 +138,76 @@
           </div>
         </div>
 
+        <!-- Tabelas -->
+        <!-- tópico -->
+        <div class="topic__complaint flex justify">
+          <span class="flex">
+            <p><b>Casos por Categoria</b></p>
+          </span>
+          <div class="hr"></div>
+        </div>
 
+        <div class="flex__box">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Cor</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Homens</th>
+                <th scope="col">Mulheres</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Rafaella Kimberlly</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
 
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Fulano de tal</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">5</td>
+                <td data-label="Contestações">0</td>
+              </tr>
 
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Rafaella Kimberlly</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Rafaella Kimberlly</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
 
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Rafaella Kimberlly</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
 
-
-
+              <tr>
+                <td data-label=""><button class="remove__button"><i class="fa-solid fa-trash"></i></button></td>
+                <td data-label="Nome">Rafaella Kimberlly</td>
+                <td data-label="Email">20</td>
+                <td data-label="Publicações">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
       </section>
       <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
@@ -204,58 +268,58 @@
 
 <!-- chart 1 -->
 <script>
-const ctx = document.getElementById('myChart');
-const myChart = new Chart(ctx, {
+  const ctx = document.getElementById('myChart');
+  const myChart = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: [
-    'Red',
-    'Blue',
-    'Yellow'
-  ],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            hoverOffset: 4
-        }]
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        hoverOffset: 4
+      }]
     },
-    
-});
+
+  });
 </script>
 
 <!-- chart 2 -->
 <script>
- const ctxtwo = document.getElementById('myCharttwo');
-const myCharttwo = new Chart(ctxtwo, {
+  const ctxtwo = document.getElementById('myCharttwo');
+  const myCharttwo = new Chart(ctxtwo, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-           
-            borderWidth: 1
-        }]
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+
+        borderWidth: 1
+      }]
     },
     options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+      scales: {
+        y: {
+          beginAtZero: true
         }
+      }
     }
-});
-  </script>
+  });
+</script>

@@ -55,3 +55,13 @@ body{
     max-width: 700px;
     border: 0.2px solid var(--border-color);
 }
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    body{
+        overflow-y:scroll;
+    }
+
+   
+}
