@@ -5,6 +5,7 @@ import connect.go.models.Contestation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -26,5 +27,9 @@ public class ContestationService {
 
     public Optional<Contestation> getContestationsByComplaintId(Integer complaintId) {
         return contestationRepository.getContestationsByComplaintId(complaintId);
+    }
+
+    public Optional<List<Contestation>> getContestationsByUserId(Integer userId) {
+        return contestationRepository.getContestationsByUserId(userId);
     }
 }
