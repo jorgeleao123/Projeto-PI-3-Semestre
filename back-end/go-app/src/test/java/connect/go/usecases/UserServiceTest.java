@@ -4,6 +4,7 @@ import connect.go.Repositories.UserRepository;
 import connect.go.exceptions.UserAlreadyExistsException;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.User;
+import connect.go.models.dto.UserUpdate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -124,8 +125,8 @@ class UserServiceTest {
         User user = service.register(generateValidUser());
         assertNotNull(user);
         User newUser = new User(user.getId(),"Tais", "tais@teste.com", user.getPassword(), "admin","Faminino", "cor","cor", LocalDate.now(), "ativo");
-        UserResponseAdapter adapter = new UserResponseAdapter();
-        assertTrue(service.updateById(user.getId(), adapter.execute(newUser)));
+        assertTrue(service.updateById(user.getId(),
+                new UserUpdate("Tais", "tais@teste.com", "senhaTais", "cor", "cor")));
         User updatedUser = service.getById(user.getId());
         assertEquals(user.getId(), updatedUser.getId());
 //        assertNotEquals(user, updatedUser);

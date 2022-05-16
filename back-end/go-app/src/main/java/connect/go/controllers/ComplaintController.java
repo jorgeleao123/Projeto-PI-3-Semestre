@@ -8,6 +8,7 @@ import connect.go.usecases.DriverService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -83,6 +84,12 @@ public class ComplaintController {
         complaint.setStatus("valido");
         complaintService.register(complaint);
         return ResponseEntity.status(201).build();
+    }
+
+    @DeleteMapping("{complaintId}")
+    public ResponseEntity<Void> deleteComplaintById(@PathVariable Integer complaintId) {
+        complaintService.setStatus(complaintId, "Inativo");
+        return ResponseEntity.status(200).build();
     }
 
 

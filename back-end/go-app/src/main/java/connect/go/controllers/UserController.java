@@ -7,6 +7,7 @@ import connect.go.models.FavoriteAddressId;
 import connect.go.models.User;
 import connect.go.models.dto.UserRegistration;
 import connect.go.models.dto.UserResponse;
+import connect.go.models.dto.UserUpdate;
 import connect.go.usecases.FavoriteAddressService;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.UserResponseAdapter;
@@ -78,9 +79,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid UserResponse user) {
-        user.setId(id);
-        if (userService.updateById(id, user)) {
+    public ResponseEntity<UserResponse> updateUserById(@PathVariable int id, @RequestBody @Valid UserUpdate userUpdate) {
+
+        if (userService.updateById(id, userUpdate)) {
             return ResponseEntity.status(200).build();
         }
         throw new BadRequestException();
