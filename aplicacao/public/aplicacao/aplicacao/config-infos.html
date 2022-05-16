@@ -460,11 +460,11 @@
             colorProfile: newColorPerfil.value,
             colorMenu: newColorMenu.value,
             birthDate: "2022-05-15",
-            status: "string",
+            status: "ativo",
             searchCounter: 0,
             postCounter: 0,
         }
-        axios.put('http://localhost:8080/users/1', data)
+        axios.put(`http://localhost:8080/users/${sessionStorage.user_id}`, data)
             .then((resp) => {
                 alert('Success', resp);
                 console.log(resp);
