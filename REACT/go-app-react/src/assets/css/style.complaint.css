@@ -1,0 +1,499 @@
+
+.content__feed {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+.container__feed {
+  max-height: 400px;
+  max-width: 500px;
+
+}
+.flex__box{
+  display: flex;
+  flex-direction:column;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+
+/* padrão dos cards  */
+.flex {
+    display: flex;
+    gap: 15px;
+}
+.padding__card {
+    padding: 15px;
+}
+.justify {
+    justify-content: space-between;
+}
+/* Calendario mobile */
+.container__calendar__mobile{
+  padding: 0px 0px 30px 0px;
+  display: none;
+}
+
+.content__calendar_mobile input{
+  width: 100%;
+  height: 50px;
+  background-color: var(--background-card);
+  padding: 15px;
+  border-radius: 1px;
+  color: var(--links-color);
+}
+.content__calendar_mobile input:hover{
+  color: var(--carbon-color);
+
+}
+/* // calendario mobile */
+  input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 1px;
+  margin-right: 2px;
+  filter: invert(0.5);
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover{
+  cursor: pointer;
+  border-radius: 1px;
+  margin-right: 2px;
+  filter: invert(0.1);
+}
+/* tópico da pagina  */
+.topic__complaint {
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    width: 100%;
+}
+
+.topic__complaint span{
+    min-width: 100px;
+}
+
+.topic__complaint hr {
+    width: 100%;
+    float: right;
+    text-align: right;
+    margin-right: 0 0 0;
+    border-width: 0;
+    height: 0.2px;
+    border-top-width: 0.2px;
+    border: 0.2px solid var(--border-color);
+}
+
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    background-color: white;
+    border: solid 0.5px var(--border-color);;
+    width: 100%;
+
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    padding: 15px 0px;
+    align-items: center;
+    width: 49%;
+    font-weight: var(--font-semi-bold);
+    color: var(--links-hover);
+}
+
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    color: var(--carbon-color);
+    
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: white;
+    border-bottom: 2px solid;
+    border-color: var(--first-color);
+    color: var(--first-color);
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 30px;
+    border: solid 0.5px var(--border-color);
+    border-top: none;
+    max-width: 750px;
+    
+  }
+.tab__botton{
+    display: flex;
+    padding: 15px;
+    justify-content: space-between
+}
+
+/* Style the tab 2 */
+
+.tabcontent2 {
+  display: none;
+  padding: 30px;
+  border: solid 0.5px var(--border-color);
+  border-top: none;
+  max-width: 750px;
+  
+}
+
+
+.info{
+    display: flex;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.info h3{
+  font-size: var(--datas-font);
+    font-weight: 600;
+    color: var(--text-color);
+    width: 60px;
+}
+
+.desc__text{
+  padding-top: 15px;
+}
+
+.info h6{
+    padding-top: 2px;
+    padding-left: 10px;
+    font-weight: 500;
+    font-size: var(--city-font);
+    color: var(--text-color);
+}
+
+
+
+.tab{
+  max-width: 750px;
+}
+
+.but{
+    background-color: white;
+    border-color: var(--second-color-hover);
+    color: var(--second-color-hover);
+    padding: 10px 20px;
+    transition: ease-in 300ms;
+    margin-right: 10px;
+    text-align: center;
+}
+.but:hover{
+    background-color: var(--second-color-hover);
+    color: white;
+}
+.but__red{
+  font-weight: 600;
+  transition: ease-in 300ms;
+    background-color: var(--but-remove);
+    border-color: var(--but-remove);
+    color: white;
+}
+.but__red:hover{
+  font-weight: 700;
+    background-color: transparent;
+    color: var(--but-remove);
+}
+
+.data__tab{
+    padding-top: 15px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.content__contest__two{
+  padding-top: 30px;
+}
+
+/* tab content caso */
+.icon__user {
+  min-width: 35px;
+  min-height: 35px;
+  font-size: 16px;
+}
+.icon__user__initial {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 13px;
+  font-weight: 300;
+  border-radius: 50%;
+  background-color: #638ba9;
+}
+
+
+.icon__complaint {
+  width: 14px !important;
+  height: 14px !important;
+  background-color: var(--color-orange);
+}
+
+.infos__user__complaint h4 {
+  font-size: var(--name-font);
+  font-weight: 600;
+}
+
+.infos__user__complaint p {
+  font-size: var(--city-font);
+  padding-top: 2px;
+}
+
+.check__complaint {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+  align-items: center;
+}
+
+.check__complaint i {
+  color: var(--check-complant);
+}
+
+.check__complaint h6 {
+  font-weight: 600;
+}
+
+
+/* Calendario desktop*/
+.container {
+  width: 100%;
+  background-color: white;
+  color: var(--carbon-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  width: 20rem;
+  height: 20rem;
+  background-color: white;
+  border: 0.2px solid var(--border-color);
+  
+}
+
+.month {
+  width: 100%;
+  height: 3.3rem;
+  background-color: var(--first-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  text-align: center;
+  border: 0.2px solid var(--border-color);
+  color: var(--inputs-color);
+}
+
+.month i {
+  font-size: 1.0rem;
+  cursor: pointer;
+}
+
+.month h3 {
+  margin-bottom: 0.2rem;
+  font-weight: var(--font-semi-bold);
+  color: var(--inputs-color);
+}
+
+.month h6 {
+  font-weight: 600;
+}
+
+.weekdays {
+  width: 100%;
+  height: 1rem;
+  padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.weekdays div {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
+  width: calc(18rem / 7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.days {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.8rem;
+}
+
+.days div {
+  font-size: 0.8rem;
+  margin: 0.3rem;
+  width: calc(14rem / 7);
+  height: 2.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.days div:hover:not(.today) {
+  background-color: white;
+  border: 0.2rem solid var(--first-color);
+  cursor: pointer;
+}
+
+.prev-date,
+.next-date {
+  opacity: 0.5;
+}
+
+.today {
+  background-color: var(--first-color);
+  color: white;
+}
+
+
+
+
+
+  
+
+
+  /*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    .container__feed {
+        max-width: 500px;
+    }
+    .button__tab{
+      display: flex;
+      width: 200px;
+    }
+    .button{
+      width: 100px;
+    }
+
+   
+}
+
+@media screen and (max-width: 1448px) {
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+
+    .container__feed {
+        height: calc(94vh - 51px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+      
+
+
+}
+
+@media screen and (max-width: 1150px) {
+    .topic__complaint hr {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+  .tabcontent {
+    height: 400px;
+}
+  .tabcontent2{
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body{
+    overflow: scroll;
+  }
+
+  .calendar__desktop{
+    display: none;
+  }
+  .container__calendar__mobile{
+    display: block;
+  }
+    .container__feed {
+        width: 100% !important;
+    }
+
+    .topic__complaint hr {
+        width: 80%;
+    }
+
+   
+}
+
+@media  screen and (max-width: 500px) {
+  .tab__botton{
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .button__tab{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .but{
+    margin-top: 10px;
+    
+  }
+  .info h3{
+    font-size: var(--small-font-size);
+  }
+  .info p{
+    font-size: smaller;
+  }
+  .infos__complaint p{
+    font-size: smaller;
+  }
+  .tab button{
+    font-size: 14px;
+  }
+  .button{
+    margin-top: 10px;
+    width: 100%;
+  }
+  .data__tab{
+    padding: 0;
+    margin-bottom: 15px;
+  }
+
+}

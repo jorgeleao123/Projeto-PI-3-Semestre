@@ -1,0 +1,145 @@
+body{
+    overflow-x: scroll;
+}
+
+.container__home{
+    width: 100%;
+    max-height: 100%;
+}
+
+.container__card{
+  max-width: 100%;
+  max-height: 200px;
+}
+.content__card{
+    max-height: 130px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+}
+.card__dash{
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
+    border: 0.2px solid var(--border-color);
+}
+.info__card{
+    height: 50px;
+    padding-top: 10px;
+}
+.num__card{
+    display: flex;
+    padding: 20px;
+    border: 0.2px solid var(--border-color);
+}
+
+
+.container__grafic{
+    width: 100%;
+    height: 500px;
+    padding-top: 15px;
+}
+.content__grafic{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    height: 400px;
+}
+.grafic__one .grafic__two{
+    padding: 30px;
+}
+.grafic__one{
+    max-width: 400px;
+    border: 0.2px solid var(--border-color);
+}
+.grafic__two{
+    max-width: 700px;
+    border: 0.2px solid var(--border-color);
+}
+
+/* card classifications  */
+
+.circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.colors__classifications {
+    width: 100%;
+    height: 3px;
+    display: flex;
+    margin: 10px 0;
+}
+
+.circle__assedio {
+    background-color: var(---color-assedio);
+}
+
+.circle__assedio__moral {
+    background-color: var(---color-assedio-moral);
+}
+
+.circle__agressao__fisica {
+    background-color: var(---color-agressao-fisica);
+}
+
+.circle__agressao__verbal {
+    background-color: var(---color-agressao-verbal);
+}
+
+.circle__homofobia {
+    background-color: var(---color-homofobia);
+}
+
+.circle__racism {
+    background-color: var(---color-racismo);
+}
+
+.circle__preconceito {
+    background-color: var(---color-preconceito);
+}
+
+.circle__furto {
+    background-color: var(---color-furto);
+}
+
+/* topo da tabela */
+.topic__table{
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    width: 100%;
+}
+.topic__table span{
+    min-width: 150px;
+}
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    body{
+        overflow-y:scroll;
+    }
+   
+   
+}
+@media screen and (min-width: 1599px) {
+    
+
+   
+}
+@media screen and (min-width: 1200px) {
+    
+   
+}
+@media screen and (min-width: 900px) {
+    body{
+        overflow-y:scroll;
+    }
+    
+   
+   
+}
