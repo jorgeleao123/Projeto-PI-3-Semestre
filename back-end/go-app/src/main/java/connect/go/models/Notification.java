@@ -27,11 +27,17 @@ public class Notification {
     @Column(name = "dt_notification")
     private LocalDateTime dateTimeNotification;
 
-    private String type;
-
     @JoinColumn(name = "id_user")
     @ManyToOne
     private User user;
+
+    public Notification(String title, String description, User user) {
+        this.description = description;
+        this.title = title;
+        this.user = user;
+        this.hasViewed = false;
+        this.dateTimeNotification = LocalDateTime.now();
+    }
 
     public User getUser() {
         return user;

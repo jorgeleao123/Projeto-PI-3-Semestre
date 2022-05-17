@@ -4,6 +4,7 @@ import connect.go.models.Contestation;
 import connect.go.models.dto.ContestationRegistration;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.ContestationService;
+import connect.go.usecases.NotificationService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,7 @@ public class ContestationController {
     private final ContestationService contestationService;
     private final ComplaintService complaintService;
     private final UserService userService;
+    private final NotificationService notificationService;
 
     @GetMapping("/complaintId/{complaintId}")
     public ResponseEntity<Contestation> getContestationsByComplaintId(@PathVariable Integer complaintId) {
@@ -53,7 +55,14 @@ public class ContestationController {
         contestation.setDateTimeContestation(LocalDateTime.now());
         contestationService.register(contestation);
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
-        //TODO criar notificação de denúncia em análise
+        notificationService.register(contestation.getComplaint().getUser().getId(),
+                "Sua denúncia foi contestada",
+                "Contestaram a sua denúncia, estamos analisando o caso e durante este processo a denúncia ficara fora" +
+                        " do feed");
+        notificationService.register(contestation.getUser().getId(),
+                "Sua contestação foi criada",
+                "Você já pode visualizá-la em minhas contestações e enquanto está em análise a denuncia ficará fora " +
+                        "do feed");
         return ResponseEntity.status(201).build();
     }
 
@@ -62,7 +71,13 @@ public class ContestationController {
     public ResponseEntity<Void> approveContestation(@PathVariable Integer contestationId) {
         contestationService.setStatus(contestationId, "aprovado");
         complaintService.setStatus(contestationId, "contestado");
-        //TODO criar notificação de denúncia contestada
+        Contestation contestation = contestationService.getContestationById(contestationId);
+        notificationService.register(contestation.getComplaint().getUser().getId(),
+                "Sua denúncia foi removida",
+                "Analisamos sua denúncia mediante a contestação feita pelo motorista e optamos por excluí-la");
+        notificationService.register(contestation.getUser().getId(),
+                "Sua contestação foi aprovada",
+                "Analisamos sua contestação e mediante aos fatos apresentados, excluimos a denúncia");
         return ResponseEntity.status(200).build();
     }
 
@@ -70,7 +85,14 @@ public class ContestationController {
     public ResponseEntity<Void> reproveContestation(@PathVariable Integer contestationId) {
         contestationService.setStatus(contestationId, "reprovado");
         complaintService.setStatus(contestationId, "valido");
-        //TODO criar notificação de denúncia validada
+        Contestation contestation = contestationService.getContestationById(contestationId);
+        notificationService.register(contestation.getComplaint().getUser().getId(),
+                "Sua denúncia foi validada",
+                "Analisamos sua denúncia mediante a contestação feita pelo motorista e optamos por colocarmos de " +
+                        "volta ao feed de denúncias");
+        notificationService.register(contestation.getUser().getId(),
+                "Sua contestação foi reprovada",
+                "Analisamos sua contestação e mediante aos fatos apresentados, manteremos a denúncia");
         return ResponseEntity.status(200).build();
     }
 }
