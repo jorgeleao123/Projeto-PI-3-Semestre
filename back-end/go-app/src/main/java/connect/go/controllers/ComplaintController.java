@@ -6,6 +6,7 @@ import connect.go.models.dto.ComplaintRegistration;
 import connect.go.usecases.AddressService;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.DriverService;
+import connect.go.usecases.NotificationService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +35,8 @@ public class ComplaintController {
     private final UserService userService;
 
     private final DriverService driverService;
+
+    private final NotificationService notificationService;
 
 
     @GetMapping("/city")
@@ -90,12 +93,19 @@ public class ComplaintController {
         complaint.setDateTimePost(LocalDateTime.now());
         complaint.setStatus("valido");
         complaintService.register(complaint);
+        notificationService.register(userId,
+                "Sua denúncia foi publicada",
+                "Sua denúncia pode ser visualizada pelo feed ou você pode consultar na página minhas denúncias");
         return ResponseEntity.status(201).build();
     }
 
     @DeleteMapping("{complaintId}")
     public ResponseEntity<Void> deleteComplaintById(@PathVariable Integer complaintId) {
+        Complaint complaint = complaintService.getComplaintById(complaintId);
         complaintService.setStatus(complaintId, "Inativo");
+        notificationService.register(complaint.getUser().getId(),
+                "Sua denúncia foi excluída",
+                "Sua denúncia não vai aparecer mais no feed e sairá da página minhas denúncias");
         return ResponseEntity.status(200).build();
     }
 
@@ -116,6 +126,9 @@ public class ComplaintController {
             complaint.setAddress(address);
             complaint.setDriver(driver);
             complaint = complaintService.register(complaint);
+            notificationService.register(userId,
+                    "Sua denúncia foi atualizada",
+                    "Você já pode visualizá-la em minhas denúncias e verificar se foi corrigido");
             return ResponseEntity.status(200).body(complaint);
         } else {
             throw new UserNotFoundException();
