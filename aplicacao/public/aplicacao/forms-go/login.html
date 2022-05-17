@@ -116,17 +116,31 @@
             const password = document.getElementById('password').value;
 
             axios.post(`http://localhost:8080/users/login/${email}/${password}`, {})
-            .then((resp) => {
-                console.log(resp.data);
-                sessionStorage.user_email = resp.data.email;
-                sessionStorage.user_nome = resp.data.name;
-                sessionStorage.user_id = resp.data.id;
-                sessionStorage.setItem('user_city', resp.data.city);
-                window.location.href = "../aplicacao/index.html";
-            })
-            .catch((error) => {
-                document.getElementById('login_error').style.display = 'block';
-            })
+                .then((resp) => {
+                    if (resp.data.status = "ativo") {
+                        console.log(resp.data);
+                        sessionStorage.user_email = resp.data.email;
+                        sessionStorage.user_nome = resp.data.name;
+                        sessionStorage.user_id = resp.data.id;
+                        if (resp.data.colorMenu == "default") {
+                            sessionStorage.user_colorMenu = "#7D63A9";
+                        }else{
+                            sessionStorage.user_colorMenu = resp.data.colorMenu;
+                        }
+                        if (resp.data["colorProfile"] == "default") {
+                            sessionStorage.user_colorProfile = "#7D63A9";
+                        }else{
+                            sessionStorage.user_colorProfile = resp.data["colorProfile"];
+                        }
+                        sessionStorage.setItem('user_city', resp.data.city);
+                        window.location.href = "../aplicacao/index.html";
+                    }else{
+                        document.getElementById('login_error').style.display = 'block';
+                    }
+                })
+                .catch((error) => {
+                    document.getElementById('login_error').style.display = 'block';
+                })
 
 
             // fetch(`http://localhost:8080/users/login/${email}/${password}`, {

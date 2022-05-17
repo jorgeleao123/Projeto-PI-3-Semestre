@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body onload="iniciar()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial"></span>
                     </div>
                 </div>
             </div>
@@ -412,5 +412,9 @@
                 console.log(data)
                 alert('Error', error)
             })
+    }
+
+    function iniciar(){
+        initial.innerHTML = sessionStorage.user_nome[0]
     }
 </script>

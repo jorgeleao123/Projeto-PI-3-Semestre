@@ -567,6 +567,9 @@
         document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('city').innerHTML += `${sessionStorage.user_city}`;
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
     }
 
     function save(id) {

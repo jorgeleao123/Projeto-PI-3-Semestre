@@ -145,7 +145,7 @@
                         <span class="initial__user" id="initial1">R</span>
                     </div>
                     <div class="card__text">
-                        <h4 id="nameUser2">Rafaella Kimberlly</h4>
+                        <h4 id="nameUser2">Rafaella Kimberlly</h4>icon__perfil icon__user__perfil
                         <span>
                             <p id="city"><i class="fa-solid fa-location-dot"></i>São Paulo - SP</p>
                             <br>
@@ -357,8 +357,10 @@
         }
 
         function itensPublic() {
-            sessionStorage.user_id = 1
-            sessionStorage.user_nome = "Pedro"
+            document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("icon__user__perfil")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
             nameUser1.innerHTML = sessionStorage.user_nome
             nameUser2.innerHTML = sessionStorage.user_nome
             initial1.innerHTML = sessionStorage.user_nome[0]

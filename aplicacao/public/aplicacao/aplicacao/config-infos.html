@@ -185,7 +185,7 @@
                         <div class="form__publication">
                             <div class="ipt__form">
                                 <label for="Alterar senha">Alterar Senha</label>
-                                <input type="password" name="" id="" placeholder="Insira uma nova senha">
+                                <input type="password" name="" id="newSenha" placeholder="Insira uma nova senha">
                             </div>
 
                             <div class="ipt__form">
@@ -451,18 +451,11 @@
     function registerUser() {
         event.preventDefault();
         const data = {
-            id: 1,
             name: newName.value,
             email: newEmail.value,
-            role: "string",
-            genre: "string",
-            // password: newSenha.valeu,
+            password: newSenha.value,
             colorProfile: newColorPerfil.value,
             colorMenu: newColorMenu.value,
-            birthDate: "2022-05-15",
-            status: "ativo",
-            searchCounter: 0,
-            postCounter: 0,
         }
         axios.put(`http://localhost:8080/users/${sessionStorage.user_id}`, data)
             .then((resp) => {

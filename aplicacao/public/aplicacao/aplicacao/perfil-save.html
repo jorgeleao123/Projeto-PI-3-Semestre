@@ -425,6 +425,9 @@
         nameUser.innerHTML = sessionStorage.user_nome
         initial1.innerHTML = sessionStorage.user_nome[0]
         initial2.innerHTML = sessionStorage.user_nome[0]
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+            document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
 
     }
     function itensSave() {
