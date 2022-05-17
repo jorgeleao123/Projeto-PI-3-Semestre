@@ -1,6 +1,7 @@
 package connect.go.usecases;
 
 import connect.go.Repositories.ContestationRepository;
+import connect.go.models.Complaint;
 import connect.go.models.Contestation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,11 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ContestationService {
     private final ContestationRepository contestationRepository;
+
+    public Contestation getContestationById(Integer contestationId) {
+        return contestationRepository.getById(contestationId);
+    }
+
 
     public void setStatus(Integer contestationId, String status) {
         contestationRepository.setStatus(contestationId, status);

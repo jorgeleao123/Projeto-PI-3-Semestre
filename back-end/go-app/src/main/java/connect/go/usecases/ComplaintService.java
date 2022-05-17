@@ -43,7 +43,9 @@ public class ComplaintService {
     }
 
     public void setStatus(Integer complaintId, String status) {
-        complaintRepository.setStatus(complaintId, status);
+        Complaint complaint = complaintRepository.getById(complaintId);
+        complaint.setStatus(status);
+        complaintRepository.save(complaint);
     }
 
     public Integer countByUserId(Integer userId) {
