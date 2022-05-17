@@ -66,7 +66,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial3"></span>
                     </div>
                 </div>
             </div>
@@ -108,11 +108,11 @@
             <div class="card__infos__user">
                 <div class="flex padding__card">
                     <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial1"></span>
                     </div>
                     <span>
-                        <h4 id="nameUser">Rafaella Kimberlly</h4>
-                        <p id="city">São Paulo - SP</p>
+                        <h4 id="nameUser"></h4>
+                        <p id="city"></p>
                     </span>
                 </div>
                 <div class="hr"></div>
@@ -133,7 +133,7 @@
                 <!-- card informações do usuario -->
                 <div class="result__search flex">
                     <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial2"></span>
                     </div>
                     <span class="flex new__publication">
                         <i class="fa-solid fa-pen-to-square"></i>
@@ -473,46 +473,93 @@
     }
 
     function loadComplaints(){
-        var dadosUser = JSON.parse(sessionStorage.getItem('usuario'));
         event.preventDefault();
         loadPage();
         axios.get(`http://localhost:8080/complaints/city`, {
             headers: {
-                city: dadosUser.city
+                city: sessionStorage.getItem('user_city')
             }
         })
         .then((resp) => {
             console.log('FOI');
-            document.getElementById('qntPublicacoes').innerHTML += '1';
+            //document.getElementById('qntPublicacoes').innerHTML += '1';
+
+            document.getElementById('nameUser').innerHTML += `${sessionStorage.getItem('user_nome')}`;
+            document.getElementById('initial1').innerHTML += `${sessionStorage.user_nome.substr(0, 1)}`;
+            document.getElementById('initial2').innerHTML += `${sessionStorage.user_nome.substr(0, 1)}`;
+            document.getElementById('initial3').innerHTML += `${sessionStorage.user_nome.substr(0, 1)}`;
+
             resp.data.map(item => {
                 console.log('ENTROU NO MAP, VAI VIR O JSON A BAIXO');
                 console.log(item);
+                var userData = JSON.stringify(item);
                 document.getElementById('publicacoes').innerHTML += `
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            ${item.description}
-                        </p>
-                    </div>
+                    <div class="content__complaint">
+                        <div class="header__complaint flex justify">
+                            <div class="flex">
+                                <div class="icon__complaint icon__user icon__user__initial">
+                                    <span class="initial__user" id="initialPublication">${userData.user.name.substr(0, 1)}</span>
+                                </div>
+                                <span class="infos__user__complaint">
+                                    <h4 id="nameUser">J**** L****</h4>
+                                    <p id="gender">Mulher</p>
+                                </span>
+                            </div>
+                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                            <label class="label__modal" for="modal-1000">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </label>
+                            <!----------- modal funcionalidades ----------->
+                            <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                            <input class="modal-state" id="modal-1000" type="checkbox" />
+                            <div class="modal__functions">
+                                <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                                <label class="" for="modal-1000"></label>
+                                <div class="modal__inner__func">
+                                    <form action="">
+                                        <p style="cursor: pointer;" class="options__modal__user"><input
+                                                style="display: none; cursor: pointer;" type="submit"
+                                                class="option__modal__user" value="idCaso">Salvar</p>
+                                        <a href="./contest.html">
+                                            <p style="cursor: pointer;" class="options__modal__user"><input
+                                                    style="display: none; cursor: pointer;" type="submit"
+                                                    class="option__modal__user" value="idCaso">Denunciar</p>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                        <span class="check__complaint">
+                            <h6>Possui boletim de ocorrencia</h6>
+                            <i class="fa-solid fa-certificate"></i>
                         </span>
+                        <div class="infos__complaint">
+                            <p id="textComplaint">
+                                ${item.description}
+                            </p>
+                        </div>
+
+                        <div class="photos__complaint">
+                            <div class="item shrink-1-basis">
+                                <img src="./assets/img/print-uber.png" alt="">
+                            </div>
+                            <div class="item shrink-1-basis">
+                                <img src="./assets/img/photo-uber.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="more__infos__complaint flex justify">
+                            <div class="classification__complaint">
+                                <div class="circle__assedio circle__classification"></div>
+                                <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                            </div>
+                            <span class="location__conplaint" id="locationComplaint">
+                                ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                            </span>
+                        </div>
+                        <div class="hr margin-bottom"></div>
                     </div>
-                    <div class="hr margin-bottom"></div>
                 `;
             })
         })

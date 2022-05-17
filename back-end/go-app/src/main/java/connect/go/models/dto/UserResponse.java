@@ -31,4 +31,6 @@ public class UserResponse {
 
     private Integer postCounter;
 
+    private String city;
+
 }

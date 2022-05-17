@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -29,6 +30,11 @@ public class ContestationController {
     @GetMapping("/complaintId/{complaintId}")
     public ResponseEntity<Contestation> getContestationsByComplaintId(@PathVariable Integer complaintId) {
         return ResponseEntity.of(contestationService.getContestationsByComplaintId(complaintId));
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Contestation>> getContestationsByUserId(@PathVariable Integer userId) {
+        return ResponseEntity.of(contestationService.getContestationsByUserId(userId));
     }
 
     @GetMapping("/status/{status}")

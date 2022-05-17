@@ -18,7 +18,7 @@ public class UserResponseAdapter {
         return new UserResponse(
                 user.getId(), user.getName(), user.getEmail(), user.getRole(),
                 user.getGenre(), user.getColorProfile(), user.getColorMenu(), user.getBirthDate(), user.getStatus(),
-                user.getSearchCounter(), getPostCounter(user.getId()));
+                user.getSearchCounter(), getPostCounter(user.getId()), user.getCity());
     }
 
     public List<UserResponse> execute(List<User> users) {

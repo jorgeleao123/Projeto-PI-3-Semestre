@@ -4,7 +4,7 @@ import connect.go.Repositories.UserRepository;
 import connect.go.exceptions.UserAlreadyExistsException;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.User;
-import connect.go.models.dto.UserResponse;
+import connect.go.models.dto.UserUpdate;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class UserService {
-
     private final UserRepository userRepository;
 
     public User register(User user) {
@@ -47,16 +46,14 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
-    public boolean updateById(Integer id, UserResponse userResponse) {
+    public boolean updateById(Integer id, UserUpdate userUpdate) {
         if (userRepository.existsById(id)) {
             User user = getById(id);
-            user.setEmail(userResponse.getEmail());
-            user.setName(userResponse.getName());
-            user.setGenre(userResponse.getGenre());
-            user.setColorMenu(userResponse.getColorMenu());
-            user.setColorProfile(userResponse.getColorProfile());
-            user.setBirthDate(userResponse.getBirthDate());
-            user.setRole(userResponse.getRole());
+            user.setEmail(userUpdate.getEmail());
+            user.setName(userUpdate.getName());
+            user.setColorMenu(userUpdate.getColorMenu());
+            user.setColorProfile(userUpdate.getColorProfile());
+            user.setPassword(userUpdate.getPassword());
             userRepository.save(user);
             return true;
         }

@@ -479,12 +479,7 @@
         
         let endPoint = sessionStorage.getItem('endPointComplaint');
         let uri = sessionStorage.getItem('uriParamComplaint');
-
         let url = `http://localhost:8080/complaints`;
-
-        let header = "";
-        let param;
-
         var data;
 
         switch(endPoint){
@@ -529,33 +524,76 @@
         .then((resp) => {
             console.log('PASSOU');
             resp.data.map(item => {
+                bo = false;
+                item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
                 console.log('ENTROU');
                 document.getElementById('publicacoes').innerHTML += `
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            ${item.description}
-                        </p>
-                    </div>
+                    <div class="content__complaint">
+                        <div class="header__complaint flex justify">
+                            <div class="flex">
+                                <div class="icon__complaint icon__user icon__user__initial">
+                                    <span class="initial__user" id="initialPublication">J</span>
+                                </div>
+                                <span class="infos__user__complaint">
+                                    <h4 id="nameUser">J**** L****</h4>
+                                    <p id="gender">Mulher</p>
+                                </span>
+                            </div>
+                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                            <label class="label__modal" for="modal-1000">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </label>
+                            <!----------- modal funcionalidades ----------->
+                            <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                            <input class="modal-state" id="modal-1000" type="checkbox" />
+                            <div class="modal__functions">
+                                <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                                <label class="" for="modal-1000"></label>
+                                <div class="modal__inner__func">
+                                    <form action="">
+                                        <p style="cursor: pointer;" class="options__modal__user"><input
+                                                style="display: none; cursor: pointer;" type="submit"
+                                                class="option__modal__user" value="idCaso">Salvar</p>
+                                        <a href="./contest.html">
+                                            <p style="cursor: pointer;" class="options__modal__user"><input
+                                                    style="display: none; cursor: pointer;" type="submit"
+                                                    class="option__modal__user" value="idCaso">Denunciar</p>
+                                        </a>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
-                            <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                        <span class="check__complaint">
+                            <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
+                            <i class="fa-solid fa-certificate"></i>
                         </span>
+                        <div class="infos__complaint">
+                            <p id="textComplaint">
+                                ${item.description}
+                            </p>
+                        </div>
+
+                        <div class="photos__complaint">
+                            <div class="item shrink-1-basis">
+                                <img src="./assets/img/print-uber.png" alt="">
+                            </div>
+                            <div class="item shrink-1-basis">
+                                <img src="./assets/img/photo-uber.png" alt="">
+                            </div>
+                        </div>
+
+                        <div class="more__infos__complaint flex justify">
+                            <div class="classification__complaint">
+                                <div class="circle__assedio circle__classification"></div>
+                                <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
+                            </div>
+                            <span class="location__conplaint" id="locationComplaint">
+                                ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                            </span>
+                        </div>
+                        <div class="hr margin-bottom"></div>
                     </div>
-                    <div class="hr margin-bottom"></div>
                 `;
             })
         }).catch(

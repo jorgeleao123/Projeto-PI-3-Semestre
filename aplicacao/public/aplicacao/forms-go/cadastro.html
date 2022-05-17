@@ -231,7 +231,7 @@
             if (document.getElementById('password') == document.getElementById('confirm_password')) {
                 document.getElementById('equals_password').style.display = 'block';
             } else {
-                const data = {
+                /*const data = {
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
                     password: document.getElementById('password').value,
@@ -242,7 +242,7 @@
                     city: document.getElementById('cidade').value,
                     district: bairro
                 };
-                sessionStorage.setItem('usuario', JSON.stringify(data));
+                sessionStorage.setItem('usuario', JSON.stringify(data));*/
                 axios.post(`http://localhost:8080/users`, data)
                 .then((resp) => {
                     alert('Success', resp);
