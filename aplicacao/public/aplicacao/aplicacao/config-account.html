@@ -148,8 +148,7 @@
                         <h4>Remoção de Conta</h4>
                         <h5>Desativar sua conta significa que você poderá recupera-la quando quiser</h5>
                         <div class="flex remove__btns">
-                            <button class="des__btn">Desativar conta</button>
-                            <button onclick="deleteUser()"  class="rem__btn">Excluir conta</button>
+                            <button onclick="deleteUser()"  class="des__btn">Desativar conta</button>
                         </div>
                     </div>
                 </div>
@@ -404,10 +403,9 @@
 <script>
     function deleteUser() {
         event.preventDefault();
-        axios.delete('http://localhost:8080/users/1')
+        axios.delete(`http://localhost:8080/users/${sessionStorage.user_id}`)
             .then((resp) => {
-                alert('Success', resp);
-                console.log(resp);
+                window.location.href = "../forms-go/login.html";
             })
             .catch((error) => {
                 console.log(error);
