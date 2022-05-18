@@ -142,10 +142,10 @@
             <div class="card__infos__perfil">
                 <div class="card__flex padding__card">
                     <div class="icon__perfil icon__user__perfil">
-                        <span class="initial__user" id="initial1">R</span>
+                        <span class="initial__user" id="initial1"></span>
                     </div>
                     <div class="card__text">
-                        <h4 id="nameUser2">Rafaella Kimberlly</h4>icon__perfil icon__user__perfil
+                        <h4 id="nameUser2"></h4>
                         <span>
                             <p id="city"><i class="fa-solid fa-location-dot"></i>São Paulo - SP</p>
                             <br>
@@ -366,6 +366,7 @@
             initial1.innerHTML = sessionStorage.user_nome[0]
             initial2.innerHTML = sessionStorage.user_nome[0]
             initial3.innerHTML = sessionStorage.user_nome[0]
+            city.innerHTML = `${sessionStorage.user_city }- UF`
             event.preventDefault();
             axios.get(`http://localhost:8080/complaints/user/${sessionStorage.user_id }`, {})
                 .then((resp) => {
