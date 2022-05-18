@@ -219,7 +219,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <div class="hr"></div>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="#">Sair</a>
+                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -340,12 +340,16 @@
 
     <script>
 
+        function openEdit(id) {
+            sessionStorage.editId = id;
+            window.open("./edit.html");
+        }
 
         function deleteComplaint(id) {
 
             event.preventDefault();
 
-            axios.delete(`http://localhost:8080/users/${id}`)
+            axios.delete(`http://localhost:8080/complaints/${id}`)
                 .then((resp) => {
                     alert("Denuncia excluida com sucesso!");
                     itensPublic();
@@ -366,14 +370,16 @@
             initial1.innerHTML = sessionStorage.user_nome[0]
             initial2.innerHTML = sessionStorage.user_nome[0]
             initial3.innerHTML = sessionStorage.user_nome[0]
-            city.innerHTML = `${sessionStorage.user_city }- UF`
+            city.innerHTML = `${sessionStorage.user_city}- UF`
             event.preventDefault();
-            axios.get(`http://localhost:8080/complaints/user/${sessionStorage.user_id }`, {})
+            axios.get(`http://localhost:8080/complaints/user/${sessionStorage.user_id}`, {})
                 .then((resp) => {
                     console.log(resp);
                     itens.innerHTML == '';
                     resp.data.map((e) => {
-                        itens.innerHTML += `                            <div class="content__complaint">
+                        if (e["status"] != "Inativo") {
+                            itens.innerHTML += `                            
+                            <div class="content__complaint">
                                     <div class="header__complaint flex justify">
                                         <div class="flex">
                                             <div class="icon__user__initial">
@@ -400,7 +406,7 @@
                                                     <a href="./edit.html">
                                                     <p style="cursor: pointer;" class="options__modal__user"><input
                                                             style="display: none; cursor: pointer;" type="submit"
-                                                            class="option__modal__user" value="idCaso">Editar</p>
+                                                            class="option__modal__user" value="idCaso" onclick="openEdit(${e['id']}>Editar</p>
                                                         </a>
                                                         <p style="cursor: pointer;" class="options__modal__user"><input
                                                                 style="display: none; cursor: pointer;" type="submit"
@@ -438,6 +444,8 @@
                                     </div>
                                     <div class="hr margin-bottom"></div></div>`
 
+                        }
+
                     });
                 })
                 .catch((error) => {
@@ -452,7 +460,7 @@
     </script>
 </body>
 <script>
-    function getSearch(){
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
@@ -460,4 +468,5 @@
         window.open("./search.html");
     }
 </script>
+
 </html>
