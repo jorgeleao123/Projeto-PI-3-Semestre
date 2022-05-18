@@ -421,6 +421,14 @@
 </html>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
+    function getSearch(){
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.open("./search.html");
+    }
+    
     function dadosUser(){
         nameUser.innerHTML = sessionStorage.user_nome
         initial1.innerHTML = sessionStorage.user_nome[0]

@@ -123,7 +123,7 @@
                     </div>
                     <div class="flex justify top">
                         <h5>Buscas</h5>
-                        <span id="data__bus" class="data__user">5</span>
+                        <span id="qntPesquisas" class="data__user"></span>
                     </div>
                 </div>
             </div>
@@ -571,6 +571,7 @@
         document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
         document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
         document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
+        getBuscas();
     }
 
     function save(id) {
@@ -589,6 +590,13 @@
                 alert('ERROR');
             })
 
+    }
+
+    function getBuscas(){
+        axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
+        .then((resp) => {
+            document.getElementById('qntPesquisas').innerHTML += resp.postCounter;
+        })
     }
 
 </script>
