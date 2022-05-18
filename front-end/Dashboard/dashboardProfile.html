@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/img/icon-admin-carbon.svg" type="image/png">
+  <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/style.sidenav.css">
+  <link rel="stylesheet" href="./assets/css/style.components.css">
+  <link rel="stylesheet" href="./assets/css/style.modais.css">
+  <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <link rel="stylesheet" href="./assets/css/style.profile.css">
+  <title>Dashboard | Perfil</title>
+</head>
+
+<body>
+  <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
+  <!-- SideBar initial -->
+  <section class="sidenav__desktop">
+    <div class="sidenav__desktop__top">
+      <div id="mySidenav" class="sidenav__top">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img class="logo__sidebar" src="./assets/img/icon-admin.svg" alt="logo-go-white">
+        <div class="links__nav">
+        <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
+        <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i> Usuarios</a>
+        <a id="active" href="./dashboardProfile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+        <a href="./dashboardAdmins.html"><i class="fa-solid fa-user-plus"></i> Administrador</a>
+      </div>
+        <a href="#exit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="maindash">
+
+    <div class="menu__dash flex justify">
+      <div class="flex">
+        <img src="./assets/img/icon-admin-carbon.svg" alt="" class="logo__mob">
+        <span class="hamburger" onclick="openNav()">&#9776;</span>
+        <button class="adc__admin"><a href="">Adicionar Administrador</a></button>
+      </div>
+      <h4 class="title__page">Perfil</h4>
+      <div class="flex">
+        <div class="icon__user__initial"></div>
+        <span>
+          <h4 class="nameAdmin" id="name">Jorge Ricardo</h4>
+          <h6 class="function__admin" id="function">Lider Técnico</h6>
+        </span>
+      </div>
+    </div>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main>
+
+      <!-- tópico -->
+      <div class="topic__complaint flex justify">
+        <span class="flex">
+          <p><b>Perfil</b></p>
+        </span>
+        <div class="hr"></div>
+      </div>
+
+      <section class="flex__box">
+        <div class="profille__card">
+          <div class="profille__capa">
+            <input type="color">
+          </div>
+          <div class="profile__icon">
+            <input type="color">
+          </div>
+          <div class="ipts__dash">
+          <label for="Alterar Nome">Alterar Nome</label>
+          <input type="text" name="" id="">
+        </div>
+        </div>
+
+        <div class="topic__complaint flex justify top">
+          <span class="flex">
+            <p style="min-width: 170px;"><b>Mais Informações</b></p>
+          </span>
+          <div class="hr"></div>
+        </div>
+
+        <div>
+          <div class="style__ipt flex__inp">
+            <label for="Alterar Email">Alterar Email</label>
+            <input type="email" name="" id="">
+          </div>
+          <div class="flex__gap">
+            <div class="style__ipt">
+              <label for="Alterar senha">Alterar senha</label>
+              <input type="password" name="" id="">
+            </div>
+            <div class="style__ipt">
+              <label for="Confirmar senha">Confirmar senha</label>
+              <input type="password" name="" id="">
+            </div>
+          </div>
+          <button class="edit__profile">Salvar Alterações</button>
+        </div>
+  </section>
+  <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
+  <!-- modal navbar / mains opções de link -->
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <a id="active" href="./dashboardProfile.html" class="options__modal__user"> Perfil</a>
+      <a href="./dashboardAdmins.html" class="options__modal__user"> Administrador</a>
+      <hr>
+      <span class="flex justify">
+        <a class="options__modal__user" href="#">Sair</a>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </span>
+    </div>
+  </div>
+  </main>
+  <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+
+  <section class="nav__mobile">
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="/index.html"><i class="fa-solid fa-house"></i></a>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i></a>
+        </div>
+      </div>
+
+
+      <div class="nav__itens__links">
+        <div class="mobile-bottom-nav__item-content">
+          <label for="modal-1">
+            <i class="fa-solid fa-angle-up icon__mobile"></i>
+          </label>
+        </div>
+      </div>
+    </nav>
+  </section>
+</body>
+
+</html>
+<script src="./assets/js/script.sidenav.js"></script>
+<script src="./assets/js/script.complaint.js"></script>

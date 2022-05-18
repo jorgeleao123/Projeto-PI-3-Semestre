@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/img/icon-admin-carbon.svg" type="image/png">
+  <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/style.sidenav.css">
+  <link rel="stylesheet" href="./assets/css/style.components.css">
+  <link rel="stylesheet" href="./assets/css/style.modais.css">
+  <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <title>Dashboard | Contestações</title>
+</head>
+
+<body>
+  <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
+  <!-- SideBar initial -->
+  <section class="sidenav__desktop">
+    <div class="sidenav__desktop__top">
+      <div id="mySidenav" class="sidenav__top">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img class="logo__sidebar" src="./assets/img/icon-admin.svg" alt="logo-go-white">
+        <div class="links__nav">
+        <a href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a id="active" href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
+        <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i> Usuarios</a>
+        <a href="./dashboardProfile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+        <a href="./dashboardAdmins.html"><i class="fa-solid fa-user-plus"></i> Administrador</a>
+      </div>
+        <a href="#exit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="maindash">
+
+    <div class="menu__dash flex justify">
+      <div class="flex">
+        <img src="./assets/img/icon-admin-carbon.svg" alt="" class="logo__mob">
+        <span class="hamburger" onclick="openNav()">&#9776;</span>
+        <button class="adc__admin"><a href="">Adicionar Administrador</a></button>
+      </div>
+      <h4 class="title__page">Contestações</h4>
+      <div class="flex">
+        <div class="icon__user__initial"></div>
+        <span>
+          <h4 class="nameAdmin" id="name">Jorge Ricardo</h4>
+          <h6 class="function__admin" id="function">Lider Técnico</h6>
+        </span>
+      </div>
+    </div>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main>
+
+      <!-- tópico -->
+      <div class="topic__complaint flex justify">
+        <span class="flex">
+          <p><b>Contestações</b></p>
+        </span>
+        <div class="hr"></div>
+      </div>
+      <section class="content__feed">
+        <div class="flex__box">
+          <div class="container_feed">
+
+            <!-- Calendario mobile -->
+            <div class="container__calendar__mobile">
+              <span class="content__calendar_mobile">
+                <input type="date" name="calendar__mobile" id="calendar__mobile">
+              </span>
+            </div>
+
+            <!-- Tab Contestação -->
+            <!-- primeiro tab -->
+            <div class="tab">
+              <button id="defaultOpen" class="tablinks" onclick="openCity(event, 'contest__tab')">Contestação</button>
+              <button class="tablinks" onclick="openCity(event, 'caso__tab')">Caso</button>
+            </div>
+
+            <div id="contest__tab" class="tabcontent">
+              <div class="info__tab">
+                <div class="info">
+                  <h3>Nome:</h3>
+                  <h6>Maria</h6>
+                </div>
+                <div class="info">
+                  <h3>Placa:</h3>
+                  <h6>ABC1222</h6>
+                </div>
+                <div class="info">
+                  <h3>Boletim:</h3>
+                  <h6>Não possui</h6>
+                </div>
+                <div class="infos__complaint">
+                  <p class="desc__text">
+                    It is a long established fact that a reader will be distracted by the readable content of a
+                    page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                    here', making it look like readable English. Many desktop publishing packages and web page
+                    editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                    uncover many web sites still in their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and the like).
+                  </p>
+                </div>
+                <br>
+                <div class="tab__botton">
+                  <span class="flex data__tab">
+                    <p>09/05/2022</p>
+                  </span>
+                  <div class="button__tab">
+                    <button class="but button">Manter</button>
+                    <button class="but__red button">Remover</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Casos -->
+            <div id="caso__tab" class="tabcontent">
+              <div class="info__tab">
+                <div class="info">
+                  <div class="flex">
+                    <div class="icon__complaint icon__user icon__user__initial">
+                      <span class="initial__user" id="initialPublication">J</span>
+                    </div>
+                    <span class="infos__user__complaint">
+                      <h4 id="nameUser">J**** L****</h4>
+                      <p id="gender">Mulher</p>
+                    </span>
+                  </div>
+
+                </div>
+                <span class="check__complaint">
+                  <h6>Possui boletim de ocorrência</h6>
+                  <i class="fa-solid fa-certificate"></i>
+                </span>
+
+                <br>
+                <div class="infos__complaint">
+                  <p id="textComplaint">
+                    It is a long established fact that a reader will be distracted by the readable content of a
+                    page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                    here', making it look like readable English. Many desktop publishing packages and web page
+                    editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                    uncover many web sites still in their infancy. Various versions have evolved over the years,
+                    sometimes by accident, sometimes on purpose (injected humour and the like).
+                  </p>
+                </div>
+                <br>
+                <div class="tab__botton">
+                  <span class="flex data__tab">
+                    <p>09/05/2022</p>
+                  </span>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <!-- segundo tab-->
+            <div class="content__contest__two">
+              <!-- Tab Contestação -->
+              <div class="tab">
+                <button id="defaultOpen2" class="tablinks2"
+                  onclick="openCity2(event, 'contest__tab2')">Contestação</button>
+                <button class="tablinks2" onclick="openCity2(event, 'caso__tab2')">Caso</button>
+              </div>
+
+              <div id="contest__tab2" class="tabcontent2">
+                <div class="info__tab">
+                  <div class="info">
+                    <h3>Nome:</h3>
+                    <h6>Maria</h6>
+                  </div>
+                  <div class="info">
+                    <h3>Placa:</h3>
+                    <h6>ABC1222</h6>
+                  </div>
+                  <div class="info">
+                    <h3>Boletim:</h3>
+                    <h6>Não possui</h6>
+                  </div>
+
+                  <br>
+                  <div class="infos__complaint">
+                    <p id="textComplaint">
+                      It is a long established fact that a reader will be distracted by the readable content of a
+                      page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                      more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                      here', making it look like readable English. Many desktop publishing packages and web page
+                      editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                      uncover many web sites still in their infancy. Various versions have evolved over the years,
+                      sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                  </div>
+                  <br>
+                  <div class="tab__botton">
+                    <span class="flex data__tab">
+                      <p>09/05/2022</p>
+                    </span>
+                    <div class="button__tab">
+                      <button class="but button">Manter</button>
+                      <button class="but__red button">Remover</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Casos -->
+              <div id="caso__tab2" class="tabcontent2">
+                <div class="info__tab">
+                  <div class="info">
+                    <div class="flex">
+                      <div class="icon__complaint icon__user icon__user__initial">
+                        <span class="initial__user" id="initialPublication">J</span>
+                      </div>
+                      <span class="infos__user__complaint">
+                        <h4 id="nameUser">J**** L****</h4>
+                        <p id="gender">Mulher</p>
+                      </span>
+                    </div>
+  
+                  </div>
+                  <span class="check__complaint">
+                    <h6>Possui boletim de ocorrência</h6>
+                    <i class="fa-solid fa-certificate"></i>
+                  </span>
+  
+                  <br>
+                  <div class="infos__complaint">
+                    <p id="textComplaint">
+                      It is a long established fact that a reader will be distracted by the readable content of a
+                      page when looking at its layout. The point of using Lorem Ipsum is that it has a
+                      more-or-less normal distribution of letters, as opposed to using 'Content here, content
+                      here', making it look like readable English. Many desktop publishing packages and web page
+                      editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will
+                      uncover many web sites still in their infancy. Various versions have evolved over the years,
+                      sometimes by accident, sometimes on purpose (injected humour and the like).
+                    </p>
+                  </div>
+                  <br>
+                  <div class="tab__botton">
+                    <span class="flex data__tab">
+                      <p>09/05/2022</p>
+                    </span>
+  
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Calendario -->
+        <div class="calendar__desktop">
+          
+          <div class="container">
+            <div class="calendar">
+              <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                  <h3></h3>
+                  <h6></h6>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+              </div>
+              <div class="weekdays">
+                <div>Dom</div>
+                <div>Seg</div>
+                <div>Ter</div>
+                <div>Qua</div>
+                <div>Qui</div>
+                <div>Sex</div>
+                <div>Sab</div>
+              </div>
+              <div class="days"></div>
+            </div>
+          </div>
+      </div>
+
+
+  </div>
+  </section>
+  <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
+  <!-- modal navbar / mains opções de link -->
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal">
+    <label class="modal__bg" for="modal-1"></label>
+    <div class="modal__inner">
+      <a href="./dashboardProfile.html" class="options__modal__user"> Perfil</a>
+      <a href="./dashboardAdmins.html" class="options__modal__user"> Administrador</a>
+      <hr>
+      <span class="flex justify">
+        <a class="options__modal__user" href="#">Sair</a>
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </span>
+    </div>
+  </div>
+  </main>
+  <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+
+  <section class="nav__mobile">
+    <nav class="mobile-bottom-nav">
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="./index.html"><i class="fa-solid fa-house"></i></a>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+        <div class="mobile-bottom-nav__item-content">
+          <a id="active" href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+        </div>
+      </div>
+
+      <div class="mobile-bottom-nav__item">
+        <div class="mobile-bottom-nav__item-content">
+          <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i></a>
+        </div>
+      </div>
+
+
+      <div class="nav__itens__links">
+        <div class="mobile-bottom-nav__item-content">
+          <label for="modal-1">
+            <i class="fa-solid fa-angle-up icon__mobile"></i>
+          </label>
+        </div>
+      </div>
+    </nav>
+  </section>
+</body>
+
+</html>
+<script src="./assets/js/script.sidenav.js"></script>
+<script src="./assets/js/script.complaint.js"></script>

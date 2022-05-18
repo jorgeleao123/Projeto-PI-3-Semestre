@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/img/icon-admin-carbon.svg" type="image/png">
+  <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./assets/css/style.sidenav.css">
+  <link rel="stylesheet" href="./assets/css/style.components.css">
+  <link rel="stylesheet" href="./assets/css/style.modais.css">
+  <link rel="stylesheet" href="./assets/css/style.complaint.css">
+  <link rel="stylesheet" href="./assets/css/style.home.css">
+  <link rel="stylesheet" href="./assets/css/style.table.css">
+  <title>Dashboard</title>
+</head>
+
+<body>
+  <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
+  <!-- SideBar initial -->
+  <section class="sidenav__desktop">
+    <div class="sidenav__desktop__top">
+      <div id="mySidenav" class="sidenav__top">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <img class="logo__sidebar" src="./assets/img/icon-admin.svg" alt="logo-go-white">
+        <div class="links__nav">
+          <a id="active" href="./index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
+          <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i> Usuarios</a>
+          <a href="./dashboardProfile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+          <a href="./dashboardAdmins.html"><i class="fa-solid fa-user-plus"></i> Administrador</a>
+        </div>
+        <a href="#exit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="maindash">
+
+    <div class="menu__dash flex justify">
+      <div class="flex">
+        <img src="./assets/img/icon-admin-carbon.svg" alt="" class="logo__mob">
+        <span class="hamburger" onclick="openNav()">&#9776;</span>
+        <button class="adc__admin"><a href="">Adicionar Administrador</a></button>
+      </div>
+      <h4 class="title__page">Dashboard</h4>
+      <div class="flex">
+        <div class="icon__user__initial"></div>
+        <span>
+          <h4 class="nameAdmin" id="name">Jorge Ricardo</h4>
+          <h6 class="function__admin" id="function">Lider Técnico</h6>
+        </span>
+      </div>
+    </div>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main class="flex__box">
+
+      <!-- tópico -->
+      <div class="topic__complaint flex justify">
+        <span class="flex">
+          <p><b>Dados</b></p>
+        </span>
+        <div class="hr"></div>
+      </div>
+      <section class="">
+
+        <!-- Cards -->
+        <div class="container__card">
+          <div class="content__card">
+
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>publicações</h4>
+                <span class="flex data__tab">
+                  <p>Denuncias Publicadas</p>
+                </span>
+              </div>
+
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>Contestações</h4>
+                <span class="flex data__tab">
+                  <p>Contestações feitas</p>
+                </span>
+              </div>
+
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+            <div class="card__dash">
+              <div class="info_card">
+                <h4>Buscas</h4>
+                <span class="flex data__tab">
+                  <p>Buscas feitas</p>
+                </span>
+              </div>
+
+              <div class="num__card">
+                <div class="num__card__progress">
+                  <h1>75</h1>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+       <!-- Graficos
+        <div class="container__grafic">
+          <div class="content__grafic">
+             gafico 1 
+            <div class="grafic__one">
+              <canvas id="myChart" width="400" height="250"></canvas>
+            </div>
+      
+            grafico 2
+            <div class="grafic__two">
+              <canvas id="myCharttwo" width="600" height="350"></canvas>
+
+            </div>
+          </div>
+        </div>-->
+
+        <!-- Tabelas -->
+        <!-- tópico -->
+        <div class="topic__table flex justify top">
+          <span class="flex">
+            <p><b>Casos por Categoria</b></p>
+          </span>
+          <div class="hr"></div>
+        </div>
+
+        <div class="flex__box">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Cor</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Homens</th>
+                <th scope="col">Mulheres</th>
+                <th scope="col">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__assedio circle"></div></span></td>
+                <td data-label="Categoria">Assédio</td>
+                <td data-label="Homens">20</td>
+                <td data-label="Mulheres">20</td>
+                <td data-label="Total">15</td>
+              </tr>
+
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__assedio__moral circle"></div></span></td>
+                <td data-label="Categoria">Assédio Moral</td>
+                <td data-label="Homens">20</td>
+                <td data-label="Mulheres">5</td>
+                <td data-label="Total">0</td>
+              </tr>
+
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__agressao__fisica circle"></div></span></td>
+                <td data-label="Categoria">Racismo</td>
+                <td data-label="Email">20</td>
+                <td data-label="Mulheres">20</td>
+                <td data-label="Contestações">15</td>
+              </tr>
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__agressao__verbal circle"></div></span></td>
+                <td data-label="Categoria">Agressão Física</td>
+                <td data-label="Homens">20</td>
+                <td data-label="Mulheres">20</td>
+                <td data-label="Total">15</td>
+              </tr>
+
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__homofobia circle"></div></span></td>
+                <td data-label="Categoria">Agressão Verbal</td>
+                <td data-label="Homens">20</td>
+                <td data-label="Mulheres">20</td>
+                <td data-label="Total">15</td>
+              </tr>
+
+              <tr>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__racism circle"></div></span></td>
+                <td data-label="Categoria">Homofobia</td>
+                <td data-label="Homens">20</td>
+                <td data-label="Mulheres">20</td>
+                <td data-label="Total">15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+      <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
+      <!-- modal navbar / mains opções de link -->
+      <input class="modal-state" id="modal-1" type="checkbox" />
+      <div class="modal">
+        <label class="modal__bg" for="modal-1"></label>
+        <div class="modal__inner">
+          <a href="./dashboardProfile.html" class="options__modal__user"> Perfil</a>
+          <a href="./dashboardAdmins.html" class="options__modal__user"> Administrador</a>
+          <hr>
+          <span class="flex justify">
+            <a class="options__modal__user" href="#exit">Sair</a>
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          </span>
+        </div>
+      </div>
+    </main>
+    <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+
+    <section class="nav__mobile">
+      <nav class="mobile-bottom-nav">
+        <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+          <div class="mobile-bottom-nav__item-content">
+            <a id="active" href="./index.html"><i class="fa-solid fa-house"></i></a>
+          </div>
+        </div>
+
+        <div class="mobile-bottom-nav__item">
+          <div class="mobile-bottom-nav__item-content">
+            <a href="./complaint.html"><i class="fa-solid fa-magnifying-glass-chart"></i></a>
+          </div>
+        </div>
+
+        <div class="mobile-bottom-nav__item">
+          <div class="mobile-bottom-nav__item-content">
+            <a href="./dashboardUsers.html"><i class="fa-solid fa-user-minus"></i></a>
+          </div>
+        </div>
+
+
+        <div class="nav__itens__links">
+          <div class="mobile-bottom-nav__item-content">
+            <label for="modal-1">
+              <i class="fa-solid fa-angle-up icon__mobile"></i>
+            </label>
+          </div>
+        </div>
+      </nav>
+    </section>
+</body>
+
+</html>
+<script src="./assets/js/script.sidenav.js"></script>
+<script src="./assets/js/script.home.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- chart 1 -->
+<script>
+  const ctx = document.getElementById('myChart');
+  const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Red',
+        'Blue',
+        'Yellow'
+      ],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+        hoverOffset: 4
+      }]
+    },
+
+  });
+</script>
+
+<!-- chart 2 -->
+<script>
+  const ctxtwo = document.getElementById('myCharttwo');
+  const myCharttwo = new Chart(ctxtwo, {
+    type: 'line',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)'
+        ],
+
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
