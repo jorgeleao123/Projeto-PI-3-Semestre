@@ -27,14 +27,14 @@
                 </span>
                 <span class="nav__desktop__search">
                     <input type="search" id="input" placeholder="Busque pela placa ou nome do motorista">
-                    <select name="" id="searchComplaint" aria-placeholder="Filtrar por">
-                        <option value="/license/">Placa</option>
+                    <select name="" id="inputSearchComplaint" aria-placeholder="Filtrar por">
+                        <option value="license">Placa</option>
                         <option value="">Nome/Placa</option>
-                        <option value="/city/">Cidade</option>
-                        <option value="/district/">Bairro</option>
-                        <option value="/state/">Estado</option>
+                        <option value="city">Cidade</option>
+                        <option value="district">Bairro</option>
+                        <option value="state">Estado</option>
                     </select>
-                    <a href="./search.html" class="search__icon"> <i
+                    <a onclick="getSearch()" class="search__icon"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
@@ -479,7 +479,7 @@
         
         let endPoint = sessionStorage.getItem('endPointComplaint');
         let uri = sessionStorage.getItem('uriParamComplaint');
-        let url = `http://localhost:8080/complaints`;
+        var url = `http://localhost:8080/complaints/`;
 
         switch(endPoint){
             case "license":
@@ -584,6 +584,12 @@
         }).catch(
             
         )
+    }
+
+    function getSearch(){
+        sessionStorage.setItem('uriParamComplaint', document.getElementById('input').value);
+        sessionStorage.setItem('endPointComplaint', document.getElementById('inputSearchComplaint').value);
+        location.reload();
     }
 
 </script>
