@@ -271,7 +271,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="#">Sair</a>
+                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -513,10 +513,9 @@
                 dateTimeComplaint: "2022-05-10T21:25:50.462Z"
             }
 
-            //Requisição que o mau vai criar edit
-            axios.post(`http://localhost:8080/complaints/1`, data)
+            axios.put(`http://localhost:8080/complaints/${sessionStorage.user_id}/${sessionStorage.editId}`, data)
             .then((resp) => {
-                alert('Denúncia publicada com sucesso', resp);
+                alert('Denúncia editada com sucesso', resp);
                 console.log(resp);
             })
             .catch((error) => {
@@ -526,8 +525,6 @@
             })
 
         }
-
-
 
         function preencherFormulario(endereco) {
             uf.value = endereco.uf;

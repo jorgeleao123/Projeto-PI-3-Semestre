@@ -75,7 +75,7 @@
                                 <p class="about__description">Tenha acesso a nossa mais nova plataforma para usuarios de
                                     aplicativos de mobilidade, a Go.</p>
 
-                                <form action="">
+                                <form action="" onsubmit="return cadastrar()">
                                     <label for="Email">Email</label>
                                     <input type="email" id="email" placeholder="Digite seu email" />
 
@@ -83,8 +83,8 @@
                                     <input type="password" name="" id="password" placeholder="Insira sua senha">
 
                                     <label for="Confirmar Senha">Confirmar Senha</label>
-                                    <input type="password" id="confirm_password" placeholder="Confirme a senha" 
-                                    onkeyup="validarSenha()"/>
+                                    <input type="password" id="confirm_password" placeholder="Confirme a senha"
+                                        onkeyup="validarSenha()" />
                                     <span id="equals_password" style="color: rgb(253, 81, 81);
                                         display: none">As senhas devem ser iguais</span>
                                     <label class="button__form" for="two">Próximo</label>
@@ -141,7 +141,7 @@
 
                                 <button type="submit" class="button__cad button btn-ctt" onclick="cadastrar()">
                                     Cadastrar</button>
-                                
+
                             </div>
                         </div>
 
@@ -225,13 +225,15 @@
 
         //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
         document.getElementById('cep')
-            .addEventListener('focusout', pesquisarCep);  
+            .addEventListener('focusout', pesquisarCep);
 
         function cadastrar() {
+            event.preventDefault();
+
             if (document.getElementById('password') == document.getElementById('confirm_password')) {
                 document.getElementById('equals_password').style.display = 'block';
             } else {
-                /*const data = {
+                const data = {
                     name: document.getElementById('name').value,
                     email: document.getElementById('email').value,
                     password: document.getElementById('password').value,
@@ -242,17 +244,17 @@
                     city: document.getElementById('cidade').value,
                     district: bairro
                 };
-                sessionStorage.setItem('usuario', JSON.stringify(data));*/
+                console.log(data);
                 axios.post(`http://localhost:8080/users`, data)
-                .then((resp) => {
-                    alert('Success', resp);
-                    console.log(resp);
-                })
-                .catch((error) => {
-                    console.log(error);
-                    console.log(data)
-                    alert('Error', error)
-                })
+                    .then((resp) => {
+                        alert('Success', resp);
+                        console.log(resp);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        console.log(data)
+                        alert('Error', error)
+                    })
 
 
                 // fetch('http://localhost:8080/users', {
@@ -273,13 +275,11 @@
 
         }
 
-        function validarSenha(){
+        function validarSenha() {
             if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
                 document.getElementById('equals_password').style.display = 'none';
-                document.getElementById('button_page1').disabled = false;
             } else {
                 document.getElementById('equals_password').style.display = 'block';
-                document.getElementById('button_page1').disabled = true;
 
             }
         }
