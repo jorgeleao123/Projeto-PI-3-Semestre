@@ -524,8 +524,9 @@
 
     }
     function apagar(id) {
+        event.preventDefault();
         axios.delete(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}/${id}`)
-            .then((resp) => itensSave())
+            .then((resp) => window.location.href = "perfil-save.html")
             .catch((error) => {
                 alert('erro', resp);
             })

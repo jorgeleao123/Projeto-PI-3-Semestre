@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body>
+<body onload="iniciar()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -448,6 +448,14 @@
 </html>
 
 <script>
+    function iniciar() {
+    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("edit__icon")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("edit__capa")[0].style.backgroundColor = sessionStorage.user_colorMenu;
+    newColorPerfil.value = sessionStorage.user_colorMenu;
+    newColorMenu.value = sessionStorage.user_colorProfile;
+    initial.innerHTML = sessionStorage.user_nome[0]
+}
     function registerUser() {
         event.preventDefault();
         const data = {
