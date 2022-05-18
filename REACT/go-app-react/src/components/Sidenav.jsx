@@ -1,14 +1,18 @@
 import React from "react";
 import Logo from "../assets/img/icon-admin.svg"
+import '../assets/css/style.sidenav.css'
 import '../assets/js/script.sidenav.js';
 
 function Sidenav() {
+
+
+    
     return (
         <>
             <section className="sidenav__desktop">
                 <div className="sidenav__desktop__top">
                     <div id="mySidenav" className="sidenav__top">
-                        <a href={{javascript:void(0)}} className="closebtn" onClick={closeNav()}>&times;</a>
+                        <a href={{javascript:void(0)}} className="closebtn" onClick={() => closeNav()}>&times;</a>
                         <img className="logo__sidebar" src={Logo} alt="logo-go-white" />
                         <div className="links__nav">
                             <a><i className="fa-solid fa-house"></i> Home</a>

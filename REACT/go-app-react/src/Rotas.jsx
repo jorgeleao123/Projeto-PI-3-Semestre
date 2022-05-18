@@ -1,16 +1,21 @@
 import React from 'react';
-import { Route, BrowserRoute } from 'react-router-dom';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 //imports das páginas
 import DashboardAdmin from './pages/DashboardAdmin';
+import DashboardProfile from './pages/DashboardProfile';
 
-const Routes = () => {
-    return(
-        <BrowserRoute>
-            <Route path="/" element={<DashboardAdmin />} />
-            {/*pagina não encontrada:*/}
-            <Route path="*" element={<NotFound />} />
-        </BrowserRoute>
+const Rotas = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<DashboardAdmin />} />
+                {/*pagina não encontrada:*/}
+                {/* <Route path="*" element={<NotFound />} /> */}
+
+                <Route path="/profile" element={<DashboardProfile />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
