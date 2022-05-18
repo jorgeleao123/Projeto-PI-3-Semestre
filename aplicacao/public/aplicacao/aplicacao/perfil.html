@@ -352,7 +352,7 @@
             axios.delete(`http://localhost:8080/complaints/${id}`)
                 .then((resp) => {
                     alert("Denuncia excluida com sucesso!");
-                    itensPublic();
+                    window.location.reload();
                 })
                 .catch((err) => {
 
@@ -403,16 +403,20 @@
                                             <label class="" for="${e["id"]}"></label>
                                             <div class="modal__inner__func">
                                                 <form action="">
-                                                    <a href="./edit.html">
-                                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                                            style="display: none; cursor: pointer;" type="submit"
-                                                            class="option__modal__user" value="idCaso" onclick="openEdit(${e['id']}>Editar</p>
-                                                        </a>
-                                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                                style="display: none; cursor: pointer;" type="submit"
-                                                                class="option__modal__user" value="idCaso"
-                                                                onclick="deleteComplaint(${e['id']})">Excluir</p>
-                                                    </a>
+                                                    <p style="cursor: pointer;" class="options__modal__user">
+                                                        <input style="display: none; cursor: pointer;" type="submit"
+                                                            class="option__modal__user" value="idCaso">
+                                                            <span onclick="openEdit(${e['id']})">
+                                                                Editar
+                                                            </span>
+                                                    </p>
+                                                    <p style="cursor: pointer;" class="options__modal__user">
+                                                        <input style="display: none; cursor: pointer;" type="submit"
+                                                            class="option__modal__user" value="idCaso">
+                                                        <span onclick="deleteComplaint(${e['id']})">
+                                                            Excluir
+                                                        </span>
+                                                    </p>
                                                 </form>
                                             </div>
                                         </div>
