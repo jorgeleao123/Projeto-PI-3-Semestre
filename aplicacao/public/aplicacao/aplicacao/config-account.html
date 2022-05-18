@@ -29,15 +29,15 @@
                     <img src=".//assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
-                    <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                    <select name="" id="" aria-placeholder="Filtrar por">
-                        <option value="">Placa</option>
+                    <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                    <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                        <option value="license">Placa</option>
                         <option value="">Nome/Placa</option>
-                        <option value="">Cidade</option>
-                        <option value="">Bairro</option>
-                        <option value="">Estado</option>
+                        <option value="city">Cidade</option>
+                        <option value="district">Bairro</option>
+                        <option value="state">Estado</option>
                     </select>
-                    <a class="search__icon" href="./search.html"> <i
+                    <a class="search__icon" onclick="getSearch()"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
@@ -401,6 +401,15 @@
 </html>
 
 <script>
+
+    function getSearch(){
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.open("./search.html");
+    }
+
     function deleteUser() {
         event.preventDefault();
         axios.delete(`http://localhost:8080/users/${sessionStorage.user_id}`)
