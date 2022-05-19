@@ -1,10 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import '../assets/js/script.sidenav.js';
 
 function ModalNavbarMobile() {
 
-    const navegator = useNavigate();
+    // const navegator = useNavigate();
 
     return (
         <>

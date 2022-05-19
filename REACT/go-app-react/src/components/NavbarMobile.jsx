@@ -1,5 +1,6 @@
 import React from "react";
-import '../assets/js/script.sidenav.js';
+import '../assets/css/style.complaint.css';
+import '../assets/css/style.components.css';
 
 
 function NavbarMobile() {

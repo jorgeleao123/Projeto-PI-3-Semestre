@@ -1,11 +1,8 @@
 import React from "react";
 // Falta React-router-dom
 import '../assets/css/style.components.css';
-import '../assets/css/style.modais.css';
 import "../assets/css/style.complaint.css";
-import '../assets/css/style.profile.css';
-import '../assets/css/style.table.css';
-import '../assets/js/script.sidenav.js';
+
 
 import Sidenav from '../components/Sidenav';
 import Divider from '../components/Divider';
