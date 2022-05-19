@@ -1,4 +1,7 @@
-package connect.go.models;
+package connect.go.usecases;
+
+import connect.go.models.Complaint;
+import connect.go.utils.ListaObj;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,9 +12,9 @@ import java.util.FormatterClosedException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class AppArquivoCsv {
+public class CsvService {
 
-    public static void gravaArquivoCsv(ListaObj<Complaint> complaintListaObj, String nomeArq) {
+    public void gravaArquivoCsv(ListaObj<Complaint> complaintListaObj, String nomeArq) {
         FileWriter arq = null;  // arq é o obj que corresponde ao arquivo
         Formatter saida = null; // obj que será usado para escrever no arquivo
         nomeArq += ".csv";  // acrescenta a extensão .CSV ao nome do arquivo
@@ -35,7 +38,8 @@ public class AppArquivoCsv {
             for (int i = 0; i < complaintListaObj.getTamanho(); i++) {
                 Complaint complaint = complaintListaObj.getElemento(i);
                 //               // gravo os dados desse objeto, separando cada campo por um ;
-                saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(), complaint.getArchive(),
+                saida.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", complaint.getId(), complaint.getDescription(),
+                        complaint.getArchive(),
                         complaint.getStatus(), complaint.getBo(), complaint.getDateTimeComplaint(), complaint.getType(), complaint.getDriver().getId()
                         , complaint.getUser().getId(), complaint.getAddress().getId());
             }
@@ -76,12 +80,11 @@ public class AppArquivoCsv {
         // Bloco try catch para ler o arquivo
         try {
             // Exibe os títulos das colunas
-            relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", "id", "description", "bo", "title", "archive", "status", "dateTimeComplaint",
+            relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", "id", "description", "bo", "archive", "status", "dateTimeComplaint",
                     "type", "idDriver", "idUser", "idAddress");
             while (entrada.hasNext()) {   // enqto não chegou o final do arquivo
                 String id = entrada.next();   // next() aqui lê até o próximo ;
                 String description = entrada.next();
-                String title = entrada.next();
                 String archive = entrada.next();
                 String status = entrada.next();
                 String bo = entrada.next();
@@ -90,7 +93,7 @@ public class AppArquivoCsv {
                 String idDriver = entrada.next();
                 String idUser = entrada.next();
                 String idAddress = entrada.next();
-                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, title, archive, status, bo, dateTimeComplaint,
+                relatorio += String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s\n", id, description, archive, status, bo, dateTimeComplaint,
                         type, idDriver, idUser, idAddress);
             }
         } catch (NoSuchElementException erro) {
@@ -114,17 +117,4 @@ public class AppArquivoCsv {
         return relatorio;
     }
 
-
-//    public static void main(String[] args) {
-//        Driver driver = new Driver(5, "Antonio", "total", "calvo-cabeludo");
-//        User user = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa");
-//        Address address = new Address(1, "04914-040", "SP", "São Paulo", "Esse ai");
-//        Complaint complaint = new Complaint(1, "decrição", "titulo", "nenhum", "Verificado", "1234", LocalDateTime.now(), "tipo", driver, user, address);
-//        // Exibe a lista
-////        complaint.exibe();
-//        // grava o conteúdo da lista num arquivo CSV
-//        gravaArquivoCsv(complaint, "posts");
-//        // lê os dados do arquivo CSV e exibe na console
-////        leExibeArquivoCsv("users");
-//    }
 }

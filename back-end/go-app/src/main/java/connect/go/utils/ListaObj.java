@@ -1,4 +1,4 @@
-package connect.go.models;
+package connect.go.utils;
 
 public class ListaObj<T> {
 
