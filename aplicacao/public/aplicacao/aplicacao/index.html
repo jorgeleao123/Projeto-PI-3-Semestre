@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="./assets/css/style-components.css">
 </head>
 
-<body onload="loadComplaints()">
+<body onload="loadPage()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -464,23 +464,31 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
-    function getSearch(){
-        let uriParam = document.getElementById('uriParamComplaint').value;
-        let endPoint = document.getElementById('endPointComplaint').value;
-        sessionStorage.setItem('uriParamComplaint', uriParam);
-        sessionStorage.setItem('endPointComplaint', endPoint);
-        window.open("./search.html");
+    function loadPage(){
+        setCity();
+        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
+        document.getElementById('city').innerHTML += `${sessionStorage.user_city}`;
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
+        getBuscas();
+        loadComplaints();
     }
 
     function loadComplaints(){
         event.preventDefault();
-        loadPage();
         axios.get(`http://localhost:8080/complaints/city`, {
             headers: {
                 city: sessionStorage.getItem('user_city')
             }
         })
         .then((resp) => {
+            console.log('ENTROU');
+            console.log(resp);
             sessionStorage.setItem('qnt_publicacoes', resp.data.length);
             document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
             console.log('FOI');
@@ -560,19 +568,6 @@
             })
         })
     }
-    
-    function loadPage(){
-        document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
-        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('city').innerHTML += `${sessionStorage.user_city}`;
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
-        getBuscas();
-    }
 
     function save(id) {
 
@@ -595,8 +590,25 @@
     function getBuscas(){
         axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
         .then((resp) => {
-            document.getElementById('qntPesquisas').innerHTML += resp.postCounter;
+            document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
         })
+    }
+
+    function setCity(){
+        axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
+        .then((resp) => {
+            alert('Pegou dado do usuário');
+            sessionStorage.user_city = resp.data[0].city;
+            console.log('setou a variável: ' + sessionStorage.getItem('user_city'));
+        })
+    }
+
+    function getSearch(){
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.open("./search.html");
     }
 
 </script>

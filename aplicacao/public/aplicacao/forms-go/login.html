@@ -132,7 +132,6 @@
                         }else{
                             sessionStorage.user_colorProfile = resp.data["colorProfile"];
                         }
-                        sessionStorage.setItem('user_city', resp.data.city);
                         window.location.href = "../aplicacao/index.html";
                     }else{
                         document.getElementById('login_error').style.display = 'block';
