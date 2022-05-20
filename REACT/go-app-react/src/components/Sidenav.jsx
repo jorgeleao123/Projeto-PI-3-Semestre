@@ -49,8 +49,9 @@ function Sidenav() {
                                 <FontAwesomeIcon icon={faUserPlus} /> Administrador
                             </a>
                         </div>
-                        <a onClick={() =>{navigate("/")}}><FontAwesomeIcon icon={faArrowRightFromBracket} />
-                         Sair
+                        {/*Não sei para onde vai*/}
+                        <a onClick={() =>{navigate("/")}}>
+                            <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sair
                          </a>
                     </div>
                 </div>

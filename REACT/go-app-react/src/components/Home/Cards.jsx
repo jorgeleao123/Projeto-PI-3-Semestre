@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import '../../assets/css/style.table.css';
 import '../../assets/css/style.components.css';
 import '../../assets/css/style.complaint.css';
 import '../../assets/css/style.home.css';
+import api from "../../api";
+
 
 function Cards() {
+
+  const [publicacoes, setPublicacoes] = useState("-");
+  const [contestacoes, setContestacoes] = useState("-");
+  const [buscas, setBuscas] = useState("-");
+
+  useEffect(() => {
+    buscarDados();
+  })
+
+  function buscarDados(){
+    //requisição que irá pegar casos por categoria
+    api.get('')
+    .then((resp) => {
+      setPublicacoes(resp);
+      setContestacoes(resp);
+      setBuscas(resp);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+  }
+
   return (
     <>
       {/*Cards*/}
@@ -14,16 +38,16 @@ function Cards() {
 
             <div className="card__dash">
               <div className="info_card">
-                <h4>publicações</h4>
+                <h4>Publicações</h4>
                 <span className="flex data__tab">
-                  <p>Denuncias Publicadas</p>
+                  <p>Denúncias Publicadas</p>
                 </span>
               </div>
 
 
               <div className="num__card">
                 <div className="num__card__progress">
-                  <h1>75</h1>
+                  <h1>{publicacoes}</h1>
                 </div>
               </div>
             </div>
@@ -40,7 +64,7 @@ function Cards() {
 
               <div className="num__card">
                 <div className="num__card__progress">
-                  <h1>75</h1>
+                  <h1>{contestacoes}</h1>
                 </div>
               </div>
             </div>
@@ -55,7 +79,7 @@ function Cards() {
 
               <div className="num__card">
                 <div className="num__card__progress">
-                  <h1>75</h1>
+                  <h1>{buscas}</h1>
                 </div>
               </div>
             </div>

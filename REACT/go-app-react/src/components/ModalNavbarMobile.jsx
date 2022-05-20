@@ -1,12 +1,12 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function ModalNavbarMobile() {
 
-    // const navegator = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <>
@@ -15,11 +15,16 @@ function ModalNavbarMobile() {
             <div className="modal">
                 <label className="modal__bg" htmlFor="modal-1"></label>
                 <div className="modal__inner">
-                    <a className="options__modal__user"> Perfil</a>
-                    <a id="active" className="options__modal__user"> Administrador</a>
+                    <a onClick={() => navigate("/profile")} className="options__modal__user"> 
+                        Perfil
+                    </a>
+                    <a onClick={() => navigate("/admin")} id="active" className="options__modal__user"> 
+                        Administrador
+                    </a>
                     <hr />
                     <span className="flex justify">
-                        <a className="options__modal__user">Sair</a>
+                        {/* Não sei onde vai quando sai */}
+                        <a onClick={() => navigate("/")} className="options__modal__user">Sair</a>
                         <FontAwesomeIcon icon={faArrowRightFromBracket} />
                     </span>
                 </div>

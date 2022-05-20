@@ -1,12 +1,17 @@
 import React from "react";
 import '../assets/css/style.complaint.css';
 import '../assets/css/style.components.css';
+import {useNavigate} from "react-router-dom";
+
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleUp, faHouse, faMagnifyingGlass, faUserMinus } from "@fortawesome/free-solid-svg-icons";
 
 
 function NavbarMobile() {
+
+    const navigate = useNavigate();
+
     return (
         <>
             {/*menu mobile*/}
@@ -14,19 +19,25 @@ function NavbarMobile() {
                 <nav className="mobile-bottom-nav">
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><FontAwesomeIcon icon={faHouse} /></a>
+                            <a onClick={() => {navigate('/')}}>
+                                <FontAwesomeIcon icon={faHouse} />
+                            </a>
                         </div>
                     </div>
 
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
+                            <a onClick={() => {navigate('/')}}>
+                                <FontAwesomeIcon icon={faMagnifyingGlass} />
+                            </a>
                         </div>
                     </div>
 
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><FontAwesomeIcon icon={faUserMinus} /></a>
+                            <a onClick={() => {navigate('/user')}}>
+                                <FontAwesomeIcon icon={faUserMinus} />
+                            </a>
                         </div>
                     </div>
 

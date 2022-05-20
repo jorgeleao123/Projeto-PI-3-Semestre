@@ -1,54 +1,73 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import '../../assets/css/style.table.css';
-import '../../assets/css/style.components.css';
-import '../../assets/css/style.complaint.css';
+import "../../assets/css/style.table.css";
+import "../../assets/css/style.components.css";
+import "../../assets/css/style.complaint.css";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import TableLineCrud from "./TableLineCrud";
+import api from "../../api";
 
 function SearchCrud() {
+  const [usuarios, setUsuarios] = useState(new Array());
+
+  useEffect(() => {
+    buscarDados();
+  }, [usuarios]);
+
+  function buscarDados() {
+    api
+      .get()
+      .then((resp) => {
+        setUsuarios(resp.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function deleteUser(id){
+    api.delete()
+        .then(() => {
+            alert("Usuário excluido com sucesso!")
+            buscarDados();
+        })
+        .catch((error) => {
+            alert("Não foi possível excluir o usuário");
+            console.log(error);
+        })
+  }
+
   return (
     <>
       {/*Search crud*/}
       <section className="content__feed">
         <div className="flex__box">
-        <table>
-          <thead>
-            <tr>
-              <th scope="col">Nome</th>
-              <th scope="col">Email</th>
-              <th scope="col">Publicações</th>
-              <th scope="col">Contestações</th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="Nome">Rafaella Kimberlly</td>
-              <td data-label="Email">rafa.kim@gmail.com</td>
-              <td data-label="Publicações">20</td>
-              <td data-label="Contestações">15</td>
-              <td data-label=""><button className="remove__button">
-              <FontAwesomeIcon icon={faTrash} /></button></td>
-            </tr>
-            
-            <tr>
-              <td data-label="Nome">Fulano de tal</td>
-              <td data-label="Email">fulaninho@gmail.com</td>
-              <td data-label="Publicações">5</td>
-              <td data-label="Contestações">0</td>
-              <td data-label=""><button className="remove__button">
-              <FontAwesomeIcon icon={faTrash} /></button></td>
-              
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
-  </section>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Publicações</th>
+                <th scope="col">Contestações</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {usuarios.map((i) => {
+                <TableLineCrud
+                  id={i.id}
+                  nome={i.name}
+                  email={i.emal}
+                  publicacoes={i.publicacoes}
+                  contestacoes={i.contestacoes}
+                  deleteUser={deleteUser}
+                />
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
     </>
-  )
+  );
 }
 export default SearchCrud;
