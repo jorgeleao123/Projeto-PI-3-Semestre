@@ -1,26 +1,21 @@
 import React from "react";
-// import {useNavigate} from "react-router-dom";
-
-// Falta React Router dom
+// Falta React-router-dom
 import '../assets/css/style.components.css';
-import '../assets/css/style.modais.css';
 import "../assets/css/style.complaint.css";
-import '../assets/css/style.profile.css';
+import '../assets/css/style.home.css';
 import '../assets/css/style.table.css';
-import '../assets/css/style.sidenav.css'
+
 
 import Sidenav from '../components/Sidenav';
 import Divider from '../components/Divider';
-import FormAddAdmin from '../components/AdminAdd/FormAddAdmin';
 import ModalNavbarMobile from '../components/ModalNavbarMobile';
 import Navbar from '../components/Navbar';
 import NavbarMobile from '../components/NavbarMobile';
-import TableSearch from '../components/AdminAdd/TableSearch';
-import SearchInput from '../components/SearchInput';
+import TableComplaint from '../components/Home/TableComplaint';
+import Cards from '../components/Home/Cards'
 
-function DashboardAdmin(){
+function Index(){
 
-    // const navegador = useNavigate();
 
     return (
         <>
@@ -29,11 +24,12 @@ function DashboardAdmin(){
             <div id="maindash">
                 <Navbar />
                 <main className="flex__box">
-                    <Divider titulo="Adicionar Administrador" />
-                    <FormAddAdmin />
-                    <Divider titulo="Buscar Admin" />
-                    <SearchInput />
-                    <TableSearch />
+                    <Divider titulo="Dados" />
+                    <section className="">
+                    <Cards />
+                    <Divider titulo="Casos por Categoria" />
+                    <TableComplaint />
+                    </section>
                     <ModalNavbarMobile />
                 </main>
             </div>
@@ -41,5 +37,4 @@ function DashboardAdmin(){
         </>
     )
 }
-
-export default DashboardAdmin;
+export default Index;

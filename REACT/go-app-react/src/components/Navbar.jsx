@@ -2,6 +2,7 @@ import React from "react";
 import Icon__admin from "../assets/img/icon-admin-carbon.svg";
 import '../assets/css/style.complaint.css';
 import '../assets/css/style.components.css';
+import '../assets/css/style.sidenav.css';
 
 
 function Navbar() {
@@ -12,7 +13,7 @@ function Navbar() {
 
 }
 
-openNav();
+// não chamar a função aqui diretamente
 
   return (
     <>

@@ -1,6 +1,6 @@
 import React from "react";
 // import { useNavigate } from "react-router-dom";
-import '../assets/js/script.sidenav.js';
+
 
 function ModalNavbarMobile() {
 
@@ -14,9 +14,7 @@ function ModalNavbarMobile() {
                 <label className="modal__bg" for="modal-1"></label>
                 <div className="modal__inner">
                     <a className="options__modal__user"> Perfil</a>
-                    <a id="active" className="options__modal__user" onClick={() => {
-                        navigator("/");
-                    }}> Administrador</a>
+                    <a id="active" className="options__modal__user"> Administrador</a>
                     <hr />
                     <span className="flex justify">
                         <a className="options__modal__user">Sair</a>

@@ -146,7 +146,7 @@ input[type="radio"] {
 	color: #61BAB5;
 }
 
-button {
+.button__form {
 	float: right;
 	border: solid 2px #61BAB5;
 	background-color: #61BAB5;
@@ -158,12 +158,13 @@ button {
 	padding: 0.5em 2em;
 }
 
-button:hover {
+.button__form:hover {
 	opacity: 0.8;
 }
 
 input{
-	margin-bottom: 10px;
+	margin-bottom: 15px;
+	background-color: var(--inputs-color);
 }
 
 .icon__pass {
@@ -172,7 +173,8 @@ input{
 }
 
 .buttons__form{
-	margin-top: 50px;
+	justify-content: space-between;
+	display: flex;
 }
 
 .display {
@@ -182,6 +184,10 @@ input{
 	width: 100%;
 	display: flex;
 	gap: 50px;
+}
+
+.inputs__gen{
+
 }
 
 @media screen and (max-width:767px) {

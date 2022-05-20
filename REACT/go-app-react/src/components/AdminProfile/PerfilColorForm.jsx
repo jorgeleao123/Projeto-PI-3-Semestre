@@ -1,4 +1,9 @@
+
 import React from "react";
+
+import '../../assets/css/style.table.css';
+import '../../assets/css/style.components.css';
+import '../../assets/css/style.profile.css';
 
 function PerfilColorForm() {
   return (

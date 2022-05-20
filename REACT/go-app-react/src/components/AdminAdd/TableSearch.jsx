@@ -1,12 +1,12 @@
 import React from "react";
 
+import '../../assets/css/style.table.css';
+import '../../assets/css/style.components.css';
+
 function TableSearch() {
   return (
     <>
-      <div className="search__crud">
-        <input type="search" name="" id="" />
-        <i className="fa-solid fa-magnifying-glass"></i>
-      </div>
+      
       <section className="content__feed">
         <div className="flex__box">
           <table>

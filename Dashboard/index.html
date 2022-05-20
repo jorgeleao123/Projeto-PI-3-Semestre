@@ -16,7 +16,7 @@
   <title>Dashboard</title>
 </head>
 
-<body style="overflow-y:scroll">
+<body>
   <!------------------------------------------------------------------------- SIDEBAR ------------------------------------------------------------------------->
   <!-- SideBar initial -->
   <section class="sidenav__desktop">
@@ -36,6 +36,7 @@
     </div>
   </section>
 
+  <!-- inicio -->
   <div id="maindash">
 
     <div class="menu__dash flex justify">
@@ -56,7 +57,9 @@
     <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
 
     <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
-    <main>
+    
+    <!-- inicio -->
+    <main class="flex__box">
 
       <!-- tópico -->
       <div class="topic__complaint flex justify">
@@ -65,7 +68,7 @@
         </span>
         <div class="hr"></div>
       </div>
-      <section class="container__home">
+      <section class="">
 
         <!-- Cards -->
         <div class="container__card">
@@ -75,7 +78,7 @@
               <div class="info_card">
                 <h4>publicações</h4>
                 <span class="flex data__tab">
-                  <p>09/05/2022</p>
+                  <p>Denuncias Publicadas</p>
                 </span>
               </div>
 
@@ -90,9 +93,9 @@
 
             <div class="card__dash">
               <div class="info_card">
-                <h4>publicações</h4>
+                <h4>Contestações</h4>
                 <span class="flex data__tab">
-                  <p>09/05/2022</p>
+                  <p>Contestações feitas</p>
                 </span>
               </div>
 
@@ -106,9 +109,9 @@
 
             <div class="card__dash">
               <div class="info_card">
-                <h4>publicações</h4>
+                <h4>Buscas</h4>
                 <span class="flex data__tab">
-                  <p>09/05/2022</p>
+                  <p>Buscas feitas</p>
                 </span>
               </div>
 
@@ -122,31 +125,33 @@
           </div>
         </div>
 
-        <!-- Graficos -->
+       <!-- Graficos
         <div class="container__grafic">
           <div class="content__grafic">
-            <!-- gafico 1 -->
+             gafico 1 
             <div class="grafic__one">
               <canvas id="myChart" width="400" height="250"></canvas>
             </div>
-
-            <!-- grafico 2 -->
+      
+            grafico 2
             <div class="grafic__two">
               <canvas id="myCharttwo" width="600" height="350"></canvas>
 
             </div>
           </div>
-        </div>
+        </div>-->
 
         <!-- Tabelas -->
         <!-- tópico -->
-        <div class="topic__table flex justify">
+        <div class="topic__table flex justify top">
           <span class="flex">
             <p><b>Casos por Categoria</b></p>
           </span>
           <div class="hr"></div>
         </div>
+<!--  -->
 
+<!-- tableHome -->
         <div class="flex__box">
           <table>
             <thead>
@@ -160,7 +165,7 @@
             </thead>
             <tbody>
               <tr>
-                <td data-label="Cor"><div class="circle__assedio circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__assedio circle"></div></span></td>
                 <td data-label="Categoria">Assédio</td>
                 <td data-label="Homens">20</td>
                 <td data-label="Mulheres">20</td>
@@ -168,7 +173,7 @@
               </tr>
 
               <tr>
-                <td data-label="Cor"><div class="circle__assedio__moral circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__assedio__moral circle"></div></span></td>
                 <td data-label="Categoria">Assédio Moral</td>
                 <td data-label="Homens">20</td>
                 <td data-label="Mulheres">5</td>
@@ -176,14 +181,14 @@
               </tr>
 
               <tr>
-                <td data-label="Cor"><div class="circle__agressao__fisica circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__agressao__fisica circle"></div></span></td>
                 <td data-label="Categoria">Racismo</td>
                 <td data-label="Email">20</td>
                 <td data-label="Mulheres">20</td>
                 <td data-label="Contestações">15</td>
               </tr>
               <tr>
-                <td data-label="Cor"><div class="circle__agressao__verbal circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__agressao__verbal circle"></div></span></td>
                 <td data-label="Categoria">Agressão Física</td>
                 <td data-label="Homens">20</td>
                 <td data-label="Mulheres">20</td>
@@ -191,7 +196,7 @@
               </tr>
 
               <tr>
-                <td data-label="Cor"><div class="circle__homofobia circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__homofobia circle"></div></span></td>
                 <td data-label="Categoria">Agressão Verbal</td>
                 <td data-label="Homens">20</td>
                 <td data-label="Mulheres">20</td>
@@ -199,7 +204,7 @@
               </tr>
 
               <tr>
-                <td data-label="Cor"><div class="circle__racism circle"></div></td>
+                <td data-label="Cor"><span class="td__circle"><div class="circle__racism circle"></div></span></td>
                 <td data-label="Categoria">Homofobia</td>
                 <td data-label="Homens">20</td>
                 <td data-label="Mulheres">20</td>

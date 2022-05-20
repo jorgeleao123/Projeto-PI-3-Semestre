@@ -3,6 +3,8 @@ function openNav() {
   document.getElementById("maindash").style.marginLeft = "250px";
 }
 
+openNav()==true;
+
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("maindash").style.marginLeft= "0";

@@ -72,7 +72,7 @@ html {
   --mb-1-5: 1.5rem;
   --mb-2: 2rem;
   --mb-2-5: 2.5rem;
-  --padding-desktop: 12px 24em;
+  --padding-desktop: 12px 10em;
   --padding-notbook: 10px 15em;
   --padding-tablet: 10px 5em;
   --padding-mobile: 10px 1em;
@@ -116,7 +116,7 @@ html {
 
 
 body {
-  margin: var(--header-height) 0 0 0;
+  margin: var(--header-height) 0 10px 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -187,6 +187,10 @@ h4 {
   width: 100%;
   float: right;
   text-align: right;
+}
+
+.top{
+  margin-top: 25px;
 }
 
 /*================================================================================ RESPONSIVE ====================================================================*/

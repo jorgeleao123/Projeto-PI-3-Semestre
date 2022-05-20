@@ -1,5 +1,8 @@
 import React from "react";
 
+import '../../assets/css/style.table.css';
+import '../../assets/css/style.components.css';
+
 function FormAddAdmin() {
     return (
         <>

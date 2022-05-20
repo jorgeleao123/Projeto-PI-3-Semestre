@@ -16,6 +16,7 @@
   width: 100%;
   max-height: 80vh;
   overflow-y: scroll;
+  padding-bottom: 20px;
 }
 
 /* padrão dos cards  */
@@ -284,8 +285,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover{
 }
 
 .calendar {
-  width: 20rem;
-  height: 20rem;
+  width: 18rem;
+  height: auto;
   background-color: white;
   border: 0.2px solid var(--border-color);
   
