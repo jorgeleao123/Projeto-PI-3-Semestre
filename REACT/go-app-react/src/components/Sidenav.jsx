@@ -1,10 +1,14 @@
 import React from "react";
-import Logo from "../assets/img/icon-admin.svg"
-import '../assets/css/style.sidenav.css'
-// import { faHome } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../assets/img/icon-admin.svg";
+import '../assets/css/style.sidenav.css';
+import {useNavigate} from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRightFromBracket, faHouse, faMagnifyingGlass, faUser, faUserMinus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 function Sidenav() {
+
+    const navigate = useNavigate();
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
@@ -26,16 +30,28 @@ function Sidenav() {
             <section className="sidenav__desktop">
                 <div className="sidenav__desktop__top">
                     <div id="mySidenav" className="sidenav__top">
-                        <a href={{ javascript: void (0) }} className="closebtn" onClick={() => closeNav()}>&times;</a>
+                        <a className="closebtn" onClick={() => closeNav()}>&times;</a>
                         <img className="logo__sidebar" src={Logo} alt="logo-go-white" />
                         <div className="links__nav">
-                            <a><i className="fa-solid fa-house"></i> Home</a>
-                            <a><i className="fa-solid fa-magnifying-glass-chart"></i> Contestações</a>
-                            <a><i className="fa-solid fa-user-minus"></i> Usuarios</a>
-                            <a><i className="fa-solid fa-user"></i> Perfil</a>
-                            <a id="active"><i className="fa-solid fa-user-plus"></i> Administrador</a>
+                            <a onClick={() =>{navigate("/")}}>
+                                <FontAwesomeIcon icon={faHouse} /> Home
+                            </a>
+                            <a onClick={() =>{navigate("/")}}>
+                                <FontAwesomeIcon icon={faMagnifyingGlass} /> Contestações
+                            </a>
+                            <a onClick={() =>{navigate("/user")}}>
+                                <FontAwesomeIcon icon={faUserMinus} /> Usuários
+                            </a>
+                            <a onClick={() =>{navigate("/profile")}}>
+                                <FontAwesomeIcon icon={faUser} /> Perfil
+                            </a>
+                            <a onClick={() =>{navigate("/admin")}} id="active">
+                                <FontAwesomeIcon icon={faUserPlus} /> Administrador
+                            </a>
                         </div>
-                        <a><i className="fa-solid fa-arrow-right-from-bracket"></i> Sair</a>
+                        <a onClick={() =>{navigate("/")}}><FontAwesomeIcon icon={faArrowRightFromBracket} />
+                         Sair
+                         </a>
                     </div>
                 </div>
             </section>

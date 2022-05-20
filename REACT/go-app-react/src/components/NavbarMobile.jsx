@@ -2,6 +2,9 @@ import React from "react";
 import '../assets/css/style.complaint.css';
 import '../assets/css/style.components.css';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleUp, faHouse, faMagnifyingGlass, faUserMinus } from "@fortawesome/free-solid-svg-icons";
+
 
 function NavbarMobile() {
     return (
@@ -11,27 +14,27 @@ function NavbarMobile() {
                 <nav className="mobile-bottom-nav">
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><i className="fa-solid fa-house"></i></a>
+                            <a><FontAwesomeIcon icon={faHouse} /></a>
                         </div>
                     </div>
 
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><i className="fa-solid fa-magnifying-glass-chart"></i></a>
+                            <a><FontAwesomeIcon icon={faMagnifyingGlass} /></a>
                         </div>
                     </div>
 
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a><i className="fa-solid fa-user-minus"></i></a>
+                            <a><FontAwesomeIcon icon={faUserMinus} /></a>
                         </div>
                     </div>
 
 
                     <div className="nav__itens__links">
                         <div className="mobile-bottom-nav__item-content">
-                            <label for="modal-1">
-                                <i className="fa-solid fa-angle-up icon__mobile"></i>
+                            <label htmlFor="modal-1">
+                                <FontAwesomeIcon icon={faAngleUp} className="icon__mobile" />
                             </label>
                         </div>
                     </div>

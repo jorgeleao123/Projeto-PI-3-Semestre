@@ -16,7 +16,7 @@ function PerfilColorForm() {
             <input type="color" />
           </div>
           <div className="ipts__dash">
-          <label for="Alterar Nome">Alterar Nome</label>
+          <label htmlFor="Alterar Nome">Alterar Nome</label>
           <input type="text" name="" id="" />
         </div>
         </div>

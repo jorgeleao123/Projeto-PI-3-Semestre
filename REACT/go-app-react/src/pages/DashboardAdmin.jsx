@@ -1,5 +1,4 @@
 import React from "react";
-// import {useNavigate} from "react-router-dom";
 
 // Falta React Router dom
 import '../assets/css/style.components.css';
@@ -19,8 +18,6 @@ import TableSearch from '../components/AdminAdd/TableSearch';
 import SearchInput from '../components/SearchInput';
 
 function DashboardAdmin(){
-
-    // const navegador = useNavigate();
 
     return (
         <>

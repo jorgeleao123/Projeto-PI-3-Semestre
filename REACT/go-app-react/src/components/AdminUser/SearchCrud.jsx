@@ -4,13 +4,16 @@ import '../../assets/css/style.table.css';
 import '../../assets/css/style.components.css';
 import '../../assets/css/style.complaint.css';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
 
 function SearchCrud() {
   return (
     <>
       {/*Search crud*/}
-      <section ClassName="content__feed">
-        <div ClassName="flex__box">
+      <section className="content__feed">
+        <div className="flex__box">
         <table>
           <thead>
             <tr>
@@ -27,7 +30,8 @@ function SearchCrud() {
               <td data-label="Email">rafa.kim@gmail.com</td>
               <td data-label="Publicações">20</td>
               <td data-label="Contestações">15</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
+              <td data-label=""><button className="remove__button">
+              <FontAwesomeIcon icon={faTrash} /></button></td>
             </tr>
             
             <tr>
@@ -35,40 +39,11 @@ function SearchCrud() {
               <td data-label="Email">fulaninho@gmail.com</td>
               <td data-label="Publicações">5</td>
               <td data-label="Contestações">0</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
+              <td data-label=""><button className="remove__button">
+              <FontAwesomeIcon icon={faTrash} /></button></td>
               
             </tr>
             
-            <tr>
-              <td data-label="Nome">Rafaella Kimberlly</td>
-              <td data-label="Email">rafa.kim@gmail.com</td>
-              <td data-label="Publicações">20</td>
-              <td data-label="Contestações">15</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
-            </tr>
-            <tr>
-              <td data-label="Nome">Rafaella Kimberlly</td>
-              <td data-label="Email">rafa.kim@gmail.com</td>
-              <td data-label="Publicações">20</td>
-              <td data-label="Contestações">15</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
-            </tr>
-
-            <tr>
-              <td data-label="Nome">Rafaella Kimberlly</td>
-              <td data-label="Email">rafa.kim@gmail.com</td>
-              <td data-label="Publicações">20</td>
-              <td data-label="Contestações">15</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
-            </tr>
-
-            <tr>
-              <td data-label="Nome">Rafaella Kimberlly</td>
-              <td data-label="Email">rafa.kim@gmail.com</td>
-              <td data-label="Publicações">20</td>
-              <td data-label="Contestações">15</td>
-              <td data-label=""><button ClassName="remove__button"><i ClassName="fa-solid fa-trash"></i></button></td>
-            </tr>
           </tbody>
         </table>
       </div>

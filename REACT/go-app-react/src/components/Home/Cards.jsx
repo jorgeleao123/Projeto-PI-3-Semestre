@@ -9,52 +9,52 @@ function Cards() {
   return (
     <>
       {/*Cards*/}
-      <div ClassName="container__card">
-          <div ClassName="content__card">
+      <div className="container__card">
+          <div className="content__card">
 
-            <div ClassName="card__dash">
-              <div ClassName="info_card">
+            <div className="card__dash">
+              <div className="info_card">
                 <h4>publicações</h4>
-                <span ClassName="flex data__tab">
+                <span className="flex data__tab">
                   <p>Denuncias Publicadas</p>
                 </span>
               </div>
 
 
-              <div ClassName="num__card">
-                <div ClassName="num__card__progress">
+              <div className="num__card">
+                <div className="num__card__progress">
                   <h1>75</h1>
                 </div>
               </div>
             </div>
 
 
-            <div ClassName="card__dash">
-              <div ClassName="info_card">
+            <div className="card__dash">
+              <div className="info_card">
                 <h4>Contestações</h4>
-                <span ClassName="flex data__tab">
+                <span className="flex data__tab">
                   <p>Contestações feitas</p>
                 </span>
               </div>
 
 
-              <div ClassName="num__card">
-                <div ClassName="num__card__progress">
+              <div className="num__card">
+                <div className="num__card__progress">
                   <h1>75</h1>
                 </div>
               </div>
             </div>
 
-            <div ClassName="card__dash">
-              <div ClassName="info_card">
+            <div className="card__dash">
+              <div className="info_card">
                 <h4>Buscas</h4>
-                <span ClassName="flex data__tab">
+                <span className="flex data__tab">
                   <p>Buscas feitas</p>
                 </span>
               </div>
 
-              <div ClassName="num__card">
-                <div ClassName="num__card__progress">
+              <div className="num__card">
+                <div className="num__card__progress">
                   <h1>75</h1>
                 </div>
               </div>

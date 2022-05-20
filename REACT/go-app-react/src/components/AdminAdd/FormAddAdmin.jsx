@@ -6,26 +6,26 @@ import '../../assets/css/style.components.css';
 function FormAddAdmin() {
     return (
         <>
-        <div className="content__form">
+        <div className="content__htmlForm">
           <div>
             <div className="flex__gap">
               <div className="style__ipt">
-                <label for="Nome">Nome</label>
+                <label htmlFor="Nome">Nome</label>
                 <input type="text" name="" id="" />
               </div>
               <div className="style__ipt">
-                <label for="Cargo">Cargo</label>
+                <label htmlFor="Cargo">Cargo</label>
                 <input type="text" name="" id="" />
               </div>
             </div>
             <div>
               <div className="flex__gap">
                 <div className="style__ipt">
-                  <label for="Alterar senha">Senha</label>
+                  <label htmlFor="Alterar senha">Senha</label>
                   <input type="password" name="" id="" />
                 </div>
                 <div className="style__ipt">
-                  <label for="Confirmar senha">Confirmar senha</label>
+                  <label htmlFor="Confirmar senha">Confirmar senha</label>
                   <input type="password" name="" id="" />
                 </div>
               </div>
