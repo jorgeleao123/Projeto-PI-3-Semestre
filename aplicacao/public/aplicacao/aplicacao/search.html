@@ -120,11 +120,11 @@
                 <div class="padding__card">
                     <div class="flex justify">
                         <h5>Publicações</h5>
-                        <span id="data__pub" class="data__user">5</span>
+                        <span id="qntPublicacoes" class="data__user"></span>
                     </div>
                     <div class="flex justify top">
                         <h5>Buscas</h5>
-                        <span id="data__bus" class="data__user">5</span>
+                        <span id="qntPesquisas" class="data__user"></span>
                     </div>
                 </div>
             </div>
@@ -507,6 +507,8 @@
         })
         .then((resp) => {
             console.log('PASSOU');
+            sessionStorage.setItem('qnt_publicacoes', resp.data.length);
+            document.getElementById('qntPublicacoes').innerHTML += sessionStorage.qnt_publicacoes;
             resp.data.map(item => {
                 bo = false;
                 item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;

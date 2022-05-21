@@ -464,152 +464,182 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
-    function loadPage(){
-        setCity();
-        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
-        document.getElementById('city').innerHTML += `${sessionStorage.user_city}`;
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
-        getBuscas();
-        loadComplaints();
-    }
+var typeClass = "";
 
-    function loadComplaints(){
-        event.preventDefault();
-        axios.get(`http://localhost:8080/complaints/city`, {
-            headers: {
-                city: sessionStorage.getItem('user_city')
-            }
-        })
-        .then((resp) => {
-            console.log('ENTROU');
-            console.log(resp);
-            sessionStorage.setItem('qnt_publicacoes', resp.data.length);
-            document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
-            console.log('FOI');
-            console.log(resp.data.length);
-            resp.data.map(item => {
-                console.log('ENTROU NO MAP, VAI VIR O JSON A BAIXO');
-                console.log(item);
-                var userData = JSON.stringify(item); 
-                document.getElementById('publicacoes').innerHTML += `
-                    <div class="content__complaint">
-                        <div class="header__complaint flex justify">
-                            <div class="flex">
-                                <div class="icon__complaint icon__user icon__user__initial">
-                                    <span class="initial__user" id="initialPublication">${item.user.name[0]}</span>
-                                </div>
-                                <span class="infos__user__complaint">
-                                    <h4 id="nameUser">${item.user.name[0]}***************</h4>
-                                    <p id="gender">${item.user.genre}</p>
-                                </span>
-                            </div>
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="label__modal" for="${item.id}">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </label>
-                            <!----------- modal funcionalidades ----------->
-                            <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                            <input class="modal-state" id="${item.id}" type="checkbox" />
-                            <div class="modal__functions">
-                                <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                                <label class="" for="${item.id}"></label>
-                                <div class="modal__inner__func">
-                                    <form action="">
-                                        <p style="cursor: pointer;" class="options__modal__user" onclick='save(${item.id})'><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso">Salvar</p>
-                                        <a href="./contest.html">
-                                            <p style="cursor: pointer;" class="options__modal__user"><input
-                                                    style="display: none; cursor: pointer;" type="submit"
-                                                    class="option__modal__user" value="idCaso">Denunciar</p>
-                                        </a>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+function loadPage(){
+    setCity();
+    getBuscas();
+    loadComplaints();
+    loadHtml();
+}
 
-                        <span class="check__complaint">
-                            <h6>Possui boletim de ocorrencia</h6>
-                            <i class="fa-solid fa-certificate"></i>
-                        </span>
-                        <div class="infos__complaint">
-                            <p id="textComplaint">
-                                ${item.description}
-                            </p>
-                        </div>
-
-                        <div class="photos__complaint">
-                            <div class="item shrink-1-basis">
-                                <img src="./assets/img/print-uber.png" alt="">
-                            </div>
-                            <div class="item shrink-1-basis">
-                                <img src="./assets/img/photo-uber.png" alt="">
-                            </div>
-                        </div>
-
-                        <div class="more__infos__complaint flex justify">
-                            <div class="classification__complaint">
-                                <div class="circle__assedio circle__classification"></div>
-                                <h6>Classificação do caso: <span id="classificationPub">Assédio</span></h6>
-                            </div>
-                            <span class="location__conplaint" id="locationComplaint">
-                                ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
-                            </span>
-                        </div>
-                        <div class="hr margin-bottom"></div>
-                    </div>
-                `;
-            })
-        })
-    }
-
-    function save(id) {
-
-        event.preventDefault();
-        data = {
-            userId: sessionStorage.user_id,
-            complaintId: id
+function loadComplaints(){
+    event.preventDefault();
+    axios.get(`http://localhost:8080/complaints/city`, {
+        headers: {
+            city: sessionStorage.getItem('user_city')
         }
-        axios.post(`http://localhost:8080/complaints-saved`, data)
-            .then((resp) => {
-                console.log('FUNCIONOU');
-                alert("salvo");
-            })
-            .catch((err) => {
-                alert('ERROR');
-            })
-
-    }
-
-    function getBuscas(){
-        axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
-        .then((resp) => {
-            document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+    })
+    .then((resp) => {
+        sessionStorage.setItem('qnt_publicacoes', resp.data.length);
+        resp.data.map(item => {
+            getComplaint(item);
         })
-    }
+    })
+}
 
-    function setCity(){
-        axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
-        .then((resp) => {
-            alert('Pegou dado do usuário');
-            sessionStorage.user_city = resp.data[0].city;
-            console.log('setou a variável: ' + sessionStorage.getItem('user_city'));
-        })
-    }
+function getComplaint(item){
+    document.getElementById('publicacoes').innerHTML += `
+        <div class="content__complaint">
+            <div class="header__complaint flex justify">
+                <div class="flex">
+                    <div class="icon__complaint icon__user icon__user__initial">
+                        <span class="initial__user" id="initialPublication">${item.user.name[0]}</span>
+                    </div>
+                    <span class="infos__user__complaint">
+                        <h4 id="nameUser">${item.user.name[0]}***************</h4>
+                        <p id="gender">${item.user.genre}</p>
+                    </span>
+                </div>
+                <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                <label class="label__modal" for="${item.id}">
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </label>
+                <!----------- modal funcionalidades ----------->
+                <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
+                <input class="modal-state" id="${item.id}" type="checkbox" />
+                <div class="modal__functions">
+                    <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
+                    <label class="" for="${item.id}"></label>
+                    <div class="modal__inner__func">
+                        <form action="">
+                            <p style="cursor: pointer;" class="options__modal__user" onclick='save(${item.id})'><input
+                                    style="display: none; cursor: pointer;" type="submit"
+                                    class="option__modal__user" value="idCaso">Salvar</p>
+                            <a href="./contest.html">
+                                <p style="cursor: pointer;" class="options__modal__user"><input
+                                        style="display: none; cursor: pointer;" type="submit"
+                                        class="option__modal__user" value="idCaso">Denunciar</p>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-    function getSearch(){
-        let uriParam = document.getElementById('uriParamComplaint').value;
-        let endPoint = document.getElementById('endPointComplaint').value;
-        sessionStorage.setItem('uriParamComplaint', uriParam);
-        sessionStorage.setItem('endPointComplaint', endPoint);
-        window.open("./search.html");
+            <span class="check__complaint">
+                <h6>Possui boletim de ocorrencia</h6>
+                <i class="fa-solid fa-certificate"></i>
+            </span>
+            <div class="infos__complaint">
+                <p id="textComplaint">
+                    ${item.description}
+                </p>
+            </div>
+
+            <div class="photos__complaint">
+                <div class="item shrink-1-basis">
+                    <img src="./assets/img/print-uber.png" alt="">
+                </div>
+                <div class="item shrink-1-basis">
+                    <img src="./assets/img/photo-uber.png" alt="">
+                </div>
+            </div>
+
+            <div class="more__infos__complaint flex justify">
+                <div class="classification__complaint">
+                    <div class="${getPublicationType(item.type, typeClass)}"></div>
+                    <h6>Classificação do caso: <span id="classificationPub">${item.type}</span></h6>
+                </div>
+                <span class="location__conplaint" id="locationComplaint">
+                    ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                </span>
+            </div>
+            <div class="hr margin-bottom"></div>
+        </div>
+    `;
+}
+
+function save(id) {
+    event.preventDefault();
+    axios.post(`http://localhost:8080/complaints-saved`, {
+        userId: sessionStorage.user_id,
+        complaintId: id
+    })
+    .then((resp) => {
+        console.log('FUNCIONOU');
+        alert("salvo");
+    })
+    .catch((err) => {
+        alert('ERROR');
+    })
+}
+
+function getPublicationType(type, typeClass){
+    switch (type){
+        case "Assédio":
+            typeClass = "circle__assedio circle__classification";
+            break;
+        case "Assédio Moral":
+            typeClass = "circle__assedio__moral circle__classification";
+            break;
+        case "Racismo":
+            typeClass = "circle__racism circle__classification";
+            break;
+        case "Agressão Física":
+            typeClass = "circle__agressao__fisica circle__classification";
+            break;
+        case "Agressão Verbal":
+            typeClass = "circle__agressao__verbal circle__classification";
+            break;
+        case "Homofobia":
+            typeClass = "circle__homofobia circle__classification";
+            break;
+        case "Preconceito":
+            typeClass = "circle__preconceito circle__classification";
+            break;
+        case "Furto":
+            typeClass = "circle__furto circle__classification";
+            break;
     }
+    return typeClass;
+}
+
+function getBuscas(){
+    axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
+    .then((resp) => {
+        document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+    })
+}
+
+function setCity(){
+    axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
+    .then((resp) => {
+        alert('Pegou dado do usuário');
+        sessionStorage.user_city = resp.data[0].city;
+        console.log('setou a variável: ' + sessionStorage.getItem('user_city'));
+    })
+}
+
+function getSearch(){
+    let uriParam = document.getElementById('uriParamComplaint').value;
+    let endPoint = document.getElementById('endPointComplaint').value;
+    sessionStorage.setItem('uriParamComplaint', uriParam);
+    sessionStorage.setItem('endPointComplaint', endPoint);
+    window.open("./search.html");
+}
+
+function loadHtml(){
+    document.getElementById('city').innerHTML += sessionStorage.user_city;
+    document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+    document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+    document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+    document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
+    document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
+    document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
+    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
+}
 
 </script>
 </html>
