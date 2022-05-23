@@ -465,6 +465,7 @@
 <script>
 
 var typeClass = "";
+var bo = false;
 
 function loadPage(){
     setCity();
@@ -489,6 +490,7 @@ function loadComplaints(){
 }
 
 function getComplaint(item){
+    item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
     document.getElementById('publicacoes').innerHTML += `
         <div class="content__complaint">
             <div class="header__complaint flex justify">
@@ -527,7 +529,7 @@ function getComplaint(item){
             </div>
 
             <span class="check__complaint">
-                <h6>Possui boletim de ocorrencia</h6>
+                <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
                 <i class="fa-solid fa-certificate"></i>
             </span>
             <div class="infos__complaint">
@@ -614,9 +616,7 @@ function getBuscas(){
 function setCity(){
     axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
     .then((resp) => {
-        alert('Pegou dado do usuário');
         sessionStorage.user_city = resp.data[0].city;
-        console.log('setou a variável: ' + sessionStorage.getItem('user_city'));
     })
 }
 

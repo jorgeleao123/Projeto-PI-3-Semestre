@@ -18,7 +18,7 @@
 
 </head>
 
-<body style="overflow-y: scroll">
+<body style="overflow-y: scroll" onload="loadPage()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -69,7 +69,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial1"></span>
                     </div>
                 </div>
             </div>
@@ -127,17 +127,17 @@
             <div class="card__perfil__mobile__print">
                 <div class="flex padding__card">
                     <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial2"></span>
                     </div>
                     <span>
-                        <h4 id="nameUser" class="nameUser">Rafaella Kimberlly</h4>
+                        <h4 id="nameUser" class="nameUser"></h4>
                     </span>
                 </div>
             </div>
         </div>
 
         <section class="content__feed contestation">
-            <div class="container__feed__contestation">
+            <div class="container__feed__contestation" id="feedContestation">
                 <!-- tópico -->
                 <div class="top__contest flex justify">
                     <p style="min-width: 180px;"><b> Status das Contestações</b></p>
@@ -145,172 +145,15 @@
                 </div>
 
 
-                <!-- contestação -->
-                <div class="content__complaint">
-                    <div class="flex justify topic__cont">
-                        <span class="date__contestation">Contestação feita no dia: 12/05/2022</span>
-                        <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                    </div>
-                    <div class="header__complaint flex justify_step">
-                        <div class="flex">
-                            <div class="about__data">
-                                <div class="form">
-                                    <!-- dependendo do status é só marcar com checked o nivel  -->
-                                    <input class="check__one" type="radio" checked="checked" />
-                                    <input class="check__two" type="radio" />
-                                    <input class="check__tree" type="radio" />
-
-                                    <div class="stages">
-                                        <label>1</label>
-                                        <label>2</label>
-                                        <label>3</label>
-                                    </div>
-
-                                    <span class="progress"><span></span></span>
-                                    <div class="step__title">
-                                        <p style="margin-right:18px;">Enviada</p>
-                                        <p>Em análise</p>
-                                        <p>Conclúida</p>
-                                    </div>
-
-                                    <div class="panels">
-                                        <!-------------------------------------- step 1 ---------------------------------------->
-                                         <label class="message__step">
-                                            <span class="icon__message__step">
-                                                <i class="fa-solid fa-paper-plane"></i>
-                                            </span>
-                                            <h2 class="section__title about__title">Sua denúncia foi enviada com
-                                                sucesso</h2>
-                                            <p class="about__description">Estamos aguardando o BackOffice
-                                                iniciar a análise da sua denúncia,
-                                                geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
-                                                esta página.</p>
-                                        </label> 
-                                    </div>
-                                </div>
-                                </form>
-                                <div class="bottom__link__contestation">
-                                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hr"></div>
+                
                 <!-- contestação  -->
 
 
                 <!-- contestação -->
-                <div class="content__complaint">
-                    <div class="flex justify topic__cont">
-                        <span class="date__contestation">Contestação feita no dia: 22/05/2022</span>
-                        <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                    </div>
-                    <div class="header__complaint flex justify_step">
-                        <div class="flex">
-                            <div class="about__data">
-                                <div class="form">
-                                    <!-- dependendo do status é só marcar com checked o nivel  -->
-                                    <input class="check__one" type="radio" checked="checked" />
-                                    <input class="check__two" type="radio" checked="checked" />
-                                    <input class="check__tree" type="radio" />
-
-                                    <div class="stages">
-                                        <label>1</label>
-                                        <label>2</label>
-                                        <label>3</label>
-                                    </div>
-
-                                    <span class="progress"><span></span></span>
-                                    <div class="step__title">
-                                        <p style="margin-right:18px;">Enviada</p>
-                                        <p>Em análise</p>
-                                        <p>Conclúida</p>
-                                    </div>
-
-                                    <div class="panels">
-                                        <!-------------------------------------- step 2 ---------------------------------------->
-                                           <label class="message__step">
-                                                <span class="icon__message__step">
-                                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                                </span>
-                                                <h2 class="section__title about__title">Sua denúncia está sendo
-                                                    analisada</h2>
-                                                <p class="about__description">Estamos analisando a sua denúncia e
-                                                    verificando todos os pontos,
-                                                    geralmente isso leva de 2 a 3 dias. Para acompanhar o processo basta
-                                                    verificar aqui.</p>
-                                        </label> 
-                                    </div>
-                                </div>
-                                </form>
-                                <div class="bottom__link__contestation">
-                                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hr"></div>
+                
                 <!-- contestação  -->
 
-                                <!-- contestação -->
-                                <div class="content__complaint">
-                                    <div class="flex justify topic__cont">
-                                        <span class="date__contestation">Contestação feita no dia: 30/05/2022</span>
-                                        <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                                    </div>
-                                    <div class="header__complaint flex justify_step">
-                                        <div class="flex">
-                                            <div class="about__data">
-                                                <div class="form">
-                                                    <!-- dependendo do status é só marcar com checked o nivel  -->
-                                                    <input class="check__one" type="radio" checked="checked" />
-                                                    <input class="check__two" type="radio" checked="checked" />
-                                                    <input class="check__tree" type="radio" checked="checked" />
-                
-                                                    <div class="stages">
-                                                        <label>1</label>
-                                                        <label>2</label>
-                                                        <label>3</label>
-                                                    </div>
-                
-                                                    <span class="progress"><span></span></span>
-                                                    <div class="step__title">
-                                                        <p style="margin-right:18px;">Enviada</p>
-                                                        <p>Em análise</p>
-                                                        <p>Conclúida</p>
-                                                    </div>
-                
-                                                    <div class="panels">
-                                                        <!-------------------------------------- step 3 ---------------------------------------->
-                                                        <label class="message__step">
-                                                                <span class="icon__message__step">
-                                                                    <i class="fa-solid fa-eye"></i>
-                                                                </span>
-                                                                <h2 class="section__title about__title">Denúncia analisada</h2>
-                                                                <p class="about__description justify">Averiguamos todas as provas
-                                                                    enviadas e comparamos
-                                                                    com o relato e concluímos que a denúncia não apresenta nenhum motivo
-                                                                    para ser removida.</p>
-                
-                                                                <!-- caso tenha sido removida printar: -->
-                                                                <!-- <p class="about__description justify">Averiguamos todas as provas enviadas e comparamos
-                                                                    com o relato e removemos a denuncia.</p> -->
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                </form>
-                                                <div class="bottom__link__contestation">
-                                                    <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hr"></div>
-                                <!-- contestação  -->
-
+                                
             </div>
 
             <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
@@ -475,13 +318,236 @@
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-    function getSearch(){
-        let uriParam = document.getElementById('uriParamComplaint').value;
-        let endPoint = document.getElementById('endPointComplaint').value;
-        sessionStorage.setItem('uriParamComplaint', uriParam);
-        sessionStorage.setItem('endPointComplaint', endPoint);
-        window.open("./search.html");
+
+function loadPage(){
+    getContestation();
+    loadHtml();
+}
+
+function getContestation(){
+
+    axios.get(`http://localhost:8080/contestations/user/${sessionStorage.getItem('user_id')}`)
+    .then((resp) => {
+        resp.data.map((item) => {
+            
+            let dia = item.dateTimeContestation.slice(8, 10);
+            let mes = item.dateTimeContestation.slice(5, 7);
+            let ano = item.dateTimeContestation.slice(0, 4);
+            let data = `${dia}/${mes}/${ano}`;
+            getStatusContestation(item.status, data);
+            
+        })
+        console.log(resp);
+    })
+    
+}
+
+function getStatusContestation(status, data){
+    switch(status){
+        case "enviada":
+            getEnviada(data);
+            break;
+        case "em análise":
+            getEmAnalise(data);
+            break;
+        case "concluída":
+            getConcluida(data);
+            break;
     }
+}
+
+function getEnvada(data){
+    document.getElementById('feedContestation').innerHTML += `
+        <!-- contestação -->
+        <div class="content__complaint">
+            <div class="flex justify topic__cont">
+                <span class="date__contestation" id="contestationDate">Contestação feita no dia: ${data}</span>
+                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+            </div>
+            <div class="header__complaint flex justify_step">
+                <div class="flex">
+                    <div class="about__data">
+                        <div class="form">
+                            <!-- dependendo do status é só marcar com checked o nivel  -->
+                            <input class="check__one" type="radio" checked="checked" />
+                            <input class="check__two" type="radio" />
+                            <input class="check__tree" type="radio" />
+
+                            <div class="stages">
+                                <label>1</label>
+                                <label>2</label>
+                                <label>3</label>
+                            </div>
+
+                            <span class="progress"><span></span></span>
+                            <div class="step__title">
+                                <p style="margin-right:18px;">Enviada</p>
+                                <p>Em análise</p>
+                                <p>Conclúida</p>
+                            </div>
+
+                            <div class="panels">
+                                <!-------------------------------------- step 1 ---------------------------------------->
+                                <label class="message__step">
+                                    <span class="icon__message__step">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </span>
+                                    <h2 class="section__title about__title">Sua denúncia foi enviada com
+                                        sucesso</h2>
+                                    <p class="about__description">Estamos aguardando o BackOffice
+                                        iniciar a análise da sua denúncia,
+                                        geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
+                                        esta página.</p>
+                                </label> 
+                            </div>
+                        </div>
+                        </form>
+                        <div class="bottom__link__contestation">
+                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+    `;
+}
+
+function getEmAnalise(data){
+    document.getElementById('feedContestation').innerHTML += `
+        <div class="content__complaint">
+            <div class="flex justify topic__cont">
+                <span class="date__contestation" id="contestationDate">Contestação feita no dia: ${data}</span>
+                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+            </div>
+            <div class="header__complaint flex justify_step">
+                <div class="flex">
+                    <div class="about__data">
+                        <div class="form">
+                            <!-- dependendo do status é só marcar com checked o nivel  -->
+                            <input class="check__one" type="radio" checked="checked" />
+                            <input class="check__two" type="radio" checked="checked" />
+                            <input class="check__tree" type="radio" />
+
+                            <div class="stages">
+                                <label>1</label>
+                                <label>2</label>
+                                <label>3</label>
+                            </div>
+
+                            <span class="progress"><span></span></span>
+                            <div class="step__title">
+                                <p style="margin-right:18px;">Enviada</p>
+                                <p>Em análise</p>
+                                <p>Conclúida</p>
+                            </div>
+
+                            <div class="panels">
+                                <!-------------------------------------- step 2 ---------------------------------------->
+                                <label class="message__step">
+                                        <span class="icon__message__step">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </span>
+                                        <h2 class="section__title about__title">Sua denúncia está sendo
+                                            analisada</h2>
+                                        <p class="about__description">Estamos analisando a sua denúncia e
+                                            verificando todos os pontos,
+                                            geralmente isso leva de 2 a 3 dias. Para acompanhar o processo basta
+                                            verificar aqui.</p>
+                                </label> 
+                            </div>
+                        </div>
+                        </form>
+                        <div class="bottom__link__contestation">
+                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+    `;
+}
+
+function getConcluida(data){
+    document.getElementById('feedContestation').innerHTML += `
+        <!-- contestação -->
+        <div class="content__complaint">
+            <div class="flex justify topic__cont">
+                <span class="date__contestation">Contestação feita no dia: ${data}</span>
+                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+            </div>
+            <div class="header__complaint flex justify_step">
+                <div class="flex">
+                    <div class="about__data">
+                        <div class="form">
+                            <!-- dependendo do status é só marcar com checked o nivel  -->
+                            <input class="check__one" type="radio" checked="checked" />
+                            <input class="check__two" type="radio" checked="checked" />
+                            <input class="check__tree" type="radio" checked="checked" />
+
+                            <div class="stages">
+                                <label>1</label>
+                                <label>2</label>
+                                <label>3</label>
+                            </div>
+
+                            <span class="progress"><span></span></span>
+                            <div class="step__title">
+                                <p style="margin-right:18px;">Enviada</p>
+                                <p>Em análise</p>
+                                <p>Conclúida</p>
+                            </div>
+
+                            <div class="panels">
+                                <!-------------------------------------- step 3 ---------------------------------------->
+                                <label class="message__step">
+                                        <span class="icon__message__step">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </span>
+                                        <h2 class="section__title about__title">Denúncia analisada</h2>
+                                        <p class="about__description justify">Averiguamos todas as provas
+                                            enviadas e comparamos
+                                            com o relato e concluímos que a denúncia não apresenta nenhum motivo
+                                            para ser removida.</p>
+
+                                        <!-- caso tenha sido removida printar: -->
+                                        <!-- <p class="about__description justify">Averiguamos todas as provas enviadas e comparamos
+                                            com o relato e removemos a denuncia.</p> -->
+                                </label>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="bottom__link__contestation">
+                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <!-- contestação  -->
+
+    `;
+}
+
+function loadHtml(){
+    document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+    document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+    document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+    
+}
+
+function getSearch(){
+    let uriParam = document.getElementById('uriParamComplaint').value;
+    let endPoint = document.getElementById('endPointComplaint').value;
+    sessionStorage.setItem('uriParamComplaint', uriParam);
+    sessionStorage.setItem('endPointComplaint', endPoint);
+    window.open("./search.html");
+}
+
 </script>
 </html>
