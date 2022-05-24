@@ -10,7 +10,6 @@ import ModalNavbarMobile from '../components/ModalNavbarMobile';
 import Navbar from '../components/Navbar';
 import NavbarMobile from '../components/NavbarMobile';
 import PerfilColorForm from '../components/AdminProfile/PerfilColorForm';
-import PerfilFormInfo from '../components/AdminProfile/PerfilFormInfo'
 
 function DashboardProfile(){
     return (
@@ -23,8 +22,6 @@ function DashboardProfile(){
                     <Divider titulo="Perfil" />
                     <section className="flex__box">
                     <PerfilColorForm />
-                    <Divider titulo="Mais informações" />
-                    <PerfilFormInfo />
                     </section>
                     <ModalNavbarMobile />
                 </main>
