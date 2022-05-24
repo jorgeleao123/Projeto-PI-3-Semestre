@@ -3,6 +3,7 @@ package connect.go.models.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import javax.persistence.Column;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
@@ -14,7 +15,7 @@ public class ComplaintRegistration {
 
     private String description;
 
-    private String archive;
+    private byte[] archive;
 
     private String bo;
 

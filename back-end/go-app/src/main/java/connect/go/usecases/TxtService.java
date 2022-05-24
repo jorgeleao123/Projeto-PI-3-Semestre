@@ -116,7 +116,10 @@ public class TxtService {
         userRegistrations = new FilaObj<>(contaRegDadoLido);
         userResponses = new PilhaObj<>(contaRegDadoLido);
         for (int i = 0; i < listaUser.size(); i++) {
-            userRegistrations.insert(new UserRegistration(listaUser.get(i), listaAddress.get(i)));
+            userRegistrations.insert(new UserRegistration(listaUser.get(i).getName(),
+                    listaUser.get(i).getEmail(),listaUser.get(i).getPassword(),
+                    listaUser.get(i).getRole(), listaUser.get(i).getGenre(), listaUser.get(i).getBirthDate(),
+                    listaAddress.get(i).getState(), listaAddress.get(i).getCity(), listaAddress.get(i).getDistrict()));
         }
 
 

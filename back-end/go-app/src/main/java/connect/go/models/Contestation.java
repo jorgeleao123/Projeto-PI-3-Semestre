@@ -25,7 +25,8 @@ public class Contestation {
 
     private String description;
 
-    private String archive;
+    @Column(length = 50*1024*1024) // 50MB
+    private byte[] archive;
 
     private String status;
 
