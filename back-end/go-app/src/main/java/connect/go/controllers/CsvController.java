@@ -1,25 +1,24 @@
 package connect.go.controllers;
 
-import connect.go.exceptions.UserAlreadyExistsException;
 import connect.go.models.*;
+import connect.go.usecases.CsvService;
 import connect.go.usecases.ComplaintService;
+import connect.go.utils.ListaObj;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/reports")
 public class CsvController {
 
-    private final AppArquivoCsv csv = new AppArquivoCsv();
+    private final CsvService csv = new CsvService();
     private final ComplaintService complaintService;
 
     @GetMapping("/{city}")

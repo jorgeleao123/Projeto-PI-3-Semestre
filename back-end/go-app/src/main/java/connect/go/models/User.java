@@ -54,8 +54,8 @@ public class User {
         this.role = userRegistration.getRole();
         this.genre = userRegistration.getGenre();
         this.birthDate = userRegistration.getBirthDate();
-        this.colorMenu = "default";
-        this.colorProfile = "default";
+        this.colorMenu = "#144D6C";
+        this.colorProfile = "#1F869D";
         this.status = "ativo";
         this.searchCounter = 0;
         this.city = userRegistration.getCity();
