@@ -28,16 +28,4 @@ public class UserRegistration {
     private String city;
     @NotBlank
     private String district;
-
-    public UserRegistration(UserTxtDTO user, AddressTxtDTO address) {
-        this.name = user.getName();
-        this.email = user.getEmail();
-        this.password = user.getPassword();
-        this.role = user.getRole();
-        this.genre = user.getGenre();
-        this.birthDate = user.getBirthDate();
-        this.state = address.getState();
-        this.city = address.getCity();
-        this.district = address.getDistrict();
-    }
 }
