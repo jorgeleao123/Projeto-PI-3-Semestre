@@ -45,8 +45,6 @@ public class User {
 
     private Integer searchCounter;
 
-    private String city;
-
     public User(UserRegistration userRegistration) {
         this.name = userRegistration.getName();
         this.email = userRegistration.getEmail();
@@ -58,6 +56,5 @@ public class User {
         this.colorProfile = "#1F869D";
         this.status = "ativo";
         this.searchCounter = 0;
-        this.city = userRegistration.getCity();
     }
 }
