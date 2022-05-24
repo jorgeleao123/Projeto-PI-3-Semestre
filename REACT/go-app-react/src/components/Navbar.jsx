@@ -14,20 +14,10 @@ function Navbar() {
     document.getElementById("maindash").style.marginLeft = "250px";
   }
 
-  const [nameAdm, setNameAdm] = useState("Sem nome definido");
-  const [roleAdm, setRoleAdm] = useState("Sem cargo definido");
+  const [nameAdm, setNameAdm] = useState(sessionStorage.getItem("id_user"));
+  const [roleAdm, setRoleAdm] = useState(sessionStorage.getItem("id_user"));
 
   const navigate = useNavigate();
-
-  //requisição da api
-  api.get('/')
-  .then((resp) => {
-    setNameAdm(resp.data.name);
-    setRoleAdm(resp.data.role);
-  })
-  .catch((error) => {
-    console.error(error);  
-  })
 
   return (
     <>

@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-import '../../assets/css/style.table.css';
-import '../../assets/css/style.components.css';
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import "../../assets/css/style.table.css";
+import "../../assets/css/style.components.css";
+import api from "../../api";
+import TableLineCrudAdm from "./TableLineCrudAdm";
 
 function TableSearch() {
+  const [admins, setAdmins] = useState(new Array());
 
-  
+  useEffect(() => {
+    buscarDados();
+  }, [admins]);
+
+  function buscarDados() {
+    api
+      .get()
+      .then((resp) => {
+        setAdmins(resp.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+  function deleteAdm(id) {
+    api
+      .delete(`/users/${id}`)
+      .then(() => {
+        alert("Usuário excluido com sucesso!");
+        buscarDados();
+      })
+      .catch((error) => {
+        alert("Não foi possível excluir o usuário");
+        console.log(error);
+      });
+  }
 
   return (
     <>
@@ -24,27 +50,20 @@ function TableSearch() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td data-label="Nome">Rafaella Kimberlly</td>
-                <td data-label="Email">rafa.kim@gmail.com</td>
-                <td data-label="Cargo">20</td>
-                <td data-label=""><button className="remove__button">
-                <FontAwesomeIcon icon={faTrash} /></button></td>
-              </tr>
-
-              <tr>
-                <td data-label="Nome">Rafaella Kimberlly</td>
-                <td data-label="Email">rafa.kim@gmail.com</td>
-                <td data-label="Cargo">20</td>
-                <td data-label=""><button className="remove__button">
-                <FontAwesomeIcon icon={faTrash} /></button></td>
-              </tr>
-
+              {admins.map((i) => {
+                <TableLineCrudAdm
+                  id={i.id}
+                  nome={i.name}
+                  email={i.email}
+                  cargo={i.role}
+                  deleteAdm={deleteAdm}
+                />;
+              })}
             </tbody>
           </table>
         </div>
       </section>
     </>
-  )
+  );
 }
 export default TableSearch;

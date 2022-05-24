@@ -26,7 +26,7 @@ function SearchCrud() {
   }
 
   function deleteUser(id){
-    api.delete()
+    api.delete(`/users/${id}`)
         .then(() => {
             alert("Usuário excluido com sucesso!")
             buscarDados();
@@ -57,7 +57,7 @@ function SearchCrud() {
                 <TableLineCrud
                   id={i.id}
                   nome={i.name}
-                  email={i.emal}
+                  email={i.email}
                   publicacoes={i.publicacoes}
                   contestacoes={i.contestacoes}
                   deleteUser={deleteUser}
