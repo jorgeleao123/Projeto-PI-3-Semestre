@@ -609,7 +609,7 @@ function getPublicationType(type, typeClass){
 function getBuscas(){
     axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
     .then((resp) => {
-        document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+        // document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
     })
 }
 

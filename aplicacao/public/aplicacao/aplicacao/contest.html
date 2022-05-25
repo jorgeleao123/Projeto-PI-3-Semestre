@@ -123,9 +123,8 @@
                 <div class="more__inputs">
                     <div class="card__arq padding__card">
                         <h4>Adicionar Midia</h4>
-                        <button class="btn__anx">
-                            Anexar Arquivo
-                        </button>
+                        <input onchange="onImageChange(event)" class="btn__anx" type="file"
+                            placeholder="Anexar Arquivo">
                         <h6>Deixe a sua contextação ainda respostamais completa, caso tenha boletim de ocorrencia,
                             videos,
                             fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
@@ -388,14 +387,18 @@
 </html>
 
 <script>
+testetete = ''
     function registerContestation() {
         event.preventDefault();
+
+
         const data = {
             description: description.value,
-            archive: "string",
+            archive: testetete,
             userId: 1,
             complaintId: 1
         }
+
         axios.post(`http://localhost:8080/contestations`, data)
             .then((resp) => {
                 alert('Success', resp);
@@ -408,7 +411,56 @@
             })
     }
 
-    function getSearch(){
+
+    function onImageChange(event) {
+        const imageFile = URL.createObjectURL(event.target.files[0]);
+        createImage(imageFile, convertImage);
+    }
+
+    function createImage(imageFile, callback) {
+        const image = document.createElement('img');
+        image.onload = () => callback(image);
+        image.setAttribute('src', imageFile);
+    }
+
+    function convertImage(image) {
+        const canvas = drawImageToCanvas(image);
+        const ctx = canvas.getContext('2d');
+
+        let result = [];
+        for (let y = 0; y < canvas.height; y++) {
+            result.push([]);
+            for (let x = 0; x < canvas.width; x++) {
+                let data = ctx.getImageData(x, y, 1, 1).data;
+                result[y].push(data[0]);
+                result[y].push(data[1]);
+                result[y].push(data[2]);
+            }
+        }
+
+        const arrayCode = `
+    #define IMAGE_WIDTH ${canvas.width}
+    #define IMAGE_HEIGHT ${canvas.height}
+    #define BYTES_PER_PIXEL 3
+    uint8_t imageData[IMAGE_HEIGHT][IMAGE_WIDTH * BYTES_PER_PIXEL] = ${convertArray(result)};
+  `;
+        testetete = convertArray(result);
+        testetete -= testetete
+    }
+
+    function drawImageToCanvas(image) {
+        const canvas = document.createElement('canvas');
+        canvas.width = image.width;
+        canvas.height = image.height;
+        canvas.getContext('2d').drawImage(image, 0, 0, image.width, image.height);
+        return canvas;
+    }
+
+    function convertArray(array) {
+        return JSON.stringify(array).replace(/\[/g, '{').replace(/\]/g, '}');
+    }
+
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
