@@ -3,6 +3,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 //imports das páginas
 import Index from './pages/Index';
+import DashboardComplaint from './pages/DashboardComplaint';
 import DashboardAdmin from './pages/DashboardAdmin';
 import DashboardProfile from './pages/DashboardProfile';
 import DashboardUser from './pages/DashboardUser';
@@ -12,6 +13,7 @@ const Rotas = () => {
         <BrowserRouter>
             <Routes>
             <Route path="/" element={<Index />} />
+            <Route path='/complaint' element={<DashboardComplaint />} />
                 <Route path="/admin" element={<DashboardAdmin />} />
                 {/*pagina não encontrada:*/}
                 {/* <Route path="*" element={<NotFound />} /> */}
