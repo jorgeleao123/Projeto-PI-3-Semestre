@@ -139,9 +139,11 @@ public class ComplaintController {
     }
 
 
-    @PostMapping("/archive/{id}")
+    @PostMapping(value = "/archive/{id}", consumes = "Image/Jpeg")
     public ResponseEntity postArchive(@RequestBody byte[] archive,@PathVariable Integer id){
-        repository.setArchive(archive, id);
+        Complaint complaint = repository.findById(id).get();
+        complaint.setArchive(archive);
+        repository.save(complaint);
         return ResponseEntity.status(201).build();
     }
 
