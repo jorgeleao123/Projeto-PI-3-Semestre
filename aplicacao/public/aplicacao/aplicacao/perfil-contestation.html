@@ -145,15 +145,15 @@
                 </div>
 
 
-                
+
                 <!-- contestação  -->
 
 
                 <!-- contestação -->
-                
+
                 <!-- contestação  -->
 
-                                
+
             </div>
 
             <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
@@ -357,65 +357,40 @@ function getStatusContestation(status, data){
     }
 }
 
-function getEnvada(data){
-    document.getElementById('feedContestation').innerHTML += `
-        <!-- contestação -->
-        <div class="content__complaint">
-            <div class="flex justify topic__cont">
-                <span class="date__contestation" id="contestationDate">Contestação feita no dia: ${data}</span>
-                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-            </div>
-            <div class="header__complaint flex justify_step">
-                <div class="flex">
-                    <div class="about__data">
-                        <div class="form">
-                            <!-- dependendo do status é só marcar com checked o nivel  -->
-                            <input class="check__one" type="radio" checked="checked" />
-                            <input class="check__two" type="radio" />
-                            <input class="check__tree" type="radio" />
+    function getContestation() {
 
-                            <div class="stages">
-                                <label>1</label>
-                                <label>2</label>
-                                <label>3</label>
-                            </div>
+        axios.get(`http://localhost:8080/contestations/user/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                resp.data.map((item) => {
 
-                            <span class="progress"><span></span></span>
-                            <div class="step__title">
-                                <p style="margin-right:18px;">Enviada</p>
-                                <p>Em análise</p>
-                                <p>Conclúida</p>
-                            </div>
+                    let dia = item.dateTimeContestation.slice(8, 10);
+                    let mes = item.dateTimeContestation.slice(5, 7);
+                    let ano = item.dateTimeContestation.slice(0, 4);
+                    let data = `${dia}/${mes}/${ano}`;
+                    getStatusContestation(item.status, data);
 
-                            <div class="panels">
-                                <!-------------------------------------- step 1 ---------------------------------------->
-                                <label class="message__step">
-                                    <span class="icon__message__step">
-                                        <i class="fa-solid fa-paper-plane"></i>
-                                    </span>
-                                    <h2 class="section__title about__title">Sua denúncia foi enviada com
-                                        sucesso</h2>
-                                    <p class="about__description">Estamos aguardando o BackOffice
-                                        iniciar a análise da sua denúncia,
-                                        geralmente isso leva de 3 a 4 dias. Para acompanhar basta usar
-                                        esta página.</p>
-                                </label> 
-                            </div>
-                        </div>
-                        </form>
-                        <div class="bottom__link__contestation">
-                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="hr"></div>
-    `;
-}
+                })
+                console.log(resp);
+            })
 
-function getEmAnalise(data){
-    document.getElementById('feedContestation').innerHTML += `
+    }
+
+    function getStatusContestation(status, data) {
+        switch (status) {
+            case "em analise":
+                getEmAnalise(data);
+                break;
+            case "reprovado":
+                getConcluida(data,'não apresenta nenhum');
+                break;
+            case "aprovado":
+                getConcluida(data,'apresenta');
+                break;
+        }
+    }
+
+    function getEmAnalise(data) {
+        document.getElementById('feedContestation').innerHTML += `
         <div class="content__complaint">
             <div class="flex justify topic__cont">
                 <span class="date__contestation" id="contestationDate">Contestação feita no dia: ${data}</span>
@@ -468,10 +443,10 @@ function getEmAnalise(data){
         </div>
         <div class="hr"></div>
     `;
-}
+    }
 
-function getConcluida(data){
-    document.getElementById('feedContestation').innerHTML += `
+    function getConcluida(data,texto) {
+        document.getElementById('feedContestation').innerHTML += `
         <!-- contestação -->
         <div class="content__complaint">
             <div class="flex justify topic__cont">
@@ -509,7 +484,7 @@ function getConcluida(data){
                                         <h2 class="section__title about__title">Denúncia analisada</h2>
                                         <p class="about__description justify">Averiguamos todas as provas
                                             enviadas e comparamos
-                                            com o relato e concluímos que a denúncia não apresenta nenhum motivo
+                                            com o relato e concluímos que a denúncia ${texto} motivo
                                             para ser removida.</p>
 
                                         <!-- caso tenha sido removida printar: -->
@@ -530,22 +505,23 @@ function getConcluida(data){
         <!-- contestação  -->
 
     `;
-}
+    }
 
-function loadHtml(){
-    document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-    document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    
-}
+    function loadHtml() {
+        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
 
-function getSearch(){
-    let uriParam = document.getElementById('uriParamComplaint').value;
-    let endPoint = document.getElementById('endPointComplaint').value;
-    sessionStorage.setItem('uriParamComplaint', uriParam);
-    sessionStorage.setItem('endPointComplaint', endPoint);
-    window.open("./search.html");
-}
+    }
+
+    function getSearch() {
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.location.href ="./search.html";
+    }
 
 </script>
+
 </html>
