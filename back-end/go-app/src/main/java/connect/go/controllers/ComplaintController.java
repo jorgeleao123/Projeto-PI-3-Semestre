@@ -84,7 +84,6 @@ public class ComplaintController {
         Complaint complaint = new Complaint();
         complaint.setBo(complaintRegistration.getBo());
         complaint.setDescription(complaintRegistration.getDescription());
-        complaint.setArchive(complaintRegistration.getArchive());
         complaint.setType(complaintRegistration.getType());
         complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
         complaint.setAddress(address);
@@ -118,7 +117,6 @@ public class ComplaintController {
         if (complaint.getUser().getId().equals(userId)) {
             complaint.setBo(complaintRegistration.getBo());
             complaint.setDescription(complaintRegistration.getDescription());
-            complaint.setArchive(complaintRegistration.getArchive());
             complaint.setType(complaintRegistration.getType());
             complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
             complaint.setDateTimePost(LocalDateTime.now());
@@ -130,6 +128,20 @@ public class ComplaintController {
                     "Sua denúncia foi atualizada",
                     "Você já pode visualizá-la em minhas denúncias e verificar se foi corrigido");
             return ResponseEntity.status(200).body(complaint);
+        } else {
+            throw new UserNotFoundException();
+        }
+    }
+
+    @PutMapping("/archive/{userId}/{complaintId}")
+    public ResponseEntity<Complaint> addArchiveComplaint(@PathVariable Integer userId,
+                                                         @PathVariable Integer complaintId,
+                                                     @RequestBody byte[] archive) {
+        Complaint complaint = complaintService.getComplaintById(complaintId);
+        if (complaint.getUser().getId().equals(userId)) {
+            complaint.setArchive(archive);
+            complaint = complaintService.register(complaint);
+            return ResponseEntity.status(201).body(complaint);
         } else {
             throw new UserNotFoundException();
         }

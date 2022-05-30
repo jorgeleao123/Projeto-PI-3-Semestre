@@ -81,6 +81,8 @@ class AddressServiceTest {
         user.setPassword("senhaTeste");
         user.setRole("Usuario");
         user.setGenre("Masculino");
+        user.setColorProfile("cor");
+        user.setColorMenu("cor");
         user = userService.register(user);
         Address address = service.register(generateValidAdderss());
         Address address2 = generateValidAdderss();

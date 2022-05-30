@@ -15,8 +15,6 @@ public class ComplaintRegistration {
 
     private String description;
 
-    private byte[] archive;
-
     private String bo;
 
     private String driverName;
