@@ -332,13 +332,11 @@ function getContestation(){
     axios.get(`http://localhost:8080/contestations/user/${sessionStorage.getItem('user_id')}`)
     .then((resp) => {
         resp.data.map((item) => {
-            
             let dia = item.dateTimeContestation.slice(8, 10);
             let mes = item.dateTimeContestation.slice(5, 7);
             let ano = item.dateTimeContestation.slice(0, 4);
             let data = `${dia}/${mes}/${ano}`;
             getStatusContestation(item.status, data);
-            
         })
         console.log(resp);
     })

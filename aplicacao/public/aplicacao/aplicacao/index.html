@@ -409,15 +409,15 @@
                     <div>
                         <p>Faça sua busca</p>
                         <span class="nav__mobile__input">
-                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
-                                <option value="">Placa</option>
+                            <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                            <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                                <option value="license">Placa</option>
                                 <option value="">Nome/Placa</option>
-                                <option value="">Cidade</option>
-                                <option value="">Bairro</option>
-                                <option value="">Estado</option>
+                                <option value="city">Cidade</option>
+                                <option value="district">Bairro</option>
+                                <option value="state">Estado</option>
                             </select>
-                            <a href="./search.html"
+                            <a class="search__icon" onclick="getSearch()"> <i
                                 style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
                                 <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
@@ -609,7 +609,7 @@ function getPublicationType(type, typeClass){
 function getBuscas(){
     axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
     .then((resp) => {
-        document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+        //document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
     })
 }
 

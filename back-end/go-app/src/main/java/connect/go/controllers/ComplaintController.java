@@ -1,5 +1,6 @@
 package connect.go.controllers;
 
+import connect.go.Repositories.ComplaintRepository;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.*;
 import connect.go.models.dto.ComplaintRegistration;
@@ -9,6 +10,7 @@ import connect.go.usecases.DriverService;
 import connect.go.usecases.NotificationService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
+import org.aspectj.weaver.patterns.ReferencePointcut;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,6 +40,7 @@ public class ComplaintController {
 
     private final NotificationService notificationService;
 
+    private final ComplaintRepository repository;
 
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
@@ -133,6 +136,13 @@ public class ComplaintController {
         } else {
             throw new UserNotFoundException();
         }
+    }
+
+
+    @PostMapping("/archive/{id}")
+    public ResponseEntity postArchive(@RequestBody byte[] archive, Integer id){
+        repository.setArchive(archive, id);
+        return ResponseEntity.status(201).build();
     }
 
 
