@@ -140,7 +140,7 @@ public class ComplaintController {
 
 
     @PostMapping("/archive/{id}")
-    public ResponseEntity postArchive(@RequestBody byte[] archive, Integer id){
+    public ResponseEntity postArchive(@RequestBody byte[] archive,@PathVariable Integer id){
         repository.setArchive(archive, id);
         return ResponseEntity.status(201).build();
     }
