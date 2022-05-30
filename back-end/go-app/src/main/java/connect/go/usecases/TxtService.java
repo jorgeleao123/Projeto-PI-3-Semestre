@@ -14,7 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,15 +24,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 @Service
 @RequiredArgsConstructor
 public class TxtService {
 
     private final UserController controller;
-    PilhaObj<UserResponse> userResponses;
-    FilaObj<UserRegistration> userRegistrations;
+    PilhaObj<List<UserResponse>> userResponses = new PilhaObj<>(10);
+    FilaObj<List<UserRegistration>> userRegistrations = new FilaObj<>(10);
 
     public void leArquivoTxtUserRegistration(MultipartFile file) {
         BufferedReader entrada = null;
@@ -112,44 +110,43 @@ public class TxtService {
         } catch (IOException erro) {
             System.out.println("Erro ao ler arquivo: " + erro);
         }
-
-        userRegistrations = new FilaObj<>(contaRegDadoLido);
-        userResponses = new PilhaObj<>(contaRegDadoLido);
+        List<UserRegistration> userRegistrationList = new ArrayList<>();
         for (int i = 0; i < listaUser.size(); i++) {
-            userRegistrations.insert(new UserRegistration(listaUser.get(i).getName(),
-                    listaUser.get(i).getEmail(),listaUser.get(i).getPassword(),
+            userRegistrationList.add(new UserRegistration(listaUser.get(i).getName(),
+                    listaUser.get(i).getEmail(), listaUser.get(i).getPassword(),
                     listaUser.get(i).getRole(), listaUser.get(i).getGenre(), listaUser.get(i).getBirthDate(),
                     listaAddress.get(i).getState(), listaAddress.get(i).getCity(), listaAddress.get(i).getDistrict()));
         }
-
-
+        userRegistrations.insert(userRegistrationList);
 
     }
 
     public void cadastraUsuariosFila() {
+        List<UserResponse> userResponseList = new ArrayList<>();
         while (!userRegistrations.isEmpty()) {
-            ResponseEntity<UserResponse> response = controller.createUser(userRegistrations.poll());
-            if (response.getStatusCode().is2xxSuccessful()) {
-                userResponses.push(response.getBody());
+            for (UserRegistration u : userRegistrations.poll()) {
+                ResponseEntity<UserResponse> response = controller.createUser(u);
+                if (response.getStatusCode().is2xxSuccessful()) {
+                    userResponseList.add(response.getBody());
+                }
             }
         }
+        userResponses.push(userResponseList);
     }
 
     public void gravaRegistro(String registro, String nomeArq) {
         BufferedWriter saida = null;
 
         try {
-            saida = new BufferedWriter(new FileWriter(nomeArq,true));
-        }
-        catch(IOException erro) {
+            saida = new BufferedWriter(new FileWriter(nomeArq, true));
+        } catch (IOException erro) {
             System.out.println("Erro na abertura do arquivo: " + erro);
         }
 
         try {
             saida.append(registro + "\n");
             saida.close();
-        }
-        catch(IOException erro) {
+        } catch (IOException erro) {
             System.out.println("Erro na gravação do arquivo: " + erro);
         }
     }
@@ -168,20 +165,21 @@ public class TxtService {
         // Monta e grava os registros de corpo (ou de detalhe)
         String corpo;
         while (!userResponses.isEmpty()) {
-            userResponse = userResponses.pop();
-            corpo = "02";
-            corpo += String.format("%08d", userResponse.getId());
-            corpo += String.format("%-45.45s", userResponse.getName());
-            corpo += String.format("%-45.45s", userResponse.getEmail());
-            corpo += String.format("%-15.15s", userResponse.getRole());
-            corpo += String.format("%-15.15s", userResponse.getGenre());
-            corpo += String.format("%-7.7s", userResponse.getColorProfile());
-            corpo += String.format("%-7.7s", userResponse.getColorMenu());
-            corpo += String.format("%-15.15s", userResponse.getStatus());
-            corpo += String.format("%04d", userResponse.getPostCounter());
-            corpo += String.format("%-10.10s", userResponse.getBirthDate());
-            gravaRegistro(corpo, nomeArq);
-            contaRegistroCorpo++;
+            for (UserResponse u : userResponses.pop()) {
+                corpo = "02";
+                corpo += String.format("%08d", u.getId());
+                corpo += String.format("%-45.45s", u.getName());
+                corpo += String.format("%-45.45s", u.getEmail());
+                corpo += String.format("%-15.15s", u.getRole());
+                corpo += String.format("%-15.15s", u.getGenre());
+                corpo += String.format("%-7.7s", u.getColorProfile());
+                corpo += String.format("%-7.7s", u.getColorMenu());
+                corpo += String.format("%-15.15s", u.getStatus());
+                corpo += String.format("%04d", u.getPostCounter());
+                corpo += String.format("%-10.10s", u.getBirthDate());
+                gravaRegistro(corpo, nomeArq);
+                contaRegistroCorpo++;
+            }
         }
 
         // Monta e grava o registro de trailer
@@ -224,17 +222,15 @@ public class TxtService {
         BufferedWriter saida = null;
 
         try {
-            saida = new BufferedWriter(new FileWriter(nomeArq,false));
-        }
-        catch(IOException erro) {
+            saida = new BufferedWriter(new FileWriter(nomeArq, false));
+        } catch (IOException erro) {
             System.out.println("Erro na abertura do arquivo: " + erro);
         }
 
         try {
             saida.append("");
             saida.close();
-        }
-        catch(IOException erro) {
+        } catch (IOException erro) {
             System.out.println("Erro na gravação do arquivo: " + erro);
         }
     }

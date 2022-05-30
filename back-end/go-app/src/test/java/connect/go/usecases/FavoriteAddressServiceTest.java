@@ -48,6 +48,8 @@ class FavoriteAddressServiceTest {
         user.setPassword("senhaTeste");
         user.setRole("Usuario");
         user.setGenre("Masculino");
+        user.setColorMenu("cor");
+        user.setColorProfile("cor");
         user = userService.register(user);
         address.setCity("São Paulo");
         address.setDistrict("Vila Carrrão");
