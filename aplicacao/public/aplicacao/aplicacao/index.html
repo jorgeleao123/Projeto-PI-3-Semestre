@@ -409,7 +409,8 @@
                     <div>
                         <p>Faça sua busca</p>
                         <span class="nav__mobile__input">
-                            <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                            <input type="search" id="uriParamComplaint"
+                                placeholder="Busque pela placa ou nome do motorista">
                             <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                                 <option value="license">Placa</option>
                                 <option value="">Nome/Placa</option>
@@ -418,8 +419,8 @@
                                 <option value="state">Estado</option>
                             </select>
                             <a class="search__icon" onclick="getSearch()"> <i
-                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
-                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                                    style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
+                                    <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
                     </div>
                 </div>
@@ -464,34 +465,37 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
-var typeClass = "";
-var bo = false;
+    var typeClass = "";
+    var bo = false;
 
-function loadPage(){
-    setCity();
-    getBuscas();
-    loadComplaints();
-    loadHtml();
-}
+    function loadPage() {
+        setCity();
+        getBuscas();
+        loadComplaints();
+        loadHtml();
+    }
 
-function loadComplaints(){
-    event.preventDefault();
-    axios.get(`http://localhost:8080/complaints/city`, {
-        headers: {
-            city: sessionStorage.getItem('user_city')
-        }
-    })
-    .then((resp) => {
-        sessionStorage.setItem('qnt_publicacoes', resp.data.length);
-        resp.data.map(item => {
-            getComplaint(item);
+    function loadComplaints() {
+        event.preventDefault();
+        axios.get(`http://localhost:8080/complaints/city`, {
+            headers: {
+                city: sessionStorage.getItem('user_city')
+            }
         })
-    })
-}
+            .then((resp) => {
+                sessionStorage.setItem('qnt_publicacoes', resp.data.length);
+                resp.data.map(item => {
+                    if (item.status != 'Inativo') {
+                        getComplaint(item);
+                    }
 
-function getComplaint(item){
-    item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
-    document.getElementById('publicacoes').innerHTML += `
+                })
+            })
+    }
+
+    function getComplaint(item) {
+        item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
+        document.getElementById('publicacoes').innerHTML += `
         <div class="content__complaint">
             <div class="header__complaint flex justify">
                 <div class="flex">
@@ -558,90 +562,111 @@ function getComplaint(item){
             <div class="hr margin-bottom"></div>
         </div>
     `;
-}
-
-function save(id) {
-    event.preventDefault();
-    axios.post(`http://localhost:8080/complaints-saved`, {
-        userId: sessionStorage.user_id,
-        complaintId: id
-    })
-    .then((resp) => {
-        console.log('FUNCIONOU');
-        alert("salvo");
-    })
-    .catch((err) => {
-        alert('ERROR');
-    })
-}
-
-function getPublicationType(type, typeClass){
-    switch (type){
-        case "Assédio":
-            typeClass = "circle__assedio circle__classification";
-            break;
-        case "Assédio Moral":
-            typeClass = "circle__assedio__moral circle__classification";
-            break;
-        case "Racismo":
-            typeClass = "circle__racism circle__classification";
-            break;
-        case "Agressão Física":
-            typeClass = "circle__agressao__fisica circle__classification";
-            break;
-        case "Agressão Verbal":
-            typeClass = "circle__agressao__verbal circle__classification";
-            break;
-        case "Homofobia":
-            typeClass = "circle__homofobia circle__classification";
-            break;
-        case "Preconceito":
-            typeClass = "circle__preconceito circle__classification";
-            break;
-        case "Furto":
-            typeClass = "circle__furto circle__classification";
-            break;
     }
-    return typeClass;
-}
 
-function getBuscas(){
-    axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
-    .then((resp) => {
-        //document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
-    })
-}
+    function save(id) {
+        event.preventDefault();
+        axios.post(`http://localhost:8080/complaints-saved`, {
+            userId: sessionStorage.user_id,
+            complaintId: id
+        })
+            .then((resp) => {
+                console.log('FUNCIONOU');
+                alert("salvo");
+            })
+            .catch((err) => {
+                alert('ERROR');
+            })
+    }
 
-function setCity(){
-    axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
-    .then((resp) => {
-        sessionStorage.user_city = resp.data[0].city;
-    })
-}
+    function getPublicationType(type, typeClass) {
+        switch (type) {
+            case "Assédio":
+                typeClass = "circle__assedio circle__classification";
+                break;
+            case "Assédio Moral":
+                typeClass = "circle__assedio__moral circle__classification";
+                break;
+            case "Racismo":
+                typeClass = "circle__racism circle__classification";
+                break;
+            case "Agressão Física":
+                typeClass = "circle__agressao__fisica circle__classification";
+                break;
+            case "Agressão Verbal":
+                typeClass = "circle__agressao__verbal circle__classification";
+                break;
+            case "Homofobia":
+                typeClass = "circle__homofobia circle__classification";
+                break;
+            case "Preconceito":
+                typeClass = "circle__preconceito circle__classification";
+                break;
+            case "Furto":
+                typeClass = "circle__furto circle__classification";
+                break;
+        }
+        return typeClass;
+    }
 
-function getSearch(){
-    let uriParam = document.getElementById('uriParamComplaint').value;
-    let endPoint = document.getElementById('endPointComplaint').value;
-    sessionStorage.setItem('uriParamComplaint', uriParam);
-    sessionStorage.setItem('endPointComplaint', endPoint);
-    window.location.href ="./search.html";
-}
+    function getBuscas() {
+        axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                //document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+            })
+    }
 
-function loadHtml(){
-    document.getElementById('city').innerHTML += sessionStorage.user_city;
-    document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-    document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
-    document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
-    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-    document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-    document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
-}
-function denuciar(id) {
-    sessionStorage.complaint_id = id;
-    window.location.href ="./contest.html" ;
-}
+    function setCity() {
+        axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                sessionStorage.user_city = resp.data[0].city;
+                sessionStorage.user_district = resp.data[0].district;
+            })
+    }
+
+    function getSearch() {
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.location.href = "./search.html";
+    }
+
+    function loadHtml() {
+        document.getElementById('city').innerHTML += sessionStorage.user_city;
+        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
+        document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
+    }
+    function denuciar(id) {
+        sessionStorage.complaint_id = id;
+        window.location.href = "./contest.html";
+    }
+
+    // function notificacao() {
+    //     var data = '';
+
+    //     var config = {
+    //         method: 'get',
+    //         url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+    //         headers: {},
+    //         data: data
+    //     };
+
+    //     axios(config)
+    //         .then(function (response) {
+    //             console.log(JSON.stringify(response.data));
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         });
+    // }
 </script>
+
 </html>
