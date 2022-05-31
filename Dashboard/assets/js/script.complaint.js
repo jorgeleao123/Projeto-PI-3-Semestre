@@ -15,6 +15,8 @@ function openCity(evt, cityName) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+// fim
+
 
 // 2
 function openCity2(evt, cityName) {
@@ -32,6 +34,8 @@ function openCity2(evt, cityName) {
 }
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen2").click();
+
+
 
 // calendar
 const date = new Date();
@@ -116,4 +120,4 @@ document.querySelector(".next").addEventListener("click", () => {
 });
 
 renderCalendar();
-  
+  // fim
