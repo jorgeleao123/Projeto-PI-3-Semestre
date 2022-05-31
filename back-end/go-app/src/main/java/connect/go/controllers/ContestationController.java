@@ -1,6 +1,7 @@
 package connect.go.controllers;
 
 import connect.go.exceptions.UserNotFoundException;
+import connect.go.models.Complaint;
 import connect.go.models.Contestation;
 import connect.go.models.dto.ContestationRegistration;
 import connect.go.usecases.ComplaintService;
@@ -17,7 +18,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -100,15 +103,26 @@ public class ContestationController {
 
     @PutMapping("/archive/{userId}/{contestationId}")
     public ResponseEntity<Contestation> addArchiveContestation(@PathVariable Integer userId,
-                                                      @PathVariable Integer contestationId,
-                                                     @RequestBody byte[] archive) {
+                                                               @PathVariable Integer contestationId,
+                                                               @RequestBody MultipartFile file)
+
+            throws IOException {
         Contestation contestation = contestationService.getContestationById(contestationId);
         if (contestation.getUser().getId().equals(userId)) {
-            contestation.setArchive(archive);
+            byte[] bytes = file.getBytes();
+            contestation.setArchive(bytes);
             contestation = contestationService.register(contestation);
             return ResponseEntity.status(201).body(contestation);
         } else {
             throw new UserNotFoundException();
         }
+    }
+
+    @GetMapping(value = "/archive/{contestationId}", produces = "image/png")
+    public ResponseEntity getFoto(@PathVariable Integer contestationId) {
+        Contestation contestation = contestationService.getContestationById(contestationId);
+
+        return ResponseEntity.status(200)
+                .body(contestation.getArchive());
     }
 }
