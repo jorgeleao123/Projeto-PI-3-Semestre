@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -57,7 +58,7 @@ public class ContestationController {
         contestation.setComplaint(complaintService.getComplaintById(contestationRegistration.getComplaintId()));
         contestation.setUser(userService.getById(contestationRegistration.getUserId()));
         contestation.setStatus("em analise");
-        contestation.setDateTimeContestation(LocalDateTime.now());
+        contestation.setDateTimeContestation(LocalDate.now());
         contestationService.register(contestation);
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
         notificationService.register(contestation.getComplaint().getUser().getId(),

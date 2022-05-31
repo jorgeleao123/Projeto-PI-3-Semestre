@@ -493,7 +493,8 @@ function searchComplaint() {
     .then((resp) => {
         sessionStorage.setItem('qnt_publicacoes', resp.data.length);
         resp.data.map(item => {
-            getComplaint(item);
+            if(item.status != 'Inativo')
+                getComplaint(item);
         })
     }).catch(
         

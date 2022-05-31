@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -91,7 +92,7 @@ public class ComplaintController {
         complaint.setAddress(address);
         complaint.setUser(user);
         complaint.setDriver(driver);
-        complaint.setDateTimePost(LocalDateTime.now());
+        complaint.setDateTimePost(LocalDate.now());
         complaint.setStatus("valido");
         complaintService.register(complaint);
         notificationService.register(userId,
@@ -119,10 +120,9 @@ public class ComplaintController {
         if (complaint.getUser().getId().equals(userId)) {
             complaint.setBo(complaintRegistration.getBo());
             complaint.setDescription(complaintRegistration.getDescription());
-            complaint.setArchive(complaintRegistration.getArchive());
             complaint.setType(complaintRegistration.getType());
             complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
-            complaint.setDateTimePost(LocalDateTime.now());
+            complaint.setDateTimePost(LocalDate.now());
             complaint.setStatus("valido");
             complaint.setAddress(address);
             complaint.setDriver(driver);

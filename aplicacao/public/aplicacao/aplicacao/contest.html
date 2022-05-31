@@ -117,8 +117,9 @@
                     </div>
                     <form>
                         <label for="Descrição">Descrição</label>
-                        <textarea name="" id="description" cols="10" rows="9"
-                            placeholder="Descreva a sua versão"></textarea>
+                        <textarea name="" id="description" rows="9"
+                            placeholder="Descreva a sua versão" onkeypress="validateDescription(description.value)"></textarea>
+                            <span id="post_descricao" style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição vazia</span>
                 </div>
                 <div class="more__inputs">
                     <div class="card__arq padding__card">
@@ -397,6 +398,8 @@
             userId: sessionStorage.user_id,
             complaintId: sessionStorage.complaint_id
         }
+        
+        validateDescription(data.description);
 
         axios.post(`http://localhost:8080/contestations`, data)
             .then((resp) => {
@@ -411,11 +414,19 @@
             })
     }
 
+    function validateDescription(description){
+        if(description.length < 6){
+            document.getElementById('post_descricao').style.display = 'block';
+        } else{
+            document.getElementById('post_descricao').style.display = 'none';
+        }
+    }
+
     function getId() {
         event.preventDefault();
         var config = {
             method: 'get',
-            url: 'http://localhost:8080/contestations/user/1',
+            url: `http://localhost:8080/contestations/user/${sessionStorage.user_id}`,
             headers: {}
         };
 

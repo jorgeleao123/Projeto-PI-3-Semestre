@@ -238,7 +238,7 @@
                             <h4>Adicionar Midia</h4>
                             <button >
                                 <form id="upload-form" action="" method="post" enctype="multipart/form-data">
-                                    <input id="selected-image" type="file" id="file" name="file" onchange="handleFile()">
+                                    <input id="selected-image" type="file" id="myFile" name="filename">
                                     Anexar Arquivo
                                     <input type="submit" value="Upload image" name="submit">
                                 </form>
@@ -524,9 +524,9 @@
 
     function registerComplaints() {
         event.preventDefault();
-        var dataTempo = new Date();
-        var dateTime = `"${dateTimeComplaint.value}`;
-        dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;
+        //var dataTempo = new Date();
+        var dateTime = dateTimeComplaint.value;
+        /*dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;*/
         console.log(dateTime);
         const data = {
             type: type.value,
@@ -538,13 +538,14 @@
             state: uf.value,
             city: city.value,
             district: district.value,
-            dateTimeComplaint: Date.parse(dateTime)
+            dateTimeComplaint: dateTime
         }
         validateData(data);
-        axios.post(`http://localhost:8080/complaints/1`, data)
+        axios.post(`http://localhost:8080/complaints/${sessionStorage.user_id}`, data)
             .then((resp) => {
                 alert('Denúncia publicada com sucesso', resp);
                 console.log(resp);
+                getId();
             })
             .catch((error) => {
                 console.log(error);
@@ -656,6 +657,42 @@
             document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
         }
 
+    }
+
+    function getId() {
+        event.preventDefault();
+        var config = {
+            method: 'get',
+            url: `http://localhost:8080/complaints/user/${sessionStorage.user_id}`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                subirFoto(response.data[0]["id"]);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+    function subirFoto(id) {
+        event.preventDefault();
+        var input = document.querySelector('input[type="file"]');
+        var formdata = new FormData();
+        formdata.append("file", input.files[0]);
+
+        var requestOptions = {
+            method: 'PUT',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch(`http://localhost:8080/complaints/archive/${sessionStorage.user_id}/${id}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
     }
 
     //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
