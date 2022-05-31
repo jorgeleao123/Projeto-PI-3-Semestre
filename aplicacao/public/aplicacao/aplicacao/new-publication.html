@@ -123,12 +123,8 @@
                         <div class="scrool_form">
                             <div>
                                 <label for="Descrição">Descrição</label>
-                                <textarea name="" id="description" cols="10" rows="6"
-                                    placeholder="Descreva o ocorrido">
-                                </textarea>
-                                <span id="post_descricao" style="display: none; color:red; padding-bottom: -20px">
-                                    Descrição vazia
-                                </span>
+                                <textarea name="" id="description" rows="6" placeholder="Descreva o ocorrido" onkeypress="validateDescription(description.value)"></textarea>
+                                <span id="post_descricao" style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição vazia</span>
                             </div>
                             <div class="form__publication">
 
@@ -151,7 +147,7 @@
                                     <label for="CEP">CEP</label>
                                     <input type="text" name="" id="cep" placeholder="Ponto de partida ou Destino">
                                     <span id="endereco_validator" style="color: rgb(253, 81, 81);
-                                    display: none">CEP inválido</span>
+                                    display: none; margin-top: 5px"></span>
                                 </div>
 
                                 <div class="ipt__form">
@@ -204,14 +200,17 @@
                             <div class="form__publication">
                                 <div class="ipt__form">
                                     <label for="Nome do motorista">Nome do(a) motorista</label>
-                                    <input type="text" name="" id="driverName" placeholder="Insira o nome do motorista">
+                                    <input type="text" name="driverName" id="driverName" placeholder="Insira o nome do motorista" onkeypress="validateDriverName(driverName.value)">
+                                    <span id="post_motorista" style="display: none; color:rgb(253, 81, 81)">
+                                        Insira o nome do motorista
+                                    </span>
                                 </div>
 
                                 <div class="ipt__form">
                                     <label for="Placa do veiculo">Placa do veiculo</label>
                                     <input type="text" name="" id="licensePlate"
-                                        placeholder="Insira a placa do veiculo">
-                                    <span id="post_placa" style="display: none; color:red; padding-bottom: -20px">
+                                        placeholder="Insira a placa do veiculo" onkeypress="validateLicensePlate(licensePlate.value)">
+                                    <span id="post_placa" style="display: none; color:rgb(253, 81, 81)">
                                         Insira uma placa válida
                                     </span>
                                 </div>
@@ -525,6 +524,10 @@
 
     function registerComplaints() {
         event.preventDefault();
+        var dataTempo = new Date();
+        var dateTime = `"${dateTimeComplaint.value}`;
+        dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;
+        console.log(dateTime);
         const data = {
             type: type.value,
             description: description.value,
@@ -535,9 +538,9 @@
             state: uf.value,
             city: city.value,
             district: district.value,
-            dateTimeComplaint: "2022-05-10T21:25:50.462Z"
+            dateTimeComplaint: Date.parse(dateTime)
         }
-        validateField(data);
+        validateData(data);
         axios.post(`http://localhost:8080/complaints/1`, data)
             .then((resp) => {
                 alert('Denúncia publicada com sucesso', resp);
@@ -550,13 +553,44 @@
             })
     }
 
-    function validateField(data){
+    function validateData(data){
         if(data.description == ""){
             document.getElementById('post_descricao').style.display = 'block';
-        } else if (data.licensePlate < 8){
+        }
+        if (data.licensePlate.length < 5){
             document.getElementById('post_placa').style.display = 'block';
         }
-        
+        if(data.driverName.length < 4){
+            document.getElementById('post_motorista').style.display = 'block';
+        }
+        if(cep.value.length < 3){
+            document.getElementById('endereco_validator').style.display = 'block';
+            document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
+        }
+    }
+
+    function validateDriverName(driverName){
+        if(driverName.length < 3){
+            document.getElementById('post_motorista').style.display = 'block';
+        } else{
+            document.getElementById('post_motorista').style.display = 'none';
+        }
+    }
+
+    function validateDescription(description){
+        if(description.length < 6){
+            document.getElementById('post_descricao').style.display = 'block';
+        } else{
+            document.getElementById('post_descricao').style.display = 'none';
+        }
+    }
+
+    function validateLicensePlate(licensePlate){
+        if(licensePlate.length < 5){
+            document.getElementById('post_placa').style.display = 'block';
+        } else{
+            document.getElementById('post_placa').style.display = 'none';
+        }
     }
 
     function getSearch(){
@@ -610,6 +644,7 @@
             if (endereco.hasOwnProperty('erro')) {
                 document.getElementById('endereco_validator').value = 'CEP não encontrado!';
                 document.getElementById('endereco_validator').style.display = 'block';
+                document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
             } else {
                 preencherFormulario(endereco);
                 bairro = endereco.bairro;
@@ -618,11 +653,13 @@
         } else {
             document.getElementById('endereco_validator').value = 'CEP incorreto!';
             document.getElementById('endereco_validator').style.display = 'block';
+            document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
         }
 
     }
+
     //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
     document.getElementById('cep')
-        .addEventListener('focusout', pesquisarCep);
+    .addEventListener('focusout', pesquisarCep);
 
 </script>

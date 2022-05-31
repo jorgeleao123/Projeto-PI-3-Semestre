@@ -207,7 +207,7 @@ textarea {
   color: var(--color-font-descrit);
   margin-top: 5px;
   border-radius: 1px;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .container__form label {
