@@ -529,7 +529,7 @@ function getComplaint(item){
 
             <span class="check__complaint">
                 <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
-                <i class="fa-solid fa-certificate"></i>
+                ${bo ? '<i class="fa-solid fa-certificate"></i>' : ""}
             </span>
             <div class="infos__complaint">
                 <p id="textComplaint">
@@ -542,7 +542,7 @@ function getComplaint(item){
                     <img src="./assets/img/print-uber.png" alt="">
                 </div>
                 <div class="item shrink-1-basis">
-                    <img src="./assets/img/photo-uber.png" alt="">
+                    <img src="http://localhost:8080/complaints/archive/${item.id}" alt="">
                 </div>
             </div>
 
@@ -624,7 +624,7 @@ function getSearch(){
     let endPoint = document.getElementById('endPointComplaint').value;
     sessionStorage.setItem('uriParamComplaint', uriParam);
     sessionStorage.setItem('endPointComplaint', endPoint);
-    window.open("./search.html");
+    window.location.href ="./search.html";
 }
 
 function loadHtml(){
@@ -641,7 +641,7 @@ function loadHtml(){
 }
 function denuciar(id) {
     sessionStorage.complaint_id = id;
-    window.open("./contest.html");
+    window.location.href ="./contest.html" ;
 }
 </script>
 </html>

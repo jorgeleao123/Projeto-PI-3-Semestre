@@ -378,7 +378,7 @@
                                 <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
                     </div>
-                    
+
                 </div>
             </div>
         </span>
@@ -421,8 +421,8 @@
 </html>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-
-    function getSearch(){
+    var typeClass = "";
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
@@ -430,13 +430,13 @@
         window.open("./search.html");
     }
 
-    function dadosUser(){
+    function dadosUser() {
         nameUser.innerHTML = sessionStorage.user_nome
         initial1.innerHTML = sessionStorage.user_nome[0]
         initial2.innerHTML = sessionStorage.user_nome[0]
         document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-            document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-            document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
+        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
 
     }
     function itensSave() {
@@ -444,7 +444,7 @@
         axios.get(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}`, {})
             .then((resp) => {
                 console.log(resp);
-                itens.innerHTML =='';
+                itens.innerHTML == '';
                 resp.data.map((e) => {
                     bo = false;
                     e["bo"] != null && e["bo"] != '' ? bo = true : bo = false;
@@ -486,7 +486,7 @@
 
                     <span class="check__complaint">
                         <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
-                        <i class="fa-solid fa-certificate"></i>
+                        ${bo ? '<i class="fa-solid fa-certificate"></i>' : ""}
                     </span>
 
                     <div class="infos__complaint">
@@ -500,13 +500,13 @@
                             <img src="./assets/img/print-uber.png" alt="">
                         </div>
                         <div class="item shrink-1-basis">
-                            <img src="./assets/img/photo-uber.png" alt="">
+                            <img src="http://localhost:8080/complaints/archive/${e["id"]}" alt="">
                         </div>
                     </div>
 
                     <div class="more__infos__complaint flex justify">
                         <div class="classification__complaint">
-                            <div class="circle__assedio circle__classification"></div>
+                            <div class="${getPublicationType(e["type"], typeClass)}"></div>
                             <h6>Classificação do caso: <span id="classificationPub"> ${e["type"]}</span></h6>
                         </div>
                         <span class="location__conplaint" id="locationComplaint">
@@ -534,7 +534,40 @@
     }
     function abrirContestacao(id) {
         event.preventDefault();
-            sessionStorage.idPublic =id;
-            window.location.href = "./contest.html";
+        sessionStorage.idPublic = id;
+        window.location.href = "./contest.html";
+    }
+
+    function getPublicationType(type, typeClass) {
+        switch (type) {
+            case "Assédio":
+                typeClass = "circle__assedio circle__classification";
+                break;
+            case "Assédio Moral":
+                typeClass = "circle__assedio__moral circle__classification";
+                break;
+            case "Racismo":
+                typeClass = "circle__racism circle__classification";
+                break;
+            case "Agressão Física":
+                typeClass = "circle__agressao__fisica circle__classification";
+                break;
+            case "Agressão Verbal":
+                typeClass = "circle__agressao__verbal circle__classification";
+                break;
+            case "Homofobia":
+                typeClass = "circle__homofobia circle__classification";
+                break;
+            case "Preconceito":
+                typeClass = "circle__preconceito circle__classification";
+                break;
+            case "Furto":
+                typeClass = "circle__furto circle__classification";
+                break;
+            default:
+                typeClass = "circle__preconceito circle__classification";
+                break;
+        }
+        return typeClass;
     }
 </script>
