@@ -11,7 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -34,10 +36,10 @@ public class Complaint {
     private String bo;
 
     @Column(name = "dt_complaint")
-    private LocalDateTime dateTimeComplaint;
+    private LocalDate dateTimeComplaint;
 
     @Column(name = "dt_post")
-    private LocalDateTime dateTimePost;
+    private LocalDate dateTimePost;
 
     private String type;
 

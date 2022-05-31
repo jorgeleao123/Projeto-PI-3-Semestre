@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -31,7 +32,7 @@ public class Contestation {
     private String status;
 
     @Column(name = "dt_contestarion")
-    private LocalDateTime dateTimeContestation;
+    private LocalDate dateTimeContestation;
 
     @JoinColumn(name = "id_user")
     @ManyToOne
