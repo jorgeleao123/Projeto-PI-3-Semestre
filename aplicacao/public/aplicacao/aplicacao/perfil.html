@@ -339,7 +339,7 @@
     <script src="./assets/js/dark-mode.js"></script>
 
     <script>
-
+var typeClass = "";
         function openEdit(id) {
             sessionStorage.editId = id;
             window.open("./edit.html");
@@ -433,13 +433,13 @@
                                             <img src="./assets/img/print-uber.png" alt="">
                                         </div>
                                         <div class="item shrink-1-basis">
-                                            <img src="./assets/img/photo-uber.png" alt="">
+                                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="">
                                         </div>
                                     </div>
                 
                                     <div class="more__infos__complaint flex justify">
                                         <div class="classification__complaint">
-                                            <div class="circle__assedio circle__classification"></div>
+                                            <div class="${getPublicationType(e["type"], typeClass)}"></div>
                                             <h6>Classificação do caso: <span id="classificationPub">${e["type"]}</span></h6>
                                         </div>
                                         <span class="location__conplaint" id="locationComplaint">
@@ -460,6 +460,39 @@
 
         }
 
+
+        function getPublicationType(type, typeClass) {
+        switch (type) {
+            case "Assédio":
+                typeClass = "circle__assedio circle__classification";
+                break;
+            case "Assédio Moral":
+                typeClass = "circle__assedio__moral circle__classification";
+                break;
+            case "Racismo":
+                typeClass = "circle__racism circle__classification";
+                break;
+            case "Agressão Física":
+                typeClass = "circle__agressao__fisica circle__classification";
+                break;
+            case "Agressão Verbal":
+                typeClass = "circle__agressao__verbal circle__classification";
+                break;
+            case "Homofobia":
+                typeClass = "circle__homofobia circle__classification";
+                break;
+            case "Preconceito":
+                typeClass = "circle__preconceito circle__classification";
+                break;
+            case "Furto":
+                typeClass = "circle__furto circle__classification";
+                break;
+            default:
+                typeClass = "circle__preconceito circle__classification";
+                break;
+        }
+        return typeClass;
+    }
 
     </script>
 </body>

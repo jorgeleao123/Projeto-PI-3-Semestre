@@ -1,6 +1,5 @@
 package connect.go.controllers;
 
-import connect.go.Repositories.ComplaintRepository;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.*;
 import connect.go.models.dto.ComplaintRegistration;
@@ -10,7 +9,6 @@ import connect.go.usecases.DriverService;
 import connect.go.usecases.NotificationService;
 import connect.go.usecases.UserService;
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.patterns.ReferencePointcut;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -40,7 +40,6 @@ public class ComplaintController {
 
     private final NotificationService notificationService;
 
-    private final ComplaintRepository repository;
 
     @GetMapping("/city")
     public ResponseEntity<List<Complaint>> getComplaintByCity(@RequestHeader String city) {
@@ -87,7 +86,6 @@ public class ComplaintController {
         Complaint complaint = new Complaint();
         complaint.setBo(complaintRegistration.getBo());
         complaint.setDescription(complaintRegistration.getDescription());
-        complaint.setArchive(complaintRegistration.getArchive());
         complaint.setType(complaintRegistration.getType());
         complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
         complaint.setAddress(address);
@@ -138,14 +136,30 @@ public class ComplaintController {
         }
     }
 
+    @PutMapping("/archive/{userId}/{complaintId}")
+    public ResponseEntity<Complaint> addArchiveComplaint(@PathVariable Integer userId,
+                                                         @PathVariable Integer complaintId,
+                                                         @RequestBody MultipartFile file)
 
-    @PostMapping(value = "/archive/{id}", consumes = "image/png")
-    public ResponseEntity postArchive(@RequestBody byte[] archive,@PathVariable Integer id){
-        Complaint complaint = repository.findById(id).get();
-        complaint.setArchive(archive);
-        repository.save(complaint);
-        return ResponseEntity.status(201).build();
+            throws IOException {
+
+        Complaint complaint = complaintService.getComplaintById(complaintId);
+        if (complaint.getUser().getId().equals(userId)) {
+            byte[] bytes = file.getBytes();
+            complaint.setArchive(bytes);
+            complaint = complaintService.register(complaint);
+            return ResponseEntity.status(201).body(complaint);
+        } else {
+            throw new UserNotFoundException();
+        }
     }
 
+    @GetMapping(value = "/archive/{complaintId}", produces = "image/png")
+    public ResponseEntity getArchive(@PathVariable Integer complaintId) {
+        Complaint complaint = complaintService.getComplaintById(complaintId);
+
+        return ResponseEntity.status(200)
+                .body(complaint.getArchive());
+    }
 
 }

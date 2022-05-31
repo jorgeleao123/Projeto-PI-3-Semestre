@@ -37,5 +37,4 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
 
     @Query("select c from Complaint c where c.user.id = ?1 order by c.dateTimeComplaint desc")
     Optional<List<Complaint>> getComplaintByUserId(Integer userId);
-
 }

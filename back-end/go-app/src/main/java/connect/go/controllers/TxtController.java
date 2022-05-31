@@ -38,9 +38,9 @@ public class TxtController {
 
     @GetMapping("/userRegistration/list")
     public ResponseEntity<Object> exportUserResponse() {
-        txtService.cadastraUsuariosFila();
+//        txtService.cadastraUsuariosFila();
         String nome = "user.txt";
-        txtService.gravaArquivoTxt(nome);
+//        txtService.gravaArquivoTxt(nome);
         return ResponseEntity.status(200)
                 .header("content-type", "text/plain")
                 .header("content-disposition", "attachment; filename=\"user.txt\"")
