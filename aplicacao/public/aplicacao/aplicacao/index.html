@@ -518,11 +518,10 @@ function getComplaint(item){
                             <p style="cursor: pointer;" class="options__modal__user" onclick='save(${item.id})'><input
                                     style="display: none; cursor: pointer;" type="submit"
                                     class="option__modal__user" value="idCaso">Salvar</p>
-                            <a href="./contest.html">
-                                <p style="cursor: pointer;" class="options__modal__user"><input
+                                    <p style="cursor: pointer;" class="options__modal__user" onclick='denuciar(${item.id})'><input
                                         style="display: none; cursor: pointer;" type="submit"
                                         class="option__modal__user" value="idCaso">Denunciar</p>
-                            </a>
+            
                         </form>
                     </div>
                 </div>
@@ -640,6 +639,9 @@ function loadHtml(){
     document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
     document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
 }
-
+function denuciar(id) {
+    sessionStorage.complaint_id = id;
+    window.open("./contest.html");
+}
 </script>
 </html>

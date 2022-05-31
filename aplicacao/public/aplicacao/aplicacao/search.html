@@ -556,11 +556,11 @@ function getComplaint(item){
                             <p style="cursor: pointer;" class="options__modal__user" onclick='save(${item.id})'><input
                                     style="display: none; cursor: pointer;" type="submit"
                                     class="option__modal__user" value="idCaso">Salvar</p>
-                            <a href="./contest.html">
-                                <p style="cursor: pointer;" class="options__modal__user"><input
+                        
+                                <p style="cursor: pointer;" class="options__modal__user" onclick='denuciar(${item.id})'><input
                                         style="display: none; cursor: pointer;" type="submit"
                                         class="option__modal__user" value="idCaso">Denunciar</p>
-                            </a>
+            
                         </form>
                     </div>
                 </div>
@@ -642,6 +642,10 @@ function save(id) {
     .catch((err) => {
         alert('ERROR');
     })
+}
+function denuciar(id) {
+    sessionStorage.complaint_id = id;
+    window.open("./contest.html");
 }
 
 function loadHtml(){
