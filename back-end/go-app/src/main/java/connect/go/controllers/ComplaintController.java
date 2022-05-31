@@ -154,7 +154,7 @@ public class ComplaintController {
     }
 
     @GetMapping(value = "/archive/{complaintId}", produces = "image/png")
-    public ResponseEntity getFoto(@PathVariable Integer complaintId) {
+    public ResponseEntity getArchive(@PathVariable Integer complaintId) {
         Complaint complaint = complaintService.getComplaintById(complaintId);
 
         return ResponseEntity.status(200)

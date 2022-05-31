@@ -119,7 +119,7 @@ public class ContestationController {
     }
 
     @GetMapping(value = "/archive/{contestationId}", produces = "image/png")
-    public ResponseEntity getFoto(@PathVariable Integer contestationId) {
+    public ResponseEntity getArchive(@PathVariable Integer contestationId) {
         Contestation contestation = contestationService.getContestationById(contestationId);
 
         return ResponseEntity.status(200)
