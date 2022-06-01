@@ -1,5 +1,6 @@
 package connect.go.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Complaint {
 
     private String description;
 
+    @JsonIgnore
     @Column(length = 50*1024*1024) // 50MB
     private byte[] archive;
 
