@@ -58,7 +58,7 @@ public class ContestationController {
         contestation.setComplaint(complaintService.getComplaintById(contestationRegistration.getComplaintId()));
         contestation.setUser(userService.getById(contestationRegistration.getUserId()));
         contestation.setStatus("em analise");
-        contestation.setDateTimeContestation(LocalDate.now());
+        contestation.setDateTimeContestation(LocalDateTime.now());
         contestationService.register(contestation);
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
         notificationService.register(contestation.getComplaint().getUser().getId(),

@@ -39,7 +39,7 @@ public class Complaint {
     private LocalDate dateTimeComplaint;
 
     @Column(name = "dt_post")
-    private LocalDate dateTimePost;
+    private LocalDateTime dateTimePost;
 
     private String type;
 
