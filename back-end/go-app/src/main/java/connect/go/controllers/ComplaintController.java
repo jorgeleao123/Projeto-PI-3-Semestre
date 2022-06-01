@@ -22,9 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @RestController
@@ -85,10 +85,20 @@ public class ComplaintController {
         User user = userService.getById(userId);
         Driver driver = driverService.register(new Driver(complaintRegistration.getDriverName(), complaintRegistration.getLicensePlate()));
         Complaint complaint = new Complaint();
-        complaint.setBo(complaintRegistration.getBo());
-        complaint.setDescription(complaintRegistration.getDescription());
-        complaint.setType(complaintRegistration.getType());
-        complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
+        if (Objects.nonNull(complaintRegistration.getBo())) {
+            complaint.setBo(complaintRegistration.getBo());
+        }
+        if (Objects.nonNull(complaintRegistration.getDescription())) {
+            complaint.setDescription(complaintRegistration.getDescription());
+        }
+        if (Objects.nonNull(complaintRegistration.getType())) {
+            complaint.setType(complaintRegistration.getType());
+        }
+        if (Objects.isNull(complaintRegistration.getDateTimeComplaint())) {
+            complaint.setDateTimeComplaint(LocalDateTime.now());
+        } else {
+            complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint().atStartOfDay());
+        }
         complaint.setAddress(address);
         complaint.setUser(user);
         complaint.setDriver(driver);
@@ -118,10 +128,20 @@ public class ComplaintController {
         Driver driver = driverService.register(new Driver(complaintRegistration.getDriverName(), complaintRegistration.getLicensePlate()));
         Complaint complaint = complaintService.getComplaintById(complaintId);
         if (complaint.getUser().getId().equals(userId)) {
-            complaint.setBo(complaintRegistration.getBo());
-            complaint.setDescription(complaintRegistration.getDescription());
-            complaint.setType(complaintRegistration.getType());
-            complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
+            if (Objects.nonNull(complaintRegistration.getBo())) {
+                complaint.setBo(complaintRegistration.getBo());
+            }
+            if (Objects.nonNull(complaintRegistration.getDescription())) {
+                complaint.setDescription(complaintRegistration.getDescription());
+            }
+            if (Objects.nonNull(complaintRegistration.getType())) {
+                complaint.setType(complaintRegistration.getType());
+            }
+            if (Objects.isNull(complaintRegistration.getDateTimeComplaint())) {
+                complaint.setDateTimeComplaint(LocalDateTime.now());
+            } else {
+                complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint().atStartOfDay());
+            }
             complaint.setDateTimePost(LocalDateTime.now());
             complaint.setStatus("valido");
             complaint.setAddress(address);
