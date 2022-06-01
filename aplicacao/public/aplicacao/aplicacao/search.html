@@ -131,16 +131,7 @@
 
             <!------------------------------------------Infos Search ------------------------------>
             <div class="container__feed" id="feed">
-                <div class="card__result__search">
-                    <div class="flex">
-                        <div class="color__topic__result">
-                            <h2>2</h2>
-                        </div>
-                        <div>
-                            <h4>Casos de Assédio</h4>
-                            <p>Casos ocorridos entre 15/02/2022 e 20/03/2022</p>
-                        </div>
-                    </div>
+                <div class="card__result__search" id="casos">
                 </div>
                 <div id="publicacoes">
 
@@ -492,6 +483,7 @@ function searchComplaint() {
     })
     .then((resp) => {
         sessionStorage.setItem('qnt_publicacoes', resp.data.length);
+        getCases(resp);
         resp.data.map(item => {
             if(item.status != 'Inativo')
                 getComplaint(item);
@@ -526,6 +518,26 @@ function setEndPoint(uri){
     }
 
     return url;
+}
+
+function getCases(resp){
+    var dateTime = resp.data[0].dateTimeComplaint;
+    let dia = parseInt(dateTime.slice(5,7));
+    dia += 5;
+    console.log(dia);
+    document.getElementById('casos').innerHTML = `
+        <div class="flex">
+            <div class="color__topic__result">
+                <h2 id="qnt_casos">${resp.data.length}</h2>
+            </div>
+            <div>
+                <h4>${resp.data.length <= 1 ? 'Caso encontrado' : 'Casos encontrados'}</h4>
+                <p id="data_casos">
+                    Casos ocorridos entre ${dateTime.slice(0, 10)} e ${dateTime.slice(0, 5)}${dia}${dateTime.slice(7, 10)}
+                </p> 
+            </div>
+        </div>
+    `;
 }
 
 function getComplaint(item){
@@ -592,7 +604,7 @@ function getComplaint(item){
                     <h6>Classificação do caso: <span id="classificationPub">${item.type}</span></h6>
                 </div>
                 <span class="location__conplaint" id="locationComplaint">
-                    ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
+                    ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint.slice(0,10)}
                 </span>
             </div>
             <div class="hr margin-bottom"></div>
