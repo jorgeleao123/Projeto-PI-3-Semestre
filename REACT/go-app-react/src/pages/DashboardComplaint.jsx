@@ -24,9 +24,9 @@ function DashboardComplaint() {
                 <main className="flex__box">
                     <Divider titulo="Contestações" />
                     <section className="">
-                        <CalendarMobile />
+                        {/* <CalendarMobile /> */}
                         <TabContest />
-                        <Calendar />
+                        {/* <Calendar /> */}
                     </section>
                     <ModalNavbarMobile />
                 </main>

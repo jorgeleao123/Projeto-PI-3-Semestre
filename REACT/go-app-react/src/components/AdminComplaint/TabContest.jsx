@@ -20,17 +20,17 @@ function TabContest() {
       document.getElementById(cityName).style.display = "block";
       evt.currentTarget.className += " active";
   }
-  // Get the element with id="defaultOpen" and click on it
-   const defaultOpen = document.getElementById('defaultOpen').click();
-  
 
+  // Get the element with id="defaultOpen" and click on it
+  //  const defaultOpen = document.getElementById('defaultOpen').click();
+  
 
   return (
     <>
       {/*Tab 1*/}
       <div className="tab">
-              <button id="defaultOpen" className="tablinks" onClick={openCity(Event, 'contest__tab')}>Contestação</button>
-              <button className="tablinks" onClick={openCity(Event, 'caso__tab')}>Caso</button>
+              <button id="defaultOpen" className="tablinks" onClick={() => openCity(Event, 'contest__tab')}>Contestação</button>
+              <button className="tablinks" onClick={() => openCity(Event, 'caso__tab')}>Caso</button>
             </div>
 
             <div id="contest__tab" className="tabcontent">

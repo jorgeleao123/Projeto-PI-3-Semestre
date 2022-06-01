@@ -36,7 +36,7 @@ function Sidenav() {
                             <a onClick={() =>{navigate("/")}}>
                                 <FontAwesomeIcon icon={faHouse} /> Home
                             </a>
-                            <a onClick={() =>{navigate("/")}}>
+                            <a onClick={() =>{navigate("/complaint")}}>
                                 <FontAwesomeIcon icon={faMagnifyingGlass} /> Contestações
                             </a>
                             <a onClick={() =>{navigate("/user")}}>
