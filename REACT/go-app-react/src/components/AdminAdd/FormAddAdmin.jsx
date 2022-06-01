@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "../../assets/css/style.table.css";
 import "../../assets/css/style.components.css";
-import api from "../../api";
+import apiUser from "../../apiUser";
 
 function FormAddAdmin() {
   const [nomeInput, setNomeInput] = useState("");
@@ -25,7 +25,7 @@ function FormAddAdmin() {
       district: "Bairro",
     };
 
-    api
+    apiUser
       .post(`/users`, data)
       .then(() => {
         alert("Cadastrado!");

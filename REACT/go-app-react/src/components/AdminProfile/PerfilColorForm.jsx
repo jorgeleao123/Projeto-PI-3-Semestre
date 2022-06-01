@@ -4,7 +4,7 @@ import "../../assets/css/style.table.css";
 import "../../assets/css/style.components.css";
 import "../../assets/css/style.profile.css";
 import Divider from "../Divider";
-import api from "../../api";
+import apiUser from "../../apiUser";
 
 function PerfilColorForm() {
   const [nameInput, setNameInput] = useState("");
@@ -19,8 +19,8 @@ function PerfilColorForm() {
   });
 
   function buscarDados() {
-    api
-      .get()
+    apiUser
+      .get(``)
       .then((resp) => {
         setNameInput(resp.name);
         setEmailInput(resp.email);
@@ -75,7 +75,7 @@ function PerfilColorForm() {
             value={nameInput}
             type="text"
             name=""
-            id=""
+            id="name"
             onInput={(e) => setNameInput(e.target.value)}
           />
         </div>
@@ -88,7 +88,7 @@ function PerfilColorForm() {
             value={emailInput}
             type="email"
             name=""
-            id=""
+            id="email"
             onInput={(e) => setEmailInput(e.target.value)}
           />
         </div>
@@ -98,7 +98,7 @@ function PerfilColorForm() {
             <input
               type="password"
               name=""
-              id=""
+              id="password"
               onInput={(e) => setSenhaInput(e.target.value)}
             />
           </div>
@@ -107,7 +107,7 @@ function PerfilColorForm() {
             <input
               type="password"
               name=""
-              id=""
+              id="confirmPassword"
               onInput={(e) => setConfirmarSenhaInput(e.target.value)}
             />
           </div>

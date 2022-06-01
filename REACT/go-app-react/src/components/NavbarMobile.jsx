@@ -27,7 +27,7 @@ function NavbarMobile() {
 
                     <div className="mobile-bottom-nav__item">
                         <div className="mobile-bottom-nav__item-content">
-                            <a onClick={() => {navigate('/')}}>
+                            <a onClick={() => {navigate('/complaint')}}>
                                 <FontAwesomeIcon icon={faMagnifyingGlass} />
                             </a>
                         </div>

@@ -4,7 +4,7 @@ import '../../assets/css/style.table.css';
 import '../../assets/css/style.components.css';
 import '../../assets/css/style.complaint.css';
 import '../../assets/css/style.home.css';
-import api from "../../api";
+import apiUser from "../../apiUser";
 
 function TableComplaint() {
 
@@ -27,7 +27,7 @@ function TableComplaint() {
 
   function buscarDados(){
     //requisição que irá pegar casos por categoria
-    api.get('')
+    apiUser.get('')
     .then((resp) => {
       setAssedioH(resp);
       setAssedioM(resp);

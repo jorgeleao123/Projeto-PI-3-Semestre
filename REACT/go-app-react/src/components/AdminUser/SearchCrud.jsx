@@ -5,7 +5,7 @@ import "../../assets/css/style.components.css";
 import "../../assets/css/style.complaint.css";
 
 import TableLineCrud from "./TableLineCrud";
-import api from "../../api";
+import apiUser from "../../apiUser";
 
 function SearchCrud() {
   const [usuarios, setUsuarios] = useState(new Array());
@@ -15,9 +15,10 @@ function SearchCrud() {
   }, [usuarios]);
 
   function buscarDados() {
-    api
-      .get()
+    apiUser
+      .get(``)
       .then((resp) => {
+        console.log(resp);
         setUsuarios(resp.data);
       })
       .catch((error) => {

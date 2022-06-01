@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import "../../assets/css/style.table.css";
 import "../../assets/css/style.components.css";
-import api from "../../api";
 import TableLineCrudAdm from "./TableLineCrudAdm";
+import apiUser from "../../apiUser";
 
 function TableSearch() {
   const [admins, setAdmins] = useState(new Array());
@@ -13,7 +13,7 @@ function TableSearch() {
   }, [admins]);
 
   function buscarDados() {
-    api
+    apiUser
       .get()
       .then((resp) => {
         setAdmins(resp.data);
