@@ -92,7 +92,7 @@ public class ComplaintController {
         complaint.setAddress(address);
         complaint.setUser(user);
         complaint.setDriver(driver);
-        complaint.setDateTimePost(LocalDate.now());
+        complaint.setDateTimePost(LocalDateTime.now());
         complaint.setStatus("valido");
         complaintService.register(complaint);
         notificationService.register(userId,
@@ -122,7 +122,7 @@ public class ComplaintController {
             complaint.setDescription(complaintRegistration.getDescription());
             complaint.setType(complaintRegistration.getType());
             complaint.setDateTimeComplaint(complaintRegistration.getDateTimeComplaint());
-            complaint.setDateTimePost(LocalDate.now());
+            complaint.setDateTimePost(LocalDateTime.now());
             complaint.setStatus("valido");
             complaint.setAddress(address);
             complaint.setDriver(driver);

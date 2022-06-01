@@ -70,15 +70,15 @@ public class CsvController {
 
         User user1 = new User(1, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint1 = new Complaint(1, "decrição", "archive".getBytes(), "Verificado", null, LocalDate.now(),
-                LocalDate.now(),"tipo", driver, user1, address);
+                LocalDateTime.now(),"tipo", driver, user1, address);
 
         User user2 = new User(3, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint2 = new Complaint(2, "decrição", "archive".getBytes(), "Verificado", null, LocalDate.now(),
-                LocalDate.now(),"tipo", driver, user1, address);
+                LocalDateTime.now(),"tipo", driver, user1, address);
 
         User user3 = new User(5, "Pedrão", "pedrao@alfa.com", "alfa", "total", "Alfa", "k", "d", LocalDate.now(), "ativo", 0);
         Complaint complaint3 = new Complaint(1, "decrição", "archive".getBytes(), "Verificado", null, LocalDate.now(),
-                LocalDate.now(),"tipo", driver, user1, address);
+                LocalDateTime.now(),"tipo", driver, user1, address);
         complaintListaObj.adiciona(complaint1);
         complaintListaObj.adiciona(complaint2);
         complaintListaObj.adiciona(complaint3);

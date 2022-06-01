@@ -34,7 +34,7 @@ public class Contestation {
     private String status;
 
     @Column(name = "dt_contestarion")
-    private LocalDate dateTimeContestation;
+    private LocalDateTime dateTimeContestation;
 
     @JoinColumn(name = "id_user")
     @ManyToOne
