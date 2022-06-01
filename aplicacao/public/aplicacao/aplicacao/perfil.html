@@ -342,7 +342,7 @@
         var typeClass = "";
         function openEdit(id) {
             sessionStorage.editId = id;
-            window.open("./edit.html");
+            window.location.href = "./edit.html";
         }
 
         function deleteComplaint(id) {
@@ -516,7 +516,7 @@
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
         sessionStorage.setItem('endPointComplaint', endPoint);
-        window.open("./search.html");
+        window.location.href = "./search.html";
     }
 </script>
 
