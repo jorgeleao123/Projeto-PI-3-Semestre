@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -49,7 +50,6 @@ public class TxtService {
         try {
             InputStream is = file.getInputStream();
             entrada = new BufferedReader(new InputStreamReader(is));
-//            entrada = new BufferedReader(new FileReader(nomeArq));
         } catch (IOException erro) {
             System.out.println("Erro na abertura do arquivo: " + erro);
         }
