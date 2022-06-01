@@ -339,7 +339,7 @@
     <script src="./assets/js/dark-mode.js"></script>
 
     <script>
-var typeClass = "";
+        var typeClass = "";
         function openEdit(id) {
             sessionStorage.editId = id;
             window.open("./edit.html");
@@ -370,7 +370,21 @@ var typeClass = "";
             initial1.innerHTML = sessionStorage.user_nome[0]
             initial2.innerHTML = sessionStorage.user_nome[0]
             initial3.innerHTML = sessionStorage.user_nome[0]
-            city.innerHTML = `${sessionStorage.user_city}- UF`
+            city.innerHTML = `${sessionStorage.user_city}- ${sessionStorage.user_district}`
+
+            var config = {
+                method: 'get',
+                url: `http://localhost:8080/users/${sessionStorage.user_id}`,
+            };
+
+            axios(config)
+                .then(function (response) {
+                    data__pub.innerHTML = response.data["postCounter"]
+                    data__bus.innerHTML = response.data["searchCounter"]
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
             event.preventDefault();
             axios.get(`http://localhost:8080/complaints/user/${sessionStorage.user_id}`, {})
                 .then((resp) => {
@@ -462,37 +476,37 @@ var typeClass = "";
 
 
         function getPublicationType(type, typeClass) {
-        switch (type) {
-            case "Assédio":
-                typeClass = "circle__assedio circle__classification";
-                break;
-            case "Assédio Moral":
-                typeClass = "circle__assedio__moral circle__classification";
-                break;
-            case "Racismo":
-                typeClass = "circle__racism circle__classification";
-                break;
-            case "Agressão Física":
-                typeClass = "circle__agressao__fisica circle__classification";
-                break;
-            case "Agressão Verbal":
-                typeClass = "circle__agressao__verbal circle__classification";
-                break;
-            case "Homofobia":
-                typeClass = "circle__homofobia circle__classification";
-                break;
-            case "Preconceito":
-                typeClass = "circle__preconceito circle__classification";
-                break;
-            case "Furto":
-                typeClass = "circle__furto circle__classification";
-                break;
-            default:
-                typeClass = "circle__preconceito circle__classification";
-                break;
+            switch (type) {
+                case "Assédio":
+                    typeClass = "circle__assedio circle__classification";
+                    break;
+                case "Assédio Moral":
+                    typeClass = "circle__assedio__moral circle__classification";
+                    break;
+                case "Racismo":
+                    typeClass = "circle__racism circle__classification";
+                    break;
+                case "Agressão Física":
+                    typeClass = "circle__agressao__fisica circle__classification";
+                    break;
+                case "Agressão Verbal":
+                    typeClass = "circle__agressao__verbal circle__classification";
+                    break;
+                case "Homofobia":
+                    typeClass = "circle__homofobia circle__classification";
+                    break;
+                case "Preconceito":
+                    typeClass = "circle__preconceito circle__classification";
+                    break;
+                case "Furto":
+                    typeClass = "circle__furto circle__classification";
+                    break;
+                default:
+                    typeClass = "circle__preconceito circle__classification";
+                    break;
+            }
+            return typeClass;
         }
-        return typeClass;
-    }
 
     </script>
 </body>
