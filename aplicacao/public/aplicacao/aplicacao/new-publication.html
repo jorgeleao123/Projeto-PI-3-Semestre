@@ -19,7 +19,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body onload="iniciar()">
+<body onload="iniciar(),notificacao()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -291,52 +291,7 @@
         <input class="modal-state" id="modal-4" type="checkbox" />
         <div class="modal">
             <label class="modal__bg" for="modal-4"></label>
-            <div class="modal__inner__notify padding__card">
-                <div class="content__notify">
-                    <h5>Seu caso foi removido</h5>
-                    <span class="date">23/02/2022</span>
-                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                        exclui-la.</p>
-                    <a href="#">Saiba Mais</a>
-                    <hr>
-                </div>
-
-                <div class="content__notify">
-                    <h5>Seu caso foi removido</h5>
-                    <span class="date">23/02/2022</span>
-                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                        exclui-la.</p>
-                    <a href="#">Saiba Mais</a>
-                    <hr>
-                </div>
-
-                <div class="content__notify">
-                    <h5>Seu caso foi removido</h5>
-                    <span class="date">23/02/2022</span>
-                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                        exclui-la.</p>
-                    <a href="#">Saiba Mais</a>
-                    <hr>
-                </div>
-
-                <div class="content__notify">
-                    <h5>Seu caso foi removido</h5>
-                    <span class="date">23/02/2022</span>
-                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                        exclui-la.</p>
-                    <a href="#">Saiba Mais</a>
-                    <hr>
-                </div>
-
-                <div class="content__notify">
-                    <h5>Seu caso foi removido</h5>
-                    <span class="date">23/02/2022</span>
-                    <p>Analizamos sua publicação mediante ao pedido feito pelo motorista denunciado e optamos por
-                        exclui-la.</p>
-                    <a href="#">Saiba Mais</a>
-                    <hr>
-                </div>
-            </div>
+            <div class="modal__inner__notify padding__card" id="idNotificacao"></div>
         </div>
 
         <!-- modal classificação dos casos -->
@@ -698,5 +653,52 @@
     //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
     document.getElementById('cep')
     .addEventListener('focusout', pesquisarCep);
+    function notificacao() {
+        event.preventDefault();
+
+        var config = {
+            method: 'get',
+            url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+        };
+
+        axios(config)
+            .then(function (response) {
+                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+                response.data.map((e) => {
+                   if(!e["hasViewed"]){
+                    idNotificacao.innerHTML += `<div class="content__notify">
+                    <h5>${e["title"]}</h5>
+                    <span class="date">${e["dateTimeNotification"]}</span>
+                    <p>${e["description"]}</p>
+                    <div class="hr"></div>
+                </div>`;
+                   }
+                })
+                
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            
+    }
+
+    function zeraNotificacao() {
+        event.preventDefault();
+
+        var config = {
+            method: 'patch',
+            url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
+        };
+
+        axios(config)
+            .then(function (response) {
+               console.log(JSON.stringify(response.data));
+               console.log("foi");
+               window.location.href = "./new-publication.html";
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
 </script>
