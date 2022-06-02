@@ -2,6 +2,7 @@ package connect.go.usecases;
 
 import connect.go.Repositories.ComplaintRepository;
 import connect.go.models.Complaint;
+import connect.go.models.dto.ComplaintByTypeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -54,5 +55,30 @@ public class ComplaintService {
 
     public Optional<List<Complaint>> getComplaintByUserId(Integer userId) {
         return complaintRepository.getComplaintByUserId(userId);
+    }
+
+    public long count() {
+        return complaintRepository.count();
+    }
+
+    public ComplaintByTypeResponse countByTypeAndGenre() {
+        ComplaintByTypeResponse response = new ComplaintByTypeResponse(
+                complaintRepository.countByTypeAndUser_Genre("Assédio", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Assédio", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Assédio Moral", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Assédio Moral", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Racismo", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Racismo", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Agressão Física", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Agressão Física", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Agressão Verbal", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Agressão Verbal", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Homofobia", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Homofobia", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Preconceito", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Preconceito", "F"),
+                complaintRepository.countByTypeAndUser_Genre("Furto", "M"),
+                complaintRepository.countByTypeAndUser_Genre("Furto", "F"));
+        return response;
     }
 }

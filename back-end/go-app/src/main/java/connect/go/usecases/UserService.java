@@ -88,4 +88,8 @@ public class UserService {
         user = userRepository.save(user);
         return  user;
     }
+
+    public long countSearch() {
+        return userRepository.countAllsearches();
+    }
 }

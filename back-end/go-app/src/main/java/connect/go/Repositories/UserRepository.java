@@ -36,4 +36,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Query("update User set status=?2 where id=?1")
     Integer updateStatusById(Integer id, String status);
 
+    @Query("SELECT SUM(u.searchCounter) FROM User u")
+    long countAllsearches();
+
 }
