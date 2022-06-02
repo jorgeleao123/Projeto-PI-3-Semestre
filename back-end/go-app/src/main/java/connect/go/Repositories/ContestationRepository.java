@@ -22,4 +22,6 @@ public interface ContestationRepository extends JpaRepository<Contestation, Inte
     Optional<Contestation> getContestationsByComplaintId(Integer complaintId);
     @Query("select c from Contestation c where c.user.id = ?1 order by c.dateTimeContestation desc")
     Optional<List<Contestation>> getContestationsByUserId(Integer userId);
+
+    long count();
 }

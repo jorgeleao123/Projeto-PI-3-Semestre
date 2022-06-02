@@ -38,4 +38,8 @@ public class ContestationService {
     public Optional<List<Contestation>> getContestationsByUserId(Integer userId) {
         return contestationRepository.getContestationsByUserId(userId);
     }
+
+    public long count() {
+        return contestationRepository.count();
+    }
 }

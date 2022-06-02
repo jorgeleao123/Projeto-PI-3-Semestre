@@ -1,8 +1,13 @@
 package connect.go.controllers;
 
+import connect.go.Repositories.ContestationRepository;
 import connect.go.models.*;
+import connect.go.models.dto.ComplaintByTypeResponse;
+import connect.go.models.dto.CountReportResponse;
+import connect.go.usecases.ContestationService;
 import connect.go.usecases.CsvService;
 import connect.go.usecases.ComplaintService;
+import connect.go.usecases.UserService;
 import connect.go.utils.ListaObj;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +25,20 @@ public class CsvController {
 
     private final CsvService csv = new CsvService();
     private final ComplaintService complaintService;
+    private final ContestationService contestationService;
+    private final UserService userService;
 
+    @GetMapping("/counts")
+    public ResponseEntity<CountReportResponse> getCountsReport() {
+        CountReportResponse response = new CountReportResponse(complaintService.count(),contestationService.count(),
+                userService.countSearch());
+        return ResponseEntity.status(200).body(response);
+    }
+    @GetMapping("/countsByType")
+    public ResponseEntity<ComplaintByTypeResponse> getCountsByTypeReport() {
+        ComplaintByTypeResponse response = complaintService.countByTypeAndGenre();
+        return ResponseEntity.status(200).body(response);
+    }
     @GetMapping("/{city}")
     public ResponseEntity getRelatorioComplaintByCity(@PathVariable String city) {
         List<Complaint> myArrayList = complaintService.getComplaintByCity(city).orElse(Collections.emptyList());
