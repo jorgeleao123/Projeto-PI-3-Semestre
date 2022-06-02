@@ -28,15 +28,14 @@
                     <img src="../assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
-                    <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                    <select name="" id="" aria-placeholder="Filtrar por">
-                        <option value="">Placa</option>
-                        <option value="">Nome/Placa</option>
-                        <option value="">Cidade</option>
-                        <option value="">Bairro</option>
-                        <option value="">Estado</option>
+                    <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                    <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                        <option value="license">Placa</option>
+                        <option value="city">Cidade</option>
+                        <option value="district">Bairro</option>
+                        <option value="state">Estado</option>
                     </select>
-                    <a href="../search.html" class="search__icon"> <i
+                    <a onclick="getSearch()" class="search__icon"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
@@ -69,7 +68,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial1"></span>
                     </div>
                 </div>
             </div>
@@ -300,5 +299,15 @@
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
 </body>
+<script>
+function getSearch(){
+    let uriParam = document.getElementById('uriParamComplaint').value;
+    let endPoint = document.getElementById('endPointComplaint').value;
+    document.getElementById('initial1').innerHTML += sessionStorage.user_nome[0];
+    sessionStorage.setItem('uriParamComplaint', uriParam);
+    sessionStorage.setItem('endPointComplaint', endPoint);
+    window.location.href = "./search.html";
+}
+</script>
 
 </html>

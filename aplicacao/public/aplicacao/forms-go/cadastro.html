@@ -247,13 +247,12 @@
                 console.log(data);
                 axios.post(`http://localhost:8080/users`, data)
                     .then((resp) => {
-                        alert('Success', resp);
+                        alert('Cadastro realizado com sucesso');
                         console.log(resp);
                     })
                     .catch((error) => {
                         console.log(error);
-                        console.log(data)
-                        alert('Error', error)
+                        console.log(data);
                     })
 
 

@@ -32,7 +32,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -334,8 +333,7 @@
 
             axios(config)
                 .then(function (response) {
-                    data__pub.innerHTML = response.data["postCounter"]
-                    data__bus.innerHTML = response.data["searchCounter"]
+
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -345,8 +343,10 @@
                 .then((resp) => {
                     console.log(resp);
                     itens.innerHTML == '';
+                    let contador = 0;
                     resp.data.map((e) => {
                         if (e["status"] != "Inativo") {
+                            contador++;
                             itens.innerHTML += `                            
                             <div class="content__complaint">
                                     <div class="header__complaint flex justify">
@@ -418,13 +418,15 @@
                                     <div class="hr margin-bottom"></div></div>`
 
                         }
-
+                        
                     });
+                    data__pub.innerHTML = contador;
+                    data__bus.innerHTML = response.data["searchCounter"];
                 })
                 .catch((error) => {
                     console.log(error);
-                    console.log(data)
-                    alert('Error', error)
+                    console.log(data);
+                    window.location.href = './error.html';
                 })
 
         }
@@ -486,14 +488,16 @@
             .then(function (response) {
                 idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
                 response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
-                    <h5>${e["title"]}</h5>
-                    <span class="date">${e["dateTimeNotification"]}</span>
-                    <p>${e["description"]}</p>
-                    <div class="hr"></div>
-                </div>`;
-                   }
+                if(!e["hasViewed"]){
+                    idNotificacao.innerHTML += `
+                        <div class="content__notify">
+                            <h5>${e["title"]}</h5>
+                            <span class="date">${e["dateTimeNotification"]}</span>
+                            <p>${e["description"]}</p>
+                            <div class="hr"></div>
+                        </div>
+                    `;
+                }
                 })
                 
             })
@@ -513,9 +517,9 @@
 
         axios(config)
             .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./perfil.html";
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./perfil.html";
             })
             .catch(function (error) {
                 console.log(error);

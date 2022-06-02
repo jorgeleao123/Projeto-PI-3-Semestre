@@ -28,7 +28,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -428,12 +427,12 @@
     function loadPage() {
         setCity();
         getBuscas();
-        loadComplaints();
         loadHtml();
     }
 
     function loadComplaints() {
         event.preventDefault();
+        var aconteceu = false;
         axios.get(`http://localhost:8080/complaints/city`, {
             headers: {
                 city: sessionStorage.getItem('user_city')
@@ -441,11 +440,15 @@
         })
             .then((resp) => {
                 sessionStorage.setItem('qnt_publicacoes', resp.data.length);
-                resp.data.map(item => {
-                    if (item.status != 'Inativo') {
-                        getComplaint(item);
-                    }
-                })
+                document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
+                aconteceu = true;
+                if(aconteceu){
+                    resp.data.map(item => {
+                        if (item.status != 'Inativo') {
+                            getComplaint(item);
+                        }
+                    })
+                }
             })
     }
 
@@ -527,11 +530,9 @@
             complaintId: id
         })
             .then((resp) => {
-                console.log('FUNCIONOU');
-                alert("salvo");
+                
             })
             .catch((err) => {
-                alert('ERROR');
             })
     }
 
@@ -566,9 +567,14 @@
     }
 
     function getBuscas() {
+        var aconteceu = false;
         axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
             .then((resp) => {
                 //document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
+                aconteceu = true;
+                if(aconteceu){
+                    loadComplaints();
+                }
             })
     }
 
@@ -577,6 +583,7 @@
             .then((resp) => {
                 sessionStorage.user_city = resp.data[0].city;
                 sessionStorage.user_district = resp.data[0].district;
+                document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
             })
     }
 
@@ -594,8 +601,6 @@
         document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
-        document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
-        document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
         document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
         document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
         document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;

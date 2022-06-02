@@ -30,7 +30,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -491,7 +490,7 @@
 
                     <div class="infos__complaint">
                         <p id="textComplaint">
-                           ${e["description"]}
+                            ${e["description"]}
                         </p>
                     </div>
 
@@ -519,8 +518,8 @@
             })
             .catch((error) => {
                 console.log(error);
-                console.log(data)
-                alert('Error', error)
+                console.log(data);
+                window.location.href = './error.html';
             })
 
     }
@@ -529,12 +528,12 @@
         axios.delete(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}/${id}`)
             .then((resp) => window.location.href = "perfil-save.html")
             .catch((error) => {
-                alert('erro', resp);
+                window.location.href = './error.html';
             })
     }
     function abrirContestacao(id) {
         event.preventDefault();
-        sessionStorage.idPublic = id;
+        sessionStorage.complaint_id = id;
         window.location.href = "./contest.html";
     }
 

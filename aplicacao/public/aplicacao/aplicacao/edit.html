@@ -32,7 +32,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -524,12 +523,13 @@
             axios.put(`http://localhost:8080/complaints/${sessionStorage.user_id}/${sessionStorage.editId}`, data)
             .then((resp) => {
                 alert('Denúncia editada com sucesso', resp);
+                window.location.href = './perfil-save.html';
                 console.log(resp);
             })
             .catch((error) => {
                 console.log(error);
-                console.log(data)
-                alert('Ocorreu um erro', error)
+                console.log(data);
+                window.location.href = './error.html';
             })
 
         }

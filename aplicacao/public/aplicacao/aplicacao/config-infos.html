@@ -350,7 +350,6 @@
                             <input type="search" placeholder="Busque pela placa ou nome do motorista">
                             <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
                                 <option value="">Placa</option>
-                                <option value="">Nome/Placa</option>
                                 <option value="">Cidade</option>
                                 <option value="">Bairro</option>
                                 <option value="">Estado</option>
@@ -403,88 +402,87 @@
 </html>
 
 <script>
-    function iniciar() {
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("edit__icon")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("edit__capa")[0].style.backgroundColor = sessionStorage.user_colorMenu;
-        newColorPerfil.value = sessionStorage.user_colorMenu;
-        newColorMenu.value = sessionStorage.user_colorProfile;
-        initial.innerHTML = sessionStorage.user_nome[0]
+function iniciar() {
+    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("edit__icon")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    document.getElementsByClassName("edit__capa")[0].style.backgroundColor = sessionStorage.user_colorMenu;
+    newColorPerfil.value = sessionStorage.user_colorMenu;
+    newColorMenu.value = sessionStorage.user_colorProfile;
+    initial.innerHTML = sessionStorage.user_nome[0]
+}
+
+function registerUser() {
+    event.preventDefault();
+    const data = {
+        name: newName.value,
+        email: newEmail.value,
+        password: newSenha.value,
+        colorProfile: newColorPerfil.value,
+        colorMenu: newColorMenu.value,
     }
+    axios.put(`http://localhost:8080/users/${sessionStorage.user_id}`, data)
+        .then((resp) => {
+            console.log(resp);
+        })
+        .catch((error) => {
+            console.log(error);
+            console.log(data);
+            window.location.href = './error.html';
+        })
+}
 
-    function registerUser() {
-        event.preventDefault();
-        const data = {
-            name: newName.value,
-            email: newEmail.value,
-            password: newSenha.value,
-            colorProfile: newColorPerfil.value,
-            colorMenu: newColorMenu.value,
-        }
-        axios.put(`http://localhost:8080/users/${sessionStorage.user_id}`, data)
-            .then((resp) => {
-                alert('Success', resp);
-                console.log(resp);
+function getSearch(){
+    let uriParam = document.getElementById('uriParamComplaint').value;
+    let endPoint = document.getElementById('endPointComplaint').value;
+    sessionStorage.setItem('uriParamComplaint', uriParam);
+    sessionStorage.setItem('endPointComplaint', endPoint);
+    window.location.href = "./search.html";
+}
+function notificacao() {
+    event.preventDefault();
+
+    var config = {
+        method: 'get',
+        url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+    };
+
+    axios(config)
+        .then(function (response) {
+            idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+            response.data.map((e) => {
+                if(!e["hasViewed"]){
+                idNotificacao.innerHTML += `<div class="content__notify">
+                <h5>${e["title"]}</h5>
+                <span class="date">${e["dateTimeNotification"]}</span>
+                <p>${e["description"]}</p>
+                <div class="hr"></div>
+            </div>`;
+                }
             })
-            .catch((error) => {
-                console.log(error);
-                console.log(data)
-                alert('Error', error)
-            })
-    }
-
-    function getSearch(){
-        let uriParam = document.getElementById('uriParamComplaint').value;
-        let endPoint = document.getElementById('endPointComplaint').value;
-        sessionStorage.setItem('uriParamComplaint', uriParam);
-        sessionStorage.setItem('endPointComplaint', endPoint);
-        window.location.href = "./search.html";
-    }
-    function notificacao() {
-        event.preventDefault();
-
-        var config = {
-            method: 'get',
-            url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
-        };
-
-        axios(config)
-            .then(function (response) {
-                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
-                response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
-                    <h5>${e["title"]}</h5>
-                    <span class="date">${e["dateTimeNotification"]}</span>
-                    <p>${e["description"]}</p>
-                    <div class="hr"></div>
-                </div>`;
-                   }
-                })
-                
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
             
-    }
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+        
+}
 
-    function zeraNotificacao() {
-        event.preventDefault();
+function zeraNotificacao() {
+    event.preventDefault();
 
-        var config = {
-            method: 'patch',
-            url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
-        };
+    var config = {
+        method: 'patch',
+        url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
+    };
 
-        axios(config)
-            .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./config-infos.html";
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+    axios(config)
+        .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            console.log("foi");
+            window.location.href = "./config-infos.html";
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 </script>

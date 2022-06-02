@@ -30,7 +30,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -391,10 +390,12 @@
     document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
     function registerContestation() {
         event.preventDefault();
+        var funcionou = false;
 
 
         const data = {
             description: description.value,
+            archive: [],
             userId: sessionStorage.user_id,
             complaintId: sessionStorage.complaint_id
         }
@@ -403,14 +404,17 @@
 
         axios.post(`http://localhost:8080/contestations`, data)
             .then((resp) => {
-                alert('Success', resp);
                 console.log(resp);
-                getId();
+                funcionou = true;
+                if(funcionou){
+                    getId();
+                }
             })
             .catch((error) => {
                 console.log(error);
-                console.log(data)
-                alert('Error', error)
+                console.log(data);
+                alert('Erro');
+                //window.location.href = './error.html';
             })
     }
 

@@ -31,7 +31,6 @@
                     <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
                     <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
-                        <option value="">Nome/Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
@@ -511,7 +510,7 @@ function getStatusContestation(status, data){
         document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
         document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
-
+        document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
     }
 
     function getSearch() {
