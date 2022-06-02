@@ -3,7 +3,6 @@ import Icon__admin from "../assets/img/icon-admin-carbon.svg";
 import '../assets/css/style.complaint.css';
 import '../assets/css/style.components.css';
 import '../assets/css/style.sidenav.css';
-import api from "../api";
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,8 +13,8 @@ function Navbar() {
     document.getElementById("maindash").style.marginLeft = "250px";
   }
 
-  const [nameAdm, setNameAdm] = useState(sessionStorage.getItem("id_user"));
-  const [roleAdm, setRoleAdm] = useState(sessionStorage.getItem("id_user"));
+  const nameAdm = sessionStorage.getItem("id_user");
+  const roleAdm = sessionStorage.getItem("id_user");
 
   const navigate = useNavigate();
 
@@ -40,5 +39,8 @@ function Navbar() {
       </div>
     </>
   )
+
+  openNav();
+
 }
 export default Navbar;

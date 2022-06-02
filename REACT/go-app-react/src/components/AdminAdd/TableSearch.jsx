@@ -16,7 +16,7 @@ function TableSearch() {
     apiUser
       .get()
       .then((resp) => {
-        setAdmins(resp.data);
+        setAdmins(resp);
       })
       .catch((error) => {
         console.error(error);
@@ -24,7 +24,7 @@ function TableSearch() {
   }
 
   function deleteAdm(id) {
-    api
+    apiUser
       .delete(`/users/${id}`)
       .then(() => {
         alert("Usuário excluido com sucesso!");

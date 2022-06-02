@@ -19,7 +19,7 @@ function Cards() {
 
   function buscarDados(){
     //requisição que irá pegar casos por categoria
-    apiUser.get('')
+    apiUser.get()
     .then((resp) => {
       setPublicacoes(resp);
       setContestacoes(resp);

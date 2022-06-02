@@ -19,7 +19,7 @@ function SearchCrud() {
       .get(``)
       .then((resp) => {
         console.log(resp);
-        setUsuarios(resp.data);
+        setUsuarios(resp);
       })
       .catch((error) => {
         console.log(error);
@@ -27,7 +27,7 @@ function SearchCrud() {
   }
 
   function deleteUser(id){
-    api.delete(`/users/${id}`)
+    apiUser.delete(`/${id}`)
         .then(() => {
             alert("Usuário excluido com sucesso!")
             buscarDados();

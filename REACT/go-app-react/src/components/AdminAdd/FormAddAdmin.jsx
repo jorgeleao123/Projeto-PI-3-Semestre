@@ -25,8 +25,9 @@ function FormAddAdmin() {
       district: "Bairro",
     };
 
+    //!pode ser necessário o event.prevendDefaut();
     apiUser
-      .post(`/users`, data)
+      .post('', data)
       .then(() => {
         alert("Cadastrado!");
       })

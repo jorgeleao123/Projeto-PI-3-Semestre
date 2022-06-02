@@ -41,7 +41,7 @@ function PerfilColorForm() {
       colorMenu: colorMenuInput,
     };
 
-    api.post(``, data)
+    apiUser.post(``, data)
       .then((resp) => {
         alert("Atualizado com sucesso!");
         buscarDados();
@@ -74,7 +74,6 @@ function PerfilColorForm() {
           <input
             value={nameInput}
             type="text"
-            name=""
             id="name"
             onInput={(e) => setNameInput(e.target.value)}
           />
@@ -87,7 +86,6 @@ function PerfilColorForm() {
           <input
             value={emailInput}
             type="email"
-            name=""
             id="email"
             onInput={(e) => setEmailInput(e.target.value)}
           />
@@ -97,7 +95,6 @@ function PerfilColorForm() {
             <label htmlFor="Alterar senha">Alterar senha</label>
             <input
               type="password"
-              name=""
               id="password"
               onInput={(e) => setSenhaInput(e.target.value)}
             />
@@ -106,7 +103,6 @@ function PerfilColorForm() {
             <label htmlFor="Confirmar senha">Confirmar senha</label>
             <input
               type="password"
-              name=""
               id="confirmPassword"
               onInput={(e) => setConfirmarSenhaInput(e.target.value)}
             />

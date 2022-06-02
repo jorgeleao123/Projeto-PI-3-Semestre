@@ -27,7 +27,7 @@ function TableComplaint() {
 
   function buscarDados(){
     //requisição que irá pegar casos por categoria
-    apiUser.get('')
+    apiUser.get()
     .then((resp) => {
       setAssedioH(resp);
       setAssedioM(resp);
