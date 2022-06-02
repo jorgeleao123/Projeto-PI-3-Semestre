@@ -4,6 +4,7 @@ import connect.go.Repositories.AddressRepository;
 import connect.go.models.Address;
 import connect.go.models.FavoriteAddressId;
 import connect.go.models.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class AddressServiceTest {
 
@@ -36,6 +36,7 @@ class AddressServiceTest {
     private AddressRepository repository;
 
     @Test
+    @DisplayName("Cadastrando endereço com sucesso")
     void successRegisterTest() {
         Address address = service.register(generateValidAdderss());
         assertNotNull(address);
@@ -45,6 +46,7 @@ class AddressServiceTest {
     }
 
     @Test
+    @DisplayName("Retorna o endereço correspondente quando cadastra endereço duplicado")
     void registerDuplicatedCepTest() {
         Address address = service.register(generateValidAdderss());
         assertNotNull(address);
@@ -59,21 +61,16 @@ class AddressServiceTest {
     }
 
     @Test
+    @DisplayName("Busca de endereços por bairro com sucesso")
     void successFindAllByDistrictTest() {
         Address address = service.register(generateValidAdderss());
         service.register(generateValidAdderss());
         Address address2 = service.findAllByDistrict(address.getDistrict()).get();
         assertEquals(address, address2);
-
     }
 
     @Test
-    void failFindAllByCepTest() {
-        Optional<Address> addressOptional = service.findAllByDistrict("00000000");
-        assertFalse(addressOptional.isPresent());
-    }
-
-    @Test
+    @DisplayName("Busca de endereços favorito com sucesso")
     void getFavoriteAddressTest() {
         User user = new User();
         user.setName("Mauricio");

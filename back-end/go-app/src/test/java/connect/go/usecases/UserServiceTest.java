@@ -6,6 +6,7 @@ import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.User;
 import connect.go.models.dto.UserUpdate;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 class UserServiceTest {
 
@@ -36,14 +36,15 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Cadastrando um usuário com sucesso")
     void successRegisterTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
         assertEquals(user, repository.findAll().get(0));
-
     }
 
     @Test
+    @DisplayName("Erro ao cadastrar o mesmo usuario 2 vezes")
     void registerDuplicatedEmailTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
@@ -53,6 +54,7 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Login realizado com sucesso")
     void successLoginTest() {
         User user = service.register(generateValidUser());
         List<User> users = service.login("mauricio@teste.com","senhaTeste");
@@ -62,6 +64,7 @@ class UserServiceTest {
 
     }
     @Test
+    @DisplayName("Erro de login, usuário não encontrado")
     void failLoginTest() {
         List<User> users = service.login("mauricio@teste.com","senhaTeste");
         assertEquals(0, users.size());
@@ -69,6 +72,7 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Deletando um usuário com sucesso")
     void successDeleteTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
@@ -80,12 +84,14 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Erro ao deletar usuário inexistente")
     void failDeleteTest() {
-        assertThrows(UserNotFoundException.class, () -> service.getById(1));
+        assertThrows(UserNotFoundException.class, () -> service.deleteById(1));
 
     }
 
     @Test
+    @DisplayName("Atualizando email com sucesso")
     void successUpdateEmailByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
@@ -97,6 +103,7 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Cadastrando nova senha com sucesso")
     void successUpdatePasswordByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
@@ -109,6 +116,7 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("Erro ao cadastrar nova senha")
     void failUpdatePasswordByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);
@@ -121,6 +129,7 @@ class UserServiceTest {
     }
 
     @Test
+    @DisplayName("CAtualizando dados do usuario com sucesso")
     void successUpdateByIdTest() {
         User user = service.register(generateValidUser());
         assertNotNull(user);assertTrue(service.updateById(user.getId(),
