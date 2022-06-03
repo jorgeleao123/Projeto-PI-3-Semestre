@@ -23,13 +23,13 @@ public class TxtController {
         return ResponseEntity.status(200).build();
     }
 
-    @GetMapping("/userRegistration/cadastrar")
-    public ResponseEntity<Void> cadastrarFilaUserRegistration() {
-        txtService.cadastraUsuariosFila();
-        String nome = "user.txt";
-        txtService.gravaArquivoTxt(nome);
-        return ResponseEntity.status(201).build();
-    }
+//    @GetMapping("/userRegistration/cadastrar")
+//    public ResponseEntity<Void> cadastrarFilaUserRegistration() {
+//        txtService.cadastraUsuariosFila();
+//        String nome = "user.txt";
+//        txtService.gravaArquivoTxt(nome);
+//        return ResponseEntity.status(201).build();
+//    }
 
 //    @GetMapping("/userRegistration/gravar-resposta")
 //    public ResponseEntity<Void> gravarPilhaUserResponse() {
@@ -40,9 +40,9 @@ public class TxtController {
 
     @GetMapping("/userRegistration/list")
     public ResponseEntity<Object> exportUserResponse() {
-//        txtService.cadastraUsuariosFila();
+        txtService.cadastraUsuariosFila();
         String nome = "user.txt";
-//        txtService.gravaArquivoTxt(nome);
+        txtService.gravaArquivoTxt(nome);
         return ResponseEntity.status(200)
                 .header("content-type", "text/plain")
                 .header("content-disposition", "attachment; filename=\"user.txt\"")

@@ -1,0 +1,6 @@
+00Cadastro03-06-2022 17:14:5601
+02Pedro Aragão                                 pedro@goapp.com.br                           pedro123       usuario        M              02-12-1994
+03SPSão Paulo                                    Cerqueira César                              
+02Jorge Leão                                   jorge@goapp.com.br                           jorge123       usuario        M              13-08-2001
+03SPSão Paulo                                    Cerqueira César                              
+0100002

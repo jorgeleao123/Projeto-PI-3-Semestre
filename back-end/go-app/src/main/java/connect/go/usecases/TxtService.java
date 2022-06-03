@@ -33,6 +33,8 @@ public class TxtService {
     private final UserController controller;
     PilhaObj<List<UserResponse>> userResponses = new PilhaObj<>(10);
     FilaObj<List<UserRegistration>> userRegistrations = new FilaObj<>(10);
+    PilhaObj<UserResponse> userResponsePilhaObj = new PilhaObj<>(20);
+    FilaObj<UserRegistration> userRegistrationFilaObj = new FilaObj<>(20);
 
     public void leArquivoTxtUserRegistration(MultipartFile file) {
         BufferedReader entrada = null;
@@ -77,7 +79,7 @@ public class TxtService {
                                 "com a quantidade de registros gravados");
                     } else {
                         System.out.println("Quantidade de registros lidos incompatível " +
-                                "com a quantidade de registros gravados");
+                                "com a quantidade de registros gravados" + contaRegDadoLido + qtdRegDadoGravado);
                     }
 
                 } else if (tipoRegistro.equals("02")) {
@@ -112,26 +114,21 @@ public class TxtService {
         }
         List<UserRegistration> userRegistrationList = new ArrayList<>();
         for (int i = 0; i < listaUser.size(); i++) {
-            userRegistrationList.add(new UserRegistration(listaUser.get(i).getName(),
+            userRegistrationFilaObj.insert(new UserRegistration(listaUser.get(i).getName(),
                     listaUser.get(i).getEmail(), listaUser.get(i).getPassword(),
                     listaUser.get(i).getRole(), listaUser.get(i).getGenre(), listaUser.get(i).getBirthDate(),
                     listaAddress.get(i).getState(), listaAddress.get(i).getCity(), listaAddress.get(i).getDistrict()));
         }
-        userRegistrations.insert(userRegistrationList);
-
     }
 
     public void cadastraUsuariosFila() {
         List<UserResponse> userResponseList = new ArrayList<>();
-        while (!userRegistrations.isEmpty()) {
-            for (UserRegistration u : userRegistrations.poll()) {
-                ResponseEntity<UserResponse> response = controller.createUser(u);
-                if (response.getStatusCode().is2xxSuccessful()) {
-                    userResponseList.add(response.getBody());
-                }
+        while (!userRegistrationFilaObj.isEmpty()) {
+            ResponseEntity<UserResponse> response = controller.createUser(userRegistrationFilaObj.poll());
+            if (response.getStatusCode().is2xxSuccessful()) {
+                userResponsePilhaObj.push(response.getBody());
             }
         }
-        userResponses.push(userResponseList);
     }
 
     public void gravaRegistro(String registro, String nomeArq) {
@@ -164,22 +161,23 @@ public class TxtService {
 
         // Monta e grava os registros de corpo (ou de detalhe)
         String corpo;
-        while (!userResponses.isEmpty()) {
-            for (UserResponse u : userResponses.pop()) {
-                corpo = "02";
-                corpo += String.format("%08d", u.getId());
-                corpo += String.format("%-45.45s", u.getName());
-                corpo += String.format("%-45.45s", u.getEmail());
-                corpo += String.format("%-15.15s", u.getRole());
-                corpo += String.format("%-15.15s", u.getGenre());
-                corpo += String.format("%-7.7s", u.getColorProfile());
-                corpo += String.format("%-7.7s", u.getColorMenu());
-                corpo += String.format("%-15.15s", u.getStatus());
-                corpo += String.format("%04d", u.getPostCounter());
-                corpo += String.format("%-10.10s", u.getBirthDate());
-                gravaRegistro(corpo, nomeArq);
-                contaRegistroCorpo++;
-            }
+        UserResponse u;
+        while (!userResponsePilhaObj.isEmpty()) {
+            u = userResponsePilhaObj.pop();
+            corpo = "02";
+            corpo += String.format("%08d", u.getId());
+            corpo += String.format("%-45.45s", u.getName());
+            corpo += String.format("%-45.45s", u.getEmail());
+            corpo += String.format("%-15.15s", u.getRole());
+            corpo += String.format("%-15.15s", u.getGenre());
+            corpo += String.format("%-7.7s", u.getColorProfile());
+            corpo += String.format("%-7.7s", u.getColorMenu());
+            corpo += String.format("%-15.15s", u.getStatus());
+            corpo += String.format("%04d", u.getPostCounter());
+            corpo += String.format("%-10.10s", u.getBirthDate());
+            gravaRegistro(corpo, nomeArq);
+            contaRegistroCorpo++;
+
         }
 
         // Monta e grava o registro de trailer
