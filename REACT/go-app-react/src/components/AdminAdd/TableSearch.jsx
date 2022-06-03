@@ -25,7 +25,7 @@ function TableSearch() {
 
   function deleteAdm(id) {
     apiUser
-      .delete(`/users/${id}`)
+      .delete(`/${id}`)
       .then(() => {
         alert("Usuário excluido com sucesso!");
         buscarDados();
