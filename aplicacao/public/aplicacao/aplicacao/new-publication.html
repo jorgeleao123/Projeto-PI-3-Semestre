@@ -499,7 +499,7 @@
             .then((resp) => {
                 alert('Denúncia publicada com sucesso', resp);
                 getId();
-                window.location.href = './index.html';
+                
             })
             .catch((error) => {
                 console.log(error);
@@ -623,8 +623,9 @@
 
         axios(config)
             .then(function (response) {
-                let tamanhoData = response.data.length - 1;
-                subirFoto(response.data[tamanhoData]["id"]);
+                // let tamanhoData = response.data.length - 1;
+                subirFoto(response.data[0]["id"]);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -646,7 +647,7 @@
 
         fetch(`http://localhost:8080/complaints/archive/${sessionStorage.user_id}/${id}`, requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => window.location.href = './index.html')
             .catch(error => console.log('error', error));
     }
 
