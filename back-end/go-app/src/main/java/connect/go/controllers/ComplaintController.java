@@ -108,7 +108,7 @@ public class ComplaintController {
         notificationService.register(userId,
                 "Sua denúncia foi publicada",
                 "Sua denúncia pode ser visualizada pelo feed ou você pode consultar na página minhas denúncias");
-        return ResponseEntity.status(201).build();
+        return ResponseEntity.status(201).body(complaint);
     }
 
     @DeleteMapping("{complaintId}")
