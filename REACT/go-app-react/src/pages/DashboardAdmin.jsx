@@ -6,7 +6,7 @@ import '../assets/css/style.modais.css';
 import "../assets/css/style.complaint.css";
 import '../assets/css/style.profile.css';
 import '../assets/css/style.table.css';
-import '../assets/css/style.sidenav.css'
+import '../assets/css/style.sidenav.css';
 
 import Sidenav from '../components/Sidenav';
 import Divider from '../components/Divider';

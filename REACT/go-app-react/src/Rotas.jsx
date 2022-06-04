@@ -7,6 +7,7 @@ import DashboardComplaint from './pages/DashboardComplaint';
 import DashboardAdmin from './pages/DashboardAdmin';
 import DashboardProfile from './pages/DashboardProfile';
 import DashboardUser from './pages/DashboardUser';
+import DashboardLogin from './pages/DashboardLogin';
 
 const Rotas = () => {
     return (
@@ -14,6 +15,7 @@ const Rotas = () => {
             <Routes>
             <Route path="/" element={<Index />} />
             <Route path='/complaint' element={<DashboardComplaint />} />
+            <Route path="/login" element={<DashboardLogin />} />
                 <Route path="/admin" element={<DashboardAdmin />} />
                 {/*pagina não encontrada:*/}
                 {/* <Route path="*" element={<NotFound />} /> */}
