@@ -54,7 +54,7 @@
 
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <label for="modal-4">
+                        <label for="modal-4" id="hasNotification">
                             <i class="fa-solid fa-bell icon__mobile"></i>
                         </label>
                     </div>
@@ -158,11 +158,11 @@
                 <div class="padding__card">
                     <div class="flex justify">
                         <h5>Publicações</h5>
-                        <span id="data__pub" class="data__user">5</span>
+                        <span id="data__pub" class="data__user"></span>
                     </div>
                     <div class="flex justify top">
                         <h5>Buscas</h5>
-                        <span id="data__bus" class="data__user">5</span>
+                        <span id="data__bus" class="data__user"></span>
                     </div>
                 </div>
             </div>
@@ -351,7 +351,7 @@
                             <div class="content__complaint">
                                     <div class="header__complaint flex justify">
                                         <div class="flex">
-                                            <div class="icon__user__initial">
+                                            <div class="icon__user__initial" style="background-color: ${e["user"]["colorProfile"]};">
                                                 <span class="initial__user" id="initial">${e["user"]["name"][0]}</span>
                                             </div>
                 
@@ -399,10 +399,7 @@
                 
                                     <div class="photos__complaint">
                                         <div class="item shrink-1-basis">
-                                            <img src="./assets/img/print-uber.png" alt="">
-                                        </div>
-                                        <div class="item shrink-1-basis">
-                                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="">
+                                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
                                         </div>
                                     </div>
                 
@@ -421,7 +418,7 @@
                         
                     });
                     data__pub.innerHTML = contador;
-                    data__bus.innerHTML = response.data["searchCounter"];
+                    data__bus.innerHTML = sessionStorage.qnt_Buscas;
                 })
                 .catch((error) => {
                     console.log(error);
@@ -486,25 +483,27 @@
 
         axios(config)
             .then(function (response) {
-                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+
                 response.data.map((e) => {
-                if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `
-                        <div class="content__notify">
-                            <h5>${e["title"]}</h5>
-                            <span class="date">${e["dateTimeNotification"]}</span>
-                            <p>${e["description"]}</p>
-                            <div class="hr"></div>
-                        </div>
-                    `;
-                }
+                    if (!e["hasViewed"]) {
+                        hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
+                        idNotificacao.innerHTML += `<div class="content__notify">
+                    <h5>${e["title"]}</h5>
+                    <span class="date">${e["dateTimeNotification"]}</span>
+                    <p>${e["description"]}</p>
+                    <div class="hr top"></div>
+                </div>`;
+
+                        idNotificacao.innerHTML += `<a class="excnoti" onclick="zeraNotificacao()">excluir notificações</a>`;
+                    }
+
                 })
-                
+
             })
             .catch(function (error) {
                 console.log(error);
             });
-            
+
     }
 
     function zeraNotificacao() {
@@ -525,6 +524,8 @@
                 console.log(error);
             });
     }
+
+   
 </script>
 
 </html>

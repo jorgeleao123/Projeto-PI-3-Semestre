@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./assets/css/error.css">
 </head>
 
-<body onload="notificacao()">
+<body onload="loadPage()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -53,7 +53,7 @@
 
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <label for="modal-4">
+                        <label for="modal-4" id="hasNotification">
                             <i class="fa-solid fa-bell icon__mobile"></i>
                         </label>
                     </div>
@@ -117,7 +117,7 @@
         <div class="desc__error">
             <h4>Não foi possivel encontar a página.</h4>
             <p>Nos desculpe, infelizmente nós não encontramos a página que você queria :(</p>
-            <p>{nome}</p>
+            <p id="nomeUsuario"></p>
             <a class="link__modal" href="./index.html">Voltar para a página inicial</a>
         </div>
 
@@ -255,64 +255,75 @@
     <script src="./assets/js/dark-mode.js"></script>
 
     <script>
+
+        function loadPage(){
+            loadHtml();
+            notificacao();
+        }
+
         function notificacao() {
-        event.preventDefault();
+            event.preventDefault();
 
-        var config = {
-            method: 'get',
-            url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
-        };
+            var config = {
+                method: 'get',
+                url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+            };
 
-        axios(config)
-            .then(function (response) {
-                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
-                response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
-                    <h5>${e["title"]}</h5>
-                    <span class="date">${e["dateTimeNotification"]}</span>
-                    <p>${e["description"]}</p>
-                    <div class="hr"></div>
-                </div>`;
-                   }
+            axios(config)
+                .then(function (response) {
+                    idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+                    response.data.map((e) => {
+                        if(!e["hasViewed"]){
+                            idNotificacao.innerHTML += `
+                                <div class="content__notify">
+                                    <h5>${e["title"]}</h5>
+                                    <span class="date">${e["dateTimeNotification"]}</span>
+                                    <p>${e["description"]}</p>
+                                    <div class="hr"></div>
+                                </div>
+                            `;
+                        }
+                    })
+                    
                 })
-                
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-            
-    }
+                .catch(function (error) {
+                    console.log(error);
+                    window.location.href = './error.html';
+                });
+        }
 
-    function zeraNotificacao() {
-        event.preventDefault();
+        function zeraNotificacao() {
+            event.preventDefault();
 
-        var config = {
-            method: 'patch',
-            url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
-        };
+            var config = {
+                method: 'patch',
+                url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
+            };
 
-        axios(config)
-            .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./error.html";
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    }
+            axios(config)
+                .then((response) => {
+                    console.log(JSON.stringify(response.data));
+                    console.log("foi");
+                    window.location.href = "./error.html";
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+
+        function loadHtml(){
+            document.getElementById('initial1').innerHTML = sessionStorage.user_nome[0];
+            document.getElementById('nomeUsuario').innerHTML = sessionStorage.user_nome;
+        }
+
+        function getSearch(){
+            let uriParam = document.getElementById('uriParamComplaint').value;
+            let endPoint = document.getElementById('endPointComplaint').value;
+            sessionStorage.setItem('uriParamComplaint', uriParam);
+            sessionStorage.setItem('endPointComplaint', endPoint);
+            window.location.href = "./search.html";
+        }
+
     </script>
 </body>
-<script>
-function getSearch(){
-    let uriParam = document.getElementById('uriParamComplaint').value;
-    let endPoint = document.getElementById('endPointComplaint').value;
-    document.getElementById('initial1').innerHTML += sessionStorage.user_nome[0];
-    sessionStorage.setItem('uriParamComplaint', uriParam);
-    sessionStorage.setItem('endPointComplaint', endPoint);
-    window.location.href = "./search.html";
-}
-</script>
-
 </html>

@@ -22,7 +22,20 @@
     background-color: var(--modal-color);
 }
 
+.pegaclasse{
+    width: 16px !important;
+    margin-top: 2.5px;
+}
 
+.excnoti{
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 7px;
+}
+
+.excnoti:hover{
+    color: var(--first-color);
+}
 
 .nav__desktop__top {
     position: fixed;

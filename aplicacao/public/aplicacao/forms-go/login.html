@@ -122,6 +122,7 @@
                         sessionStorage.user_email = resp.data.email;
                         sessionStorage.user_nome = resp.data.name;
                         sessionStorage.user_id = resp.data.id;
+                        sessionStorage.qnt_Buscas = resp.data.searchCounter;
                         if (resp.data.colorMenu == "default") {
                             sessionStorage.user_colorMenu = "#7D63A9";
                         }else{

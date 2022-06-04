@@ -184,6 +184,65 @@ h4 {
   border: 2px solid;
 }
 
+/* snackbar */
+
+#snackbar, #snackbarError {
+  width: 70%;
+  left: 15%;
+  right: 15%;
+  text-align: center;
+  border-radius: 1px;
+  padding: 16px;
+  position: fixed;
+  z-index: 999999999999;
+  bottom: 30px;
+  font-weight: 500;
+}
+
+#snackbar{
+  visibility: hidden;
+  background-color: rgb(99, 139, 115);
+  color: var(--body-color);
+}
+
+#snackbarError{
+  visibility: hidden;
+  background-color: rgb(194, 86, 83);
+  color: var(--body-color);
+}
+
+.show {
+  visibility: visible !important;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.showError {
+  visibility: visible !important;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
 /*================================================================================ RESPONSIVE ====================================================================*/
 @media screen and (min-width: 1600px) {
   main {

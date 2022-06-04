@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var( ---color-assedio);
+    background-color: rgb(175, 21, 21);
 }
 
 .content__search{

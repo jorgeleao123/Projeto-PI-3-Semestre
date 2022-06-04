@@ -52,7 +52,7 @@
 
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <label for="modal-4">
+                        <label for="modal-4" id="hasNotification">
                             <i class="fa-solid fa-bell icon__mobile"></i>
                         </label>
                     </div>
@@ -405,7 +405,7 @@
                     itens.innerHTML += `                <div class="content__complaint">
                     <div class="header__complaint flex justify">
                         <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial">
+                            <div class="icon__complaint icon__user icon__user__initial" style="background-color: ${e["user"]["colorProfile"]};">
                                 <span class="initial__user" id="initialPublication">${e["user"]["name"][0]}</span>
                             </div>
                             <span class="infos__user__complaint">
@@ -451,10 +451,7 @@
 
                     <div class="photos__complaint">
                         <div class="item shrink-1-basis">
-                            <img src="./assets/img/print-uber.png" alt="">
-                        </div>
-                        <div class="item shrink-1-basis">
-                            <img src="http://localhost:8080/complaints/archive/${e["id"]}" alt="">
+                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
                         </div>
                     </div>
 
@@ -535,23 +532,27 @@
 
         axios(config)
             .then(function (response) {
-                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+
                 response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
+                    if (!e["hasViewed"]) {
+                        hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
+                        idNotificacao.innerHTML += `<div class="content__notify">
                     <h5>${e["title"]}</h5>
                     <span class="date">${e["dateTimeNotification"]}</span>
                     <p>${e["description"]}</p>
-                    <div class="hr"></div>
+                    <div class="hr top"></div>
                 </div>`;
-                   }
+
+                        idNotificacao.innerHTML += `<a class="excnoti" onclick="zeraNotificacao()">excluir notificações</a>`;
+                    }
+
                 })
-                
+
             })
             .catch(function (error) {
                 console.log(error);
             });
-            
+
     }
 
     function zeraNotificacao() {
@@ -564,9 +565,9 @@
 
         axios(config)
             .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./perfil-save.html";
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./perfil-save.html";
             })
             .catch(function (error) {
                 console.log(error);
