@@ -54,7 +54,7 @@
 
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <label for="modal-4">
+                        <label for="modal-4" id="hasNotification">
                             <i class="fa-solid fa-bell icon__mobile"></i>
                         </label>
                     </div>
@@ -69,7 +69,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial"></span>
                     </div>
                 </div>
             </div>
@@ -122,8 +122,11 @@
                         <div class="scrool_form">
                             <div>
                                 <label for="Descrição">Descrição</label>
-                                <textarea name="" id="description" rows="6" placeholder="Descreva o ocorrido" onkeypress="validateDescription(description.value)"></textarea>
-                                <span id="post_descricao" style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição vazia</span>
+                                <textarea name="" id="description" rows="6" placeholder="Descreva o ocorrido"
+                                    onkeypress="validateDescription(description.value)"></textarea>
+                                <span id="post_descricao"
+                                    style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição
+                                    vazia</span>
                             </div>
                             <div class="form__publication">
 
@@ -152,35 +155,6 @@
                                 <div class="ipt__form">
                                     <label for="codigo do boletom">Estado onde ocorreu</label>
                                     <input type="text" id="uf" class="form_sel">
-                                    <!--<select class="form__sel" name="combo_state" id="district">
-                                        <option value="AC">AC</option>
-                                        <option value="AL">AL</option>
-                                        <option value="AP">AP</option>
-                                        <option value="AM">AM</option>
-                                        <option value="BA">BA</option>
-                                        <option value="CE">CE</option>
-                                        <option value="DF">DF</option>
-                                        <option value="ES">ES</option>
-                                        <option value="GO">GO</option>
-                                        <option value="MA">MA</option>
-                                        <option value="MT">MT</option>
-                                        <option value="MS">MS</option>
-                                        <option value="MG">MG</option>
-                                        <option value="PA">PA</option>
-                                        <option value="PB">PB</option>
-                                        <option value="PR">PR</option>
-                                        <option value="PE">PE</option>
-                                        <option value="PI">PI</option>
-                                        <option value="RJ">RJ</option>
-                                        <option value="RN">RN</option>
-                                        <option value="RS">RS</option>
-                                        <option value="RO">RO</option>
-                                        <option value="RR">RR</option>
-                                        <option value="SC">SC</option>
-                                        <option value="SP">SP</option>
-                                        <option value="SE">SE</option>
-                                        <option value="TO">TO</option>
-                                    </select>-->
                                 </div>
 
                             </div>
@@ -193,13 +167,16 @@
 
                                 <div class="ipt__form">
                                     <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
-                                    <input type="text" name="" id="district" placeholder="Insira a Bairro onde o caso ocorreu">
+                                    <input type="text" name="" id="district"
+                                        placeholder="Insira a Bairro onde o caso ocorreu">
                                 </div>
                             </div>
                             <div class="form__publication">
                                 <div class="ipt__form">
                                     <label for="Nome do motorista">Nome do(a) motorista</label>
-                                    <input type="text" name="driverName" id="driverName" placeholder="Insira o nome do motorista" onkeypress="validateDriverName(driverName.value)">
+                                    <input type="text" name="driverName" id="driverName"
+                                        placeholder="Insira o nome do motorista"
+                                        onkeypress="validateDriverName(driverName.value)">
                                     <span id="post_motorista" style="display: none; color:rgb(253, 81, 81)">
                                         Insira o nome do motorista
                                     </span>
@@ -207,8 +184,8 @@
 
                                 <div class="ipt__form">
                                     <label for="Placa do veiculo">Placa do veiculo</label>
-                                    <input type="text" name="" id="licensePlate"
-                                        placeholder="Insira a placa do veiculo" onkeypress="validateLicensePlate(licensePlate.value)">
+                                    <input type="text" name="" id="licensePlate" placeholder="Insira a placa do veiculo"
+                                        onkeypress="validateLicensePlate(licensePlate.value)">
                                     <span id="post_placa" style="display: none; color:rgb(253, 81, 81)">
                                         Insira uma placa válida
                                     </span>
@@ -235,10 +212,9 @@
                         </div>
                         <div class="card__arq padding__card">
                             <h4>Adicionar Midia</h4>
-                            <button >
+                            <button>
                                 <form id="upload-form" action="" method="post" enctype="multipart/form-data">
-                                    <input id="selected-image" type="file" id="myFile" name="filename">
-                                    Anexar Arquivo
+                                    <input class="" id="selected-image" type="file" id="myFile" name="filename">
                                     <input type="submit" value="Upload image" name="submit">
                                 </form>
                             </button>
@@ -259,6 +235,8 @@
                         </div>
                     </div>
                     </form>
+                    <div id="snackbar">Denuncia publicada</div>
+                    <div id="snackbarError">Falha ao publicar denuncia</div>
                 </div>
         </section>
         <div style="display: none;" class="toggle">
@@ -408,7 +386,8 @@
                     <div>
                         <p>Faça sua busca</p>
                         <span class="nav__mobile__input">
-                            <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                            <input type="search" id="uriParamComplaint"
+                                placeholder="Busque pela placa ou nome do motorista">
                             <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                                 <option value="license">Placa</option>
                                 <option value="">Nome/Placa</option>
@@ -417,7 +396,7 @@
                                 <option value="state">Estado</option>
                             </select>
                             <a class="search__icon" onclick="getSearch()"> <i
-                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"></i></a>
+                                    style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"></i></a>
                         </span>
                     </div>
                 </div>
@@ -458,12 +437,13 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
 
 </html>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
-    function getSearch(){
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
@@ -472,15 +452,15 @@
     }
 
     function iniciar() {
+        initial.innerHTML = sessionStorage.user_nome[0];
         document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        initial.innerHTML = sessionStorage.user_nome[0]
     }
 
     function registerComplaints() {
         event.preventDefault();
         //var dataTempo = new Date();
         var dateTime = dateTimeComplaint.value;
-        /*dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;*/
+        /dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;/
         console.log(dateTime);
         const data = {
             type: type.value,
@@ -497,58 +477,58 @@
         validateData(data);
         axios.post(`http://localhost:8080/complaints/${sessionStorage.user_id}`, data)
             .then((resp) => {
-                alert('Denúncia publicada com sucesso', resp);
+                snackbarFunction();
                 getId();
-                window.location.href = './index.html';
+
             })
             .catch((error) => {
                 console.log(error);
                 console.log(data);
-                window.location.href = './error.html';
+                snackbarFunctionError();
             })
     }
 
-    function validateData(data){
-        if(data.description == ""){
+    function validateData(data) {
+        if (data.description == "") {
             document.getElementById('post_descricao').style.display = 'block';
         }
-        if (data.licensePlate.length < 5){
+        if (data.licensePlate.length < 5) {
             document.getElementById('post_placa').style.display = 'block';
         }
-        if(data.driverName.length < 4){
+        if (data.driverName.length < 4) {
             document.getElementById('post_motorista').style.display = 'block';
         }
-        if(cep.value.length < 3){
+        if (cep.value.length < 3) {
             document.getElementById('endereco_validator').style.display = 'block';
             document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
         }
     }
 
-    function validateDriverName(driverName){
-        if(driverName.length < 3){
+    function validateDriverName(driverName) {
+        if (driverName.length < 3) {
             document.getElementById('post_motorista').style.display = 'block';
-        } else{
+        } else {
             document.getElementById('post_motorista').style.display = 'none';
         }
     }
 
-    function validateDescription(description){
-        if(description.length < 6){
+    function validateDescription(description) {
+        if (description.length < 6) {
             document.getElementById('post_descricao').style.display = 'block';
-        } else{
+        } else {
             document.getElementById('post_descricao').style.display = 'none';
         }
     }
 
-    function validateLicensePlate(licensePlate){
-        if(licensePlate.length < 5){
+    function validateLicensePlate(licensePlate) {
+        if (licensePlate.length < 5) {
             document.getElementById('post_placa').style.display = 'block';
-        } else{
+        } else {
             document.getElementById('post_placa').style.display = 'none';
         }
     }
 
-    function getSearch(){
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
@@ -556,14 +536,14 @@
         window.location.href = "./search.html";
     }
 
-    function handleFile(){
+    function handleFile() {
         var img = document.getElementById('selected-image');
         img.crossOrigin = 'Anonymous';
 
         img.onload = function () {
             var canvas = document.createElement('canvas'),
                 ctx = canvas.getContext('2d');
-                
+
             canvas.height = img.naturalHeight;
             canvas.width = img.natualWidth;
             ctx.drawImage(img, 0, 0);
@@ -578,13 +558,13 @@
         uf.value = endereco.uf;
         city.value = endereco.localidade;
         district.value = endereco.bairro;
-        
+
     }
 
     function eNumero(numero) {
         return /^[0-9]+$/.test(numero);
     }
-    
+
     function cepValido(cep) {
         return cep.length == 8 && eNumero(cep);
     }
@@ -623,8 +603,9 @@
 
         axios(config)
             .then(function (response) {
-                let tamanhoData = response.data.length - 1;
-                subirFoto(response.data[tamanhoData]["id"]);
+                // let tamanhoData = response.data.length - 1;
+                subirFoto(response.data[0]["id"]);
+
             })
             .catch(function (error) {
                 console.log(error);
@@ -646,13 +627,13 @@
 
         fetch(`http://localhost:8080/complaints/archive/${sessionStorage.user_id}/${id}`, requestOptions)
             .then(response => response.text())
-            .then(result => console.log(result))
+            .then(result => window.location.href = './index.html')
             .catch(error => console.log('error', error));
     }
 
     //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
     document.getElementById('cep')
-    .addEventListener('focusout', pesquisarCep);
+        .addEventListener('focusout', pesquisarCep);
     function notificacao() {
         event.preventDefault();
 
@@ -663,23 +644,27 @@
 
         axios(config)
             .then(function (response) {
-                idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
+
                 response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
+                    if (!e["hasViewed"]) {
+                        hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
+                        idNotificacao.innerHTML += `<div class="content__notify">
                     <h5>${e["title"]}</h5>
                     <span class="date">${e["dateTimeNotification"]}</span>
                     <p>${e["description"]}</p>
-                    <div class="hr"></div>
+                    <div class="hr top"></div>
                 </div>`;
-                   }
+
+                        idNotificacao.innerHTML += `<a class="excnoti" onclick="zeraNotificacao()">excluir notificações</a>`;
+                    }
+
                 })
-                
+
             })
             .catch(function (error) {
                 console.log(error);
             });
-            
+
     }
 
     function zeraNotificacao() {
@@ -692,9 +677,9 @@
 
         axios(config)
             .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./new-publication.html";
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./new-publication.html";
             })
             .catch(function (error) {
                 console.log(error);

@@ -55,7 +55,7 @@
 
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <label for="modal-4">
+                        <label for="modal-4" id="hasNotification">
                             <i class="fa-solid fa-bell icon__mobile"></i>
                         </label>
                     </div>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial">R</span>
+                        <span class="initial__user" id="initial"></span>
                     </div>
                 </div>
             </div>
@@ -230,6 +230,7 @@
         <div class="modal">
             <label class="modal__bg" for="modal-4"></label>
             <div class="modal__inner__notify padding__card" id="idNotificacao">
+
         </div>
 
         <!-- modal classificação dos casos -->
@@ -337,6 +338,7 @@
                 </div>
             </div>
         </div>
+        
 
         <!-- modal de busca -->
         <span class="display__modal">
@@ -439,50 +441,54 @@ function getSearch(){
     window.location.href = "./search.html";
 }
 function notificacao() {
-    event.preventDefault();
+        event.preventDefault();
 
-    var config = {
-        method: 'get',
-        url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
-    };
+        var config = {
+            method: 'get',
+            url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+        };
 
-    axios(config)
-        .then(function (response) {
-            idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
-            response.data.map((e) => {
-                if(!e["hasViewed"]){
-                idNotificacao.innerHTML += `<div class="content__notify">
-                <h5>${e["title"]}</h5>
-                <span class="date">${e["dateTimeNotification"]}</span>
-                <p>${e["description"]}</p>
-                <div class="hr"></div>
-            </div>`;
-                }
+        axios(config)
+            .then(function (response) {
+
+                response.data.map((e) => {
+                    if (!e["hasViewed"]) {
+                        hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
+                        idNotificacao.innerHTML += `<div class="content__notify">
+                    <h5>${e["title"]}</h5>
+                    <span class="date">${e["dateTimeNotification"]}</span>
+                    <p>${e["description"]}</p>
+                    <div class="hr top"></div>
+                </div>`;
+
+                        idNotificacao.innerHTML += `<a class="excnoti" onclick="zeraNotificacao()">excluir notificações</a>`;
+                    }
+
+                })
+
             })
-            
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-        
-}
+            .catch(function (error) {
+                console.log(error);
+            });
 
-function zeraNotificacao() {
-    event.preventDefault();
+    }
 
-    var config = {
-        method: 'patch',
-        url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
-    };
+    function zeraNotificacao() {
+        event.preventDefault();
 
-    axios(config)
-        .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            console.log("foi");
-            window.location.href = "./config-infos.html";
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
-}
+        var config = {
+            method: 'patch',
+            url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./config-account.html";
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 </script>

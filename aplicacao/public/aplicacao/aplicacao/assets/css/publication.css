@@ -56,6 +56,23 @@
   }
 }
 
+input[type="file"] {
+
+}
+
+.file__label {
+  padding: 15px 10px;
+  background-color: transparent;
+  color: var(--first-color);
+  border: solid 2px var(--first-color);
+  border-radius: 1px;
+  text-align: center;
+  display: block;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+}
+
 .form__publication {
   width: 100%;
   gap: 20px;
@@ -150,7 +167,6 @@ border-radius: 1px;
 
 .card__arq button {
   padding: 10px 10px;
-  border: solid 2px var(--first-color);
   text-align: center;
   margin-bottom: 10px;
   cursor: pointer;
