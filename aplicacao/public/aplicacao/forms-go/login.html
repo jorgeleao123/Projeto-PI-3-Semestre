@@ -117,7 +117,7 @@
 
             axios.post(`http://localhost:8080/users/login/${email}/${password}`, {})
                 .then((resp) => {
-                    if (resp.data.status = "ativo") {
+                    if (resp.data.status == "ativo") {
                         console.log(resp.data);
                         sessionStorage.user_email = resp.data.email;
                         sessionStorage.user_nome = resp.data.name;
