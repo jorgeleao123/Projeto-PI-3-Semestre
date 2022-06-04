@@ -570,9 +570,9 @@
         var aconteceu = false;
         axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
             .then((resp) => {
-                //document.getElementById('qntPesquisas').innerHTML += resp.data[0].postCounter;
                 aconteceu = true;
                 if(aconteceu){
+                    document.getElementById('qntPesquisas').innerHTML = sessionStorage.qnt_Buscas;
                     loadComplaints();
                 }
             })
@@ -584,6 +584,7 @@
                 sessionStorage.user_city = resp.data[0].city;
                 sessionStorage.user_district = resp.data[0].district;
                 document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
+                document.getElementById('city').innerHTML += sessionStorage.user_city;
             })
     }
 
@@ -596,7 +597,6 @@
     }
 
     function loadHtml() {
-        document.getElementById('city').innerHTML += sessionStorage.user_city;
         document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
         document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
         document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
@@ -622,14 +622,16 @@
             .then(function (response) {
                 idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
                 response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
-                    <h5>${e["title"]}</h5>
-                    <span class="date">${e["dateTimeNotification"]}</span>
-                    <p>${e["description"]}</p>
-                    <div class="hr"></div>
-                </div>`;
-                   }
+                if(!e["hasViewed"]){
+                    idNotificacao.innerHTML += `
+                        <div class="content__notify">
+                            <h5>${e["title"]}</h5>
+                            <span class="date">${e["dateTimeNotification"]}</span>
+                            <p>${e["description"]}</p>
+                            <div class="hr"></div>
+                        </div>
+                    `;
+                }
                 })
                 
             })
@@ -649,9 +651,9 @@
 
         axios(config)
             .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./index.html";
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./index.html";
             })
             .catch(function (error) {
                 console.log(error);

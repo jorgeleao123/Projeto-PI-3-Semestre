@@ -424,8 +424,18 @@ var typeClass = "";
 var bo = false;
 
 function loadPage(){
+    putSearchCounter();
     searchComplaint();
     loadHtml();
+}
+
+function putSearchCounter(){
+    axios.put(`http://localhost:8080/users/count/${sessionStorage.user_id}`)
+    .then((resp) => {
+        console.log(resp.data.searchCounter);
+        sessionStorage.setItem('qnt_Buscas', resp.data.searchCounter);
+    })
+    //.catch(window.location.href='./error.html');
 }
 
 function searchComplaint() {
@@ -620,7 +630,8 @@ function denuciar(id) {
 function loadHtml(){
     document.getElementById('city').innerHTML += sessionStorage.user_city;
     document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-    document.getElementById('qntPublicacoes').innerHTML += sessionStorage.qnt_publicacoes;
+    document.getElementById('qntPesquisas').innerHTML = sessionStorage.qnt_Buscas;
+    document.getElementById('qntPublicacoes').innerHTML = sessionStorage.qnt_publicacoes;
     document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
     document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
 }
@@ -642,14 +653,16 @@ function notificacao() {
             .then(function (response) {
                 idNotificacao.innerHTML += `<a onclick="zeraNotificacao()">Marca como visto</a>`;
                 response.data.map((e) => {
-                   if(!e["hasViewed"]){
-                    idNotificacao.innerHTML += `<div class="content__notify">
-                    <h5>${e["title"]}</h5>
-                    <span class="date">${e["dateTimeNotification"]}</span>
-                    <p>${e["description"]}</p>
-                    <div class="hr"></div>
-                </div>`;
-                   }
+                    if(!e["hasViewed"]){
+                    idNotificacao.innerHTML += `
+                        <div class="content__notify">
+                            <h5>${e["title"]}</h5>
+                            <span class="date">${e["dateTimeNotification"]}</span>
+                            <p>${e["description"]}</p>
+                            <div class="hr"></div>
+                        </div>
+                    `;
+                }
                 })
                 
             })
@@ -669,9 +682,9 @@ function notificacao() {
 
         axios(config)
             .then(function (response) {
-               console.log(JSON.stringify(response.data));
-               console.log("foi");
-               window.location.href = "./search.html";
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./search.html";
             })
             .catch(function (error) {
                 console.log(error);

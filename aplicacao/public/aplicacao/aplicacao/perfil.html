@@ -158,11 +158,11 @@
                 <div class="padding__card">
                     <div class="flex justify">
                         <h5>Publicações</h5>
-                        <span id="data__pub" class="data__user">5</span>
+                        <span id="data__pub" class="data__user"></span>
                     </div>
                     <div class="flex justify top">
                         <h5>Buscas</h5>
-                        <span id="data__bus" class="data__user">5</span>
+                        <span id="data__bus" class="data__user"></span>
                     </div>
                 </div>
             </div>
@@ -421,7 +421,7 @@
                         
                     });
                     data__pub.innerHTML = contador;
-                    data__bus.innerHTML = response.data["searchCounter"];
+                    data__bus.innerHTML = sessionStorage.qnt_Buscas;
                 })
                 .catch((error) => {
                     console.log(error);
