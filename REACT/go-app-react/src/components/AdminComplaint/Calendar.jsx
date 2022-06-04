@@ -5,10 +5,7 @@ import "../../assets/css/style.components.css";
 import "../../assets/css/style.complaint.css";
 
 function Calendar() {
-  useEffect(() => {
-    renderCalendar();
-  });
-
+  
   //   calendar
   const date = new Date();
 
