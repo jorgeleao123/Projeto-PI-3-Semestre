@@ -478,7 +478,7 @@
         axios.post(`http://localhost:8080/complaints/${sessionStorage.user_id}`, data)
             .then((resp) => {
                 snackbarFunction();
-                getId();
+                subirFoto(resp.data["id"]);
                 
             })
             .catch((error) => {
@@ -593,25 +593,7 @@
 
     }
 
-    function getId() {
-        event.preventDefault();
-        var config = {
-            method: 'get',
-            url: `http://localhost:8080/complaints/user/${sessionStorage.user_id}`,
-            headers: {}
-        };
-
-        axios(config)
-            .then(function (response) {
-                // let tamanhoData = response.data.length - 1;
-                subirFoto(response.data[0]["id"]);
-
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-
-    }
+    
 
     function subirFoto(id) {
         event.preventDefault();
