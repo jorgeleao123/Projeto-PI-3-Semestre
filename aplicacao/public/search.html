@@ -214,6 +214,14 @@
                 </div>
             </div>
 
+            <div id="snackbar">
+                <i class="fa-solid fa-circle-check"></i>
+                <span> Denúncia salva com sucesso</span> </div> 
+
+            <div id="snackbarError">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span> Falha ao salvar denúncia</span> </div>
+            </div>
 
         </section>
 
@@ -416,6 +424,7 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -448,7 +457,6 @@ function searchComplaint() {
         }
     })
     .then((resp) => {
-        sessionStorage.setItem('qnt_publicacoes', resp.data.length);
         getCases(resp);
         resp.data.map(item => {
             if(item.status != 'Inativo')
@@ -557,7 +565,7 @@ function getComplaint(item){
 
             <div class="photos__complaint">
                 <div class="item shrink-1-basis">
-                    <img src="http://localhost:8080/complaints/archive/${item.id}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
+                    <img src="http://localhost:8080/complaints/archive/${item.id}" alt="" onerror="this.style.display='none';" >
                 </div>
             </div>
 
@@ -612,11 +620,10 @@ function save(id) {
         complaintId: id
     })
     .then((resp) => {
-        console.log('FUNCIONOU');
-        alert("salvo");
+        snackbarFunction();
     })
     .catch((err) => {
-        window.location.href = './error.html';
+        snackbarFunctionError();
     })
 }
 function denuciar(id) {

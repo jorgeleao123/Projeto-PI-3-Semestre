@@ -172,6 +172,15 @@
                     </div>
                 </div>
             </div>
+
+            <div id="snackbar">
+                <i class="fa-solid fa-circle-check"></i>
+                <span> Denúncia removida dos salvos</span> </div> 
+
+            <div id="snackbarError">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span> Falha remover dos salvos</span> </div>
+            </div>
         </section>
 
         <div style="display: none;" class="toggle">
@@ -370,6 +379,7 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
 
 </html>
@@ -409,7 +419,7 @@
                                 <span class="initial__user" id="initialPublication">${e["user"]["name"][0]}</span>
                             </div>
                             <span class="infos__user__complaint">
-                                <h4 id="nameUser">${e["user"]["name"]}</h4>
+                                <h4 id="nameUser">${e.user.name[0]}***************</h4>
                                 <p id="gender">${e["user"]["genre"]}</p>
                             </span>
                         </div>
@@ -451,7 +461,7 @@
 
                     <div class="photos__complaint">
                         <div class="item shrink-1-basis">
-                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
+                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.style.display='none';" >
                         </div>
                     </div>
 
@@ -478,9 +488,12 @@
     function apagar(id) {
         event.preventDefault();
         axios.delete(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}/${id}`)
-            .then((resp) => window.location.href = "perfil-save.html")
+            .then((resp) => {
+                snackbarFunction();
+                window.location.href = "perfil-save.html";
+            })
             .catch((error) => {
-                window.location.href = './error.html';
+                snackbarFunctionError();
             })
     }
     function abrirContestacao(id) {

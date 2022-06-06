@@ -201,6 +201,14 @@
                         </div>
                     </form>
                 </div>
+                <div id="snackbar">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span> Perfil editado com sucesso</span> </div> 
+    
+                <div id="snackbarError">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span> Falha ao editar perfil</span> </div>
+                </div>
         </section>
         <div style="display: none;" class="toggle">
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
@@ -409,6 +417,7 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
 
 </html>
@@ -439,13 +448,14 @@
                 sessionStorage.user_nome = newName.value;
                 sessionStorage.user_colorMenu = newColorMenu.value
                 sessionStorage.user_colorProfile = newColorPerfil.value;
+                snackbarFunction();
                 window.location.href = './config-infos.html';
 
             })
             .catch((error) => {
                 console.log(error);
                 console.log(data);
-                window.location.href = './error.html';
+                snackbarFunctionError();
             })
     }
 

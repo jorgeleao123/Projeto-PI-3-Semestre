@@ -199,6 +199,14 @@
                     </div>
                 </div>
             </div>
+            <div id="snackbar">
+                <i class="fa-solid fa-circle-check"></i>
+                <span> Denúncia excluida com sucesso</span> </div> 
+
+            <div id="snackbarError">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span> Falha ao excluir denúncia</span> </div>
+            </div>
         </section>
 
         <div style="display: none;" class="toggle">
@@ -291,6 +299,7 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 
     <script>
         var typeClass = "";
@@ -305,11 +314,11 @@
 
             axios.delete(`http://localhost:8080/complaints/${id}`)
                 .then((resp) => {
-                    alert("Denuncia excluida com sucesso!");
+                    snackbarFunction();
                     window.location.reload();
                 })
                 .catch((err) => {
-
+                    snackbarFunctionError();
                 })
 
         }
@@ -399,7 +408,7 @@
                 
                                     <div class="photos__complaint">
                                         <div class="item shrink-1-basis">
-                                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
+                                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.style.display='none';" >
                                         </div>
                                     </div>
                 

@@ -235,9 +235,14 @@
                         </div>
                     </div>
                     </form>
-                    <div id="snackbar">Denuncia publicada</div>
-                    <div id="snackbarError">Falha ao publicar denuncia</div>
-                </div>
+                    <div id="snackbar">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <span> Denúncia publicada</span> </div> 
+
+                    <div id="snackbarError">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <span> Falha ao publicar denúncia</span> </div>
+                    </div>
         </section>
         <div style="display: none;" class="toggle">
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
@@ -609,7 +614,7 @@
 
         fetch(`http://localhost:8080/complaints/archive/${sessionStorage.user_id}/${id}`, requestOptions)
             .then(response => response.text())
-            .then(result => window.location.href = './index.html')
+            .then(result => window.location.href = './home.html')
             .catch(error => console.log('error', error));
     }
 

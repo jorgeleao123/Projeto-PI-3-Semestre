@@ -187,27 +187,34 @@ h4 {
 /* snackbar */
 
 #snackbar, #snackbarError {
-  width: 70%;
-  left: 15%;
-  right: 15%;
+  width: 30%;
+  left: 5.7%;
   text-align: center;
   border-radius: 1px;
-  padding: 16px;
+  padding: 14px;
   position: fixed;
   z-index: 999999999999;
-  bottom: 30px;
-  font-weight: 500;
+  bottom: 5vh;
+  font-weight: 600;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+#snackbar i{
+  font-size: 20px;
 }
 
 #snackbar{
   visibility: hidden;
-  background-color: rgb(99, 139, 115);
+  background-color: #0f7d80;
   color: var(--body-color);
 }
 
 #snackbarError{
   visibility: hidden;
-  background-color: rgb(194, 86, 83);
+  background-color: #970c10;
   color: var(--body-color);
 }
 

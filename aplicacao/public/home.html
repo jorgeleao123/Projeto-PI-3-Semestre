@@ -216,7 +216,14 @@
                         <span class="link__modal">Saiba mais</span>
                     </label>
                 </div>
-
+                <div id="snackbar">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <span> Denúncia salva com sucesso</span> </div> 
+    
+                <div id="snackbarError">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span> Falha ao salvar denúncia</span> </div>
+                </div>
         </section>
 
         <div style="display: none;" class="toggle">
@@ -417,6 +424,7 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
@@ -439,8 +447,7 @@
             }
         })
             .then((resp) => {
-                sessionStorage.setItem('qnt_publicacoes', resp.data.length);
-                document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
+                document.getElementById('qntPublicacoes').innerHTML = sessionStorage.getItem('qnt_publicacoes');
                 aconteceu = true;
                 if(aconteceu){
                     resp.data.map(item => {
@@ -502,7 +509,7 @@
 
             <div class="photos__complaint">
                 <div class="item shrink-1-basis">
-                    <img src="http://localhost:8080/complaints/archive/${item.id}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
+                    <img src="http://localhost:8080/complaints/archive/${item.id}" alt="" onerror="this.style.display='none';" >
                 </div>
             </div>
 
@@ -527,9 +534,10 @@
             complaintId: id
         })
             .then((resp) => {
-                
+                snackbarFunction();
             })
             .catch((err) => {
+                snackbarFunctionError();
             })
     }
 
