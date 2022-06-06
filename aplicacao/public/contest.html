@@ -7,19 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Configurações | GO</title>
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Contestar | GO</title>
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
-    <link rel="stylesheet" href="./assets/css/style.configs.css">
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body onload="iniciar(),notificacao()">
+<body onload="notificacao()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -43,7 +41,7 @@
             <div class="nav__desktop__top__items">
                 <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                        <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                     </div>
                 </div>
                 <div class="mobile-bottom-nav__item">
@@ -69,7 +67,7 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial"></span>
+                        <span class="initial__user" id="initial">R</span>
                     </div>
                 </div>
             </div>
@@ -89,7 +87,7 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Configurações</h3>
+                    <h3>Contestar</h3>
                 </div>
             </div>
 
@@ -108,56 +106,44 @@
     <main>
         <section>
             <div class="container__form form__publication">
-                <!-- navegações configs -->
-                <div class="more__inputs">
-                    <nav class="i__navbar">
-                        <ul>
-                            <li class="title__card">
-                                <p><b>Configurações</b></p>
-                            </li>
-                            <li><a href="./config-infos.html">Minhas Informações</a></li>
-                            <li><a href="./config-view.html">Opções de Visualização</a></li>
-                            <li id="activeleft" class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
-                        </ul>
-                    </nav>
-
-                    <!-- Perfil navbar mobile -->
-                    <div class="f__navbar__mobile">
-                        <nav class="f__navbar">
-                            <ul>
-                                <li><a href="./config-infos.html"><i class="fa-solid fa-pen-to-square"></i><span
-                                            class="public">Dados</span></a></li>
-                                <li><a href="./config-view.html"><i class="fa-solid fa-eye"></i></i><span
-                                            class="public">Visualização</span></a></li>
-                                <li><a id="active" href="./config-account.html"><i
-                                            class="fa-solid fa-id-badge"></i><span class="public">Conta</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="inputs__publication mode__text">
+                <div class="inputs__publication">
                     <!-- tópico -->
                     <div class="topic__feed flex justify">
-                        <span class="desc_cont flex">
-                            <p><b>Conta</b></p>
+                        <span class="flex">
+                            <p><b>Contestar</b></p>
                         </span>
                         <div class="hr"></div>
                     </div>
-                    <div>
-                        <h4>Remoção de Conta</h4>
-                        <h5>Desativar sua conta significa que você poderá recupera-la quando quiser</h5>
-                        <div class="flex remove__btns">
-                            <button onclick="deleteUser()"  class="des__btn">Desativar conta</button>
-                        </div>
-                    </div>
+                    <form>
+                        <label for="Descrição">Descrição</label>
+                        <textarea name="" id="description" rows="9"
+                            placeholder="Descreva a sua versão" onkeypress="validateDescription(description.value)"></textarea>
+                            <span id="post_descricao" style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição vazia</span>
                 </div>
-            </div>
-            </div>
+                <div class="more__inputs">
+                    <div class="card__arq padding__card">
+                        <h4>Adicionar Midia</h4>
+                        <input id="myFile" name="filename" class="btn__anx" type="file" placeholder="Anexar Arquivo">
+                        <h6>Deixe a sua contextação ainda respostamais completa, caso tenha boletim de ocorrencia,
+                            videos,
+                            fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
+                    </div>
+
+                    <button onclick="registerContestation()" class="color__btn btn__publication"> Enviar
+                    </button>
+
+                    <div class="card__dics padding__card">
+                        <h6>Apenas a nossa equipe vai ter acesso a essas informações. Faremos o possivel para evitar
+                            mais transtorno.</h6>
+                    </div>
+                    </form>
+                </div>
         </section>
         <div style="display: none;" class="toggle">
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
@@ -171,7 +157,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <a class="options__modal__user" href="./login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -181,8 +167,7 @@
         <input class="modal-state" id="modal-4" type="checkbox" />
         <div class="modal">
             <label class="modal__bg" for="modal-4"></label>
-            <div class="modal__inner__notify padding__card" id="idNotificacao">
-
+            <div class="modal__inner__notify padding__card" id="idNotificacao"></div>
         </div>
 
         <!-- modal classificação dos casos -->
@@ -324,7 +309,7 @@
         <nav class="mobile-bottom-nav">
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
             <div class="nav__itens__links ">
@@ -356,33 +341,81 @@
 </html>
 
 <script>
-
-    function getSearch(){
-        let uriParam = document.getElementById('uriParamComplaint').value;
-        let endPoint = document.getElementById('endPointComplaint').value;
-        sessionStorage.setItem('uriParamComplaint', uriParam);
-        sessionStorage.setItem('endPointComplaint', endPoint);
-        window.open("./search.html");
-    }
-
-    function deleteUser() {
+    document.getElementById('initial').innerHTML = sessionStorage.user_nome.substr(0, 1);
+    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    function registerContestation() {
         event.preventDefault();
-        axios.delete(`http://localhost:8080/users/${sessionStorage.user_id}`)
+        var funcionou = false;
+
+
+        const data = {
+            description: description.value,
+            archive: [],
+            userId: sessionStorage.user_id,
+            complaintId: sessionStorage.complaint_id
+        }
+        
+        validateDescription(data.description);
+
+        axios.post(`http://localhost:8080/contestations`, data)
             .then((resp) => {
-                window.location.href = "../forms-go/login.html";
+                console.log(resp);
+                funcionou = true;
+                if(funcionou){
+                    getId();
+                }
             })
             .catch((error) => {
                 console.log(error);
-                console.log(data)
-                alert('Error', error)
+                console.log(data);
+                alert('Erro');
+                //window.location.href = './error.html';
             })
     }
 
-    function iniciar(){
-        initial.innerHTML = sessionStorage.user_nome[0];
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    function validateDescription(description){
+        if(description.length < 6){
+            document.getElementById('post_descricao').style.display = 'block';
+        } else{
+            document.getElementById('post_descricao').style.display = 'none';
+        }
     }
 
+    function getId() {
+        event.preventDefault();
+        var config = {
+            method: 'get',
+            url: `http://localhost:8080/contestations/user/${sessionStorage.user_id}`,
+            headers: {}
+        };
+
+        axios(config)
+            .then(function (response) {
+                subirFoto(response.data[0]["id"]);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+    function subirFoto(id) {
+        event.preventDefault();
+        var input = document.querySelector('input[type="file"]');
+        var formdata = new FormData();
+        formdata.append("file", input.files[0]);
+
+        var requestOptions = {
+            method: 'PUT',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch(`http://localhost:8080/contestations/archive/${sessionStorage.user_id}/${id}`, requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));
+    }
     function notificacao() {
         event.preventDefault();
 
@@ -428,7 +461,7 @@
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 console.log("foi");
-                window.location.href = "./config-account.html";
+                window.location.href = "./contest.html";
             })
             .catch(function (error) {
                 console.log(error);

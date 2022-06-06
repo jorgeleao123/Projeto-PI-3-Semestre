@@ -79,11 +79,11 @@ if(!isExistLocalStorage('modo'))
 if (getValeuLocalStorage('modo') === "initialColors") {
   checkbox.removeAttribute('checked')
   changeColors(initialColors);
-  logo.innerHTML = '<a href="./index.html"><img src=".//assets/img/logo-go-carbon.svg"></a>';
-  logoMobile.innerHTML = '<a href="./index.html"><img src=".//assets/img/logo-go-carbon.svg"></a>';
+  logo.innerHTML = '<a href="./home.html"><img src=".//assets/img/logo-go-carbon.svg"></a>';
+  logoMobile.innerHTML = '<a href="./home.html"><img src=".//assets/img/logo-go-carbon.svg"></a>';
 } else {
   checkbox.setAttribute('checked', "")
   changeColors(darkMode);
-  logo.innerHTML = '<a href="./index.html"><img src=".//assets/img/logo-go-white.svg"></a>';
-  logoMobile.innerHTML = '<a href="./index.html"><img src=".//assets/img/logo-go-white.svg"></a>';
+  logo.innerHTML = '<a href="./home.html"><img src=".//assets/img/logo-go-white.svg"></a>';
+  logoMobile.innerHTML = '<a href="./home.html"><img src=".//assets/img/logo-go-white.svg"></a>';
 }

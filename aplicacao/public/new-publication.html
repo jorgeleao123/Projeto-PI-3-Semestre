@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Configurações | GO</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Publicar | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
@@ -15,7 +16,6 @@
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
-    <link rel="stylesheet" href="./assets/css/style.configs.css">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
@@ -43,7 +43,7 @@
             <div class="nav__desktop__top__items">
                 <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                        <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                     </div>
                 </div>
                 <div class="mobile-bottom-nav__item">
@@ -89,7 +89,7 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Configurações</h3>
+                    <h3>Publicar</h3>
                 </div>
             </div>
 
@@ -108,56 +108,143 @@
     <main>
         <section>
             <div class="container__form form__publication">
-                <!-- navegações configs -->
-                <div class="more__inputs">
-                    <nav class="i__navbar">
-                        <ul>
-                            <li class="title__card">
-                                <p><b>Configurações</b></p>
-                            </li>
-                            <li><a href="./config-infos.html">Minhas Informações</a></li>
-                            <li><a id="activeleft" href="./config-view.html">Opções de Visualização</a></li>
-                            <li class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
-                        </ul>
-                    </nav>
-
-                    <!-- Perfil navbar mobile -->
-                    <div class="f__navbar__mobile">
-                        <nav class="f__navbar">
-                            <ul>
-                                <li><a href="./config-infos.html"><i
-                                            class="fa-solid fa-pen-to-square"></i><span
-                                            class="public">Dados</span></a></li>
-                                <li><a id="active" href="./config-view.html"><i class="fa-solid fa-eye"></i></i><span
-                                            class="public">Visualização</span></a></li>
-                                <li><a href="./config-account.html"><i class="fa-solid fa-id-badge"></i><span
-                                            class="public">Conta</span></a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-                <div class="inputs__publication mode__text">
+                <div class="inputs__publication">
                     <!-- tópico -->
                     <div class="topic__feed flex justify">
                         <span class="flex">
-                            <p><b>Tema</b></p>
+                            <p><b>Nova Publicação</b></p>
                         </span>
                         <div class="hr"></div>
                     </div>
-                    <div class="flex justify">
-                        <div>
-                            <h4>Escolha o tema da aplicação</h4>
-                            <h5>Você pode escolher entre o tema Light ou Dark</h5>
+
+
+                    <form>
+                        <div class="scrool_form">
+                            <div>
+                                <label for="Descrição">Descrição</label>
+                                <textarea name="" id="description" rows="6" placeholder="Descreva o ocorrido"
+                                    onkeypress="validateDescription(description.value)"></textarea>
+                                <span id="post_descricao"
+                                    style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição
+                                    vazia</span>
+                            </div>
+                            <div class="form__publication">
+
+                                <div class="ipt__form">
+                                    <label for="Data do ocorrido">Data do ocorrido</label>
+                                    <input type="date" name="" id="dateTimeComplaint">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="codigo do boletim">codigo do boletim</label>
+                                    <input type="text" name="" id="bo"
+                                        placeholder="Insira o código do boletim de ocorrencia">
+                                </div>
+
+                            </div>
+
+                            <div class="form__publication">
+
+                                <div class="ipt__form">
+                                    <label for="CEP">CEP</label>
+                                    <input type="text" name="" id="cep" placeholder="Ponto de partida ou Destino">
+                                    <span id="endereco_validator" style="color: rgb(253, 81, 81);
+                                    display: none; margin-top: 5px"></span>
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="codigo do boletom">Estado onde ocorreu</label>
+                                    <input type="text" id="uf" class="form_sel">
+                                </div>
+
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
+                                    <input type="text" name="" id="city"
+                                        placeholder="Insira a cidade onde o caso ocorreu">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
+                                    <input type="text" name="" id="district"
+                                        placeholder="Insira a Bairro onde o caso ocorreu">
+                                </div>
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Nome do motorista">Nome do(a) motorista</label>
+                                    <input type="text" name="driverName" id="driverName"
+                                        placeholder="Insira o nome do motorista"
+                                        onkeypress="validateDriverName(driverName.value)">
+                                    <span id="post_motorista" style="display: none; color:rgb(253, 81, 81)">
+                                        Insira o nome do motorista
+                                    </span>
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Placa do veiculo">Placa do veiculo</label>
+                                    <input type="text" name="" id="licensePlate" placeholder="Insira a placa do veiculo"
+                                        onkeypress="validateLicensePlate(licensePlate.value)">
+                                    <span id="post_placa" style="display: none; color:rgb(253, 81, 81)">
+                                        Insira uma placa válida
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="toggle">
-                            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
-                            <label for="switch">Toggle</label>
+                </div>
+                <div class="more__inputs justify__more__infos">
+                    <div>
+                        <div class="form__publication">
+                            <div class="ipt__form">
+                                <label for="codigo do boletom">Classificação do Caso</label>
+                                <select class="form__sel" name="" id="type">
+                                    <option value="Assédio">Assédio</option>
+                                    <option value="Assédio Moral">Assédio Moral</option>
+                                    <option value="Racismo">Racismo</option>
+                                    <option value="Agressão Física">Agressão Física</option>
+                                    <option value="Agressão Verbal">Agressão Verbal</option>
+                                    <option value="Homofobia">Homofobia</option>
+                                    <option value="Preconceito">Preconceito</option>
+                                    <option value="Furto">Furto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card__arq padding__card">
+                            <h4>Adicionar Midia</h4>
+                            <button>
+                                <form id="upload-form" action="" method="post" enctype="multipart/form-data">
+                                    <input class="" id="selected-image" type="file" id="myFile" name="filename">
+                                    <input type="submit" value="Upload image" name="submit">
+                                </form>
+                            </button>
+                            <h6>Deixe a sua denuncia ainda mais completa, adicionando print do aplicativo, foto do
+                                motorista, video ou foto do boletim de ocorrencia.</h6>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
 
+                    <div>
+                        <button onclick="registerComplaints()" class="btn__publication">
+                            Publicar
+                        </button>
+
+                        <div class="card__dics padding__card">
+                            <h6>Seus dados não são visiveis para outros usuarios. Tomamos todos os cuidados para
+                                garantir sua segurança, verifique suas imagens adicionadas e garanta que nenhum dado seu
+                                vaze.</h6>
+                        </div>
+                    </div>
+                    </form>
+                    <div id="snackbar">Denuncia publicada</div>
+                    <div id="snackbarError">Falha ao publicar denuncia</div>
+                </div>
+        </section>
+        <div style="display: none;" class="toggle">
+            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+            <label for="switch">Toggle</label>
+        </div>
+
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
@@ -171,7 +258,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <a class="options__modal__user" href="./login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -299,17 +386,17 @@
                     <div>
                         <p>Faça sua busca</p>
                         <span class="nav__mobile__input">
-                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
-                                <option value="">Placa</option>
+                            <input type="search" id="uriParamComplaint"
+                                placeholder="Busque pela placa ou nome do motorista">
+                            <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                                <option value="license">Placa</option>
                                 <option value="">Nome/Placa</option>
-                                <option value="">Cidade</option>
-                                <option value="">Bairro</option>
-                                <option value="">Estado</option>
+                                <option value="city">Cidade</option>
+                                <option value="district">Bairro</option>
+                                <option value="state">Estado</option>
                             </select>
-                            <a href="./search.html"
-                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
-                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                            <a class="search__icon" onclick="getSearch()"> <i
+                                    style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);"></i></a>
                         </span>
                     </div>
                 </div>
@@ -323,7 +410,7 @@
         <nav class="mobile-bottom-nav">
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
             <div class="nav__itens__links ">
@@ -350,14 +437,13 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
+    <script src="./assets/js/snackbar.js"></script>
 </body>
+
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 <script>
-    function iniciar(){
-        initial.innerHTML = sessionStorage.user_nome[0];
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-    }
-    
-    function getSearch(){
+    function getSearch() {
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
@@ -365,6 +451,171 @@
         window.location.href = "./search.html";
     }
 
+    function iniciar() {
+        initial.innerHTML = sessionStorage.user_nome[0];
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    }
+
+    function registerComplaints() {
+        event.preventDefault();
+        //var dataTempo = new Date();
+        var dateTime = dateTimeComplaint.value;
+        /dateTime += `T${dataTempo.getHours()}:${dataTempo.getMinutes()}:20.462Z"`;/
+        console.log(dateTime);
+        const data = {
+            type: type.value,
+            description: description.value,
+            archive: "string",
+            bo: bo.value,
+            driverName: driverName.value,
+            licensePlate: licensePlate.value,
+            state: uf.value,
+            city: city.value,
+            district: district.value,
+            dateTimeComplaint: dateTime
+        }
+        validateData(data);
+        axios.post(`http://localhost:8080/complaints/${sessionStorage.user_id}`, data)
+            .then((resp) => {
+                snackbarFunction();
+                subirFoto(resp.data["id"]);
+                
+            })
+            .catch((error) => {
+                console.log(error);
+                console.log(data);
+                snackbarFunctionError();
+            })
+    }
+
+    function validateData(data) {
+        if (data.description == "") {
+            document.getElementById('post_descricao').style.display = 'block';
+        }
+        if (data.licensePlate.length < 5) {
+            document.getElementById('post_placa').style.display = 'block';
+        }
+        if (data.driverName.length < 4) {
+            document.getElementById('post_motorista').style.display = 'block';
+        }
+        if (cep.value.length < 3) {
+            document.getElementById('endereco_validator').style.display = 'block';
+            document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
+        }
+    }
+
+    function validateDriverName(driverName) {
+        if (driverName.length < 3) {
+            document.getElementById('post_motorista').style.display = 'block';
+        } else {
+            document.getElementById('post_motorista').style.display = 'none';
+        }
+    }
+
+    function validateDescription(description) {
+        if (description.length < 6) {
+            document.getElementById('post_descricao').style.display = 'block';
+        } else {
+            document.getElementById('post_descricao').style.display = 'none';
+        }
+    }
+
+    function validateLicensePlate(licensePlate) {
+        if (licensePlate.length < 5) {
+            document.getElementById('post_placa').style.display = 'block';
+        } else {
+            document.getElementById('post_placa').style.display = 'none';
+        }
+    }
+
+    function getSearch() {
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.location.href = "./search.html";
+    }
+
+    function handleFile() {
+        var img = document.getElementById('selected-image');
+        img.crossOrigin = 'Anonymous';
+
+        img.onload = function () {
+            var canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d');
+
+            canvas.height = img.naturalHeight;
+            canvas.width = img.natualWidth;
+            ctx.drawImage(img, 0, 0);
+
+            var uri = canvas.toDataURL('image/png'),
+                b64 = uri.replace(/^data:image.+;base64,/, '');
+            console.log(b64);
+        }
+    }
+
+    function preencherFormulario(endereco) {
+        uf.value = endereco.uf;
+        city.value = endereco.localidade;
+        district.value = endereco.bairro;
+
+    }
+
+    function eNumero(numero) {
+        return /^[0-9]+$/.test(numero);
+    }
+
+    function cepValido(cep) {
+        return cep.length == 8 && eNumero(cep);
+    }
+
+    const pesquisarCep = async () => {
+        const cep = document.getElementById('cep').value.replace("-", "");
+        const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+        if (cepValido(cep)) {
+            const dados = await fetch(url);
+            const endereco = await dados.json();
+            if (endereco.hasOwnProperty('erro')) {
+                document.getElementById('endereco_validator').value = 'CEP não encontrado!';
+                document.getElementById('endereco_validator').style.display = 'block';
+                document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
+            } else {
+                preencherFormulario(endereco);
+                bairro = endereco.bairro;
+                document.getElementById('endereco_validator').style.display = 'none';
+            }
+        } else {
+            document.getElementById('endereco_validator').value = 'CEP incorreto!';
+            document.getElementById('endereco_validator').style.display = 'block';
+            document.getElementById('endereco_validator').innerHTML = 'CEP inválido';
+        }
+
+    }
+
+    
+
+    function subirFoto(id) {
+        event.preventDefault();
+        var input = document.querySelector('input[type="file"]');
+        var formdata = new FormData();
+        formdata.append("file", input.files[0]);
+
+        var requestOptions = {
+            method: 'PUT',
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch(`http://localhost:8080/complaints/archive/${sessionStorage.user_id}/${id}`, requestOptions)
+            .then(response => response.text())
+            .then(result => window.location.href = './index.html')
+            .catch(error => console.log('error', error));
+    }
+
+    //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
+    document.getElementById('cep')
+        .addEventListener('focusout', pesquisarCep);
     function notificacao() {
         event.preventDefault();
 
@@ -410,11 +661,11 @@
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 console.log("foi");
-                window.location.href = "./config-view.html";
+                window.location.href = "./new-publication.html";
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
+
 </script>
-</html>

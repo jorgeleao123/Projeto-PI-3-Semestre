@@ -7,13 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Busca | GO</title>
+    <title>Feed | GO</title>
 
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
-    <link rel="stylesheet" href="./assets/css/search.css">
 </head>
 
 <body onload="loadPage(),notificacao()">
@@ -26,21 +25,21 @@
                     <img src=".//assets/img/logo-go-carbon.svg" alt="">
                 </span>
                 <span class="nav__desktop__search">
-                    <input type="search" id="input" placeholder="Busque pela placa ou nome do motorista">
-                    <select name="" id="inputSearchComplaint" aria-placeholder="Filtrar por">
+                    <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                    <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
                         <option value="license">Placa</option>
                         <option value="city">Cidade</option>
                         <option value="district">Bairro</option>
                         <option value="state">Estado</option>
                     </select>
-                    <a onclick="getSearch()" class="search__icon"> <i
+                    <a class="search__icon" onclick="getSearch()"> <i
                             class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                 </span>
             </div>
             <div class="nav__desktop__top__items">
-                <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                        <i class="fa-solid fa-house icon__mobile link_active"></i>
                     </div>
                 </div>
                 <div class="mobile-bottom-nav__item">
@@ -52,7 +51,7 @@
                 <div class="nav__itens__links">
                     <div class="mobile-bottom-nav__item-content links__desktop">
                         <label for="modal-4" id="hasNotification">
-                            <i class="fa-solid fa-bell icon__mobile"></i>
+                            <i class="fa-solid fa-bell icon__mobile" ></i>
                         </label>
                     </div>
                 </div>
@@ -86,14 +85,14 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Busca</h3>
+                    <h3>Feed</h3>
                 </div>
             </div>
 
             <div class="">
                 <div class="mobile-bottom-nav__item-content">
                     <label for="modal-4">
-                        <i class="fa-solid fa-bell icon__mobile"></i>
+                        <i class="fa-solid fa-bell icon__mobile" ></i>
                     </label>
                 </div>
             </div>
@@ -123,28 +122,42 @@
                     </div>
                     <div class="flex justify top">
                         <h5>Buscas</h5>
-                        <span id="qntPesquisas" class="data__user"></span>
+                        <span id="qntPesquisas" class="data__user">5</span>
                     </div>
                 </div>
             </div>
 
-            <!------------------------------------------Infos Search ------------------------------>
-            <div class="container__feed" id="feed">
-                <div class="card__result__search" id="casos">
+            <!------------------------------------------CONTENT FEED ------------------------------>
+            <div class="container__feed">
+                <!-- card informações do usuario -->
+                <div class="result__search flex">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial2"></span>
+                    </div>
+                    <span class="flex new__publication">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <p><a href="./new-publication.html">Escreva uma nova publicação</a></p>
+                    </span>
                 </div>
-                <div id="publicacoes">
 
+                <!-- tópico -->
+                <div class="topic__feed flex justify">
+                    <span class="flex">
+                        <p>Casos Recentes:</p>
+                        <p id="cityTopic"><b id="casosRecentes"></b></p>
+                    </span>
+                    <div class="hr"></div>
                 </div>
-                <!------------------------------- publicação  ----------------------------------->
-                
+
+                <div id="publicacoes"></div>
+
                 <!------------------------------ /publicação  ----------------------------------------->
 
-                <!------------------------------- publicação  ----------------------------------->
-                
-                <!------------------------------ /publicação  ----------------------------------------->
+
             </div>
-            <!-- card tipos de denuncia -->
+            <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
 
+            <!-- card tipos de denuncia -->
             <div class="card__infos__classifications">
                 <div class="padding__card">
                     <h4>Classificação dos casos</h4>
@@ -203,17 +216,6 @@
                         <span class="link__modal">Saiba mais</span>
                     </label>
                 </div>
-                <div class="card__new__case padding__card">
-                    <h4>Adicionar caso</h4>
-                    <button onclick="teste()">
-                        <!-- <a href="./new-publication.html"> -->
-                            Adicionar Caso
-                        <!-- </a> -->
-                    </button>
-                    <h6>Públique uma denuncia com os dados desse(a) motorista.</h6>
-                </div>
-            </div>
-
 
         </section>
 
@@ -221,8 +223,6 @@
             <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
             <label for="switch">Toggle</label>
         </div>
-        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
-
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
 
         <!-- modal navbar / mains opções de link -->
@@ -235,7 +235,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <div class="hr"></div>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <a class="options__modal__user" href="./login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -365,17 +365,18 @@
                     <div>
                         <p>Faça sua busca</p>
                         <span class="nav__mobile__input">
-                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
-                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
-                                <option value="">Placa</option>
+                            <input type="search" id="uriParamComplaint"
+                                placeholder="Busque pela placa ou nome do motorista">
+                            <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                                <option value="license">Placa</option>
                                 <option value="">Nome/Placa</option>
-                                <option value="">Cidade</option>
-                                <option value="">Bairro</option>
-                                <option value="">Estado</option>
+                                <option value="city">Cidade</option>
+                                <option value="district">Bairro</option>
+                                <option value="state">Estado</option>
                             </select>
-                            <a href="./search.html"
-                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
-                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                            <a class="search__icon" onclick="getSearch()"> <i
+                                    style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
+                                    <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
                     </div>
                 </div>
@@ -387,13 +388,13 @@
     <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
     <section class="nav__mobile">
         <nav class="mobile-bottom-nav">
-            <div class="mobile-bottom-nav__item">
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
-            <div class="nav__itens__links mobile-bottom-nav__item--active">
-                <div class="mobile-bottom-nav__item-content ">
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
                     <label for="modal-2">
                         <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
                     </label>
@@ -420,95 +421,40 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 
-var typeClass = "";
-var bo = false;
+    var typeClass = "";
+    var bo = false;
 
-function loadPage(){
-    putSearchCounter();
-    searchComplaint();
-    loadHtml();
-}
-
-function putSearchCounter(){
-    axios.put(`http://localhost:8080/users/count/${sessionStorage.user_id}`)
-    .then((resp) => {
-        console.log(resp.data.searchCounter);
-        sessionStorage.setItem('qnt_Buscas', resp.data.searchCounter);
-    })
-    //.catch(window.location.href='./error.html');
-}
-
-function searchComplaint() {
-    let uri = sessionStorage.getItem('uriParamComplaint');
-    axios.get((setEndPoint(uri)), {
-        headers: {
-            city: uri,
-            district: uri,
-            state: uri
-        }
-    })
-    .then((resp) => {
-        sessionStorage.setItem('qnt_publicacoes', resp.data.length);
-        getCases(resp);
-        resp.data.map(item => {
-            if(item.status != 'Inativo')
-                getComplaint(item);
-        })
-    }).catch(
-        
-    )
-}
-
-function setEndPoint(uri){
-    console.log(sessionStorage.getItem('uriParamComplaint'));
-    console.log(sessionStorage.getItem('endPointComplaint'));
-    
-    let endPoint = sessionStorage.getItem('endPointComplaint');
-    var url = `http://localhost:8080/complaints`;
-
-    switch(endPoint){
-        case "license":
-            url += `/${endPoint}/${uri}`;
-            break;
-        case "city":
-            url +=`/${endPoint}`;
-            break;
-        case "district":
-            url += `/${endPoint}`;
-            break;
-        case "state":
-            url += `/${endPoint}`;
-            break;
-        case "":
-            break;
+    function loadPage() {
+        setCity();
+        getBuscas();
+        loadHtml();
     }
 
-    return url;
-}
+    function loadComplaints() {
+        event.preventDefault();
+        var aconteceu = false;
+        axios.get(`http://localhost:8080/complaints/city`, {
+            headers: {
+                city: sessionStorage.getItem('user_city')
+            }
+        })
+            .then((resp) => {
+                sessionStorage.setItem('qnt_publicacoes', resp.data.length);
+                document.getElementById('qntPublicacoes').innerHTML += sessionStorage.getItem('qnt_publicacoes');
+                aconteceu = true;
+                if(aconteceu){
+                    resp.data.map(item => {
+                        if (item.status != 'Inativo') {
+                            getComplaint(item);
+                        }
+                    })
+                }
+            })
+    }
 
-function getCases(resp){
-    var dateTime = resp.data[0].dateTimeComplaint;
-    let dia = parseInt(dateTime.slice(5,7));
-    dia += 5;
-    console.log(dia);
-    document.getElementById('casos').innerHTML = `
-        <div class="flex">
-            <div class="color__topic__result">
-                <h2 id="qnt_casos">${resp.data.length}</h2>
-            </div>
-            <div>
-                <h4>${resp.data.length <= 1 ? 'Caso encontrado' : 'Casos encontrados'}</h4>
-                <p id="data_casos">
-                    Casos ocorridos entre ${dateTime.slice(0, 10)} e ${dateTime.slice(0, 5)}${dia}${dateTime.slice(7, 10)}
-                </p> 
-            </div>
-        </div>
-    `;
-}
-
-function getComplaint(item){
-    item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
-    document.getElementById('publicacoes').innerHTML += `
+    function getComplaint(item) {
+        item["bo"] != null && item["bo"] != '' ? bo = true : bo = false;
+        document.getElementById('publicacoes').innerHTML += `
         <div class="content__complaint">
             <div class="header__complaint flex justify">
                 <div class="flex">
@@ -535,8 +481,7 @@ function getComplaint(item){
                             <p style="cursor: pointer;" class="options__modal__user" onclick='save(${item.id})'><input
                                     style="display: none; cursor: pointer;" type="submit"
                                     class="option__modal__user" value="idCaso">Salvar</p>
-                        
-                                <p style="cursor: pointer;" class="options__modal__user" onclick='denuciar(${item.id})'><input
+                                    <p style="cursor: pointer;" class="options__modal__user" onclick='denuciar(${item.id})'><input
                                         style="display: none; cursor: pointer;" type="submit"
                                         class="option__modal__user" value="idCaso">Denunciar</p>
             
@@ -567,81 +512,102 @@ function getComplaint(item){
                     <h6>Classificação do caso: <span id="classificationPub">${item.type}</span></h6>
                 </div>
                 <span class="location__conplaint" id="locationComplaint">
-                    ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint.slice(0,10)}
+                    ${item.address.district} - ${item.address.city} | ${item.dateTimeComplaint}
                 </span>
             </div>
             <div class="hr margin-bottom"></div>
         </div>
     `;
-}
-
-function getPublicationType(type, typeClass){
-    switch (type){
-        case "Assédio":
-            typeClass = "circle__assedio circle__classification";
-            break;
-        case "Assédio Moral":
-            typeClass = "circle__assedio__moral circle__classification";
-            break;
-        case "Racismo":
-            typeClass = "circle__racism circle__classification";
-            break;
-        case "Agressão Física":
-            typeClass = "circle__agressao__fisica circle__classification";
-            break;
-        case "Agressão Verbal":
-            typeClass = "circle__agressao__verbal circle__classification";
-            break;
-        case "Homofobia":
-            typeClass = "circle__homofobia circle__classification";
-            break;
-        case "Preconceito":
-            typeClass = "circle__preconceito circle__classification";
-            break;
-        case "Furto":
-            typeClass = "circle__furto circle__classification";
-            break;
     }
-    return typeClass;
-}
 
-function save(id) {
-    event.preventDefault();
-    axios.post(`http://localhost:8080/complaints-saved`, {
-        userId: sessionStorage.user_id,
-        complaintId: id
-    })
-    .then((resp) => {
-        console.log('FUNCIONOU');
-        alert("salvo");
-    })
-    .catch((err) => {
-        window.location.href = './error.html';
-    })
-}
-function denuciar(id) {
-    sessionStorage.complaint_id = id;
-    window.open("./contest.html");
-}
+    function save(id) {
+        event.preventDefault();
+        axios.post(`http://localhost:8080/complaints-saved`, {
+            userId: sessionStorage.user_id,
+            complaintId: id
+        })
+            .then((resp) => {
+                
+            })
+            .catch((err) => {
+            })
+    }
 
-function loadHtml(){
-    document.getElementById('city').innerHTML += sessionStorage.user_city;
-    document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
-    document.getElementById('qntPesquisas').innerHTML = sessionStorage.qnt_Buscas;
-    document.getElementById('qntPublicacoes').innerHTML = sessionStorage.qnt_publicacoes;
-    document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
-    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-    document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-}
+    function getPublicationType(type, typeClass) {
+        switch (type) {
+            case "Assédio":
+                typeClass = "circle__assedio circle__classification";
+                break;
+            case "Assédio Moral":
+                typeClass = "circle__assedio__moral circle__classification";
+                break;
+            case "Racismo":
+                typeClass = "circle__racism circle__classification";
+                break;
+            case "Agressão Física":
+                typeClass = "circle__agressao__fisica circle__classification";
+                break;
+            case "Agressão Verbal":
+                typeClass = "circle__agressao__verbal circle__classification";
+                break;
+            case "Homofobia":
+                typeClass = "circle__homofobia circle__classification";
+                break;
+            case "Preconceito":
+                typeClass = "circle__preconceito circle__classification";
+                break;
+            case "Furto":
+                typeClass = "circle__furto circle__classification";
+                break;
+        }
+        return typeClass;
+    }
 
-function getSearch(){
-    sessionStorage.setItem('uriParamComplaint', document.getElementById('input').value);
-    sessionStorage.setItem('endPointComplaint', document.getElementById('inputSearchComplaint').value);
-    location.reload();
-}
+    function getBuscas() {
+        var aconteceu = false;
+        axios.get(`http://localhost:8080/users/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                aconteceu = true;
+                if(aconteceu){
+                    document.getElementById('qntPesquisas').innerHTML = sessionStorage.qnt_Buscas;
+                    loadComplaints();
+                }
+            })
+    }
 
-function notificacao() {
+    function setCity() {
+        axios.get(`http://localhost:8080/addresses/users/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                sessionStorage.user_city = resp.data[0].city;
+                sessionStorage.user_district = resp.data[0].district;
+                document.getElementById('casosRecentes').innerHTML += sessionStorage.getItem('user_city');
+                document.getElementById('city').innerHTML += sessionStorage.user_city;
+            })
+    }
+
+    function getSearch() {
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.location.href = "./search.html";
+    }
+
+    function loadHtml() {
+        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial3').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("icon__user__initial")[2].style.backgroundColor = sessionStorage.user_colorProfile;
+    }
+    function denuciar(id) {
+        sessionStorage.complaint_id = id;
+        window.location.href = "./contest.html";
+    }
+
+    function notificacao() {
         event.preventDefault();
 
         var config = {
@@ -653,7 +619,7 @@ function notificacao() {
             .then(function (response) {
 
                 response.data.map((e) => {
-                    if(!e["hasViewed"]){
+                if(!e["hasViewed"]){
                     hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
                     idNotificacao.innerHTML += `
                         <div class="content__notify">
@@ -686,11 +652,12 @@ function notificacao() {
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 console.log("foi");
-                window.location.href = "./search.html";
+                window.location.href = "./home.html";
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 </script>
+
 </html>

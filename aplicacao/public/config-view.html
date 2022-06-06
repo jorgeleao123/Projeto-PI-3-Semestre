@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -7,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <title>Perfil - Salvos | GO</title>
-    <link rel="stylesheet" href="./assets/css/perfil.css">
-    <link rel="stylesheet" href="./assets/css/style-components.css">
+    <title>Configurações | GO</title>
+
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
-    <link rel="stylesheet" href="./assets/css/perfil.save.css">
-
+    <link rel="stylesheet" href="./assets/css/style-components.css">
+    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/publication.css">
+    <link rel="stylesheet" href="./assets/css/style.configs.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
-<body onload="itensSave(), dadosUser(),notificacao()">
+<body onload="iniciar(),notificacao()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -39,14 +41,14 @@
                 </span>
             </div>
             <div class="nav__desktop__top__items">
-                <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                        <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                     </div>
                 </div>
-                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                <div class="mobile-bottom-nav__item">
                     <div class="mobile-bottom-nav__item-content links__desktop">
-                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile link_active"></i></a>
+                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                     </div>
                 </div>
 
@@ -67,14 +69,13 @@
                 </div>
                 <div class="mobile-bottom-nav__item-content">
                     <div class="icon__user__initial">
-                        <span class="initial__user" id="initial1">R</span>
+                        <span class="initial__user" id="initial"></span>
                     </div>
                 </div>
             </div>
         </div>
         </div>
     </section>
-
     <!-- navbar mobile -->
     <section class="nav__mobile">
         <div class="nav__mobile__top">
@@ -88,7 +89,7 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Perfil</h3>
+                    <h3>Configurações</h3>
                 </div>
             </div>
 
@@ -105,82 +106,61 @@
 
     <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
     <main>
-        <!-- Perfil navbar mobile -->
-        <div class="f__navbar__mobile">
-            <nav class="f__navbar">
-                <ul>
-                    <li><a href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span
-                                class="public">Publicações</span></a></li>
-                    <li><a id="active" href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span
-                                class="public">Salvos</span></a></li>
-                    <li><a href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span
-                                class="public">Contestação</span></a></li>
-                </ul>
-            </nav>
-        </div>
+        <section>
+            <div class="container__form form__publication">
+                <!-- navegações configs -->
+                <div class="more__inputs">
+                    <nav class="i__navbar">
+                        <ul>
+                            <li class="title__card">
+                                <p><b>Configurações</b></p>
+                            </li>
+                            <li><a href="./config-infos.html">Minhas Informações</a></li>
+                            <li><a id="activeleft" href="./config-view.html">Opções de Visualização</a></li>
+                            <li class="none"><a href="./config-account.html">Gerenciar Conta</a></li>
+                        </ul>
+                    </nav>
 
-        <!-- background card -->
-        <div class="background">
-            <div class="background__content"></div>
-            <div class="card__perfil__mobile__print">
-                <div class="flex padding__card">
-                    <div class="icon__user icon__user__initial">
-                        <span class="initial__user" id="initial2">R</span>
+                    <!-- Perfil navbar mobile -->
+                    <div class="f__navbar__mobile">
+                        <nav class="f__navbar">
+                            <ul>
+                                <li><a href="./config-infos.html"><i
+                                            class="fa-solid fa-pen-to-square"></i><span
+                                            class="public">Dados</span></a></li>
+                                <li><a id="active" href="./config-view.html"><i class="fa-solid fa-eye"></i></i><span
+                                            class="public">Visualização</span></a></li>
+                                <li><a href="./config-account.html"><i class="fa-solid fa-id-badge"></i><span
+                                            class="public">Conta</span></a></li>
+                            </ul>
+                        </nav>
                     </div>
-                    <span>
-                        <h4 id="nameUser" class="nameUser">Rafaella Kimberlly</h4>
-                    </span>
                 </div>
-            </div>
-        </div>
-
-        <!-- card infos perfil -->
-        <section class="content__feed">
-            <div class="container__feed__save">
-                <!-- tópico -->
-                <div class="topic__save flex justify">
-                    <p><b>Salvos </b></p>
-                    <div class="hr"></div>
-                </div>
-                <br>
-                <div class="lala" id="itens">
-
-                    <!------------------------------ /publicação  ----------------------------------------->
-                </div>
-            </div>
-            <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
-
-            <!-- initial navbar right -->
-            <div class="card__infos__navbar top__save">
-                <nav class="i__navbar">
-                    <ul>
-                        <li><a href="./perfil.html">Minhas Publicações</a></li>
-                        <li><a href="./perfil-contestation.html">Minhas Contestações</a></li>
-                        <li id="activeleft" class="none"><a href="./perfil-save.html">Salvos</a></li>
-                    </ul>
-                </nav>
-
-
-                <!-- Card  -->
-                <div class="card__write">
-                    <div class="flex">
-                        <button class="edit__button__card"><a href="./new-publication.html">Escrever</a></button>
+                <div class="inputs__publication mode__text">
+                    <!-- tópico -->
+                    <div class="topic__feed flex justify">
+                        <span class="flex">
+                            <p><b>Tema</b></p>
+                        </span>
+                        <div class="hr"></div>
                     </div>
-
-                    <div class="font__card">
-                        <h6>Públique uma denúncia no seu perfil</h6>
+                    <div class="flex justify">
+                        <div>
+                            <h4>Escolha o tema da aplicação</h4>
+                            <h5>Você pode escolher entre o tema Light ou Dark</h5>
+                        </div>
+                        <div class="toggle">
+                            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+                            <label for="switch">Toggle</label>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <div style="display: none;" class="toggle">
-            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
-            <label for="switch">Toggle</label>
-        </div>
-
 
         <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+
         <!-- modal navbar / mains opções de link -->
         <input class="modal-state" id="modal-1" type="checkbox" />
         <div class="modal">
@@ -191,7 +171,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <a class="options__modal__user" href="./login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -332,10 +312,10 @@
                                 <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
                         </span>
                     </div>
-
                 </div>
             </div>
         </span>
+
     </main>
 
     <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
@@ -343,17 +323,17 @@
         <nav class="mobile-bottom-nav">
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
-            <div class="nav__itens__links">
-                <div class="mobile-bottom-nav__item-content">
+            <div class="nav__itens__links ">
+                <div class="mobile-bottom-nav__item-content ">
                     <label for="modal-2">
                         <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
                     </label>
                 </div>
             </div>
-            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+            <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
                     <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
                 </div>
@@ -371,155 +351,18 @@
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
 </body>
-
-</html>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
-    var typeClass = "";
-    function getSearch() {
+    function iniciar(){
+        initial.innerHTML = sessionStorage.user_nome[0];
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+    }
+    
+    function getSearch(){
         let uriParam = document.getElementById('uriParamComplaint').value;
         let endPoint = document.getElementById('endPointComplaint').value;
         sessionStorage.setItem('uriParamComplaint', uriParam);
         sessionStorage.setItem('endPointComplaint', endPoint);
         window.location.href = "./search.html";
-    }
-
-    function dadosUser() {
-        nameUser.innerHTML = sessionStorage.user_nome
-        initial1.innerHTML = sessionStorage.user_nome[0]
-        initial2.innerHTML = sessionStorage.user_nome[0]
-        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
-        document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
-
-    }
-    function itensSave() {
-        event.preventDefault();
-        axios.get(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}`, {})
-            .then((resp) => {
-                console.log(resp);
-                itens.innerHTML == '';
-                resp.data.map((e) => {
-                    bo = false;
-                    e["bo"] != null && e["bo"] != '' ? bo = true : bo = false;
-                    itens.innerHTML += `                <div class="content__complaint">
-                    <div class="header__complaint flex justify">
-                        <div class="flex">
-                            <div class="icon__complaint icon__user icon__user__initial" style="background-color: ${e["user"]["colorProfile"]};">
-                                <span class="initial__user" id="initialPublication">${e["user"]["name"][0]}</span>
-                            </div>
-                            <span class="infos__user__complaint">
-                                <h4 id="nameUser">${e["user"]["name"]}</h4>
-                                <p id="gender">${e["user"]["genre"]}</p>
-                            </span>
-                        </div>
-                        <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                        <label class="label__modal" for="${e["id"]}">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </label>
-                        <!----------- modal funcionalidades ----------->
-                        <!-- colocar no (id="{id}"} para cada publi ter o seu modal -->
-                        <input class="modal-state" id="${e["id"]}" type="checkbox" />
-                        <div class="modal__functions">
-                            <!-- colocar no (for="{id}"} para cada publi ter o seu modal -->
-                            <label class="" for="${e["id"]}"></label>
-                            <div class="modal__inner__func">
-                                <form action="">
-                                    <p style="cursor: pointer;" class="options__modal__user"><input
-                                            style="display: none; cursor: pointer;" type="submit"
-                                            class="option__modal__user" value="idCaso"><span onclick="apagar(${e["id"]})">Remover dos Salvos</span></p>
-                                    <a href="./contest.html">
-                                        <p style="cursor: pointer;" class="options__modal__user"><input
-                                                style="display: none; cursor: pointer;" type="submit"
-                                                class="option__modal__user" value="idCaso"><span onclick="abrirContestacao(${e["id"]})">Denunciar</span></p>
-                                    </a>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <span class="check__complaint">
-                        <h6>${bo ? "Possui boletim de ocorrencia" : ""}</h6>
-                        ${bo ? '<i class="fa-solid fa-certificate"></i>' : ""}
-                    </span>
-
-                    <div class="infos__complaint">
-                        <p id="textComplaint">
-                            ${e["description"]}
-                        </p>
-                    </div>
-
-                    <div class="photos__complaint">
-                        <div class="item shrink-1-basis">
-                            <img src="http://localhost:8080/complaints/archive/${e['id']}" alt="" onerror="this.src='.//assets/img/logo-go-carbon.svg';" >
-                        </div>
-                    </div>
-
-                    <div class="more__infos__complaint flex justify">
-                        <div class="classification__complaint">
-                            <div class="${getPublicationType(e["type"], typeClass)}"></div>
-                            <h6>Classificação do caso: <span id="classificationPub"> ${e["type"]}</span></h6>
-                        </div>
-                        <span class="location__conplaint" id="locationComplaint">
-                            ${e["address"]["state"]} - ${e["address"]["city"]} | ${e["dateTimeComplaint"]}
-                        </span>
-                    </div>
-                    <div class="hr margin-bottom"></div>
-                </div>`
-                });
-            })
-            .catch((error) => {
-                console.log(error);
-                console.log(data);
-                window.location.href = './error.html';
-            })
-
-    }
-    function apagar(id) {
-        event.preventDefault();
-        axios.delete(`http://localhost:8080/complaints-saved/${sessionStorage.user_id}/${id}`)
-            .then((resp) => window.location.href = "perfil-save.html")
-            .catch((error) => {
-                window.location.href = './error.html';
-            })
-    }
-    function abrirContestacao(id) {
-        event.preventDefault();
-        sessionStorage.complaint_id = id;
-        window.location.href = "./contest.html";
-    }
-
-    function getPublicationType(type, typeClass) {
-        switch (type) {
-            case "Assédio":
-                typeClass = "circle__assedio circle__classification";
-                break;
-            case "Assédio Moral":
-                typeClass = "circle__assedio__moral circle__classification";
-                break;
-            case "Racismo":
-                typeClass = "circle__racism circle__classification";
-                break;
-            case "Agressão Física":
-                typeClass = "circle__agressao__fisica circle__classification";
-                break;
-            case "Agressão Verbal":
-                typeClass = "circle__agressao__verbal circle__classification";
-                break;
-            case "Homofobia":
-                typeClass = "circle__homofobia circle__classification";
-                break;
-            case "Preconceito":
-                typeClass = "circle__preconceito circle__classification";
-                break;
-            case "Furto":
-                typeClass = "circle__furto circle__classification";
-                break;
-            default:
-                typeClass = "circle__preconceito circle__classification";
-                break;
-        }
-        return typeClass;
     }
 
     function notificacao() {
@@ -567,10 +410,11 @@
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 console.log("foi");
-                window.location.href = "./perfil-save.html";
+                window.location.href = "./config-view.html";
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
 </script>
+</html>

@@ -2,150 +2,169 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GO | Login</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="img/icons/Logo GO.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&family=Mukta:wght@200;400;600;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/style-form.css">
-  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo-go 2.svg" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>GO | Login</title>
 </head>
 
 <body>
-  <div class="nav">
+    <header class="header" id="header">
+        <nav class="nav container">
+            <span id="logo">
+                <img src="./assets/img/logo-go-carbon.svg" alt="">
+            </span>
+            <span style="display: none;" id="logoMobile">
+                <img src="./assets/img/logo-go-carbon.svg" alt="">
+            </span>
 
-    <input type="checkbox" id="nav-check">
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item" style="display: none;">
+                        <a href="#home" class="nav__link a">Home</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#about" class="nav__link">Sobre nós</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#discover" class="nav__link">Serviços</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#place" class="nav__link">Contato</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./cadastro.html" class="button__cad nav__link btn__link">Cadastro</a>
+                    </li>
+                </ul>
 
-    <div class="nav-header">
-      <img src="./img/icons/Logo GO - black.png" alt="" onclick="voltarIndex()">
-    </div>
-
-    <div class="nav-btn">
-      <label for="nav-check">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-    </div>
-
-    <div class="nav-links margin-nav">
-      <a href="#sobre" target="_blank"></a>
-      <a href="#servico" target="_blank"></a>
-      <a href="#contato"></a>
-      <a class="btns-resp" href="./cadastro.html" target="_blank">Cadastro</a>
-    </div>
-
-    <div class="btns-nav">
-      <a class="button btn-blue-1" href="./cadastro.html">Cadastro</a>
-    </div>
-
-  </div>
-
-  <main>
-    <div class="container-pages">
-      <div id="" class="container">
-        <section class="container-form row">
-          <div class="item item-form">
-            <div class="content-form-img">
-              <div class="backgroud-img">
-                <div class="fundo">
-                  <img src="./img/pics/ghen-mar-cuano-R6dSBkz32B8-unsplash-removebg-preview 1.svg" alt="">
-                </div>
-              </div>
+                <i class="ri-close-line nav__close" id="nav-close"></i>
             </div>
-          </div>
-          <div class="item teste">
-            <div>
-              <h2>Faça Login</h2>
-              <h4>Acesse a nossa plataforma e tenha acesso a denuncias e noticias sobre aplicativos de transporte
-                urbano.</h4>
-              <form action="">
-                <div class="ipt-form">
-                  <label for="Login">Login</label>
-                  <input type="text" name="login" id="login" placeholder="Insira seu login">
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="place section" id="place">
+            <div class="about__container container grid">
+                <div class="about__img contact__img">
+                    <img class="img-contact" src="./assets/img/login.png" alt="">
                 </div>
-                <div class="ipt-form">
-                  <label for="Senha">Senha</label>
-                  <div>
-                    <input type="password" id="senha" placeholder="Insira sua senha">
-                    <img id="olho" src="./img/icons/eye.png" />
-                  </div>
-                  <div class="pass-ask">
-                    <span>Esqueceu sua senha?</span>
-                  </div>
-                  <div class="check">
-                    <input style="width: 20px;" type="checkbox" name="" id="">
-                    <span>Lembrar de mim</span>
-                  </div>
+
+                <div class="about__data">
+                    <h2 class="section__title about__title">Faça Login</h2>
+                    <p class="about__description">Acesse a nossa plataforma e tenha acesso a denuncias e noticias sobre
+                        aplicativos de transporte
+                        urbano.</p>
+                    <form action="">
+                        <div class="inputs__form">
+                            <label for="Email">Email</label> <br>
+                            <input type="email" name="" id="email" placeholder="Insira seu email">
+                        </div>
+                        <div class="inputs__form">
+                            <label for="Assunto">Senha</label> <br>
+                            <input type="password" name="" id="password" placeholder="Insira sua senha">
+                            <img class="icon__pass" src="./assets/img/eye.png" onclick="viewPassword()" alt="">
+                        </div>
+                        <span class="link__pass" id="login_error" style="display: none; color:red">
+                            Email e/ou senha incorretos
+                        </span>
+                        <button class="button__log button btn-ctt" onclick="logar()">
+                            <a class="link__btn__log">Entrar</a>
+                        </button>
+                    </form>
                 </div>
-                <input onclick="logar()" type="button" class="button-login button" value="Entrar">
-              </form>
             </div>
         </section>
-      </div>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Termos</a>
+                        <a href="#" class="footer__terms-link">Politica de privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <div style="display: none;" class="toggle">
+        <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+        <label for="switch">Toggle</label>
     </div>
-  </main>
-  <footer>
-    <hr>
-    <span>© GO - Todos os diretos reservados</span>
-  </footer>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-<script>
-  var senha = $('#senha');
-  var olho = $("#olho");
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
 
-  olho.mousedown(function () {
-    senha.attr("type", "text");
-  });
-
-  olho.mouseup(function () {
-    senha.attr("type", "password");
-  });
-  // para evitar o problema de arrastar a imagem e a senha continuar exposta, 
-  //citada pelo nosso amigo nos comentários
-  $("#olho").mouseout(function () {
-    $("#senha").attr("type", "password");
-  });
-
-  //Função login
-  function logar() {
-    // const data = {
-    //   loginUsuario: document.getElementById('login').value,
-    //   senhaUsuario: document.getElementById('senha').value
-    // };
-
-    fetch(`http://localhost:8080/users/login/${document.getElementById('login').value}/${document.getElementById('senha').value}`, {
-      method: 'POST', // or 'PUT'
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      // body: JSON.stringify(data),
-    })
-      .then(Response => {
-        console.log('Success:', Response);
-        if (Response.status == 200) {
-          window.location.href = "http://127.0.0.1:5501/index.html";
-        } else {
-          alert("Login e/ou senha inválidos")
+        function viewPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
         }
 
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+        function logar() {
+            event.preventDefault();
 
-  }
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-  function voltarIndex(){
-    window.location.href = "./index.html";
-  }
+            axios.post(`http://localhost:8080/users/login/${email}/${password}`, {})
+                .then((resp) => {
+                    if (resp.data.status == "ativo") {
+                        console.log(resp.data);
+                        sessionStorage.user_email = resp.data.email;
+                        sessionStorage.user_nome = resp.data.name;
+                        sessionStorage.user_id = resp.data.id;
+                        sessionStorage.qnt_Buscas = resp.data.searchCounter;
+                        if (resp.data.colorMenu == "default") {
+                            sessionStorage.user_colorMenu = "#7D63A9";
+                        }else{
+                            sessionStorage.user_colorMenu = resp.data.colorMenu;
+                        }
+                        if (resp.data["colorProfile"] == "default") {
+                            sessionStorage.user_colorProfile = "#7D63A9";
+                        }else{
+                            sessionStorage.user_colorProfile = resp.data["colorProfile"];
+                        }
+                        window.location.href = "./home.html";
+                    }else{
+                        document.getElementById('login_error').style.display = 'block';
+                    }
+                })
+                .catch((error) => {
+                    document.getElementById('login_error').style.display = 'block';
+                })
 
-</script>
+
+            // fetch(`http://localhost:8080/users/login/${email}/${password}`, {
+            //     method: 'POST', // or 'PUT'
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     // body: JSON.stringify(data),
+            // })
+            //     .then(Response => {
+            //         alert('Logado')
+            //     })
+            //     .catch((error) => {
+            //         console.error('Error:', error);
+            //         alert("Não foi possível se conectar com o servidor: ", error);
+            //         document.getElementById('login_error').style.display = 'block';
+            //         alert("Login e/ou senha inválidos");
+            //     });
+
+        }
+
+    </script>
+
+    <script src="./assets/js/dark-mode.js"></script>
+</body>
 
 </html>

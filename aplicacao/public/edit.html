@@ -7,17 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
     <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <title>Contestar | GO</title>
+    <title>Publicar | GO</title>
+
     <link rel="stylesheet" href="./assets/css/style.modais.css">
     <link rel="stylesheet" href="./assets/css/style.nav.css">
     <link rel="stylesheet" href="./assets/css/feed.css">
     <link rel="stylesheet" href="./assets/css/style-components.css">
     <link rel="stylesheet" href="./assets/css/search.css">
     <link rel="stylesheet" href="./assets/css/publication.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 </head>
 
-<body onload="notificacao()">
+<body  onload="notificacao()">
     <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
     <!-- navbar desktop -->
     <section class="nav__desktop">
@@ -87,7 +89,7 @@
 
             <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <h3>Contestar</h3>
+                    <h3>Editar</h3>
                 </div>
             </div>
 
@@ -110,31 +112,142 @@
                     <!-- tópico -->
                     <div class="topic__feed flex justify">
                         <span class="flex">
-                            <p><b>Contestar</b></p>
+                            <p><b>Editar Publicação</b></p>
                         </span>
                         <div class="hr"></div>
                     </div>
+
+
                     <form>
-                        <label for="Descrição">Descrição</label>
-                        <textarea name="" id="description" rows="9"
-                            placeholder="Descreva a sua versão" onkeypress="validateDescription(description.value)"></textarea>
-                            <span id="post_descricao" style="display: none; color:rgb(253, 81, 81); margin-bottom: 18px">Descrição vazia</span>
+                        <div class="scrool_form">
+
+                            <label for="Descrição">Descrição</label>
+                            <textarea name="" id="description" cols="10" rows="6"
+                                placeholder="Descreva o ocorrido"></textarea>
+
+                            <div class="form__publication">
+
+                                <div class="ipt__form">
+                                    <label for="Data do ocorrido">Data do ocorrido</label>
+                                    <input type="date" name="" id="dateTimeComplaint">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="codigo do boletim">codigo do boletim</label>
+                                    <input type="text" name="" id="bo"
+                                        placeholder="Insira o código do boletim de ocorrencia">
+                                </div>
+
+                            </div>
+
+                            <div class="form__publication">
+
+                                <div class="ipt__form">
+                                    <label for="CEP">CEP</label>
+                                    <input type="text" name="" id="cep" placeholder="Ponto de partida ou Destino">
+                                    <span id="endereco_validator" style="color: rgb(253, 81, 81);
+                                    display: none">CEP inválido</span>
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="codigo do boletom">Estado onde ocorreu</label>
+                                    <input type="text" id="uf" class="form_sel">
+                                    <!--<select class="form__sel" name="combo_state" id="district">
+                                        <option value="AC">AC</option>
+                                        <option value="AL">AL</option>
+                                        <option value="AP">AP</option>
+                                        <option value="AM">AM</option>
+                                        <option value="BA">BA</option>
+                                        <option value="CE">CE</option>
+                                        <option value="DF">DF</option>
+                                        <option value="ES">ES</option>
+                                        <option value="GO">GO</option>
+                                        <option value="MA">MA</option>
+                                        <option value="MT">MT</option>
+                                        <option value="MS">MS</option>
+                                        <option value="MG">MG</option>
+                                        <option value="PA">PA</option>
+                                        <option value="PB">PB</option>
+                                        <option value="PR">PR</option>
+                                        <option value="PE">PE</option>
+                                        <option value="PI">PI</option>
+                                        <option value="RJ">RJ</option>
+                                        <option value="RN">RN</option>
+                                        <option value="RS">RS</option>
+                                        <option value="RO">RO</option>
+                                        <option value="RR">RR</option>
+                                        <option value="SC">SC</option>
+                                        <option value="SP">SP</option>
+                                        <option value="SE">SE</option>
+                                        <option value="TO">TO</option>
+                                    </select>-->
+                                </div>
+
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Cidade onde ecorreu">Cidade onde ocorreu</label>
+                                    <input type="text" name="" id="city"
+                                        placeholder="Insira a cidade onde o caso ocorreu">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Bairro onde ecorreu">Bairro onde ocorreu</label>
+                                    <input type="text" name="" id="district"
+                                        placeholder="Insira a Bairro onde o caso ocorreu">
+                                </div>
+                            </div>
+                            <div class="form__publication">
+                                <div class="ipt__form">
+                                    <label for="Nome do motorista">Nome do(a) motorista</label>
+                                    <input type="text" name="" id="driverName" placeholder="Insira o nome do motorista">
+                                </div>
+
+                                <div class="ipt__form">
+                                    <label for="Placa do veiculo">Placa do veiculo</label>
+                                    <input type="text" name="" id="licensePlate"
+                                        placeholder="Insira a placa do veiculo">
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div class="more__inputs">
-                    <div class="card__arq padding__card">
-                        <h4>Adicionar Midia</h4>
-                        <input id="myFile" name="filename" class="btn__anx" type="file" placeholder="Anexar Arquivo">
-                        <h6>Deixe a sua contextação ainda respostamais completa, caso tenha boletim de ocorrencia,
-                            videos,
-                            fotos, prints ou algo que ajude a comprovar a sua versão, nos envie.</h6>
+                <div class="more__inputs justify__more__infos">
+                    <div>
+                        <div class="form__publication">
+                            <div class="ipt__form">
+                                <label for="codigo do boletom">Classificação do Caso</label>
+                                <select class="form__sel" name="" id="type">
+                                    <option value="Assédio">Assédio</option>
+                                    <option value="Assédio Moral">Assédio Moral</option>
+                                    <option value="Racismo">Racismo</option>
+                                    <option value="Agressão Física">Agressão Física</option>
+                                    <option value="Agressão Verbal">Agressão Verbal</option>
+                                    <option value="Homofobia">Homofobia</option>
+                                    <option value="Preconceito">Preconceito</option>
+                                    <option value="Furto">Furto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card__arq padding__card">
+                            <h4>Adicionar Midia</h4>
+                            <button>
+                                Anexar Arquivo
+                            </button>
+                            <h6>Deixe a sua denuncia ainda mais completa, adicionando print do aplicativo, foto do
+                                motorista, video ou foto do boletim de ocorrencia.</h6>
+                        </div>
                     </div>
 
-                    <button onclick="registerContestation()" class="color__btn btn__publication"> Enviar
-                    </button>
+                    <div>
+                        <button onclick="editComplaint()" class="btn__publication">
+                            Editar
+                        </button>
 
-                    <div class="card__dics padding__card">
-                        <h6>Apenas a nossa equipe vai ter acesso a essas informações. Faremos o possivel para evitar
-                            mais transtorno.</h6>
+                        <div class="card__dics padding__card">
+                            <h6>Seus dados não são visiveis para outros usuarios. Tomamos todos os cuidados para
+                                garantir sua segurança, verifique suas imagens adicionadas e garanta que nenhum dado seu
+                                vaze.</h6>
+                        </div>
                     </div>
                     </form>
                 </div>
@@ -157,7 +270,7 @@
                 <a class="options__modal__user" href="./config-infos.html">Configurações</a>
                 <hr>
                 <span class="flex justify">
-                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <a class="options__modal__user" href="./login.html">Sair</a>
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </span>
             </div>
@@ -309,7 +422,7 @@
         <nav class="mobile-bottom-nav">
             <div class="mobile-bottom-nav__item">
                 <div class="mobile-bottom-nav__item-content">
-                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    <a href="./home.html"><i class="fa-solid fa-house icon__mobile"></i></a>
                 </div>
             </div>
             <div class="nav__itens__links ">
@@ -336,87 +449,88 @@
     </section>
     <script src="./assets/js/script-components.js"></script>
     <script src="./assets/js/dark-mode.js"></script>
-</body>
+    <script>
 
-</html>
-
-<script>
-    document.getElementById('initial').innerHTML = sessionStorage.user_nome.substr(0, 1);
-    document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
-    function registerContestation() {
-        event.preventDefault();
-        var funcionou = false;
-
-
-        const data = {
-            description: description.value,
-            archive: [],
-            userId: sessionStorage.user_id,
-            complaintId: sessionStorage.complaint_id
+        function getSearch(){
+            let uriParam = document.getElementById('uriParamComplaint').value;
+            let endPoint = document.getElementById('endPointComplaint').value;
+            sessionStorage.setItem('uriParamComplaint', uriParam);
+            sessionStorage.setItem('endPointComplaint', endPoint);
+            window.open("./search.html");
         }
-        
-        validateDescription(data.description);
 
-        axios.post(`http://localhost:8080/contestations`, data)
+        function editComplaint(id) {
+            event.preventDefault();
+
+            const data = {
+                type: type.value,
+                description: description.value,
+                archive: "string",
+                bo: bo.value,
+                driverName: driverName.value,
+                licensePlate: licensePlate.value,
+                state: uf.value,
+                city: city.value,
+                district: district.value,
+                dateTimeComplaint: "2022-05-10T21:25:50.462Z"
+            }
+
+            axios.put(`http://localhost:8080/complaints/${sessionStorage.user_id}/${sessionStorage.editId}`, data)
             .then((resp) => {
+                alert('Denúncia editada com sucesso', resp);
+                window.location.href = './perfil-save.html';
                 console.log(resp);
-                funcionou = true;
-                if(funcionou){
-                    getId();
-                }
             })
             .catch((error) => {
                 console.log(error);
                 console.log(data);
-                alert('Erro');
-                //window.location.href = './error.html';
+                window.location.href = './error.html';
             })
-    }
 
-    function validateDescription(description){
-        if(description.length < 6){
-            document.getElementById('post_descricao').style.display = 'block';
-        } else{
-            document.getElementById('post_descricao').style.display = 'none';
         }
-    }
 
-    function getId() {
-        event.preventDefault();
-        var config = {
-            method: 'get',
-            url: `http://localhost:8080/contestations/user/${sessionStorage.user_id}`,
-            headers: {}
-        };
+        function preencherFormulario(endereco) {
+            uf.value = endereco.uf;
+            city.value = endereco.localidade;
+            district.value = endereco.bairro;
 
-        axios(config)
-            .then(function (response) {
-                subirFoto(response.data[0]["id"]);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        }
 
-    }
+        function eNumero(numero) {
+            return /^[0-9]+$/.test(numero);
+        }
 
-    function subirFoto(id) {
-        event.preventDefault();
-        var input = document.querySelector('input[type="file"]');
-        var formdata = new FormData();
-        formdata.append("file", input.files[0]);
+        function cepValido(cep) {
+            return cep.length == 8 && eNumero(cep);
+        }
 
-        var requestOptions = {
-            method: 'PUT',
-            body: formdata,
-            redirect: 'follow'
-        };
+        const pesquisarCep = async () => {
+            const cep = document.getElementById('cep').value.replace("-", "");
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
 
-        fetch(`http://localhost:8080/contestations/archive/${sessionStorage.user_id}/${id}`, requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-    }
-    function notificacao() {
+            if (cepValido(cep)) {
+                const dados = await fetch(url);
+                const endereco = await dados.json();
+                if (endereco.hasOwnProperty('erro')) {
+                    document.getElementById('endereco_validator').value = 'CEP não encontrado!';
+                    document.getElementById('endereco_validator').style.display = 'block';
+                } else {
+                    preencherFormulario(endereco);
+                    bairro = endereco.bairro;
+                    document.getElementById('endereco_validator').style.display = 'none';
+                }
+            } else {
+                document.getElementById('endereco_validator').value = 'CEP incorreto!';
+                document.getElementById('endereco_validator').style.display = 'block';
+            }
+
+        }
+        //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
+        document.getElementById('cep')
+            .addEventListener('focusout', pesquisarCep);
+
+
+            function notificacao() {
         event.preventDefault();
 
         var config = {
@@ -461,10 +575,13 @@
             .then(function (response) {
                 console.log(JSON.stringify(response.data));
                 console.log("foi");
-                window.location.href = "./contest.html";
+                window.location.href = "./edit.html";
             })
             .catch(function (error) {
                 console.log(error);
             });
     }
-</script>
+    </script>
+</body>
+
+</html>
