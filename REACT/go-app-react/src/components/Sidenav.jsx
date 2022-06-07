@@ -33,7 +33,7 @@ function Sidenav() {
                         <a className="closebtn" onClick={() => closeNav()}>&times;</a>
                         <img className="logo__sidebar" src={Logo} alt="logo-go-white" />
                         <div className="links__nav">
-                            <a onClick={() =>{navigate("/")}}>
+                            <a onClick={() =>{navigate("/home")}}>
                                 <FontAwesomeIcon icon={faHouse} /> Home
                             </a>
                             <a onClick={() =>{navigate("/complaint")}}>
@@ -49,7 +49,6 @@ function Sidenav() {
                                 <FontAwesomeIcon icon={faUserPlus} /> Administrador
                             </a>
                         </div>
-                        {/*Não sei para onde vai*/}
                         <a onClick={() =>{navigate("/")}}>
                             <FontAwesomeIcon icon={faArrowRightFromBracket} /> Sair
                          </a>

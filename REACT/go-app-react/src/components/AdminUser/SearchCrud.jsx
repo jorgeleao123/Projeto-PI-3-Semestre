@@ -12,13 +12,12 @@ function SearchCrud() {
 
   useEffect(() => {
     buscarDados();
-  }, [usuarios]);
+  }, []);
 
   function buscarDados() {
     apiUser
       .get(``)
       .then((resp) => {
-        console.log(resp);
         setUsuarios(resp);
       })
       .catch((error) => {
@@ -26,16 +25,17 @@ function SearchCrud() {
       });
   }
 
-  function deleteUser(id){
-    apiUser.delete(`/${id}`)
-        .then(() => {
-            alert("Usuário excluido com sucesso!")
-            buscarDados();
-        })
-        .catch((error) => {
-            alert("Não foi possível excluir o usuário");
-            console.log(error);
-        })
+  function deleteUser(id) {
+    apiUser
+      .delete(`/${id}`)
+      .then(() => {
+        alert("Usuário excluido com sucesso!");
+        buscarDados();
+      })
+      .catch((error) => {
+        alert("Não foi possível excluir o usuário");
+        console.log(error);
+      });
   }
 
   return (
@@ -55,14 +55,18 @@ function SearchCrud() {
             </thead>
             <tbody>
               {usuarios.map((i) => {
-                <TableLineCrud
-                  id={i.id}
-                  nome={i.name}
-                  email={i.email}
-                  publicacoes={i.publicacoes}
-                  contestacoes={i.contestacoes}
-                  deleteUser={deleteUser}
-                />
+                console.log(i);
+                return (
+                  <TableLineCrud
+                    key={i.id}
+                    id={i.id}
+                    nome={i.name}
+                    email={i.email}
+                    publicacoes={i.publicacoes}
+                    contestacoes={i.contestacoes}
+                    deleteUser={deleteUser}
+                  />
+                );
               })}
             </tbody>
           </table>

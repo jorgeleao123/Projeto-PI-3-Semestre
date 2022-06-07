@@ -7,20 +7,31 @@ import apiUser from "../../apiUser";
 
 function TableSearch() {
   const [admins, setAdmins] = useState(new Array());
+  const [users, setUsers] = useState(new Array());
 
   useEffect(() => {
     buscarDados();
-  }, [admins]);
+  }, []);
 
   function buscarDados() {
     apiUser
-      .get()
+      .get(``)
       .then((resp) => {
-        setAdmins(resp);
+        setUsers(resp.data);
+        adicionarAdmins();
       })
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  function adicionarAdmins() {
+    users.map((user) => {
+      if(user.role === 'admin') {
+        //Como adiciona sem substituir?
+        setAdmins(user);
+      }
+    })
   }
 
   function deleteAdm(id) {
@@ -51,13 +62,15 @@ function TableSearch() {
             </thead>
             <tbody>
               {admins.map((i) => {
-                <TableLineCrudAdm
-                  id={i.id}
-                  nome={i.name}
-                  email={i.email}
-                  cargo={i.role}
-                  deleteAdm={deleteAdm}
-                />;
+                return(
+                  <TableLineCrudAdm
+                    id={i.id}
+                    nome={i.name}
+                    email={i.email}
+                    cargo={i.role}
+                    deleteAdm={deleteAdm}
+                  />
+                )
               })}
             </tbody>
           </table>

@@ -15,8 +15,6 @@ import TableComplaint from '../components/Home/TableComplaint';
 import Cards from '../components/Home/Cards'
 
 function Index(){
-
-
     return (
         <>
             {/*------------------ SIDEBAR -----------------------*/}

@@ -18,7 +18,6 @@ function DashboardLogin(){
         <>
             {/*------------------ SIDEBAR -----------------------*/}
             <Sidenav />
-                <Navbar />
                 <main>
                     <FormLogin />
                     <Footer />
