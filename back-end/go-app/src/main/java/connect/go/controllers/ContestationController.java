@@ -3,7 +3,9 @@ package connect.go.controllers;
 import connect.go.exceptions.UserNotFoundException;
 import connect.go.models.Complaint;
 import connect.go.models.Contestation;
+import connect.go.models.User;
 import connect.go.models.dto.ContestationRegistration;
+import connect.go.models.dto.UserResponse;
 import connect.go.usecases.ComplaintService;
 import connect.go.usecases.ContestationService;
 import connect.go.usecases.NotificationService;
@@ -35,6 +37,15 @@ public class ContestationController {
     private final UserService userService;
     private final NotificationService notificationService;
 
+    @GetMapping
+    public ResponseEntity<List<Contestation>> getContestations() {
+        List<Contestation> contestations = contestationService.findAll();
+        if (contestations.isEmpty()) {
+            return ResponseEntity.status(204).build();
+        }
+        return ResponseEntity.status(200).body(contestations);
+    }
+
     @GetMapping("/complaintId/{complaintId}")
     public ResponseEntity<Contestation> getContestationsByComplaintId(@PathVariable Integer complaintId) {
         return ResponseEntity.of(contestationService.getContestationsByComplaintId(complaintId));
@@ -63,12 +74,10 @@ public class ContestationController {
         complaintService.setStatus(contestationRegistration.getComplaintId(), "em análise");
         notificationService.register(contestation.getComplaint().getUser().getId(),
                 "Sua denúncia foi contestada",
-                "Contestaram a sua denúncia, estamos analisando o caso e durante este processo a denúncia ficara fora" +
-                        " do feed");
+                "Contestaram a sua denúncia, estamos analisando o caso");
         notificationService.register(contestation.getUser().getId(),
                 "Sua contestação foi criada",
-                "Você já pode visualizá-la em minhas contestações e enquanto está em análise a denuncia ficará fora " +
-                        "do feed");
+                "Você já pode visualizá-la em minhas contestações");
         return ResponseEntity.status(201).build();
     }
 
@@ -94,8 +103,7 @@ public class ContestationController {
         Contestation contestation = contestationService.getContestationById(contestationId);
         notificationService.register(contestation.getComplaint().getUser().getId(),
                 "Sua denúncia foi validada",
-                "Analisamos sua denúncia mediante a contestação feita pelo motorista e optamos por colocarmos de " +
-                        "volta ao feed de denúncias");
+                "Analisamos sua denúncia mediante a contestação feita pelo motorista");
         notificationService.register(contestation.getUser().getId(),
                 "Sua contestação foi reprovada",
                 "Analisamos sua contestação e mediante aos fatos apresentados, manteremos a denúncia");
