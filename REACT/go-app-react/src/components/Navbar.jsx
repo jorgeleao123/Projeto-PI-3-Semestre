@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Icon__admin from "../assets/img/icon-admin-carbon.svg";
 import '../assets/css/style.complaint.css';
 import '../assets/css/style.components.css';
@@ -13,8 +13,9 @@ function Navbar() {
     document.getElementById("maindash").style.marginLeft = "250px";
   }
 
-  const nameAdm = sessionStorage.getItem("id_user");
-  const roleAdm = sessionStorage.getItem("id_user");
+  const nameAdm = sessionStorage.getItem("user_nome");
+  const letterNameAdm = sessionStorage.getItem("user_nome")[0];
+  const roleAdm = sessionStorage.getItem("user_role");
 
   const navigate = useNavigate();
 
@@ -30,7 +31,7 @@ function Navbar() {
         </div>
         <h4 className="title__page">Dashboard</h4>
         <div className="flex">
-          <div className="icon__user__initial"></div>
+          <div className="icon__user__initial">{letterNameAdm}</div>
           <span>
             <h4 className="nameAdmin" id="name">{nameAdm}</h4>
             <h6 className="function__admin" id="function">{roleAdm}</h6>
@@ -39,8 +40,6 @@ function Navbar() {
       </div>
     </>
   )
-
-  openNav();
-
 }
+
 export default Navbar;

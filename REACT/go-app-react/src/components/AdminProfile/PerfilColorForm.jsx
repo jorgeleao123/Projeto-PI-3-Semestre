@@ -7,14 +7,14 @@ import Divider from "../Divider";
 import apiUser from "../../apiUser";
 
 function PerfilColorForm() {
-  const id = sessionStorage.getItem("id_user");
+  const id = sessionStorage.getItem("user_id");
 
   const [nameInput, setNameInput] = useState();
   const [emailInput, setEmailInput] = useState();
   const [senhaInput, setSenhaInput] = useState();
   const [confirmarSenhaInput, setConfirmarSenhaInput] = useState();
-  const [colorProfileInput, setColorProfileInput] = useState("#FFF");
-  const [colorMenuInput, setColorMenuInput] = useState("#FFF");
+  const [colorProfileInput, setColorProfileInput] = useState();
+  const [colorMenuInput, setColorMenuInput] = useState();
 
   useEffect(() => {
     buscarDados();
@@ -51,7 +51,12 @@ function PerfilColorForm() {
       .then((resp) => {
         console.log(resp);
         alert("Atualizado com sucesso!");
-        window.location.reload(false)
+        sessionStorage.setItem("user_nome", data.name);
+        sessionStorage.setItem("user_email", data.email);
+        sessionStorage.setItem("user_colorProfile", data.colorProfile);
+        sessionStorage.setItem("user_colorMenu", data.colorMenu);
+        window.location.reload(false);
+        console.log(resp);
       })
       .catch((error) => {
         alert("Verifique os campos!");

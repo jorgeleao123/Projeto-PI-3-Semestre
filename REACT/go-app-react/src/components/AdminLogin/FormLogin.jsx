@@ -30,11 +30,14 @@ function FormLogin() {
     apiUser
       .post(`/login/${email}/${password}`, {})
       .then((resp) => {
-        if (resp.data.status == "ativo") {
+        if(resp.data.role === 'user'){
+          document.getElementById("autorization_error").style.display = "block";
+        } else if (resp.data.status == "ativo") {
           console.log(resp.data);
           sessionStorage.user_email = resp.data.email;
           sessionStorage.user_nome = resp.data.name;
           sessionStorage.user_id = resp.data.id;
+          sessionStorage.user_role = resp.data.role;
           if (resp.data.colorMenu == "default") {
             sessionStorage.user_colorMenu = "#7D63A9";
           } else {
@@ -46,14 +49,13 @@ function FormLogin() {
             sessionStorage.user_colorProfile = resp.data["colorProfile"];
           }
           navigate("/home");
-          window.location.href = "../aplicacao/index.html";
         } else {
           document.getElementById("login_error").style.display = "block";
         }
       })
       .catch((error) => {
         console.error(error);
-        document.getElementById("login_error").style.display = "block";
+        alert("Erro com o servidor: " + error.status);
       });
   }
 
@@ -100,6 +102,13 @@ function FormLogin() {
                 style={{ display: 'none', color: 'red' }}
               >
                 Email e/ou senha incorretos
+              </span>
+              <span
+                className="link__pass"
+                id="autorization_error"
+                style={{ display: 'none', color: 'red' }}
+              >
+                Você não possui autorização
               </span>
               <button
                 className="button__log button btn-ctt"
