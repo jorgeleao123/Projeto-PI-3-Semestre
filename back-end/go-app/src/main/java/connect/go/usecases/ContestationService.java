@@ -3,6 +3,7 @@ package connect.go.usecases;
 import connect.go.Repositories.ContestationRepository;
 import connect.go.models.Complaint;
 import connect.go.models.Contestation;
+import connect.go.models.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,5 +42,9 @@ public class ContestationService {
 
     public long count() {
         return contestationRepository.count();
+    }
+
+    public List<Contestation> findAll() {
+        return contestationRepository.findAll();
     }
 }

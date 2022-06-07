@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
 
-    @Query("select c from Complaint c join c.address a where a.city = ?1 order by c.dateTimeComplaint desc")
+    @Query("select c from Complaint c join c.address a where a.city like ?1 order by c.dateTimeComplaint desc")
     Optional<List<Complaint>> getComplaintByCity(String city);
 
     @Query("select c from Complaint c join c.address a where a.district = ?1 order by c.dateTimeComplaint desc")
@@ -32,8 +32,8 @@ public interface ComplaintRepository extends JpaRepository<Complaint, Integer> {
     @Query("update Complaint c set c.status=?2 where c.id=?1")
     void setStatus(Integer complaintId, String status);
 
-    @Query("select count(c.id) from Complaint c where c.user.id = ?1")
-    Integer countByUserId(Integer userId);
+    @Query("select count(c.id) from Complaint c where c.user.id = ?1 and c.status = ?2")
+    Integer countByUserId(Integer userId, String status);
 
     @Query("select c from Complaint c where c.user.id = ?1 order by c.dateTimeComplaint desc")
     Optional<List<Complaint>> getComplaintByUserId(Integer userId);

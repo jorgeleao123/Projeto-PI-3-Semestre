@@ -50,7 +50,7 @@ public class ComplaintService {
     }
 
     public Integer countByUserId(Integer userId) {
-        return complaintRepository.countByUserId(userId);
+        return complaintRepository.countByUserId(userId, "valido");
     }
 
     public Optional<List<Complaint>> getComplaintByUserId(Integer userId) {

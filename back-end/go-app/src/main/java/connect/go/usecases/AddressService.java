@@ -17,6 +17,7 @@ public class AddressService {
         if (isAddressExists(address)){
             return findAllByDistrict(address.getDistrict()).orElseThrow(RuntimeException::new);
         }
+        address.setCity(address.getCity().replace("ã","a"));
         return addressRepository.save(address);
     }
 
