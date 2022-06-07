@@ -18,7 +18,7 @@ function SearchCrud() {
     apiUser
       .get(``)
       .then((resp) => {
-        setUsuarios(resp);
+        setUsuarios(resp.data);
       })
       .catch((error) => {
         console.log(error);
@@ -49,24 +49,26 @@ function SearchCrud() {
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
                 <th scope="col">Publicações</th>
-                <th scope="col">Contestações</th>
+                <th scope="col">buscas</th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
               {usuarios.map((i) => {
                 console.log(i);
-                return (
-                  <TableLineCrud
-                    key={i.id}
-                    id={i.id}
-                    nome={i.name}
-                    email={i.email}
-                    publicacoes={i.publicacoes}
-                    contestacoes={i.contestacoes}
-                    deleteUser={deleteUser}
-                  />
-                );
+                if(i.status === 'ativo'){
+                  return (
+                    <TableLineCrud
+                      key={i.id}
+                      id={i.id}
+                      nome={i.name}
+                      email={i.email}
+                      publicacoes={i.postCounter}
+                      buscas={i.searchCounter}
+                      deleteUser={deleteUser}
+                    />
+                  );
+                }
               })}
             </tbody>
           </table>

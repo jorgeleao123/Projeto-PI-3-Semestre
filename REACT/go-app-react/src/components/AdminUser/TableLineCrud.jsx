@@ -7,7 +7,7 @@ function TableLineCrud(props) {
   const nome = props.nome;
   const email = props.email;
   const publicacoes = props.publicacoes;
-  const contestacoes = props.contestacoes;
+  const buscas = props.buscas;
 
   return (
     <>
@@ -15,7 +15,7 @@ function TableLineCrud(props) {
         <td data-label="Nome">{nome}</td>
         <td data-label="Email">{email}</td>
         <td data-label="Publicações">{publicacoes}</td>
-        <td data-label="Contestações">{contestacoes}</td>
+        <td data-label="Buscas">{buscas}</td>
         <td data-label="">
           <button
             onClick={() => props.deleteUser(props.id)}

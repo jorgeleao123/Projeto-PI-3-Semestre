@@ -6,8 +6,8 @@ import TableLineCrudAdm from "./TableLineCrudAdm";
 import apiUser from "../../apiUser";
 
 function TableSearch() {
+
   const [admins, setAdmins] = useState(new Array());
-  const [users, setUsers] = useState(new Array());
 
   useEffect(() => {
     buscarDados();
@@ -17,21 +17,11 @@ function TableSearch() {
     apiUser
       .get(``)
       .then((resp) => {
-        setUsers(resp.data);
-        adicionarAdmins();
+        setAdmins(resp.data);
       })
       .catch((error) => {
         console.error(error);
       });
-  }
-
-  function adicionarAdmins() {
-    users.map((user) => {
-      if(user.role === 'admin') {
-        //Como adiciona sem substituir?
-        setAdmins(user);
-      }
-    })
   }
 
   function deleteAdm(id) {
@@ -62,15 +52,19 @@ function TableSearch() {
             </thead>
             <tbody>
               {admins.map((i) => {
-                return(
-                  <TableLineCrudAdm
-                    id={i.id}
-                    nome={i.name}
-                    email={i.email}
-                    cargo={i.role}
-                    deleteAdm={deleteAdm}
-                  />
-                )
+                console.log(i);
+                if(i.status === 'ativo' && i.role !== 'user'){
+                  return(
+                    <TableLineCrudAdm
+                      key={i.id}
+                      id={i.id}
+                      nome={i.name}
+                      email={i.email}
+                      cargo={i.role}
+                      deleteAdm={deleteAdm}
+                    />
+                  )
+                }
               })}
             </tbody>
           </table>

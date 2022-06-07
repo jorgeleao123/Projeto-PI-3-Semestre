@@ -13,33 +13,22 @@ function PerfilColorForm() {
   const [emailInput, setEmailInput] = useState();
   const [senhaInput, setSenhaInput] = useState();
   const [confirmarSenhaInput, setConfirmarSenhaInput] = useState();
-  const [colorProfileInput, setColorProfileInput] = useState();
-  const [colorMenuInput, setColorMenuInput] = useState();
+  const [colorProfileInput, setColorProfileInput] = useState("#FFF");
+  const [colorMenuInput, setColorMenuInput] = useState("#FFF");
 
   useEffect(() => {
     buscarDados();
   }, []);
 
-  function validarCampos() {
-    if (nameInput == undefined) {
-      document.getElementById('name_error').style.display = "block";
-    } else if (emailInput == undefined) {
-      document.getElementById('email_error').style.display = "block";
-    } else if (senhaInput == undefined) {
-      document.getElementById('password_error').style.display = "block";
-    } else if(senhaInput != confirmarSenhaInput){
-      document.getElementById('password_error2').style.display = "block";
-    }
-  }
-
   function buscarDados() {
     apiUser
-      .get(`${id}`)
+      .get(`/${id}`)
       .then((resp) => {
-        setNameInput(resp.name);
-        setEmailInput(resp.email);
-        setColorProfileInput(resp.colorProfile);
-        setColorMenuInput(resp.colorMenu);
+        console.log(resp.data)
+        setNameInput(resp.data.name);
+        setEmailInput(resp.data.email);
+        setColorProfileInput(resp.data.colorProfile);
+        setColorMenuInput(resp.data.colorMenu);
       })
       .catch((error) => {
         console.error(error);
@@ -60,12 +49,12 @@ function PerfilColorForm() {
     apiUser
       .put(`/${id}`, data)
       .then((resp) => {
-        validarCampos();
-        console(resp);
+        console.log(resp);
         alert("Atualizado com sucesso!");
-        buscarDados();
+        window.location.reload(false)
       })
       .catch((error) => {
+        alert("Verifique os campos!");
         console.error(error);
       });
   }
@@ -77,14 +66,14 @@ function PerfilColorForm() {
           <input
             type="color"
             value={colorProfileInput}
-            onInput={(e) => setColorProfileInput(e.target.value)}
+            onChange={(e) => setColorProfileInput(e.target.value)}
           />
         </div>
         <div className="profile__icon">
           <input
             type="color"
             value={colorMenuInput}
-            onInput={(e) => setColorMenuInput(e.target.value)}
+            onChange={(e) => setColorMenuInput(e.target.value)}
           />
         </div>
         <div className="ipts__dash">

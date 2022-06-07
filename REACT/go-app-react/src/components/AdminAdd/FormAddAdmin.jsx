@@ -25,21 +25,16 @@ function FormAddAdmin() {
       district: "Bairro",
     };
 
-    //!pode ser necessário o event.prevendDefaut();
     apiUser
-      .post('', data)
+      .post(``, data)
       .then(() => {
-        alert("Cadastrado!");
+        alert("Cadastrado com sucesso!");
+        window.location.reload(false);
       })
       .catch((error) => {
+        alert("Verifique os campos!")
         console.log(error);
       });
-  }
-
-  function validarSenha() {
-    if (senhaInput != senhaConfirmInput) {
-      alert("As senhas devem ser iguais")
-    }
   }
 
   return (
@@ -51,8 +46,7 @@ function FormAddAdmin() {
               <label htmlFor="Nome">Nome</label>
               <input
                 type="text"
-                name=""
-                id=""
+                id="name"
                 onInput={(e) => setNomeInput(e.target.value)}
               />
             </div>
@@ -60,8 +54,7 @@ function FormAddAdmin() {
               <label htmlFor="DataNascimento">Data de nascimento</label>
               <input
                 type="date"
-                name=""
-                id="data"
+                id="date"
                 onInput={(e) => setDataNascimentoInput(e.target.value)}
               />
             </div>
@@ -71,8 +64,7 @@ function FormAddAdmin() {
               <label htmlFor="Email">Email</label>
               <input
                 type="text"
-                name=""
-                id=""
+                id="email"
                 onInput={(e) => setEmailInput(e.target.value)}
               />
             </div>
@@ -80,8 +72,7 @@ function FormAddAdmin() {
               <label htmlFor="Sexo">Sexo</label>
               <input
                 type="text"
-                name=""
-                id=""
+                id="genre"
                 onInput={(e) => setSexoInput(e.target.value)}
               />
             </div>
@@ -92,8 +83,7 @@ function FormAddAdmin() {
                 <label htmlFor="Alterar senha">Senha</label>
                 <input
                   type="password"
-                  name=""
-                  id=""
+                  id="password"
                   onInput={(e) => setSenhaInput(e.target.value)}
                 />
               </div>
@@ -101,11 +91,9 @@ function FormAddAdmin() {
                 <label htmlFor="Confirmar senha">Confirmar senha</label>
                 <input
                   type="password"
-                  name=""
-                  id="senha"
+                  id="passwordConfirmation"
                   onInput={(e) => {
                     setSenhaConfirmInput(e.target.value);
-                    validarSenha();
                   }}
                 />
               </div>
