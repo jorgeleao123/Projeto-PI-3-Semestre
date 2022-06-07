@@ -1,0 +1,10 @@
+00Cadastro03-06-2022 17:14:5601
+02Mauricio Ishikawa                            mauricio@goapp.com.br                        mauricio123    usuario        M              02-12-1994
+03SPSão Paulo                                    Cerqueira César                              
+02Tais Fermino                                 tais@goapp.com.br                            tais123        usuario        F              13-08-2001
+03SPSão Paulo                                    Cerqueira César                              
+02Rafaella Kimberlly                           rafaela@goapp.com.br                         rafaela123     usuario        F              28-10-2000
+03SPSão Paulo                                    Cerqueira César                              
+02Christian Hamai                              christian@goapp.com.br                       mauricio123    usuario        M              20-07-2003
+03SPSão Paulo                                    Cerqueira César                              
+0100004

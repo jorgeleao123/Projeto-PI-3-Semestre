@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo-go 2.svg" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.4.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/multform.css">
+    <title>GO | Cadastro</title>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <nav class="nav container">
+            <span id="logo">
+                <img src=".//assets/img/logo-go-carbon.svg" alt="">
+            </span>
+            <span style="display: none;" id="logoMobile">
+                <img src=".//assets/img/logo-go-carbon.svg" alt="">
+            </span>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item" style="display: none;">
+                        <a href="#home" class="nav__link a">Home</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#about" class="nav__link">Sobre nós</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#discover" class="nav__link">Serviços</a>
+                    </li>
+                    <li class="nav__item" style="display: none;">
+                        <a href="#place" class="nav__link">Contato</a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="./login.html" class="button__log nav__link btn__link">Login</a>
+                    </li>
+                </ul>
+
+                <i class="ri-close-line nav__close" id="nav-close"></i>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class="ri-function-line"></i>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="place section" id="place">
+            <div class="about__container container grid">
+                <div class="about__img contact__img">
+                    <img class="img-contact" src="./assets/img/cadastro.png" alt="">
+                </div>
+
+                <div class="about__data">
+                    <div class="form">
+                        <input id="one" type="radio" name="stage" checked="checked" />
+                        <input id="two" type="radio" name="stage" />
+                        <input id="six" type="radio" name="stage" />
+
+                        <div class="stages">
+                            <label for="one">1</label>
+                            <label for="two">2</label>
+                            <label for="six">3</label>
+                        </div>
+
+                        <span class="progress"><span></span></span>
+
+                        <div class="panels">
+
+                            <div data-panel="one">
+                                <h2 class="section__title about__title">Cadastre-se</h2>
+                                <p class="about__description">Tenha acesso a nossa mais nova plataforma para usuarios de
+                                    aplicativos de mobilidade, a Go.</p>
+
+                                <form action="" onsubmit="return cadastrar()">
+                                    <label for="Email">Email</label>
+                                    <input type="email" id="email" placeholder="Digite seu email" />
+
+                                    <label for="Assunto">Senha</label> <br>
+                                    <input type="password" name="" id="password" placeholder="Insira sua senha">
+
+                                    <label for="Confirmar Senha">Confirmar Senha</label>
+                                    <input type="password" id="confirm_password" placeholder="Confirme a senha"
+                                        onkeyup="validarSenha()" />
+                                    <span id="equals_password" style="color: rgb(253, 81, 81);
+                                        display: none">As senhas devem ser iguais</span>
+                                    <label class="button__form" for="two">Próximo</label>
+                            </div>
+                            <div data-panel="two">
+                                <h2 class="section__title about__title">Sobre você</h2>
+                                <p class="about__description">Preencha suas informações para ter uma experiencia
+                                    personalizada.</p>
+
+                                <label for="Nome">Nome</label>
+                                <input type="text" placeholder="Digite seu nome" onkeyup="atualizarNome()" id="name" />
+
+                                <label for="Data de nascimento">Data de nascimento</label> <br>
+                                <input type="date" name="" id="birthDate" placeholder="Insira sua data de nascimento">
+
+                                <label for="Sexo">Sexo</label>
+                                <span class="inputs__formcad">
+                                    <span class="inputs__gen">
+                                        <input class="display" type="radio" id="feminino" name="genero" value="F"
+                                            checked>
+                                        <p>Mulher</p>
+                                    </span>
+                                    <span class="inputs__gen">
+                                        <input class="display" type="radio" id="masculino" name="genero" value="M">
+                                        <p>Homem</p>
+                                    </span>
+                                    <span class="inputs__gen">
+                                        <input class="display" type="radio" id="nao_colocar" name="genero" value="0">
+                                        <p>Prefiro não dizer</p>
+                                    </span>
+                                </span>
+                                <span class="buttons__form">
+                                    <label class="button__form" for="one">Anterior</label>
+                                    <label class="button__form" for="six">Próximo</label>
+                                </span>
+                            </div>
+                            <div data-panel="six">
+                                <h2 class="section__title about__title">Muito bom, <span id="nome_colocado"></span></h2>
+                                <p class="about__description">Agora precisamos da sua localidade para filtrarmos melhor
+                                    as públicações do seu Feed.</p>
+
+                                <label for="CEP">CEP</label>
+                                <input type="text" placeholder="Digite seu CEP" id="cep" />
+                                <span id="endereco_validator" style="color: rgb(253, 81, 81);
+                                display: none">CEP inválido</span>
+
+                                <br>
+
+                                <label for="Cidade">Cidade</label>
+                                <input type="text" placeholder="Digite sua cidade" id="cidade" />
+
+                                <label for="Estado">Estado</label>
+                                <input type="text" placeholder="Digite seu Estado" id="estado" />
+
+                                <button type="submit" class="button__cad button btn-ctt" onclick="cadastrar()">
+                                    Cadastrar</button>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!--==================== FOOTER ====================-->
+        <footer class="footer section">
+            <div class="footer__container container grid">
+                <div class="footer__rights">
+                    <p class="footer__copy">&#169; 2022 GO. Todos os direitos reservados.</p>
+                    <div class="footer__terms">
+                        <a href="#" class="footer__terms-link">Termos</a>
+                        <a href="#" class="footer__terms-link">Politica de privacidade</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <div style="display: none;" class="toggle">
+        <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+        <label for="switch">Toggle</label>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        var bairro;
+
+        function atualizarNome() {
+            nome_colocado.innerHTML = document.getElementById('name').value;
+        }
+
+        function limparFormulario(endereco) {
+            document.getElementById('cidade').value = '';
+            document.getElementById('estado').value = '';
+        }
+
+
+        function preencherFormulario(endereco) {
+            document.getElementById('cidade').value = endereco.localidade;
+            document.getElementById('estado').value = endereco.uf;
+        }
+
+
+        function eNumero(numero) {
+            return /^[0-9]+$/.test(numero);
+        }
+
+        function cepValido(cep) {
+            return cep.length == 8 && eNumero(cep);
+        }
+
+        const pesquisarCep = async () => {
+            limparFormulario();
+
+            const cep = document.getElementById('cep').value.replace("-", "");
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+            if (cepValido(cep)) {
+                const dados = await fetch(url);
+                const endereco = await dados.json();
+                if (endereco.hasOwnProperty('erro')) {
+                    document.getElementById('endereco_validator').value = 'CEP não encontrado!';
+                    document.getElementById('endereco_validator').style.display = 'block';
+                } else {
+                    preencherFormulario(endereco);
+                    bairro = endereco.bairro;
+                    document.getElementById('endereco_validator').style.display = 'none';
+                }
+            } else {
+                document.getElementById('endereco_validator').value = 'CEP incorreto!';
+                document.getElementById('endereco_validator').style.display = 'block';
+            }
+
+        }
+
+        //Aqui ele observa o cep e quando não está no foco, faz a pesquisa
+        document.getElementById('cep')
+            .addEventListener('focusout', pesquisarCep);
+
+        function cadastrar() {
+            event.preventDefault();
+
+            if (document.getElementById('password') == document.getElementById('confirm_password')) {
+                document.getElementById('equals_password').style.display = 'block';
+            } else {
+                const data = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    password: document.getElementById('password').value,
+                    role: "user",
+                    genre: document.querySelector('input[name="genero"]:checked').value,
+                    birthDate: document.getElementById('birthDate').value,
+                    state: document.getElementById('estado').value,
+                    city: document.getElementById('cidade').value,
+                    district: bairro
+                };
+                console.log(data);
+                axios.post(`http://localhost:8080/users`, data)
+                    .then((resp) => {
+                        alert('Cadastro realizado com sucesso');
+                        console.log(resp);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        console.log(data);
+                    })
+
+
+                // fetch('http://localhost:8080/users', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify(data),
+                // })
+                //     .then(data => {
+                //         console.log('Success:', data);
+                //         alert("Usuario cadastrado com sucesso")
+                //     })
+                //     .catch((error) => {
+                //         alert("Erro ao realizar login", erro);
+                //     });
+            }
+
+        }
+
+        function validarSenha() {
+            if (document.getElementById('password').value == document.getElementById('confirm_password').value) {
+                document.getElementById('equals_password').style.display = 'none';
+            } else {
+                document.getElementById('equals_password').style.display = 'block';
+
+            }
+        }
+
+
+        $('.form .stages label ').click(function () {
+            var radioButtons = $('.form input:radio');
+            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+            selectedIndex = selectedIndex + 1;
+        });
+
+        $('.form button next').click(function () {
+            var radioButtons = $('.form input:radio next');
+            var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+
+            selectedIndex = selectedIndex + 2;
+
+            $('.form input[type="radio"]:nth-of-type(' + selectedIndex + ')').prop('checked', true);
+
+            if (selectedIndex == 3) {
+                $('button').html('Submit');
+            }
+
+        });
+
+
+    </script>
+
+    <script src="./assets/js/dark-mode.js"></script>
+</body>
+
+</html>

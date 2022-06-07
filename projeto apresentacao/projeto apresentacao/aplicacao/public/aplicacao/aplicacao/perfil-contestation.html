@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/img/logo-go-blue.svg" type="image/png">
+    <script src="https://kit.fontawesome.com/c9f71e3f63.js" crossorigin="anonymous"></script>
+    <title>Perfil - Contestação | GO</title>
+    <link rel="stylesheet" href="./assets/css/perfil.css">
+    <link rel="stylesheet" href="./assets/css/perfil.contestation.css">
+    <link rel="stylesheet" href="./assets/css/perfil.save.css">
+    <link rel="stylesheet" href="./assets/css/style-components.css">
+    <link rel="stylesheet" href="./assets/css/style.modais.css">
+    <link rel="stylesheet" href="./assets/css/style.nav.css">
+    <link rel="stylesheet" href="./assets/css/feed.css">
+
+</head>
+
+<body style="overflow-y: scroll" onload="loadPage(),notificacao()">
+    <!------------------------------------------------------------------------- NAVBAR ------------------------------------------------------------------------->
+    <!-- navbar desktop -->
+    <section class="nav__desktop">
+        <div class="nav__desktop__top">
+            <div class="nav__desktop__top__items">
+                <span id="logo">
+                    <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                </span>
+                <span class="nav__desktop__search">
+                    <input type="search" id="uriParamComplaint" placeholder="Busque pela placa ou nome do motorista">
+                    <select name="" id="endPointComplaint" aria-placeholder="Filtrar por">
+                        <option value="license">Placa</option>
+                        <option value="city">Cidade</option>
+                        <option value="district">Bairro</option>
+                        <option value="state">Estado</option>
+                    </select>
+                    <a class="search__icon" onclick="getSearch()"> <i
+                            class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                </span>
+            </div>
+            <div class="nav__desktop__top__items">
+                <div class="mobile-bottom-nav__item">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile link_active"></i></a>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content links__desktop">
+                        <label for="modal-4" id="hasNotification">
+                            <i class="fa-solid fa-bell icon__mobile"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav__itens__links">
+                    <div class="mobile-bottom-nav__item-content">
+                        <label for="modal-1">
+                            <i class="fa-solid fa-caret-down icon__mobile js-open-modal"></i>
+                        </label>
+                    </div>
+                </div>
+                <div class="mobile-bottom-nav__item-content">
+                    <div class="icon__user__initial">
+                        <span class="initial__user" id="initial1"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- navbar mobile -->
+    <section class="nav__mobile">
+        <div class="nav__mobile__top">
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <span id="logoMobile">
+                        <img src=".//assets/img/logo-go-carbon.svg" alt="">
+                    </span>
+                </div>
+            </div>
+
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <h3>Perfil</h3>
+                </div>
+            </div>
+
+            <div class="">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-4">
+                        <i class="fa-solid fa-bell icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--------------------------------------------------------------------- /NAVBAR --------------------------------------------------------------------------->
+
+    <!--------------------------------------------------------------------- CONTEUDO --------------------------------------------------------------------------->
+    <main>
+        <!-- navbar mobile -->
+        <div class="f__navbar__mobile">
+            <nav class="f__navbar">
+                <ul>
+                    <li><a href="./perfil.html"><i class="fa-solid fa-newspaper"></i><span
+                                class="public">Publicações</span></a></li>
+                    <li><a href="./perfil-save.html"><i class="fa-solid fa-bookmark"></i></i><span
+                                class="public">Salvos</span></a></li>
+                    <li><a id="active" href="./perfil-contestation.html"><i class="fa-solid fa-signal"></i><span
+                                class="public">Contestação</span></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- background card -->
+        <div class="background">
+            <div class="background__content"></div>
+            <div class="card__perfil__mobile__print">
+                <div class="flex padding__card">
+                    <div class="icon__user icon__user__initial">
+                        <span class="initial__user" id="initial2"></span>
+                    </div>
+                    <span>
+                        <h4 id="nameUser" class="nameUser"></h4>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <section class="content__feed contestation">
+            <div class="container__feed__contestation" id="feedContestation">
+                <!-- tópico -->
+                <div class="top__contest flex justify">
+                    <p style="min-width: 180px;"><b> Status das Contestações</b></p>
+                    <div class="hr"></div>
+                </div>
+
+
+
+                <!-- contestação  -->
+
+
+                <!-- contestação -->
+
+                <!-- contestação  -->
+
+
+            </div>
+
+            <!--------------------------------------------------------------------- / CONTENT FEED ---------------------------------------------------------->
+
+            <!-- initial navbar right -->
+            <div class="card__infos__navbar config">
+                <nav class="i__navbar">
+                    <ul>
+                        <li><a href="./perfil.html">Minhas Publicações</a></li>
+                        <li><a id="activeleft" href="./perfil-contestation.html">Minhas Contestações</a></li>
+                        <li class="none"><a href="./perfil-save.html">Salvos</a></li>
+                    </ul>
+                </nav>
+
+
+
+                <!-- Card  -->
+                <div class="card__write">
+                    <div class="flex">
+                        <button class="edit__button__card" style="margin: 0%;"><a
+                                href="./new-publication.html">Escrever</a></button>
+                    </div>
+
+                    <div class="font__card">
+                        <h6>Públique uma denúncia no seu perfil</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div style="display: none;" class="toggle">
+            <input type="checkbox" id="switch" name="theme" onclick="mudar_logo()">
+            <label for="switch">Toggle</label>
+        </div>
+        <!---------------------------------------------------------------------- MODAIS -------------------------------------------------------------------------->
+        <!-- modal navbar / mains opções de link -->
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-1"></label>
+            <div class="modal__inner">
+                <a class="options__modal__user" href="./perfil-save.html">Casos salvos</a>
+                <a class="options__modal__user" href="./perfil-contestation.html">Denuncias em analise</a>
+                <a class="options__modal__user" href="./config-infos.html">Configurações</a>
+                <hr>
+                <span class="flex justify">
+                    <a class="options__modal__user" href="../forms-go/login.html">Sair</a>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                </span>
+            </div>
+        </div>
+
+        <!-- modal / notificações -->
+        <input class="modal-state" id="modal-4" type="checkbox" />
+        <div class="modal">
+            <label class="modal__bg" for="modal-4"></label>
+            <div class="modal__inner__notify padding__card" id="idNotificacao"></div>
+        </div>
+
+        <!-- modal de busca -->
+        <span class="display__modal">
+            <input class="modal-state" id="modal-2" type="checkbox" />
+            <div class="modal modal__search">
+                <label class="modal__bg__search" for="modal-2"></label>
+                <div class="modal__inner__search">
+                    <div>
+                        <p>Faça sua busca</p>
+                        <span class="nav__mobile__input">
+                            <input type="search" placeholder="Busque pela placa ou nome do motorista">
+                            <select class="select__mobile" name="" id="" aria-placeholder="Filtrar por">
+                                <option value="">Placa</option>
+                                <option value="">Nome/Placa</option>
+                                <option value="">Cidade</option>
+                                <option value="">Bairro</option>
+                                <option value="">Estado</option>
+                            </select>
+                            <a href="./search.html"
+                                style="margin-top: 2px; padding-left: 10px; text-decoration: none; color: rgb(94, 94, 94);">
+                                <i class="fa-solid fa-magnifying-glass icon__mobile__search"></i></a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </span>
+
+    </main>
+
+    <!----------------------------------------------------------------------- MENU -------------------------------------------------------------------------->
+    <section class="nav__mobile">
+        <nav class="mobile-bottom-nav">
+            <div class="mobile-bottom-nav__item">
+                <div class="mobile-bottom-nav__item-content">
+                    <a href="./index.html"><i class="fa-solid fa-house icon__mobile"></i></a>
+                </div>
+            </div>
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-2">
+                        <i class="fa-solid fa-magnifying-glass icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+            <div class="mobile-bottom-nav__item mobile-bottom-nav__item--active">
+                <div class="mobile-bottom-nav__item-content">
+                    <a href="./perfil.html"><i class="fa-solid fa-user icon__mobile"></i></a>
+                </div>
+            </div>
+
+            <div class="nav__itens__links">
+                <div class="mobile-bottom-nav__item-content">
+                    <label for="modal-1">
+                        <i class="fa-solid fa-angle-up icon__mobile"></i>
+                    </label>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <script src="./assets/js/script-components.js"></script>
+    <script src="./assets/js/dark-mode.js"></script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+function loadPage(){
+    getContestation();
+    loadHtml();
+}
+
+function getContestation(){
+
+    axios.get(`http://localhost:8080/contestations/user/${sessionStorage.getItem('user_id')}`)
+    .then((resp) => {
+        resp.data.map((item) => {
+            let dia = item.dateTimeContestation.slice(8, 10);
+            let mes = item.dateTimeContestation.slice(5, 7);
+            let ano = item.dateTimeContestation.slice(0, 4);
+            let data = `${dia}/${mes}/${ano}`;
+            getStatusContestation(item.status, data);
+        })
+        console.log(resp);
+    })
+    
+}
+
+function getStatusContestation(status, data){
+    switch(status){
+        case "enviada":
+            getEnviada(data);
+            break;
+        case "em análise":
+            getEmAnalise(data);
+            break;
+        case "concluída":
+            getConcluida(data);
+            break;
+    }
+}
+
+    function getContestation() {
+
+        axios.get(`http://localhost:8080/contestations/user/${sessionStorage.getItem('user_id')}`)
+            .then((resp) => {
+                resp.data.map((item) => {
+
+                    let dia = item.dateTimeContestation.slice(8, 10);
+                    let mes = item.dateTimeContestation.slice(5, 7);
+                    let ano = item.dateTimeContestation.slice(0, 4);
+                    let data = `${dia}/${mes}/${ano}`;
+                    getStatusContestation(item.status, data);
+
+                })
+                console.log(resp);
+            })
+
+    }
+
+    function getStatusContestation(status, data) {
+        switch (status) {
+            case "em analise":
+                getEmAnalise(data);
+                break;
+            case "reprovado":
+                getConcluida(data,'não apresenta nenhum');
+                break;
+            case "aprovado":
+                getConcluida(data,'apresenta');
+                break;
+        }
+    }
+
+    function getEmAnalise(data) {
+        document.getElementById('feedContestation').innerHTML += `
+        <div class="content__complaint">
+            <div class="flex justify topic__cont">
+                <span class="date__contestation" id="contestationDate">Contestação feita no dia: ${data}</span>
+                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+            </div>
+            <div class="header__complaint flex justify_step">
+                <div class="flex">
+                    <div class="about__data">
+                        <div class="form">
+                            <!-- dependendo do status é só marcar com checked o nivel  -->
+                            <input class="check__one" type="radio" checked="checked" />
+                            <input class="check__two" type="radio" checked="checked" />
+                            <input class="check__tree" type="radio" />
+
+                            <div class="stages">
+                                <label>1</label>
+                                <label>2</label>
+                                <label>3</label>
+                            </div>
+
+                            <span class="progress"><span></span></span>
+                            <div class="step__title">
+                                <p style="margin-right:18px;">Enviada</p>
+                                <p>Em análise</p>
+                                <p>Conclúida</p>
+                            </div>
+
+                            <div class="panels">
+                                <!-------------------------------------- step 2 ---------------------------------------->
+                                <label class="message__step">
+                                        <span class="icon__message__step">
+                                            <i class="fa-solid fa-magnifying-glass"></i>
+                                        </span>
+                                        <h2 class="section__title about__title">Sua denúncia está sendo
+                                            analisada</h2>
+                                        <p class="about__description">Estamos analisando a sua denúncia e
+                                            verificando todos os pontos,
+                                            geralmente isso leva de 2 a 3 dias. Para acompanhar o processo basta
+                                            verificar aqui.</p>
+                                </label> 
+                            </div>
+                        </div>
+                        </form>
+                        <div class="bottom__link__contestation">
+                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+    `;
+    }
+
+    function getConcluida(data,texto) {
+        document.getElementById('feedContestation').innerHTML += `
+        <!-- contestação -->
+        <div class="content__complaint">
+            <div class="flex justify topic__cont">
+                <span class="date__contestation">Contestação feita no dia: ${data}</span>
+                <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+            </div>
+            <div class="header__complaint flex justify_step">
+                <div class="flex">
+                    <div class="about__data">
+                        <div class="form">
+                            <!-- dependendo do status é só marcar com checked o nivel  -->
+                            <input class="check__one" type="radio" checked="checked" />
+                            <input class="check__two" type="radio" checked="checked" />
+                            <input class="check__tree" type="radio" checked="checked" />
+
+                            <div class="stages">
+                                <label>1</label>
+                                <label>2</label>
+                                <label>3</label>
+                            </div>
+
+                            <span class="progress"><span></span></span>
+                            <div class="step__title">
+                                <p style="margin-right:18px;">Enviada</p>
+                                <p>Em análise</p>
+                                <p>Conclúida</p>
+                            </div>
+
+                            <div class="panels">
+                                <!-------------------------------------- step 3 ---------------------------------------->
+                                <label class="message__step">
+                                        <span class="icon__message__step">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </span>
+                                        <h2 class="section__title about__title">Denúncia analisada</h2>
+                                        <p class="about__description justify">Averiguamos todas as provas
+                                            enviadas e comparamos
+                                            com o relato e concluímos que a denúncia ${texto} motivo
+                                            para ser removida.</p>
+
+                                        <!-- caso tenha sido removida printar: -->
+                                        <!-- <p class="about__description justify">Averiguamos todas as provas enviadas e comparamos
+                                            com o relato e removemos a denuncia.</p> -->
+                                </label>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="bottom__link__contestation">
+                            <a href="#" class="link__contestation">Visualizar caso denunciado</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hr"></div>
+        <!-- contestação  -->
+
+    `;
+    }
+
+    function loadHtml() {
+        document.getElementsByClassName("icon__user__initial")[0].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementById('nameUser').innerHTML += sessionStorage.user_nome;
+        document.getElementById('initial1').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementById('initial2').innerHTML += sessionStorage.user_nome.substr(0, 1);
+        document.getElementsByClassName("icon__user__initial")[1].style.backgroundColor = sessionStorage.user_colorProfile;
+        document.getElementsByClassName("background__content")[0].style.backgroundColor = sessionStorage.user_colorMenu;
+    }
+
+    function getSearch() {
+        let uriParam = document.getElementById('uriParamComplaint').value;
+        let endPoint = document.getElementById('endPointComplaint').value;
+        sessionStorage.setItem('uriParamComplaint', uriParam);
+        sessionStorage.setItem('endPointComplaint', endPoint);
+        window.location.href ="./search.html";
+    }
+
+    function notificacao() {
+        event.preventDefault();
+
+        var config = {
+            method: 'get',
+            url: `http://localhost:8080/notifications/user/${sessionStorage.getItem('user_id')}`,
+        };
+
+        axios(config)
+            .then(function (response) {
+
+                response.data.map((e) => {
+                    if (!e["hasViewed"]) {
+                        hasNotification.innerHTML = `<img class="pegaclasse" src="./assets/img/notification.png" alt="">`;
+                        idNotificacao.innerHTML += `<div class="content__notify">
+                    <h5>${e["title"]}</h5>
+                    <span class="date">${e["dateTimeNotification"]}</span>
+                    <p>${e["description"]}</p>
+                    <div class="hr top"></div>
+                </div>`;
+
+                        idNotificacao.innerHTML += `<a class="excnoti" onclick="zeraNotificacao()">excluir notificações</a>`;
+                    }
+
+                })
+
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+    }
+
+    function zeraNotificacao() {
+        event.preventDefault();
+
+        var config = {
+            method: 'patch',
+            url: `http://localhost:8080/notifications/view/${sessionStorage.getItem('user_id')}`,
+        };
+
+        axios(config)
+            .then(function (response) {
+                console.log(JSON.stringify(response.data));
+                console.log("foi");
+                window.location.href = "./perfil-contestation.html";
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+</script>
+
+</html>

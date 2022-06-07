@@ -1,0 +1,187 @@
+
+.lala{
+    height: 45vh;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+.topic__save {
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    font-size: 13.5px;
+    width: 100%;
+}
+
+.topic__save hr {
+    float: right;
+    text-align: right;
+    margin-right: 0 0 0;
+    border-width: 0;
+    height: 0.2px;
+    border-top-width: 0.2px;
+    border: 0.2px solid var(--border-color);
+    
+}
+
+.content__feed__save {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+}
+
+.card__perfil__mobile__print {
+    display: block;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: var(--menu-color);
+    border-radius: 1px;
+    box-shadow: 0px 4px 8px -5px rgb(0 0 0 / 64%);
+}
+.top__save{
+    padding-top: 25px;
+    max-width: 255px;
+}
+
+.margin__save{
+    margin-left: 10%;
+}
+.container__feed__save{
+    width: 78%;
+}
+
+/*================================================================================ RESPONSIVE ====================================================================*/
+/*======= PADDING =======*/
+@media screen and (min-width: 1600px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+
+    .container__feed__save {
+        max-width: 730px;
+    }   
+
+}
+
+@media screen and (max-width: 1448px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .container__feed__save {
+        height: calc(94vh - 40px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+
+}
+
+@media screen and (min-width: 900.1px) {
+    .content__complaint {
+        padding: 30px 100px;
+    }
+}
+
+@media screen and (max-width: 1599px) {
+
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .container__feed__save {
+        height: calc(94vh - 40px);
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+    
+
+}
+
+@media screen and (max-width: 1400px) {
+    .card__infos__user {
+        display: block;
+    }
+
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+
+}
+
+@media screen and (max-width: 1150px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .container__feed__save {
+        width: 100% !important;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+    .margin__save{
+        margin: 0;
+    }
+
+
+}
+
+@media screen and (max-width: 647px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 537px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .topic__save hr {
+        width: 100%;
+    }
+
+    .card__perfil__mobile__print {
+        display: block;
+    }
+}
